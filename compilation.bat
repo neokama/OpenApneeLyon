@@ -8,4 +8,7 @@ cd bin
 go build main
 main
 
+
+go build test
+test
 pause
