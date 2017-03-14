@@ -11,4 +11,7 @@ main
 
 go build test
 test
+
+go build menu
+menu
 pause
