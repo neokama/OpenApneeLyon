@@ -1,4 +1,4 @@
-package main
+/* package main 
 
 import "fmt"
 import "os"
@@ -16,21 +16,19 @@ func main() {
 	
 func menu(choix int){
  
-	
-    //initialisationFichier()
+	//initialisationFichier()
  
-	
-	for choix!= -1 {
+ 	for choix!= -1 {
 	fmt.Printf("\n==========MENU==========\n")
- fmt.Printf("1- Gestion des compétiteurs\n")
- fmt.Printf("2- Gestion des équipes\n")
- fmt.Printf("9- Quitter\n")
- fmt.Printf("========FIN MENU========\n\n")
- fmt.Printf("Saisir votre Choix : ")
+	fmt.Printf("1- Gestion des compétiteurs\n")
+	fmt.Printf("2- Gestion des équipes\n")
+	fmt.Printf("9- Quitter\n")
+	fmt.Printf("========FIN MENU========\n\n")
+	fmt.Printf("Saisir votre Choix : ")
  
 	fmt.Scan(&choix)
 	
-	switch(choix){
+		switch(choix){
 	
 	case(1): choix=ajouterC()
 	break
@@ -232,4 +230,48 @@ dat, err := ioutil.ReadFile("Compétiteur.csv")
     
     f.Close()
 
+} */
+
+
+package main 
+
+import "flag"
+import "fmt"
+
+
+func Registration(){
+	fmt.Println("importation des participants dans la base de donnees")
 }
+
+func Parsage(){
+	choix1 := flag.String("choix1","help") // On crée ici un flag => lorsqu'on lance le programme on peut ajouter une option 
+	// pour choisir quelle fonctionnalité utiliser. Dans ce cas, le choix par défaut pour la valeur du flag est quit et "a String" n'est 
+	// qu'une description du flag.
+	choix2 := flag.String("choix2", "help", "a String")
+	flag.Parse()  // permet d'initialiser le pointeur vers le flag.
+	if *choix1 == "comp"{
+		if *choix2 == "reg"{
+			Registration()
+		} else {
+			fmt.Println("Bienvenu dans l'aide ! \n")
+			fmt.Println("Vous vous trouvez actuellement dans le menu de gestion des participants.\n")
+			fmt.Println("Vous pouvez importer des participants dans la base de donnees de l'application en saisissant -choix2=reg apres votre derniere commande.")
+		}
+	} else if *choix1 == "team" {
+		fmt.Println("Vous etes dans le menu de gestion des equipes")
+	} else {
+		fmt.Println("Bienvenu dans l'aide ! \n")
+		fmt.Println("Vous vous trouvez actuellement dans le menu principal. \n")
+		fmt.Println("Vous pouvez acceder au menu de gestion des participants en tapant -choix1=comp apres votre derniere commande.\n")
+		fmt.Println("Vous pouvez acceder au menu de gestion des equipes en tapant -choix1=team apres votre derniere commande.\n")
+	}
+	
+}
+
+func main() {
+	Parsage()
+}
+
+// L'idée c'est donc de créer un flag qui selon sa valeur exécute la fonctionnalité recherchée :
+// exemple : si le flag "choix" prend la valeur reg alors le programme exécute la méthode registration qui permet d'importer 
+// les participants dans la base de données.
