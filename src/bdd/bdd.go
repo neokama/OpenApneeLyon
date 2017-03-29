@@ -1,13 +1,15 @@
-package main
-
-import (
+	package main
+	
+	import (
 	"database/sql"
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
 	"os"
-	//"bufio"
+	"bufio"
+	"strings"
 	)
+	
 	
 	type Bdd struct
 	{
@@ -56,7 +58,7 @@ import (
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout: \n", base.err)
 			} else {
-			fmt.Println("Ajout accepté du compétiteur " + nom + prenom)
+			fmt.Println("Ajout validé du compétiteur " + nom +" "+ prenom)
 		}
 	}
 	
@@ -97,23 +99,27 @@ import (
 		}	
 
 	}
-	/*
+	
+	
+	
 	func (base Bdd) importComp(chemin string){
 		file, err := os.Open(chemin)
 		if err != nil {
 			log.Fatal(err)
 		}
 		defer file.Close()
-
+	
+		var info []string
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
-			fmt.Println(scanner.Text())
+			info = strings.Split(scanner.Text(), ";")
+			base.addComp(info[0], info[1])
 		}
 
 		if err := scanner.Err(); err != nil {
 			log.Fatal(err)
 		}
-	}*/
+	}
 	
 	
 	
@@ -134,39 +140,3 @@ import (
 		return base
 	}
 	
-	
-	
-	
-	
-	
-	
-
-func main() {
-	base := newBdd("../src/database/test","../src/database/test.csv")
-	base.connection()
-	base.disp_requete("SELECT * FROM competiteurs")
-	base.addComp("Ninja","LeRigolo")
-	base.disp_requete("SELECT * FROM competiteurs")
-	base.delComp("nom","'Ninja'")
-	base.disp_requete("SELECT * FROM competiteurs")
-	base.requete_export("SELECT * FROM competiteurs")
-	
-	//Ne marche pas!!
-	
-		// IMPORTATION:
-		
-	// Lecture dans un fichier CSV 
-	/*
-	stream2, err := ioutil.ReadFile("../src/database/test.csv")
-	if err != nil {
-	log.Fatal(err)
-	}
-	
-	readString2 := string(stream2)
-	fmt.Println(readString2)
-	*/
-	
-
-	
-	
-}
