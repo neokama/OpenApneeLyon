@@ -1,0 +1,6 @@
+1ère lettre du prenom
+2 premières lettres du nom
+numéro
+
+
+CREATE TABLE competiteurs (id varchar(30), prenom varchar(30), nom varchar(30), sexe CHARACTER(1), num_license varchar(30), equipe varchar(30), epreuve1 varchar(30), temps1 DECIMAL(8, 3), epreuve2 varchar(30), temps2 DECIMAL(8, 3))
