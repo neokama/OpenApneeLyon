@@ -4,3 +4,18 @@ numéro
 
 
 CREATE TABLE competiteurs (id varchar(30), prenom varchar(30), nom varchar(30), sexe CHARACTER(1), num_license varchar(30), equipe varchar(30), epreuve1 varchar(30), temps1 DECIMAL(8, 3), epreuve2 varchar(30), temps2 DECIMAL(8, 3))
+
+
+
+	/*
+	tableau de compétiteurs
+	trier tableau par annonces
+	Voir fichier config: passages simultanés
+	Calcul heure de passage (Echau => annonce => )
+
+	t-33 => Echauffement
+	t-3 => annonce
+	t => Passage 
+	t + annonce max + seuil max + marge série => t2
+	Exportation planning
+	*/

@@ -5,7 +5,7 @@ import (
 	"strconv"
 	)
 	
-	type competiteur struct
+	type Competiteur struct
 	{
 		id string
 		prenom string
@@ -19,7 +19,7 @@ import (
 		temps2 float32
 	}
 	
-	func (pers competiteur) afficher(){
+	func (pers Competiteur) disp(){
 		fmt.Println(pers.prenom + "; " +
 		pers.id + "; " +
 		pers.nom + "; " +
@@ -32,8 +32,8 @@ import (
 		strconv.FormatFloat(float64(pers.temps2),'f', -1,  32) + "\n")
 	}
 	
-	func newcomp(nom string, prenom string)(*competiteur){
-		pers := new(competiteur)
+	func newcomp(nom string, prenom string)(*Competiteur){
+		pers := new(Competiteur)
 		pers.nom = nom
 		pers.prenom = prenom
 		pers.sexe = "M"
@@ -46,8 +46,8 @@ import (
 		return pers
 	}
 	
-	func newcomp2(id string, prenom string, nom string, sexe string, num_license string, equipe string, epreuve1 string, temps1 float32, epreuve2 string, temps2 float32)(*competiteur){
-		pers := new(competiteur)
+	func newcomp2(id string, prenom string, nom string, sexe string, num_license string, equipe string, epreuve1 string, temps1 float32, epreuve2 string, temps2 float32)(*Competiteur){
+		pers := new(Competiteur)
 		pers.id = id
 		pers.nom = nom
 		pers.prenom = prenom

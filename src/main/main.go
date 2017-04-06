@@ -7,6 +7,8 @@ import (
 	
 func main() {
 	fmt.Println("Début: \n")
+	
+	//%%%%%%%%% Compétiteurs %%%%%%%%%
 	Moi := newcomp("RICAUD","Arnaud")
 	Moi.id = "ARI1"
 	Moi.num_license = "23111995N1"
@@ -15,8 +17,11 @@ func main() {
 	Moi.temps1 = 150
 	Moi.epreuve2 ="16x50"
 	Moi.temps2 = 1250
-	Moi.afficher()
+	Moi.disp()
 	
+	
+	/*
+	%%%%%%%%% Bdd %%%%%%%%%
 	base := newBdd("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
@@ -24,7 +29,7 @@ func main() {
 	fmt.Println("\n")
 	base.disp_comp()
 	base.export_comp("","pourquoipas")
-	base.import_comp("C:/Users/Arnaud/Desktop/Go_Workspace/OpenApneeLyon/bin/import.csv")
+	base.import_comp("../bin/import.csv")
 	fmt.Println("\n")
 	base.disp_comp()
 	fmt.Println("\n")
@@ -36,4 +41,19 @@ func main() {
 	
 	base.delComp(3, "RICAUD")
 	fmt.Println("\n")
+	*/
+	
+	//%%%%%%%%% Bdd %%%%%%%%%
+	base := newBdd("../src/database/OpenApneeLyon")
+	base.reset()
+	fmt.Println("\n")
+	base.addComp(Moi)
+	base.addComp(Moi)
+	base.addComp(Moi)
+	base.addComp(Moi)
+	fmt.Println("\n")
+	p := newPlanning("../src/database/OpenApneeLyon")
+	p.get_comp()
+	p.disp_comp()
+	
 }

@@ -112,7 +112,7 @@
 	* 		base de données
 	*/
 
-	func (base Bdd) addComp(comp *competiteur){
+	func (base Bdd) addComp(comp *Competiteur){
 		
 		_, base.err = base.db.Exec("INSERT INTO competiteurs VALUES('"+
 		comp.id + "','" +
