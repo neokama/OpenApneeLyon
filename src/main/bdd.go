@@ -45,7 +45,7 @@
 	* 		competiteurs de la base de données
 	*/
 	
-	func (base Bdd) disp_comp(){
+	func (base Bdd) displayCompetiteur(){
 	
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs")
 		if base.err != nil {
@@ -67,7 +67,7 @@
 	}
 	
 	/*
-	* 		Bdd.search_comp:
+	* 		Bdd.searchCompetiteur:
 	* Paramètres:
 	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
 	*	- value:	valeur à rechercher dans la colonne choisie.
@@ -77,7 +77,7 @@
 	* 		competiteurs de la base de données
 	*/
 	
-	func (base Bdd) search_comp(col_num int, value string){
+	func (base Bdd) searchCompetiteur(col_num int, value string){
 		
 		var id_col string
 		id_col, value = col_id2name(col_num, value)
@@ -102,7 +102,7 @@
 	}
 	
 	/*
-	* 		Bdd.delComp:
+	* 		Bdd.addCompetiteur:
 	* Paramètres:
 	*	- comp: 	Les informations du compétiteur à ajouter sous la
 	*				forme d'une structure de type "competiteur"
@@ -112,7 +112,7 @@
 	* 		base de données
 	*/
 
-	func (base Bdd) addComp(comp *competiteur){
+	func (base Bdd) addCompetiteur(comp *Competiteur){
 		
 		_, base.err = base.db.Exec("INSERT INTO competiteurs VALUES('"+
 		comp.id + "','" +
@@ -122,9 +122,9 @@
 		comp.num_license + "','" +
 		comp.equipe + "','" +
 		comp.epreuve1 + "'," +
-		strconv.FormatFloat(float64(comp.temps1),'f', -1,  32)+ ",'" +
+		strconv.Itoa(comp.temps1) + ",'" +
 		comp.epreuve2 + "'," +
-		strconv.FormatFloat(float64(comp.temps2) ,'f', -1, 32) + ")")
+		strconv.Itoa(comp.temps2) + ")")
 		
 		
 		
@@ -136,7 +136,7 @@
 	}
 	
 	/*
-	* 		Bdd.addComp:
+	* 		Bdd.deleteCompetiteur:
 	* Paramètres:
 	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
 	*	- value:	valeur à rechercher dans la colonne choisie.
@@ -146,7 +146,7 @@
 	*		en entrée.
 	*/
 
-	func (base Bdd) delComp(col_num int, value string){
+	func (base Bdd) deleteCompetiteur(col_num int, value string){
 		var id_col string
 		id_col, value = col_id2name(col_num, value)
 	
@@ -157,7 +157,7 @@
 			fmt.Println("Suppression des competiteurs avec " + id_col + " = " + value)
 		}
 	}
-	
+
 	
 	/*
 	* 		Bdd.reset:
@@ -177,7 +177,7 @@
 	
 		
 	/*
-	* 		Bdd.export_comp:
+	* 		Bdd.exportCompetiteur:
 	* Paramètres:
 	*	- cheminFichier: 	Chemin du fichier à exporter.
 	*	- nomFichier:	Nom du fichier à exporter (sans ".CSV")
@@ -186,7 +186,7 @@
 	*		Méthode permettant d'exporter un fichier CSV contenant tous les
 	*		compétiteurs de la base de données.
 	*/
-	func (base Bdd) export_comp(cheminFichier string, nomFichier string){
+	func (base Bdd) exportCompetiteur(cheminFichier string, nomFichier string){
 	
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs")
 		if base.err != nil {
@@ -202,6 +202,9 @@
 		
 			var info [10]string
 			
+			
+			file.WriteString(fmt.Sprint("Identifiant; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; temps1; Epreuve2; temps2\r\n"))
+			
 			for base.resultat.Next() {
 				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 				if base.err != nil {
@@ -214,7 +217,7 @@
 	
 	
 	/*
-	* 		Bdd.import_comp:
+	* 		Bdd.importCompetiteur:
 	* Paramètres:
 	*	- chemin: 	Chemin du fichier à importer avec le nom du fichier et l'extension.
 	*
@@ -222,22 +225,26 @@
 	*		Méthode permettant d'importer les compétiteurs contenu dans un fichier CSV
 	*/
 	
-	func (base Bdd) import_comp(chemin string){
+	func (base Bdd) importCompetiteur(chemin string){
 		file, err := os.Open(chemin)
 		if err != nil {
 			log.Fatal(err)
 		}
 		defer file.Close()
 	
-		//var info []string
+		var firstCall bool
+		firstCall = true
+		
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
 			info := strings.Split(scanner.Text(), ";")
-			
-			temps1,_ := strconv.ParseFloat(info[7], 64)
-			temps2,_ := strconv.ParseFloat(info[9], 64)
-			comp := newcomp2(info[0], info[1], info[2], info[3], info[4], info[5], info[6], float32(temps1), info[8],float32(temps2))
-			base.addComp(comp)
+			if !firstCall{
+			temps1,_ := strconv.Atoi(info[7])
+			temps2,_ := strconv.Atoi(info[9])
+			comp := newCompetiteur(info[0], info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
+			base.addCompetiteur(comp)
+			}
+			firstCall = false
 		}
 
 		if err := scanner.Err(); err != nil {
@@ -246,7 +253,7 @@
 	}
 	
 	/*
-	* 		Bdd.modif_comp:
+	* 		Bdd.modifCompetiteur:
 	* Paramètres:
 	*	- id_comp:	id du compétiteur à modifier
 	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
@@ -256,7 +263,7 @@
 	*		Méthode permettant de modifier une valeur d'un compétiteur de la base de données.
 	*/
 	
-	func (base Bdd) modif_comp (id_comp string, col_num int, newvalue string){
+	func (base Bdd) modifCompetiteur (id_comp string, col_num int, newvalue string){
 		
 		col_id, value := col_id2name(col_num, newvalue)
 		id_comp = fmt.Sprint("'",id_comp,"'")
