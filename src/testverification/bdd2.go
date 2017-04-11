@@ -9,6 +9,7 @@ package main
 	"os"
 	"bufio"
 	"strings"
+	
 	)
 	
 	
@@ -90,7 +91,7 @@ package main
 	}
 	
 	/*
-	* 		Bdd.import_comp:
+	* 		Bdd.importCompetiteur:
 	* Paramètres:
 	*	- chemin: 	Chemin du fichier à importer avec le nom du fichier et l'extension.
 	*
@@ -98,22 +99,26 @@ package main
 	*		Méthode permettant d'importer les compétiteurs contenu dans un fichier CSV
 	*/
 	
-	func (base Bdd) import_comp(chemin string){
+	func (base Bdd) importCompetiteur(chemin string){
 		file, err := os.Open(chemin)
 		if err != nil {
 			log.Fatal(err)
 		}
 		defer file.Close()
 	
-		//var info []string
+		var firstCall bool
+		firstCall = true
+		
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
 			info := strings.Split(scanner.Text(), ";")
-			
-			temps1,_ := strconv.ParseFloat(info[7], 64)
-			temps2,_ := strconv.ParseFloat(info[9], 64)
-			comp := newcomp2(info[0], info[1], info[2], info[3], info[4], info[5], info[6], float32(temps1), info[8],float32(temps2))
-			base.addComp(comp)
+			if !firstCall{
+			temps1,_ := strconv.Atoi(info[7])
+			temps2,_ := strconv.Atoi(info[9])
+			comp := newCompetiteur(info[0], info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
+			base.addCompetiteur(comp)
+			}
+			firstCall = false
 		}
 
 		if err := scanner.Err(); err != nil {
@@ -121,16 +126,17 @@ package main
 		}
 	}
 		/*
-	* 		Bdd.addComp:
+	* 		Bdd.addCompetiteur:
 	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
-	*	- value:	valeur à rechercher dans la colonne choisie.
+	*	- comp: 	Les informations du compétiteur à ajouter sous la
+	*				forme d'une structure de type "competiteur"
 	*
 	* Description: 		
-	*		Méthode permettant de supprimer les compétiteurs en fonction des critères
-	*		en entrée.
+	*		Méthode permettant d'ajouter un compétiteur dans la 
+	* 		base de données
 	*/
-	func (base Bdd) addComp(comp *competiteur){
+
+	func (base Bdd) addCompetiteur(comp *Competiteur){
 		
 		_, base.err = base.db.Exec("INSERT INTO competiteurs VALUES('"+
 		comp.id + "','" +
@@ -140,9 +146,9 @@ package main
 		comp.num_license + "','" +
 		comp.equipe + "','" +
 		comp.epreuve1 + "'," +
-		strconv.FormatFloat(float64(comp.temps1),'f', -1,  32)+ ",'" +
+		strconv.Itoa(comp.temps1) + ",'" +
 		comp.epreuve2 + "'," +
-		strconv.FormatFloat(float64(comp.temps2) ,'f', -1, 32) + ")")
+		strconv.Itoa(comp.temps2) + ")")
 		
 		
 		
@@ -294,6 +300,60 @@ package main
 		return info[0]
 	}
 	
+	/*
+	* 		Bdd.count_sexe_comp:
+	* 
+	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	*		
+	*/
+	func (base Bdd) count_sexe_comp(col_num int, value string)(string,string){
+	var id_col string
+	var id_col2 string
+	var col_num2 int = 4
+	var valueH string = "H"
+	var valueF string = "F"
+		id_col, value = col_id2name(col_num, value)
+		id_col2, valueH = col_id2name(col_num2, valueH)
+		id_col2, valueF = col_id2name(col_num2, valueF)
+		
+	
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value," AND ", id_col2, " = ", valueH))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var infoH [1]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&infoH[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		
+		}
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value," AND ", id_col2, " = ", valueF))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var infoF [1]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&infoF[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		
+		}
+		return infoH[0],infoF[0]
+	}
+	
 	
 		/*
 	* 		Bdd.check_team:
@@ -315,7 +375,9 @@ package main
 
 		//fmt.Println(base.resultat)
 		var info [1]string
-
+		var nb_sexeH string ="0"
+		var nb_sexeF string ="0"
+		
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0])
 			if base.err != nil {
@@ -323,32 +385,26 @@ package main
 				log.Fatal(base.err)
 			}
 			var nb_comp string = base.count_comp(6,info[0])
-		fmt.Println(info[0] + "|" + nb_comp)
+			
+			nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
+			
+		fmt.Println(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" )
 		
 		if (nb_comp!="5"){
-		fmt.Println("Erreur nombre de compétiteur dans l'equipe "+info[0]+" où il y a "+ nb_comp+ " compétiteurs !")}
+		fmt.Println("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !")
 		}
+		
+		if (nb_sexeH != "3"){
+		fmt.Println("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !")
+		}
+		
+		if (nb_sexeF != "2"){
+		fmt.Println("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !")
+		}
+		}
+		
 	}
 	
-		/*
-	* 		Bdd.count_comp:
-	* 
-	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
-	*		
-	*/
-	/*func (base Bdd) check_comp(col_num int, value string)(string){
-	var id_col string
-		id_col, value = col_id2name(col_num, value)
-		
-	
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value))
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête")
-			log.Fatal(base.err)
-		}
-		defer base.resultat.Close()
-		
-		}*/
 		
 			/*
 	* 		Bdd.uniqueness:

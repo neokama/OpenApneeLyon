@@ -12,14 +12,14 @@ import (
 	base := newBdd("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
-	base.import_comp("testbdd.csv")
+	base.importCompetiteur("import.csv")
 	fmt.Println("\n ")
 	base.disp_comp()
 	fmt.Println("\n unicité ->")
 	base.uniqueness()
 	fmt.Println("\n Trier ->")
 	base.orderby_comp()
-	fmt.Println("\n")
+	fmt.Println("\n Verification équipe ->")
 	base.check_team()
 	
 	}
