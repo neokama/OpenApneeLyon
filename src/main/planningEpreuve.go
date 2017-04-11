@@ -19,6 +19,8 @@ import (
 		prenom string
 		nom string
 		annonce int
+		numSerie int
+		numPassage int
 		heurePassage string
 	}
 	
