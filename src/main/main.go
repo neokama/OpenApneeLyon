@@ -24,7 +24,7 @@ func main() {
 	fmt.Println("\n")
 	base.disp_comp()
 	base.export_comp("","pourquoipas")
-	base.import_comp("C:/Users/Arnaud/Desktop/Go_Workspace/OpenApneeLyon/bin/import.csv")
+	//base.import_comp("import.csv")
 	fmt.Println("\n")
 	base.disp_comp()
 	fmt.Println("\n")
