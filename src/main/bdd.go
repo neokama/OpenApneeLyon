@@ -186,7 +186,7 @@
 	*		Méthode permettant d'exporter un fichier CSV contenant tous les
 	*		compétiteurs de la base de données.
 	*/
-	func (base Bdd) exportCompetiteur(cheminFichier string, nomFichier string){
+	func (base Bdd) exportCompetiteur(cheminFichier string){
 	
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs")
 		if base.err != nil {
@@ -194,7 +194,7 @@
 		}
 		defer base.resultat.Close()
 		
-		file, err := os.Create(fmt.Sprint(cheminFichier,nomFichier,".csv"))
+		file, err := os.Create(fmt.Sprint(cheminFichier))
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)
@@ -354,4 +354,225 @@
 		
 		return base
 	}
+		/*
+	* 		Bdd.orderby_comp:
+	* 
+	* Description: 		
+	*		Méthode permettant de trier les compétiteurs 
+	* par équipe
+	*/
 	
+	func (base Bdd) orderby_comp(){
+		
+		
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs ORDER BY equipe "))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [10]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9])
+		}
+	}
+	
+	/*
+	* 		Bdd.count_comp:
+	* 
+	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	*		
+	*/
+	func (base Bdd) count_comp(col_num int, value string)(string){
+	var id_col string
+		id_col, value = col_id2name(col_num, value)
+		
+	
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [1]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		
+		}
+		return info[0]
+	}
+	
+	/*
+	* 		Bdd.count_sexe_comp:
+	* 
+	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	*		
+	*/
+	func (base Bdd) count_sexe_comp(col_num int, value string)(string,string){
+	var id_col string
+	var id_col2 string
+	var col_num2 int = 4
+	var valueH string = "H"
+	var valueF string = "F"
+		id_col, value = col_id2name(col_num, value)
+		id_col2, valueH = col_id2name(col_num2, valueH)
+		id_col2, valueF = col_id2name(col_num2, valueF)
+		
+	
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value," AND ", id_col2, " = ", valueH))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var infoH [1]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&infoH[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		}
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value," AND ", id_col2, " = ", valueF))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var infoF [1]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&infoF[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		}
+		return infoH[0],infoF[0]
+	}
+	
+	
+	/*
+	* 		Bdd.check_team:
+	* 
+	* Description: 		
+	*		Méthode permettant de vérifier la validité des equipes
+	*/
+	
+	func (base Bdd) check_team(){
+		
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT DISTINCT equipe FROM competiteurs "))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+	
+		// Verification de l'unicité
+		fmt.Println("Unicité:")
+		base.uniqueness()
+		fmt.Println("\n")
+		
+		//fmt.Println(base.resultat)
+		var info [1]string
+		var nb_sexeH string ="0"
+		var nb_sexeF string ="0"
+		
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+			var nb_comp string = base.count_comp(6,info[0])
+			nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
+			
+			fmt.Println(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" )
+			
+			if (nb_comp!="5"){
+				fmt.Println("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !")
+			}
+			
+			if (nb_sexeH != "3"){
+				fmt.Println("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !")
+			}
+			
+			if (nb_sexeF != "2"){
+				fmt.Println("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !")
+			}
+		}
+		
+	}
+	
+		
+	/*
+	* 		Bdd.uniqueness:
+	* 
+	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	*		
+	*/
+	func (base Bdd) uniqueness(){	
+	
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [10]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+			base.verif(info[0],1)
+			base.verif(info[4],2)
+		}	
+	}
+		
+	func (base Bdd) verif(val string, num int ){
+		var id_col string
+			var value string = val
+		id_col, value = col_id2name(1, value)
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête 2")
+			log.Fatal(base.err)}
+			
+			var inf [1]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&inf[0])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats 2: \n")
+				log.Fatal(base.err)
+			}
+			if inf[0]!="1" && num == 1{
+			fmt.Println("Erreur doublons sur "+value )
+			
+			} else if inf[0]!="0" && num == 2 {
+				fmt.Println("Erreur doublons sur "+value )
+			}
+		}
+			
+	}
+		

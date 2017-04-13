@@ -41,7 +41,7 @@ func main() {
 	base.reset()
 	fmt.Println("\n")
 	base.importCompetiteur("../ressources/import.csv")
-	base.exportCompetiteur("../ressources/","pourquoipas")
+	base.exportCompetiteur("../ressources/pourquoipas.csv")
 	fmt.Println("\n")
 	p := newPlanning("../src/database/OpenApneeLyon")
 	p.getCompetiteur()
@@ -51,5 +51,11 @@ func main() {
 	p.displayConfigurationEpreuve()
 	fmt.Println("\n")
 	p.generationPlanning("../ressources/Planning/planning")
+	
+	// %%%%%%%ù VALIDATION EQUIPES %%%%%%%%
+	fmt.Println("\n Trier ->")
+	base.orderby_comp()
+	fmt.Println("\n Verification équipe ->")
+	base.check_team()
 
 }
