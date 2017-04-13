@@ -18,6 +18,8 @@ import (
 		idComp string
 		prenom string
 		nom string
+		sexe string
+		equipe string
 		annonce int
 		numSerie int
 		numPassage int
@@ -29,18 +31,26 @@ import (
 		planep.idComp + "; " +
 		planep.prenom + "; " +
 		planep.nom + "; " +
+		planep.sexe + "; " +
+		planep.equipe + "; " +
 		strconv.Itoa(planep.annonce) + "; " +
+		strconv.Itoa(planep.numSerie) + "; " +
+		strconv.Itoa(planep.numPassage) + "; " +
 		planep.heurePassage)
 	}
 	
-	func newPlanningEpreuve(idEpreuve string, idComp string, prenom string, nom string, annonce int, heurePassage string)(*PlanningEpreuve){
+	func newPlanningEpreuve(idEpreuve string, idComp string, prenom string, nom string, sexe string, equipe string, annonce int)(*PlanningEpreuve){
 		planep := new(PlanningEpreuve)
 		planep.idEpreuve = idEpreuve
 		planep.idComp = idComp
 		planep.prenom = prenom
 		planep.nom = nom
 		planep.annonce = annonce
-		planep.heurePassage = heurePassage
+		planep.sexe = sexe
+		planep.equipe = equipe
+		planep.numSerie = 0
+		planep.numPassage = 0
+		planep.heurePassage = "00h00"
 		
 		return planep
 	}

@@ -51,8 +51,8 @@ func (p *Planning) getCompetiteur(){
 
 
 // Enregistrer les épreuves dans le tableau
-func (p *Planning) getConfigurationEpreuve(){
-	file, err := os.Open("Configuration/Configuration.csv")
+func (p *Planning) getConfigurationEpreuve(fichier string){
+	file, err := os.Open(fichier)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -92,11 +92,11 @@ func (p *Planning) EpGeneration(numEp int){
 	if numEp < len(p.cfgEpreuves){
 		for j := 0; j < len(p.comp); j++ {
 			if p.comp[j].epreuve1 == p.cfgEpreuves[numEp].id{
-				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].temps1, "00h00")
+				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].temps1)
 				p.planEpreuves = append(p.planEpreuves,plannEp)
 
 			} else if p.comp[j].epreuve2 == p.cfgEpreuves[numEp].id{
-				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].temps2, "00h00")
+				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].temps2)
 				p.planEpreuves = append(p.planEpreuves,plannEp)
 			}
 		}
@@ -110,6 +110,8 @@ func (p *Planning) EpGeneration(numEp int){
 func (p *Planning) generationHoraires(numEp int){
 	var nbCompPassage int = 0
 	nbCompPassage = 0
+	var numSerie int
+	numSerie = 1
 	var annonceMax int
 	annonceMax = 0
 
@@ -148,12 +150,15 @@ func (p *Planning) generationHoraires(numEp int){
 				}
 				
 				nbCompPassage = nbCompPassage + 1
+				p.planEpreuves[j].numSerie = numSerie
+				p.planEpreuves[j].numPassage = nbCompPassage
 				
 				//Si le nombre de compétiteur est plein pour ce passage:
 				// On modifie l'heure du prochain passage (avec l'annonce max et la marge)
 				
 				if nbCompPassage == p.cfgEpreuves[numEp].nbPassages{
 					nbCompPassage = 0
+					numSerie = numSerie + 1
 					heure[1] = heure[1] + annonceMax + p.cfgEpreuves[numEp].marge
 					for heure[1] >= 60{
 						heure[1] = heure[1] - 60
@@ -168,27 +173,27 @@ func (p *Planning) generationHoraires(numEp int){
 	}
 }
 
-func (p *Planning) generationPlanning(){
-	file, err := os.Create(fmt.Sprint("planning.csv"))
+func (p *Planning) generationPlanning(fichier string){
+	file, err := os.Create(fmt.Sprint(fichier,".csv"))
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier planning:\n")
 				log.Fatal(err)
 			}
-	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Annonce(s/m); Heure de passage\r\n"))
+	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Num Serie; Num Passage; Heure de passage\r\n"))
 			
 	for j := 1; j <= len(p.cfgEpreuves); j++ {
 		p.planEpreuves = p.planEpreuves[:0]
 		p.EpGeneration(j)
 		p.generationHoraires(j)
 		p.displayPlanningEpreuve()
-		p.exportPlanEpreuve()
+		p.exportPlanEpreuve(fichier)
 	}
 
 }
 
 
-func (p *Planning) exportPlanEpreuve(){
-	file, err := os.OpenFile(fmt.Sprint("planning.csv"),os.O_APPEND|os.O_WRONLY, 0777)
+func (p *Planning) exportPlanEpreuve(fichier string){
+	file, err := os.OpenFile(fmt.Sprint(fichier,".csv"),os.O_APPEND|os.O_WRONLY, 0777)
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)
@@ -196,7 +201,7 @@ func (p *Planning) exportPlanEpreuve(){
 
 			fmt.Println(len(p.planEpreuves))
 			for j := 0; j < len(p.planEpreuves); j++ {
-						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].idComp,";",p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",strconv.Itoa(p.planEpreuves[j].annonce),";",p.planEpreuves[j].heurePassage,"\r\n"))
+						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].idComp,";",p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",strconv.Itoa(p.planEpreuves[j].annonce),";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].heurePassage,"\r\n"))
 			}
 
 }

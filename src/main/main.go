@@ -7,33 +7,49 @@ import (
 	
 func main() {
 	fmt.Println("Début: \n")
-	Moi := newcomp("RICAUD","Arnaud")
-	Moi.id = "ARI1"
-	Moi.num_license = "23111995N1"
-	Moi.equipe = "TeamNono"
-	Moi.epreuve1 ="Stat"
-	Moi.temps1 = 150
-	Moi.epreuve2 ="16x50"
-	Moi.temps2 = 1250
-	Moi.afficher()
+
+	// %%%%%%%%% Compétiteurs %%%%%%%%%
+	Moi := newCompetiteur("ARI1","Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
+	Moi.display()
 	
+	
+	
+	//%%%%%%%%% Bdd %%%%%%%%%
+	// base := newBdd("../src/database/OpenApneeLyon")
+	// base.reset()
+	// fmt.Println("\n")
+	// base.addCompetiteur(Moi)
+	// fmt.Println("\n")
+	// base.displayCompetiteur()
+	// base.exportCompetiteur("../ressources/","pourquoipas")
+	// base.importCompetiteur("../ressources/import.csv")
+	// fmt.Println("\n")
+	// base.displayCompetiteur()
+	// fmt.Println("\n")
+	// base.searchCompetiteur(3, "RICAUD")
+	// base.modifCompetiteur("ARI1", 2, "nouveau-prenom")
+	// fmt.Println("\n")
+	// base.displayCompetiteur()
+	// fmt.Println("\n")
+	
+	// base.deleteCompetiteur(3, "RICAUD")
+	// fmt.Println("\n")
+	
+	
+	//%%%%%%%%% Planning %%%%%%%%%
 	base := newBdd("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
-	base.addComp(Moi)
+	base.importCompetiteur("../ressources/import.csv")
+	base.exportCompetiteur("../ressources/","pourquoipas")
 	fmt.Println("\n")
-	base.disp_comp()
-	base.export_comp("","pourquoipas")
-	//base.import_comp("import.csv")
+	p := newPlanning("../src/database/OpenApneeLyon")
+	p.getCompetiteur()
+	p.displayCompetiteur()
+	fmt.Println("\nConfiguration des épreuves")
+	p.getConfigurationEpreuve("../ressources/Configuration/Configuration.csv")
+	p.displayConfigurationEpreuve()
 	fmt.Println("\n")
-	base.disp_comp()
-	fmt.Println("\n")
-	base.search_comp(3, "RICAUD")
-	base.modif_comp("ARI1", 2, "nouveau-prenom")
-	fmt.Println("\n")
-	base.disp_comp()
-	fmt.Println("\n")
-	
-	base.delComp(3, "RICAUD")
-	fmt.Println("\n")
+	p.generationPlanning("../ressources/Planning/planning")
+
 }

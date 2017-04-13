@@ -1,0 +1,93 @@
+Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Num Serie; Num Passage; Heure de passage
+Statique;CHVO;Christian;VOGLER;H;Sportpleizh;390;1;1;10h15
+Statique;MAZA;Martin;ZAJAC;H;Apneaman, Praha, Czech Republic;375;1;2;10h15
+Statique;KASU;Katerina;SURANSKA;F;Apneaman, Praha, Czech Republic;360;1;3;10h15
+Statique;AULA;Aurélien;LANOISELIER;H;SavoyOuBien?;360;1;4;10h15
+Statique;RIJA;Richard;JAUFFRAUD;H;Imashi;345;2;1;10h27
+Statique;PHGU;Philippe;GUILLOUX;H;SavoyOuBien?;330;2;2;10h27
+Statique;ANBO;Anne;BORGAT;F;CYRNEA;300;2;3;10h27
+Statique;CHTI;Charles;TISSOT;H;Imashi;300;2;4;10h27
+Statique;OLDU;Olivier;DURET;H;LIMULES;300;3;1;10h38
+Statique;COMA;coralie;MARIE;F;Sportpleizh;285;3;2;10h38
+Statique;XAHE;Xavier;HERENT;H;Les Cormorans 2;270;3;3;10h38
+Statique;STDE;Stephanie;DELICOURT;F;Enjoy And Relax;270;3;4;10h38
+Statique;BERO;Benoît;ROUX;H;CYRNEA;270;4;1;10h48
+Statique;ALGA;Alexandre;GASS;H;Les Cormorans 1;265;4;2;10h48
+Statique;MIQU;Michelle;QUERY;F;Les Cormorans 1;250;4;3;10h48
+Statique;OMSA;Omr;SALEH;H;SOLO;240;4;4;10h48
+Statique;CHBR;Christopher;BRATANIC;H;Les Cormorans 2;230;5;1;10h58
+Statique;STPE;Stéphane;PETTENUZZO;H;LIMULES;215;5;2;10h58
+Statique;RODU;Rodoplhe;DUCRUIX;H;Enjoy And Relax;210;5;3;10h58
+DWF;MIRI;Michal;RISIAN;H;Apneaman, Praha, Czech Republic;200;1;1;11h25
+DWF;PAHU;Pascal;HURON;H;Enjoy And Relax;200;1;2;11h25
+DWF;OLEL;Olivier;ELU;H;Les Cormorans 1;175;2;1;11h30
+DWF;EMVE;Emilie;VERNIER;F;SavoyOuBien?;150;2;2;11h30
+DWF;MAEK;Marie-pierre;EKSTETS;F;SavoyOuBien?;150;3;1;11h35
+DWF;AUGA;Aude;GATA;F;Enjoy And Relax;140;3;2;11h35
+DWF;PAPI;Patrice;PIERRAT;H;Sportpleizh;140;4;1;11h40
+DWF;CARE;Caroline;REGNARD;F;Imashi;126;4;2;11h40
+DWF;MADE;Marie;DEVANLAY;F;LIMULES;120;5;1;11h45
+DWF;ALGA;Albane;GAUBERT;F;Imashi;115;5;2;11h45
+DWF;LAOR;Laetitia;ORSKI SIMONET;F;Sportpleizh;113;6;1;11h50
+DWF;ESRI;Estelle;RIGAUD;F;CYRNEA;100;6;2;11h50
+DWF;LOHA;Loraine;HARTMANN;F;Les Cormorans 1;100;7;1;11h55
+DWF;FRCO;Frédérique;CORDIER;F;LIMULES;100;7;2;11h55
+DWF;JESO;jean-david;SOULA;H;CYRNEA;100;8;1;12h00
+DWF;JASK;Jana;SKROBOVA;F;Apneaman, Praha, Czech Republic;100;8;2;12h00
+DWF;RALE;Rachel;LEITNER;F;Les Cormorans 2;80;9;1;12h05
+DWF;MERE;Melissa;REIN;F;Les Cormorans 2;75;9;2;12h05
+Speed 100;STDE;Stephanie;DELICOURT;F;Enjoy And Relax;120;1;1;13h25
+Speed 100;OMSA;Omr;SALEH;H;SOLO;100;1;2;13h25
+Speed 100;STPE;Stéphane;PETTENUZZO;H;LIMULES;85;1;3;13h25
+Speed 100;FRBU;François;BUZET;H;Les Cormorans 2;75;1;4;13h25
+Speed 100;RIJA;Richard;JAUFFRAUD;H;Imashi;75;2;1;13h32
+Speed 100;ANBO;Anne;BORGAT;F;CYRNEA;70;2;2;13h32
+Speed 100;MISG;Michel;SGARRA;H;Enjoy And Relax;70;2;3;13h32
+Speed 100;PAAU;Pascale;AUBRY;H;Sportpleizh;65;2;4;13h32
+Speed 100;RÉGU;Réda;GUEHRIA;H;SavoyOuBien?;60;3;1;13h39
+Speed 100;AULA;Aurélien;LANOISELIER;H;SavoyOuBien?;60;3;2;13h39
+Speed 100;CHBR;Christopher;BRATANIC;H;Les Cormorans 2;60;3;3;13h39
+Speed 100;STBE;Stéphane;BERRUCAZ;H;LIMULES;60;3;4;13h39
+Speed 100;ALBR;Alexandre;BRATANIC;H;Les Cormorans 1;55;4;1;13h45
+Speed 100;MAZA;Martin;ZAJAC;H;Apneaman, Praha, Czech Republic;50;4;2;13h45
+Speed 100;CHVO;Christian;VOGLER;H;Sportpleizh;50;4;3;13h45
+Speed 100;MACA;Mathieu;CARCHI;H;CYRNEA;50;4;4;13h45
+Speed 100;MISV;Michal;SVADLENKA;H;Apneaman, Praha, Czech Republic;50;5;1;13h51
+Speed 100;KEOL;Kevin;OLLIVO;H;Imashi;45;5;2;13h51
+Speed 100;ALGA;Alexandre;GASS;H;Les Cormorans 1;45;5;3;13h51
+DNF;MIRI;Michal;RISIAN;H;Apneaman, Praha, Czech Republic;160;1;1;14h10
+DNF;PAHU;Pascal;HURON;H;Enjoy And Relax;150;1;2;14h10
+DNF;PHGU;Philippe;GUILLOUX;H;SavoyOuBien?;125;2;1;14h15
+DNF;MAEK;Marie-pierre;EKSTETS;F;SavoyOuBien?;110;2;2;14h15
+DNF;FRCO;Frédérique;CORDIER;F;LIMULES;103;3;1;14h20
+DNF;AUGA;Aude;GATA;F;Enjoy And Relax;100;3;2;14h20
+DNF;LOHA;Loraine;HARTMANN;F;Les Cormorans 1;100;4;1;14h25
+DNF;LAOR;Laetitia;ORSKI SIMONET;F;Sportpleizh;100;4;2;14h25
+DNF;PAPI;Patrice;PIERRAT;H;Sportpleizh;100;5;1;14h30
+DNF;JASK;Jana;SKROBOVA;F;Apneaman, Praha, Czech Republic;95;5;2;14h30
+DNF;CARE;Caroline;REGNARD;F;Imashi;92;6;1;14h35
+DNF;MADE;Marie;DEVANLAY;F;LIMULES;90;6;2;14h35
+DNF;JESO;jean-david;SOULA;H;CYRNEA;75;7;1;14h40
+DNF;ESRI;Estelle;RIGAUD;F;CYRNEA;75;7;2;14h40
+DNF;CHTI;Charles;TISSOT;H;Imashi;70;8;1;14h45
+DNF;XAHE;Xavier;HERENT;H;Les Cormorans 2;65;8;2;14h45
+DNF;MIQU;Michelle;QUERY;F;Les Cormorans 1;53;9;1;14h50
+DNF;MERE;Melissa;REIN;F;Les Cormorans 2;50;9;2;14h50
+16*50;RODU;Rodoplhe;DUCRUIX;H;Enjoy And Relax;1560;1;1;15h40
+16*50;STBE;Stéphane;BERRUCAZ;H;LIMULES;1440;1;2;15h40
+16*50;ALGA;Albane;GAUBERT;F;Imashi;1370;1;3;15h40
+16*50;COMA;coralie;MARIE;F;Sportpleizh;1315;1;4;15h40
+16*50;MISG;Michel;SGARRA;H;Enjoy And Relax;1260;1;5;15h40
+16*50;FRBU;François;BUZET;H;Les Cormorans 2;1200;2;1;16h11
+16*50;BERO;Benoît;ROUX;H;CYRNEA;1200;2;2;16h11
+16*50;RÉGU;Réda;GUEHRIA;H;SavoyOuBien?;1140;2;3;16h11
+16*50;OLDU;Olivier;DURET;H;LIMULES;1080;2;4;16h11
+16*50;PAAU;Pascale;AUBRY;H;Sportpleizh;1080;2;5;16h11
+16*50;EMVE;Emilie;VERNIER;F;SavoyOuBien?;1080;3;1;16h36
+16*50;KASU;Katerina;SURANSKA;F;Apneaman, Praha, Czech Republic;1050;3;2;16h36
+16*50;ALBR;Alexandre;BRATANIC;H;Les Cormorans 1;1020;3;3;16h36
+16*50;MACA;Mathieu;CARCHI;H;CYRNEA;1020;3;4;16h36
+16*50;RALE;Rachel;LEITNER;F;Les Cormorans 2;990;3;5;16h36
+16*50;OLEL;Olivier;ELU;H;Les Cormorans 1;960;4;1;16h59
+16*50;MISV;Michal;SVADLENKA;H;Apneaman, Praha, Czech Republic;890;4;2;16h59
+16*50;KEOL;Kevin;OLLIVO;H;Imashi;795;4;3;16h59
