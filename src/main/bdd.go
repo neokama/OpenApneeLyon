@@ -533,6 +533,15 @@
 	
 	func (base Bdd) check_team(){
 		
+		// CREATION FICHIER
+		file, err := os.Create("fichierVerification.txt")
+		if err != nil {
+				fmt.Println("Erreur lors de la création du fichier planning:\n")
+				log.Fatal(err)
+			}
+		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à l'importation des compétiteurs !\r\n")
+		file.WriteString("\r\n -> L'unicité permet de vérifier la présence de doublons dans les champs importés \r\n")
+		
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT DISTINCT equipe FROM competiteurs "))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
@@ -541,16 +550,16 @@
 		defer base.resultat.Close()
 	
 		// Verification de l'unicité
-		fmt.Println("Unicité:")
+		file.WriteString("Unicité:")
 		base.uniqueness()
-		fmt.Println("\n")
+		file.WriteString("\r\n")
 		
 		// Verification de la validité des champs
-		fmt.Println("Validité champs:")
+		file.WriteString("Validité champs:")
 		base.valeur()
-		fmt.Println("\n")
+		file.WriteString("\r\n")
 		
-		//fmt.Println(base.resultat)
+	
 		var info [1]string
 		var nb_sexeH string ="0"
 		var nb_sexeF string ="0"
@@ -565,18 +574,18 @@
 			nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
 			base.count_epreuve_comp(6,info[0])
 			
-			fmt.Println(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" )
+			file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|\r\n" )
 			
 			if (nb_comp!="5"){
-				fmt.Println("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !")
+				file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
 			}
 			
 			if (nb_sexeH != "3"){
-				fmt.Println("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !")
+				file.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
 			}
 			
 			if (nb_sexeF != "2"){
-				fmt.Println("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !")
+				file.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
 			}
 		}
 		
@@ -739,4 +748,5 @@
 		}
 	
 	}
+
 		
