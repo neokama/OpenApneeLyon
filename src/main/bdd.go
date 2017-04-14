@@ -422,6 +422,56 @@
 	}
 	
 	/*
+	* 		Bdd.count_epreuve_comp:
+	* 
+	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	*		
+	*/
+	func (base Bdd) count_epreuve_comp(col_num int, value string){
+	var id_col string
+		id_col, value = col_id2name(col_num, value)
+		
+	
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", id_col, " = ", value))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [10]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+			switch (info[6]){
+			case "Statique":
+			if (info[8]=="DWF"){
+			fmt.Println("Erreur temps de repos pour "+ info[0])
+			}
+			case "DWF":
+			if (info[8]=="Speed 100"){
+			fmt.Println("Erreur temps de repos pour "+ info[0])
+			}
+			case "Speed 100":
+			if (info[8]=="DNF"){
+			fmt.Println("Erreur temps de repos pour "+ info[0])
+			}
+			case "DNF":
+			if (info[8]=="16*50"){
+			fmt.Println("Erreur temps de repos pour "+ info[0])
+			}
+			
+			}
+		
+		}
+
+	}
+	
+	/*
 	* 		Bdd.count_sexe_comp:
 	* 
 	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
@@ -513,6 +563,7 @@
 			}
 			var nb_comp string = base.count_comp(6,info[0])
 			nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
+			base.count_epreuve_comp(6,info[0])
 			
 			fmt.Println(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" )
 			
@@ -613,7 +664,7 @@
 			for n := 0; n < 9; n++{
 			
 			switch(n){
-			case 0 : match, _ := regexp.MatchString("([[:alnum:]]{5,6})", info[0] )
+			case 0 : match, _ := regexp.MatchString("([[:alnum:]]{5,7})", info[0] )
 			 if(match){
             //([:digit:]{1,2})
 			}else{
