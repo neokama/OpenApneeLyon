@@ -9,6 +9,7 @@
 	"os"
 	"bufio"
 	"strings"
+	"regexp"
 	)
 	
 	
@@ -494,6 +495,11 @@
 		base.uniqueness()
 		fmt.Println("\n")
 		
+		// Verification de la validité des champs
+		fmt.Println("Validité champ:")
+		base.valeur()
+		fmt.Println("\n")
+		
 		//fmt.Println(base.resultat)
 		var info [1]string
 		var nb_sexeH string ="0"
@@ -579,5 +585,61 @@
 			}
 		}
 			
+	}
+	
+	/*
+	* 		Bdd.valeur:
+	* 
+	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	*		
+	*/
+	func (base Bdd) valeur(){	
+	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [10]string
+		var match bool
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+			for n := 0; n < 9; n++{
+			
+			switch(n){
+			case 0 : match, _ := regexp.MatchString("([:alpha:]{4})([:digit:]{1,2})", info[0] )
+			 fmt.Println(match)
+			case 1 : 
+			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
+			 fmt.Println(match)
+			
+			case 2:  
+			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[2] )
+			fmt.Println(match)
+			case 3 : match = true
+			case 4 : match = true
+			case 5 : match = true
+			case 6 : match = true
+			case 7 : match = true
+			case 8 : match = true
+			case 9 : match = true
+			}
+			
+			if(!match){
+            fmt.Println("Erreur sur " + info[n])
+			}
+			
+			if(info[n]==""){
+			fmt.Println("Erreur valeur vide " + info[n])
+			}
+	        }
+		}
+	
 	}
 		
