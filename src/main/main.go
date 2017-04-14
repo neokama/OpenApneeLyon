@@ -52,7 +52,7 @@ func main() {
 	fmt.Println("\n")
 	p.generationPlanning("../ressources/Planning/planning")
 	
-	// %%%%%%%ù VALIDATION EQUIPES %%%%%%%%
+	// %%%%%%%% VALIDATION EQUIPES %%%%%%%%
 	fmt.Println("\n Trier ->")
 	base.orderby_comp()
 	fmt.Println("\n Verification équipe ->")

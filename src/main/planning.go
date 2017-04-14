@@ -142,11 +142,15 @@ func (p *Planning) generationHoraires(numEp int){
 						annonceMax = annonceMax + 1
 					}
 				}
+				//Configuration des seuils de pénalité:
+				p.planEpreuves[j].seuilMin = p.planEpreuves[j].annonce + p.cfgEpreuves[numEp].seuilMin
+				p.planEpreuves[j].seuilMax = p.planEpreuves[j].annonce + p.cfgEpreuves[numEp].seuilMax
+				
 				//Configuration de l'heure
 				if (heure[1] < 10){
-					p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],"h0",heure[1])
+					p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],":0",heure[1])
 				} else{
-					p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],"h",heure[1])
+					p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],":",heure[1])
 				}
 				
 				nbCompPassage = nbCompPassage + 1
@@ -179,7 +183,7 @@ func (p *Planning) generationPlanning(fichier string){
 				fmt.Println("Erreur lors de la création du fichier planning:\n")
 				log.Fatal(err)
 			}
-	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Num Serie; Num Passage; Heure de passage\r\n"))
+	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Num Serie; Num Passage; Heure de passage\r\n"))
 			
 	for j := 1; j <= len(p.cfgEpreuves); j++ {
 		p.planEpreuves = p.planEpreuves[:0]
@@ -201,7 +205,9 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 
 			fmt.Println(len(p.planEpreuves))
 			for j := 0; j < len(p.planEpreuves); j++ {
-						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].idComp,";",p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",strconv.Itoa(p.planEpreuves[j].annonce),";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].heurePassage,"\r\n"))
+						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].idComp,";",
+						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
+						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].heurePassage,"\r\n"))
 			}
 
 }

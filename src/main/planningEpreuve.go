@@ -21,6 +21,8 @@ import (
 		sexe string
 		equipe string
 		annonce int
+		seuilMin int
+		seuilMax int
 		numSerie int
 		numPassage int
 		heurePassage string
@@ -46,11 +48,13 @@ import (
 		planep.prenom = prenom
 		planep.nom = nom
 		planep.annonce = annonce
+		planep.seuilMin = 0
+		planep.seuilMax = 0
 		planep.sexe = sexe
 		planep.equipe = equipe
 		planep.numSerie = 0
 		planep.numPassage = 0
-		planep.heurePassage = "00h00"
+		planep.heurePassage = "00:00"
 		
 		return planep
 	}

@@ -233,15 +233,20 @@
 		defer file.Close()
 	
 		var firstCall bool
+		var num_comp int
+		
 		firstCall = true
+		num_comp = 0;
 		
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
+			
 			info := strings.Split(scanner.Text(), ";")
 			if !firstCall{
+			num_comp = num_comp + 1
 			temps1,_ := strconv.Atoi(info[7])
 			temps2,_ := strconv.Atoi(info[9])
-			comp := newCompetiteur(info[0], info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
+			comp := newCompetiteur(fmt.Sprint(info[0],num_comp), info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
 			base.addCompetiteur(comp)
 			}
 			firstCall = false
