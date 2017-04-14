@@ -602,7 +602,7 @@
 		defer base.resultat.Close()
 		
 		var info [10]string
-		var match bool
+
 
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
@@ -613,27 +613,64 @@
 			for n := 0; n < 9; n++{
 			
 			switch(n){
-			case 0 : match, _ := regexp.MatchString("([:alpha:]{4})([:digit:]{1,2})", info[0] )
-			 fmt.Println(match)
+			case 0 : match, _ := regexp.MatchString("([:alpha:]{4})+([:digit:]{1,2})", info[0] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
 			case 1 : 
-			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
-			 fmt.Println(match)
+			match, _ := regexp.MatchString("([:alpha:]*)", info[1] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
 			
 			case 2:  
-			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[2] )
-			fmt.Println(match)
-			case 3 : match = true
-			case 4 : match = true
-			case 5 : match = true
-			case 6 : match = true
-			case 7 : match = true
-			case 8 : match = true
-			case 9 : match = true
+			match, _ := regexp.MatchString("([:alpha:]*)", info[2] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
+			case 3 : 
+			match, _ := regexp.MatchString("([:upper:]?)", info[3] )
+			 if(match){
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
+			case 4 : 
+			match, _ := regexp.MatchString("([:digit:]*)+([:alpha:]*)", info[4] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
+			case 5 : 
+			match, _ := regexp.MatchString("([:alpha:]*)", info[5] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
+			case 6 : 
+			 if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
+			case 7 : 
+			case 8 : 
+			if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
+			case 9 : 
 			}
 			
-			if(!match){
-            fmt.Println("Erreur sur " + info[n])
-			}
+			
 			
 			if(info[n]==""){
 			fmt.Println("Erreur valeur vide " + info[n])
