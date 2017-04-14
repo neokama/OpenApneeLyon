@@ -198,7 +198,7 @@
 		}
 		defer base.resultat.Close()
 		
-		file, err := os.Create(fmt.Sprint(cheminFichier))
+		file, err := os.Create(fmt.Sprint(cheminFichier,".csv"))
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)
