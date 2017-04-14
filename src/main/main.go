@@ -9,8 +9,8 @@ func main() {
 	fmt.Println("Début: \n")
 
 	// %%%%%%%%% Compétiteurs %%%%%%%%%
-	Moi := newCompetiteur("ARI1","Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
-	Moi.display()
+	// Moi := newCompetiteur("ARI1","Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
+	// Moi.display()
 	
 	
 	
@@ -37,25 +37,26 @@ func main() {
 	
 	
 	//%%%%%%%%% Planning %%%%%%%%%
-	base := newBdd("../src/database/OpenApneeLyon")
-	base.reset()
-	fmt.Println("\n")
-	base.importCompetiteur("../ressources/import.csv")
-	base.exportCompetiteur("../ressources/pourquoipas.csv")
-	fmt.Println("\n")
-	p := newPlanning("../src/database/OpenApneeLyon")
-	p.getCompetiteur()
-	p.displayCompetiteur()
-	fmt.Println("\nConfiguration des épreuves")
-	p.getConfigurationEpreuve("../ressources/Configuration/Configuration.csv")
-	p.displayConfigurationEpreuve()
-	fmt.Println("\n")
-	p.generationPlanning("../ressources/Planning/planning")
+	// base := newBdd("../src/database/OpenApneeLyon")
+	// base.reset()
+	// fmt.Println("\n")
+	// base.importCompetiteur("../ressources/import.csv")
+	// base.exportCompetiteur("../ressources/pourquoipas.csv")
+	// fmt.Println("\n")
+	// p := newPlanning("../src/database/OpenApneeLyon")
+	// p.getCompetiteur()
+	// p.displayCompetiteur()
+	// fmt.Println("\nConfiguration des épreuves")
+	// p.getConfigurationEpreuve("../ressources/Configuration/Configuration.csv")
+	// p.displayConfigurationEpreuve()
+	// fmt.Println("\n")
+	// p.generationPlanning("../ressources/Planning/planning")
 	
 	// %%%%%%%% VALIDATION EQUIPES %%%%%%%%
-	fmt.Println("\n Trier ->")
-	base.orderby_comp()
-	fmt.Println("\n Verification équipe ->")
-	base.check_team()
+	// fmt.Println("\n Trier ->")
+	// base.orderby_comp()
+	// fmt.Println("\n Verification équipe ->")
+	// base.check_team()
+	Parsage()
 
 }

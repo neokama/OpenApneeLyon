@@ -200,8 +200,8 @@ func Parsage(){
 			var col_num int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
-			fmt.Println(" 1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
-			fmt.Println(" 8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
+			fmt.Println(" 1- Id \n2- Prénom \n3- Nom \n4- Sexe \n5- Numéro de license \n6- Equipe \n7- Première épreuve du participant")
+			fmt.Println(" 8- Première annonce \n9- Deuxième épreuve du participant \n10- Deuxième annonce")
 			in1, err1 := readInt(1)
 			fmt.Println(err1)
 			col_num = in1[0]
@@ -211,13 +211,13 @@ func Parsage(){
 			value = in2[0]
 			base.searchCompetiteur(col_num, value)
 			
-		} else if *c == "diplay" {
+		} else if *c == "display" {
 			base := newBdd("../src/database/OpenApneeLyon")
 			base.displayCompetiteur()
 			
 		} else if *c == "import" {
 			base := newBdd("../src/database/OpenApneeLyon")
-			fmt.Println("Saisissez le chemin vers le fichier .csv contenant les compétiteurs")
+			fmt.Println("Saisissez le chemin et le nom du fichier .csv contenant les compétiteurs")
 			in1, err1 := readString(1)
 			fmt.Println(err1)
 			cheminFichier:= in1[0]
@@ -243,7 +243,7 @@ func Parsage(){
 			fmt.Println("Vous pouvez rechercher un compétiteur en tapant -c=search apres votre derniere commande\n")
 			fmt.Println("Vous pouvez afficher l'intégralité des compétiteurs en tapant -c=display apres votre derniere commande\n")
 			fmt.Println("Vous pouvez importer un fichier csv contenant des compétiteurs en tapant -c=import apres votre derniere commande\n")
-			fmt.Println("Vous pouvez exporter un fichier csv contenant des compétiteurs en tapant -c=import apres votre derniere commande\n")
+			fmt.Println("Vous pouvez exporter un fichier csv contenant des compétiteurs en tapant -c=export apres votre derniere commande\n")
 		}
 		
 	} else if *e != "deff" {
@@ -254,7 +254,7 @@ func Parsage(){
 			
 		} else if *e == "planning" {
 			plan := newPlanning("../src/database/OpenApneeLyon")
-			fmt.Println("Saisissez le chemin vers votre fichier de configuration des épreuves")
+			fmt.Println("Saisissez le chemin et le nom du fichier de configuration des épreuves")
 			in, err := readString(1)
 			fmt.Println(err)
 			chemin1 := in[0]
