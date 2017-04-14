@@ -496,7 +496,7 @@
 		fmt.Println("\n")
 		
 		// Verification de la validité des champs
-		fmt.Println("Validité champ:")
+		fmt.Println("Validité champs:")
 		base.valeur()
 		fmt.Println("\n")
 		
@@ -613,14 +613,14 @@
 			for n := 0; n < 9; n++{
 			
 			switch(n){
-			case 0 : match, _ := regexp.MatchString("([:alpha:]{4})+([:digit:]{1,2})", info[0] )
+			case 0 : match, _ := regexp.MatchString("([[:alnum:]]{5,6})", info[0] )
 			 if(match){
-            
+            //([:digit:]{1,2})
 			}else{
 			fmt.Println("Erreur sur " + info[n])
 			}
 			case 1 : 
-			match, _ := regexp.MatchString("([:alpha:]*)", info[1] )
+			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
 			 if(match){
             
 			}else{
@@ -628,14 +628,14 @@
 			}
 			
 			case 2:  
-			match, _ := regexp.MatchString("([:alpha:]*)", info[2] )
+			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[2] )
 			 if(match){
             
 			}else{
 			fmt.Println("Erreur sur " + info[n])
 			}
 			case 3 : 
-			match, _ := regexp.MatchString("([:upper:]?)", info[3] )
+			match, _ := regexp.MatchString("([H|F]?)", info[3] )
 			 if(match){
 			}else{
 			fmt.Println("Erreur sur " + info[n])
@@ -661,6 +661,12 @@
 			fmt.Println("Erreur sur " + info[n])
 			}
 			case 7 : 
+			match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[7] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
+			}
 			case 8 : 
 			if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
             
@@ -668,10 +674,13 @@
 			fmt.Println("Erreur sur " + info[n])
 			}
 			case 9 : 
+			match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[9] )
+			 if(match){
+            
+			}else{
+			fmt.Println("Erreur sur " + info[n])
 			}
-			
-			
-			
+			}
 			if(info[n]==""){
 			fmt.Println("Erreur valeur vide " + info[n])
 			}
