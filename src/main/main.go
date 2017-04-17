@@ -9,8 +9,8 @@ func main() {
 	fmt.Println("Début: \n")
 
 	// %%%%%%%%% Compétiteurs %%%%%%%%%
-	Moi := newCompetiteur("ARI1","Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
-	Moi.display()
+	//Moi := newCompetiteur(1,"Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
+	//Moi.display()
 	
 	
 	
@@ -43,14 +43,14 @@ func main() {
 	base.importCompetiteur("../ressources/import.csv")
 	base.exportCompetiteur("../ressources/pourquoipas.csv")
 	fmt.Println("\n")
-	p := newPlanning("../src/database/OpenApneeLyon")
-	p.getCompetiteur()
-	p.displayCompetiteur()
-	fmt.Println("\nConfiguration des épreuves")
-	p.getConfigurationEpreuve("../ressources/Configuration/Configuration.csv")
-	p.displayConfigurationEpreuve()
-	fmt.Println("\n")
-	p.generationPlanning("../ressources/Planning/planning")
+	//p := newPlanning("../src/database/OpenApneeLyon")
+	//p.getCompetiteur()
+	//p.displayCompetiteur()
+	//fmt.Println("\nConfiguration des épreuves")
+	//p.getConfigurationEpreuve("../ressources/Configuration/Configuration.csv")
+	//p.displayConfigurationEpreuve()
+	//fmt.Println("\n")
+	//p.generationPlanning("../ressources/Planning/planning")
 	
 	// %%%%%%%% VALIDATION EQUIPES %%%%%%%%
 	fmt.Println("\n Trier ->")

@@ -116,7 +116,7 @@
 	func (base Bdd) addCompetiteur(comp *Competiteur){
 		
 		_, base.err = base.db.Exec("INSERT INTO competiteurs VALUES('"+
-		comp.id + "','" +
+		strconv.Itoa(comp.id) + "','" +
 		comp.prenom + "','" +
 		comp.nom + "','" +
 		comp.sexe + "','" +
@@ -241,14 +241,84 @@
 		
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
-			
+			var verif0 bool = false
+			var verif1 bool = false
+			var verif2 bool = false
+			var verif3 bool = false
+			var verif4 bool = false
+			var verif5 bool = false
+			var verif6 bool = false
+			var verif7 bool = false
+			var verif8 bool = false
+			var verif9 bool = false
 			info := strings.Split(scanner.Text(), ";")
 			if !firstCall{
 			num_comp = num_comp + 1
-			temps1,_ := strconv.Atoi(info[7])
-			temps2,_ := strconv.Atoi(info[9])
-			comp := newCompetiteur(fmt.Sprint(info[0],num_comp), info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
+			temps1,errr := strconv.Atoi(info[7])
+			temps2,er := strconv.Atoi(info[9])
+			if er != nil {
+			log.Fatal(er)
+			}
+			if errr != nil {
+			log.Fatal(errr)
+			}
+			for n := 0; n < 10; n++{
+			
+				switch(n){
+				case 0 : match, _ := regexp.MatchString("([:digit:]*)", info[0] )
+					if(match){
+					verif0 =true
+					}
+				case 1 : match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
+					if(match){
+					verif1 =true
+					}
+				case 2:  
+				match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[2] )
+					if(match){
+					verif2 =true
+					}
+				case 3 : 
+				match, _ := regexp.MatchString("([F|H]{1})", info[3] )
+				 if(match){
+				 verif3 = true
+				}
+				case 4 : 
+				match, _ := regexp.MatchString("([:digit:]*)+([:alpha:]*)", info[4] )
+					if(match){
+					verif4 =true
+					}
+				case 5 : 
+				match, _ := regexp.MatchString("([:alpha:]*)", info[5] )
+					 if(match){
+					verif5 =true
+					}
+				case 6 : 
+					if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
+					verif6 =true
+					}
+				case 7 : 
+				match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[7] )
+					if(match){
+					verif7 =true
+					}
+				case 8 : 
+					if(info[8]=="Statique" || info[8]=="Speed 100" || info[8]=="DWF" || info[8]=="DNF" || info[8]=="16*50"){
+					verif8 =true
+					}
+				case 9 : 
+				match, _ := regexp.MatchString("([[:digit:]]{1,4})", info[9] )
+					if(match){
+					verif9 =true
+					}
+				}
+			}
+			if (verif0 && verif1 && verif2 && verif3 && verif4 && verif5 && verif6 && verif7 && verif8 && verif9){
+			comp := newCompetiteur(num_comp, info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
 			base.addCompetiteur(comp)
+			}else{
+			fmt.Println("Echec lors de l'ajout de "+ info[1] + " " + info[2])
+			}
 			}
 			firstCall = false
 		}
@@ -540,7 +610,10 @@
 				log.Fatal(err)
 			}
 		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à l'importation des compétiteurs !\r\n")
+		
 		file.WriteString("\r\n -> L'unicité permet de vérifier la présence de doublons dans les champs importés \r\n")
+		file.WriteString(" -> La validation des champs permet de vérifier chaque champs d'un copétiteur")
+		
 		
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT DISTINCT equipe FROM competiteurs "))
 		if base.err != nil {
@@ -595,7 +668,7 @@
 	/*
 	* 		Bdd.uniqueness:
 	* 
-	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
+	* Description: Méthode permettent de vérifier l'unicité des champs id et licence censé être unique	
 	*		
 	*/
 	func (base Bdd) uniqueness(){	
@@ -638,10 +711,10 @@
 				log.Fatal(base.err)
 			}
 			if inf[0]!="1" && num == 1{
-			fmt.Println("Erreur doublons sur "+value )
+			fmt.Println("Erreur doublons sur1 "+value )
 			
-			} else if inf[0]!="0" && num == 2 {
-				fmt.Println("Erreur doublons sur "+value )
+			} else if inf[0]!="1" && num == 2 {
+				fmt.Println("Erreur doublons sur2 "+value )
 			}
 		}
 			

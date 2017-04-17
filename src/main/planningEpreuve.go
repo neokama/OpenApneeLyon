@@ -15,7 +15,7 @@ import (
 	type PlanningEpreuve struct
 	{
 		idEpreuve string
-		idComp string
+		idComp int
 		prenom string
 		nom string
 		sexe string
@@ -30,7 +30,7 @@ import (
 	
 	func (planep PlanningEpreuve) display(){
 		fmt.Println(planep.idEpreuve + "; " +
-		planep.idComp + "; " +
+		strconv.Itoa(planep.idComp) + "; " +
 		planep.prenom + "; " +
 		planep.nom + "; " +
 		planep.sexe + "; " +
@@ -41,7 +41,7 @@ import (
 		planep.heurePassage)
 	}
 	
-	func newPlanningEpreuve(idEpreuve string, idComp string, prenom string, nom string, sexe string, equipe string, annonce int)(*PlanningEpreuve){
+	func newPlanningEpreuve(idEpreuve string, idComp int, prenom string, nom string, sexe string, equipe string, annonce int)(*PlanningEpreuve){
 		planep := new(PlanningEpreuve)
 		planep.idEpreuve = idEpreuve
 		planep.idComp = idComp

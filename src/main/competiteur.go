@@ -7,7 +7,7 @@ import (
 	
 	type Competiteur struct
 	{
-		id string
+		id int
 		prenom string
 		nom string
 		sexe string
@@ -20,7 +20,7 @@ import (
 	}
 	
 	func (pers Competiteur) display(){
-		fmt.Println(pers.id + "; " +
+		fmt.Println(strconv.Itoa(pers.id) + "; " +
 		pers.prenom + "; " +
 		pers.nom + "; " +
 		pers.sexe + "; " +
@@ -32,7 +32,7 @@ import (
 		strconv.Itoa(pers.temps2))
 	}
 	
-	func newCompetiteur(id string, prenom string, nom string, sexe string, num_license string, equipe string, epreuve1 string, temps1 int, epreuve2 string, temps2 int)(*Competiteur){
+	func newCompetiteur(id int, prenom string, nom string, sexe string, num_license string, equipe string, epreuve1 string, temps1 int, epreuve2 string, temps2 int)(*Competiteur){
 		pers := new(Competiteur)
 		pers.id = id
 		pers.nom = nom

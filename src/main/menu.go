@@ -76,7 +76,7 @@ func Parsage(){
 	
 		if *c == "add"{
 			base := newBdd("../src/database/OpenApneeLyon")
-			var id string
+			var id int
 			var prenom string
 			var nom string
 			var sexe string
@@ -90,7 +90,7 @@ func Parsage(){
 			for i!= 11 {
 				if i == 1{
 					fmt.Println("Quel est l'id du competiteur que vous souhaitez ajouter ? \n")
-					in , err := readString(1)
+					in , err := readInt(1)
 					fmt.Println(err)
 					id = in[0]
 					i++ 

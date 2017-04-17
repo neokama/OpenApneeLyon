@@ -7,9 +7,11 @@ import (
 	//"io/ioutil"
 	//"strings"
 	//"os"
+	"time"
+	
 	)
 	func main(){
-	base := newBdd("../src/database/OpenApneeLyon")
+	/*base := newBdd("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
 	base.importCompetiteur("import.csv")
@@ -21,9 +23,32 @@ import (
 	base.orderby_comp()
 	fmt.Println("\n Verification équipe ->")
 	base.check_team()
+	*/
 	
+	
+	
+	 //p := fmt.Println
+
+    // Here's a basic example of formatting a time
+    // according to RFC3339, using the corresponding layout
+    // constant.
+    t := time.Now()
+
+  var date string 
+	date=t.Format("2006-01-02_15:04:05")
+	fmt.Printf("date ="+date)
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*func Compare(a, b string) int
 
 Compare returns an integer comparing two strings 

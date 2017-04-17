@@ -32,6 +32,7 @@ func (p *Planning) getCompetiteur(){
 		var info [10]string
 		var temps1 int
 		var temps2 int
+		var id int
 		
 		var nextcomp *Competiteur 
 		
@@ -43,8 +44,9 @@ func (p *Planning) getCompetiteur(){
 			}
 		temps1,_ = strconv.Atoi(info[7])
 		temps2,_ = strconv.Atoi(info[9])
+		id,_ = strconv.Atoi(info[0])
 		
-		nextcomp = newCompetiteur(info[0], info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8], temps2)
+		nextcomp = newCompetiteur(id, info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8], temps2)
 		p.comp = append(p.comp, nextcomp)
 		}
 }
