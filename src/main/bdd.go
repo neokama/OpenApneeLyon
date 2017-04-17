@@ -22,6 +22,11 @@
 		err error
 	}
 	
+	type Fichier struct{
+		cheminFichier string
+		err error
+	}
+	
 	/*
 	* 		Bdd.connection:
 	* Description: 
@@ -329,6 +334,11 @@
 		if err := scanner.Err(); err != nil {
 			log.Fatal(err)
 		}
+		// Verification de l'unicité
+		fmt.Println("Unicité:")
+		base.uniqueness()
+		fmt.Println("\r\n")
+		
 	}
 	
 	/*
@@ -500,7 +510,7 @@
 	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
 	*		
 	*/
-	func (base Bdd) count_epreuve_comp(col_num int, value string){
+	func (base Bdd) count_epreuve_comp(col_num int, value string)(bool,bool,bool,bool,bool,int,int,int,int,int){
 	var id_col string
 		id_col, value = col_id2name(col_num, value)
 		
@@ -513,35 +523,95 @@
 		defer base.resultat.Close()
 		
 		var info [10]string
-
+		var n int = 0
+		var comp1 bool = true
+		var comp2 bool = true
+		var comp3 bool = true
+		var comp4 bool = true
+		var comp5 bool = true
+		var nbSTA int =0
+		var nbDWF int =0
+		var nbSPE int =0
+		var nbDNF int =0
+		var nbSFC int =0
 		for base.resultat.Next() {
+			n=n+1
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
 			switch (info[6]){
-			case "Statique":
-			if (info[8]=="DWF"){
-			fmt.Println("Erreur temps de repos pour "+ info[0])
+			case "Statique": 
+			nbSTA= nbSTA+1
+			if (info[8]=="DWF" && info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
 			}
 			case "DWF":
-			if (info[8]=="Speed 100"){
-			fmt.Println("Erreur temps de repos pour "+ info[0])
+			nbDWF= nbDWF+1
+			if (info[8]=="Speed 100" || info[8]=="Statique" && info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
 			}
 			case "Speed 100":
-			if (info[8]=="DNF"){
-			fmt.Println("Erreur temps de repos pour "+ info[0])
+			nbSPE= nbSPE+1
+			if (info[8]=="DNF" || info[8]=="DWF"&& info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
 			}
 			case "DNF":
-			if (info[8]=="16*50"){
-			fmt.Println("Erreur temps de repos pour "+ info[0])
+			nbDNF= nbDNF+1
+			if (info[8]=="16*50" || info[8]=="Speed 100"&& info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
 			}
-			
 			}
-		
+			case "16*50":
+			nbSFC= nbSFC+1
+			if (info[8]=="DNF"&& info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
+			}		
+			}
+			switch(info[8]){
+			case "Statique": 
+			nbSTA= nbSTA+1
+			case "DWF":
+			nbDWF= nbDWF+1
+			case "Speed 100":
+			nbSPE= nbSPE+1
+			case "DNF":
+			nbDNF= nbDNF+1
+			case "16*50":
+			nbSFC= nbSFC+1
+			}
 		}
-
+		return comp1, comp2, comp3, comp4, comp5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC
 	}
 	
 	/*
@@ -612,35 +682,32 @@
 				fmt.Println("Erreur lors de la création du fichier planning:\n")
 				log.Fatal(err)
 			}
-		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à l'importation des compétiteurs !\r\n")
-		
-		file.WriteString("\r\n -> L'unicité permet de vérifier la présence de doublons dans les champs importés \r\n")
-		file.WriteString(" -> La validation des champs permet de vérifier chaque champs d'un copétiteur")
-		
-		
+		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à lacomposition des équipes !\r\n")
+				
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT DISTINCT equipe FROM competiteurs "))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
 		}
-		defer base.resultat.Close()
-	
-		// Verification de l'unicité
-		file.WriteString("Unicité:")
-		base.uniqueness()
-		file.WriteString("\r\n")
-		
-		// Verification de la validité des champs
-		file.WriteString("Validité champs:")
-		base.valeur()
-		file.WriteString("\r\n")
-		
+		defer base.resultat.Close()	
 	
 		var info [1]string
 		var nb_sexeH string ="0"
 		var nb_sexeF string ="0"
 		
 		for base.resultat.Next() {
+		var ep1 bool
+		var ep2 bool
+		var ep3 bool
+		var ep4 bool
+		var ep5 bool
+		var nbSTA int =0
+		var nbDWF int =0
+		var nbSPE int =0
+		var nbDNF int =0
+		var nbSFC int =0
+		var res string
+		var res2 string
 			base.err = base.resultat.Scan(&info[0])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
@@ -648,9 +715,19 @@
 			}
 			var nb_comp string = base.count_comp(6,info[0])
 			nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
-			base.count_epreuve_comp(6,info[0])
+			ep1,ep2,ep3,ep4,ep5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC=base.count_epreuve_comp(6,info[0])
 			
-			file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|\r\n" )
+			if(ep1 && ep2 && ep3 && ep4 && ep5){
+			res = "Temps repos : OK"
+			}else{
+			res = "Erreur temps de repos"}
+			
+			if(nbSTA==2 && nbDNF==2 && nbDWF==2 && nbSFC==2 && nbSPE==2){
+			res2="Nombres épreuves corrects"
+			}else{
+			res2="Erreur sur nombres épreuves"}
+			
+			file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
 			
 			if (nb_comp!="5"){
 				file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
@@ -663,6 +740,8 @@
 			if (nb_sexeF != "2"){
 				file.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
 			}
+			
+		
 		}
 		
 	}
@@ -681,7 +760,7 @@
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
 		}
-		defer base.resultat.Close()
+		//defer base.resultat.Close()
 		
 		var info [10]string
 
@@ -698,131 +777,27 @@
 		
 	func (base Bdd) verif(val string, num int ){
 		var id_col string
-			var value string = val
+		var value string = val
+		if num == 1{
 		id_col, value = col_id2name(1, value)
+		}else{id_col, value = col_id2name(5, value)}
 			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value))
 		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête 2")
+			fmt.Println("Erreur lors de l'execution de la requête (2)")
 			log.Fatal(base.err)}
 			
 			var inf [1]string
-
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&inf[0])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats 2: \n")
+				fmt.Println("Erreur lors de la récupération des résultats (2): ")
 				log.Fatal(base.err)
 			}
 			if inf[0]!="1" && num == 1{
-			fmt.Println("Erreur doublons sur1 "+value )
-			
+			fmt.Println("Erreur doublons sur "+value )
 			} else if inf[0]!="1" && num == 2 {
-				fmt.Println("Erreur doublons sur2 "+value )
+				fmt.Println("Erreur doublons sur "+value )
 			}
-		}
-			
+		}	
 	}
 	
-	/*
-	* 		Bdd.valeur:
-	* 
-	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
-	*		
-	*/
-	func (base Bdd) valeur(){	
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs"))
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête")
-			log.Fatal(base.err)
-		}
-		defer base.resultat.Close()
-		
-		var info [10]string
-
-
-		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
-			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)
-			}
-			for n := 0; n < 9; n++{
-			
-			switch(n){
-			case 0 : match, _ := regexp.MatchString("([[:alnum:]]{5,7})", info[0] )
-			 if(match){
-            //([:digit:]{1,2})
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 1 : 
-			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
-			 if(match){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			
-			case 2:  
-			match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[2] )
-			 if(match){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 3 : 
-			match, _ := regexp.MatchString("([H|F]?)", info[3] )
-			 if(match){
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 4 : 
-			match, _ := regexp.MatchString("([:digit:]*)+([:alpha:]*)", info[4] )
-			 if(match){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 5 : 
-			match, _ := regexp.MatchString("([:alpha:]*)", info[5] )
-			 if(match){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 6 : 
-			 if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 7 : 
-			match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[7] )
-			 if(match){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 8 : 
-			if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			case 9 : 
-			match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[9] )
-			 if(match){
-            
-			}else{
-			fmt.Println("Erreur sur " + info[n])
-			}
-			}
-			if(info[n]==""){
-			fmt.Println("Erreur valeur vide " + info[n])
-			}
-	        }
-		}
-	
-	}
-
-		
