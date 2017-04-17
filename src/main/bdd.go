@@ -81,9 +81,12 @@
 	func (base Bdd) searchCompetiteur(col_num int, value string){
 		
 		var id_col string
+		var searchValue string
+		
+		searchValue = fmt.Sprint("'%",value,"%'")
 		id_col, value = col_id2name(col_num, value)
 		
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", id_col, " = ", value))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", id_col, " LIKE ", searchValue))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -195,7 +198,7 @@
 		}
 		defer base.resultat.Close()
 		
-		file, err := os.Create(fmt.Sprint(cheminFichier))
+		file, err := os.Create(fmt.Sprint(cheminFichier,".csv"))
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)

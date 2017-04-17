@@ -11,6 +11,7 @@ func main() {
 	// %%%%%%%%% Compétiteurs %%%%%%%%%
 	//Moi := newCompetiteur(1,"Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
 	//Moi.display()
+
 	
 	
 	
@@ -37,6 +38,7 @@ func main() {
 	
 	
 	//%%%%%%%%% Planning %%%%%%%%%
+
 	base := newBdd("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
@@ -51,11 +53,13 @@ func main() {
 	//p.displayConfigurationEpreuve()
 	//fmt.Println("\n")
 	//p.generationPlanning("../ressources/Planning/planning")
+
 	
 	// %%%%%%%% VALIDATION EQUIPES %%%%%%%%
-	fmt.Println("\n Trier ->")
-	base.orderby_comp()
-	fmt.Println("\n Verification équipe ->")
-	base.check_team()
+	// fmt.Println("\n Trier ->")
+	// base.orderby_comp()
+	// fmt.Println("\n Verification équipe ->")
+	// base.check_team()
+	Parsage()
 
 }

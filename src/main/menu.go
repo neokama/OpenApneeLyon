@@ -200,8 +200,8 @@ func Parsage(){
 			var col_num int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
-			fmt.Println(" 1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
-			fmt.Println(" 8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
+			fmt.Println(" 1- Id \n2- Prénom \n3- Nom \n4- Sexe \n5- Numéro de license \n6- Equipe \n7- Première épreuve du participant")
+			fmt.Println(" 8- Première annonce \n9- Deuxième épreuve du participant \n10- Deuxième annonce")
 			in1, err1 := readInt(1)
 			fmt.Println(err1)
 			col_num = in1[0]
@@ -210,35 +210,68 @@ func Parsage(){
 			fmt.Println(err2)
 			value = in2[0]
 			base.searchCompetiteur(col_num, value)
-		
-		} else if *c == "generateBadge" {
-			fmt.Println("Sélectionne un fichier csv (compétiteurs, bénévoles…) et édite les badges correspondants sous format pdf.")
+			
+		} else if *c == "display" {
+			base := newBdd("../src/database/OpenApneeLyon")
+			base.displayCompetiteur()
+			
+		} else if *c == "import" {
+			base := newBdd("../src/database/OpenApneeLyon")
+			fmt.Println("Saisissez le chemin et le nom du fichier .csv contenant les compétiteurs")
+			in1, err1 := readString(1)
+			fmt.Println(err1)
+			cheminFichier:= in1[0]
+			base.importCompetiteur(cheminFichier)
+			
+		} else if *c == "export" {
+			base := newBdd("../src/database/OpenApneeLyon")
+			fmt.Println("Saisissez le chemin vers le fichier vers lequel vous désirez enregistrer les compétiteurs")
+			in1, err1 := readString(1)
+			fmt.Println(err1)
+			cheminFichier:= in1[0]
+			fmt.Println("Saisissez le nom de votre fichier")
+			in2, err2 := readString(1)
+			fmt.Println(err2)
+			nom := in2[0]
+			cheminComplet := fmt.Sprint(cheminFichier, "/", nom)
+			base.exportCompetiteur(cheminComplet)
+					
 		} else {
 			fmt.Println("Vous pouvez ajouter un competiteur en tapant -c=add apres votre derniere commande\n")
 			fmt.Println("Vous pouvez supprimer un competiteur en tapant -c=remove apres votre derniere commande\n")
 			fmt.Println("Vous pouvez modifier un competiteur en tapant -c=modify apres votre derniere commande\n")
 			fmt.Println("Vous pouvez rechercher un compétiteur en tapant -c=search apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer des badges en tapant -c=generateBadge apres votre derniere commande\n")
+			fmt.Println("Vous pouvez afficher l'intégralité des compétiteurs en tapant -c=display apres votre derniere commande\n")
+			fmt.Println("Vous pouvez importer un fichier csv contenant des compétiteurs en tapant -c=import apres votre derniere commande\n")
+			fmt.Println("Vous pouvez exporter un fichier csv contenant des compétiteurs en tapant -c=export apres votre derniere commande\n")
 		}
 		
 	} else if *e != "deff" {
 	
-		if *e == "add" {
-			fmt.Println("Ajout d'une equipe a la bdd")
-		} else if *e == "remove" {
-			fmt.Println("suppression d'une equipe de la bdd")
-		} else if *e == "modify" {
-			fmt.Println("Modification d'une equipe de la bdd")
-		} else if *e == "search" {
-			fmt.Println("Recherche d'une equipe dans la bdd")
-		} else if *e == "check" {
-			fmt.Println("Permet de demander la verification de la validite d’une equipe")
+		if *e == "check" {
+			base := newBdd("../src/database/OpenApneeLyon")
+			base.check_team()
+			
+		} else if *e == "planning" {
+			plan := newPlanning("../src/database/OpenApneeLyon")
+			fmt.Println("Saisissez le chemin et le nom du fichier de configuration des épreuves")
+			in, err := readString(1)
+			fmt.Println(err)
+			chemin1 := in[0]
+			plan.getCompetiteur()
+			plan.getConfigurationEpreuve(chemin1)
+			fmt.Println("Saisissez le chemin vers lequel vous souhaitez enregistrer votre planning")
+			in, err = readString(1)
+			chemin2 := in[0]
+			fmt.Println("Saisissez le nom du fichier")
+			in, err = readString(1)
+			nom := in[0]
+			cheminComplet := fmt.Sprint(chemin2, "/", nom)
+			plan.generationPlanning(cheminComplet)
+		
 		} else {
-			fmt.Println("Vous pouvez ajouter une equipe en tapant -e=add apres votre derniere commande\n")
-			fmt.Println("Vous pouvez supprimer une equipe en tapant -e=remove apres votre derniere commande\n")
-			fmt.Println("Vous pouvez modifier une equipe en tapant -e=modify apres votre derniere commande\n")
-			fmt.Println("Vous pouvez rechercher une equipe en tapant -e=search apres votre derniere commande\n")
 			fmt.Println("Vous pouvez verifier la validite dune equipe en tapant -e=check apres votre derniere commande\n")
+			fmt.Println("Vous pouvez générer le planning de la journée en tapant -e=planning apres votre derniere commande\n")
 		}
 		
 	} else if *bdd != "deff" {
@@ -257,15 +290,9 @@ func Parsage(){
 				
 			} else if *bdd == "save" {
 				fmt.Println("Copie les fichiers csv contenant les compétiteurs, les scores ainsi que le planning avec timestamp, les place dans un dossier save afin d’avoir des sauvegardes.")
-			} else if *bdd == "import" {
-				fmt.Println("Demande le chemin d’accès au fichier csv contenant les compétiteurs")
-			} else if *bdd == "generatePlan" {
-				fmt.Println("Lance la vérification puis la génération du planning, ainsi que des fiches épreuves")
 			} else {
 				fmt.Println("Vous pouvez remettre la bdd a zero en tapant -bdd=reset apres votre derniere commande\n")
 				fmt.Println("Vous pouvez creer des sauvegardes en tapant -bdd=save apres votre derniere commande\n")
-				fmt.Println("Vous pouvez importer les donnees dun fichier csv en tapant -bdd=import apres votre derniere commande\n")
-				fmt.Println("Vous pouvez generer des plannings en tapant -bdd=generatePlan apres votre derniere commande\n")
 			}
 			
 	} else if *r != "deff" {

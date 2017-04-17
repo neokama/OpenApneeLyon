@@ -170,7 +170,6 @@ func (p *Planning) generationHoraires(numEp int){
 						heure[1] = heure[1] - 60
 						heure[0] = heure[0]	+ 1				
 					}
-				
 				}
 			}
 		}
@@ -191,7 +190,6 @@ func (p *Planning) generationPlanning(fichier string){
 		p.planEpreuves = p.planEpreuves[:0]
 		p.EpGeneration(j)
 		p.generationHoraires(j)
-		p.displayPlanningEpreuve()
 		p.exportPlanEpreuve(fichier)
 	}
 
@@ -205,7 +203,6 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 				log.Fatal(err)
 			}
 
-			fmt.Println(len(p.planEpreuves))
 			for j := 0; j < len(p.planEpreuves); j++ {
 						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].idComp,";",
 						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
