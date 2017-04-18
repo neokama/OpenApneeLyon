@@ -1,47 +1,47 @@
-Identifiant; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; temps1; Epreuve2; temps2
-1;Martin;ZAJAC;H;1;Apneaman, Praha, Czech Republic;Speed 100;50;Statique;375
-2;Michal;RISIAN;H;2;Apneaman, Praha, Czech Republic;DNF;160;DWF;200
-3;Michal;SVADLENKA;H;3;Apneaman, Praha, Czech Republic;16*50;890;Speed 100;50
-4;Katerina;SURANSKA;F;4;Apneaman, Praha, Czech Republic;16*50;1050;Statique;360
-5;Jana;SKROBOVA;F;5;Apneaman, Praha, Czech Republic;DNF;95;DWF;100
-6;jean-david;SOULA;H;6;CYRNEA;DNF;75;DWF;100
-7;Anne;BORGAT;F;7;CYRNEA;Speed 100;70;Statique;300
-8;Estelle;RIGAUD;F;8;CYRNEA;DNF;75;DWF;100
-9;Mathieu;CARCHI;H;9;CYRNEA;16*50;1020;Speed 100;50
-10;Benoît;ROUX;H;10;CYRNEA;16*50;1200;Statique;270
-11;Pascal;HURON;H;11;Enjoy And Relax;DNF;150;DWF;200
-12;Michel;SGARRA;H;12;Enjoy And Relax;16*50;1260;Speed 100;70
-13;Rodoplhe;DUCRUIX;H;13;Enjoy And Relax;16*50;1560;Statique;210
-14;Aude;GATA;F;14;Enjoy And Relax;DNF;100;DWF;140
-15;Stephanie;DELICOURT;F;15;Enjoy And Relax;Speed 100;120;Statique;270
-16;Albane;GAUBERT;F;16;Imashi;16*50;1370;DWF;115
-17;Caroline;REGNARD;F;17;Imashi;DNF;92;DWF;126
-18;Kevin;OLLIVO;H;18;Imashi;16*50;795;Speed 100;45
-19;Charles;TISSOT;H;19;Imashi;DNF;70;Statique;300
-20;Richard;JAUFFRAUD;H;20;Imashi;Speed 100;75;Statique;345
-21;Alexandre;BRATANIC;H;21;Les Cormorans 1;16*50;1020;Speed 100;55
-22;Alexandre;GASS;H;22;Les Cormorans 1;Speed 100;45;Statique;265
-23;Olivier;ELU;H;23;Les Cormorans 1;16*50;960;DWF;175
-24;Loraine;HARTMANN;F;24;Les Cormorans 1;DNF;100;DWF;100
-25;Michelle;QUERY;F;25;Les Cormorans 1;DNF;53;Statique;250
-26;Rachel;LEITNER;F;26;Les Cormorans 2;16*50;990;DWF;80
-27;Christopher;BRATANIC;H;27;Les Cormorans 2;Speed 100;60;Statique;230
-28;François;BUZET;H;28;Les Cormorans 2;16*50;1200;Speed 100;75
-29;Xavier;HERENT;H;29;Les Cormorans 2;DNF;65;Statique;270
-30;Melissa;REIN;F;30;Les Cormorans 2;DNF;50;DWF;75
-31;Olivier;DURET;H;31;LIMULES;16*50;1080;Statique;300
-32;Stéphane;BERRUCAZ;H;32;LIMULES;16*50;1440;Speed 100;60
-33;Frédérique;CORDIER;F;33;LIMULES;DNF;103;DWF;100
-34;Stéphane;PETTENUZZO;H;34;LIMULES;Speed 100;85;Statique;215
-35;Marie;DEVANLAY;F;35;LIMULES;DNF;90;DWF;120
-36;Réda;GUEHRIA;H;36;SavoyOuBien?;16*50;1140;Speed 100;60
-37;Aurélien;LANOISELIER;H;37;SavoyOuBien?;Speed 100;60;Statique;360
-38;Philippe;GUILLOUX;H;38;SavoyOuBien?;DNF;125;Statique;330
-39;Marie-pierre;EKSTETS;F;39;SavoyOuBien?;DNF;110;DWF;150
-40;Emilie;VERNIER;F;40;SavoyOuBien?;16*50;1080;DWF;150
-41;Omr;SALEH;H;41;SOLO;Speed 100;100;Statique;240
-42;Christian;VOGLER;H;42;Sportpleizh;Speed 100;50;Statique;390
-43;Laetitia;ORSKI SIMONET;F;43l;Sportpleizh;DNF;100;DWF;113
-44;Patrice;PIERRAT;H;44;Sportpleizh;DNF;100;DWF;140
-45;Pascale;AUBRY;H;45;Sportpleizh;16*50;1080;Speed 100;65
-46;coralie;MARIE;F;46;Sportpleizh;16*50;1315;Statique;285
+Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; temps1; Epreuve2; temps2
+Martin;ZAJAC;H;1;Apneaman, Praha, Czech Republic;Speed 100;50;Statique;375
+Michal;RISIAN;H;2;Apneaman, Praha, Czech Republic;DNF;160;DWF;200
+Michal;SVADLENKA;H;3;Apneaman, Praha, Czech Republic;16*50;890;Speed 100;50
+Katerina;SURANSKA;F;4;Apneaman, Praha, Czech Republic;16*50;1050;Statique;360
+Jana;SKROBOVA;F;5;Apneaman, Praha, Czech Republic;DNF;95;DWF;100
+jean-david;SOULA;H;6;CYRNEA;DNF;75;DWF;100
+Anne;BORGAT;F;7;CYRNEA;Speed 100;70;Statique;300
+Estelle;RIGAUD;F;8;CYRNEA;DNF;75;DWF;100
+Mathieu;CARCHI;H;9;CYRNEA;16*50;1020;Speed 100;50
+Benoît;ROUX;H;10;CYRNEA;16*50;1200;Statique;270
+Pascal;HURON;H;11;Enjoy And Relax;DNF;150;DWF;200
+Michel;SGARRA;H;12;Enjoy And Relax;16*50;1260;Speed 100;70
+Rodoplhe;DUCRUIX;H;13;Enjoy And Relax;16*50;1560;Statique;210
+Aude;GATA;F;14;Enjoy And Relax;DNF;100;DWF;140
+Stephanie;DELICOURT;F;15;Enjoy And Relax;Speed 100;120;Statique;270
+Albane;GAUBERT;F;16;Imashi;16*50;1370;DWF;115
+Caroline;REGNARD;F;17;Imashi;DNF;92;DWF;126
+Kevin;OLLIVO;H;18;Imashi;16*50;795;Speed 100;45
+Charles;TISSOT;H;19;Imashi;DNF;70;Statique;300
+Richard;JAUFFRAUD;H;20;Imashi;Speed 100;75;Statique;345
+Alexandre;BRATANIC;H;21;Les Cormorans 1;16*50;1020;Speed 100;55
+Alexandre;GASS;H;22;Les Cormorans 1;Speed 100;45;Statique;265
+Olivier;ELU;H;23;Les Cormorans 1;16*50;960;DWF;175
+Loraine;HARTMANN;F;24;Les Cormorans 1;DNF;100;DWF;100
+Michelle;QUERY;F;25;Les Cormorans 1;DNF;53;Statique;250
+Rachel;LEITNER;F;26;Les Cormorans 2;16*50;990;DWF;80
+Christopher;BRATANIC;H;27;Les Cormorans 2;Speed 100;60;Statique;230
+François;BUZET;H;28;Les Cormorans 2;16*50;1200;Speed 100;75
+Xavier;HERENT;H;29;Les Cormorans 2;DNF;65;Statique;270
+Melissa;REIN;F;30;Les Cormorans 2;DNF;50;DWF;75
+Olivier;DURET;H;31;LIMULES;16*50;1080;Statique;300
+Stéphane;BERRUCAZ;H;32;LIMULES;16*50;1440;Speed 100;60
+Frédérique;CORDIER;F;33;LIMULES;DNF;103;DWF;100
+Stéphane;PETTENUZZO;H;34;LIMULES;Speed 100;85;Statique;215
+Marie;DEVANLAY;F;35;LIMULES;DNF;90;DWF;120
+Réda;GUEHRIA;H;36;SavoyOuBien?;16*50;1140;Speed 100;60
+Aurélien;LANOISELIER;H;37;SavoyOuBien?;Speed 100;60;Statique;360
+Philippe;GUILLOUX;H;38;SavoyOuBien?;DNF;125;Statique;330
+Marie-pierre;EKSTETS;F;39;SavoyOuBien?;DNF;110;DWF;150
+Emilie;VERNIER;F;40;SavoyOuBien?;16*50;1080;DWF;150
+Omr;SALEH;H;41;SOLO;Speed 100;100;Statique;240
+Christian;VOGLER;H;42;Sportpleizh;Speed 100;50;Statique;390
+Laetitia;ORSKI SIMONET;F;43;Sportpleizh;DNF;100;DWF;113
+Patrice;PIERRAT;H;44;Sportpleizh;DNF;100;DWF;140
+Pascale;AUBRY;H;45;Sportpleizh;16*50;1080;Speed 100;65
+coralie;MARIE;F;46;Sportpleizh;16*50;1315;Statique;285

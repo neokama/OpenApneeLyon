@@ -123,8 +123,7 @@
 
 	func (base Bdd) addCompetiteur(comp *Competiteur){
 		
-		_, base.err = base.db.Exec("INSERT INTO competiteurs VALUES('"+
-		strconv.Itoa(comp.id) + "','" +
+		_, base.err = base.db.Exec("INSERT INTO competiteurs (prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2) VALUES('" +
 		comp.prenom + "','" +
 		comp.nom + "','" +
 		comp.sexe + "','" +
@@ -190,8 +189,14 @@
 		_, base.err = base.db.Exec("DELETE FROM competiteurs")
 		if base.err != nil {
 			fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-			} else {
-			fmt.Println("Remise à zéro de la base de données effectuée")
+		} else {
+			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='competiteurs'")
+			if base.err != nil {
+				fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+				} else {
+				fmt.Println("Remise à zéro de la base de données effectuée")
+			
+			}
 		}
 	}
 	
@@ -223,7 +228,7 @@
 			var info [10]string
 			
 			
-			file.WriteString(fmt.Sprint("Identifiant; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; temps1; Epreuve2; temps2\r\n"))
+			file.WriteString(fmt.Sprint("Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; temps1; Epreuve2; temps2\r\n"))
 			
 			for base.resultat.Next() {
 				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
@@ -231,7 +236,7 @@
 					fmt.Println("Erreur lors de la récupération des résultats: \n")
 					log.Fatal(base.err)
 			}
-		file.WriteString(fmt.Sprint(info[0],";", info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
+		file.WriteString(fmt.Sprint(info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
 		}
 	}
 	
@@ -253,10 +258,8 @@
 		defer file.Close()
 	
 		var firstCall bool
-		var num_comp int
 		
 		firstCall = true
-		num_comp = 0;
 		
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
@@ -269,74 +272,68 @@
 			var verif6 bool = false
 			var verif7 bool = false
 			var verif8 bool = false
-			var verif9 bool = false
 			info := strings.Split(scanner.Text(), ";")
 			if !firstCall{
-			num_comp = num_comp + 1
-			temps1,errr := strconv.Atoi(info[7])
-			temps2,er := strconv.Atoi(info[9])
+			temps1,errr := strconv.Atoi(info[6])
+			temps2,er := strconv.Atoi(info[8])
 			if er != nil {
 			log.Fatal(er)
 			}
 			if errr != nil {
 			log.Fatal(errr)
 			}
-			for n := 0; n < 10; n++{
+			for n := 0; n < 9; n++{
 			
 				switch(n){
-				case 0 : match, _ := regexp.MatchString("([:digit:]*)", info[0] )
+				case 0 : match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[0] )
 					if(match){
 					verif0 =true
 					}
-				case 1 : match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
+				case 1:  
+				match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
 					if(match){
 					verif1 =true
 					}
-				case 2:  
-				match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[2] )
-					if(match){
-					verif2 =true
-					}
-				case 3 : 
-				match, _ := regexp.MatchString("([F|H]{1})", info[3] )
+				case 2 : 
+				match, _ := regexp.MatchString("([F|H]{1})", info[2] )
 				 if(match){
-				 verif3 = true
+				 verif2 = true
 				}
-				case 4 : 
-				match, _ := regexp.MatchString("([:digit:]*)+([:alpha:]*)", info[4] )
+				case 3 : 
+				match, _ := regexp.MatchString("([:digit:]*)+([:alpha:]*)", info[3] )
 					if(match){
+					verif3 =true
+					}
+				case 4 : 
+				match, _ := regexp.MatchString("([:alpha:]*)", info[4] )
+					 if(match){
 					verif4 =true
 					}
 				case 5 : 
-				match, _ := regexp.MatchString("([:alpha:]*)", info[5] )
-					 if(match){
+					if(info[5]=="Statique" || info[5]=="Speed 100" || info[5]=="DWF" || info[5]=="DNF" || info[5]=="16*50"){
 					verif5 =true
 					}
 				case 6 : 
-					if(info[6]=="Statique" || info[6]=="Speed 100" || info[6]=="DWF" || info[6]=="DNF" || info[6]=="16*50"){
+				match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[6] )
+					if(match){
 					verif6 =true
 					}
 				case 7 : 
-				match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[7] )
-					if(match){
+					if(info[7]=="Statique" || info[7]=="Speed 100" || info[7]=="DWF" || info[7]=="DNF" || info[7]=="16*50"){
 					verif7 =true
 					}
 				case 8 : 
-					if(info[8]=="Statique" || info[8]=="Speed 100" || info[8]=="DWF" || info[8]=="DNF" || info[8]=="16*50"){
-					verif8 =true
-					}
-				case 9 : 
-				match, _ := regexp.MatchString("([[:digit:]]{1,4})", info[9] )
+				match, _ := regexp.MatchString("([[:digit:]]{1,4})", info[8] )
 					if(match){
-					verif9 =true
+					verif8 =true
 					}
 				}
 			}
-			if (verif0 && verif1 && verif2 && verif3 && verif4 && verif5 && verif6 && verif7 && verif8 && verif9){
-			comp := newCompetiteur(num_comp, info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8],temps2)
+			if (verif0 && verif1 && verif2 && verif3 && verif4 && verif5 && verif6 && verif7 && verif8){
+			comp := newCompetiteur(0, info[0], info[1], info[2], info[3], info[4], info[5], temps1, info[7],temps2)
 			base.addCompetiteur(comp)
 			}else{
-			fmt.Println("Echec lors de l'ajout de "+ info[1] + " " + info[2])
+			fmt.Println("Echec lors de l'ajout de "+ info[0] + " " + info[1])
 			}
 			}
 			firstCall = false
