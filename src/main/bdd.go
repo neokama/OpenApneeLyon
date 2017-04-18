@@ -157,13 +157,24 @@
 
 	func (base Bdd) deleteCompetiteur(col_num int, value string){
 		var id_col string
-		id_col, value = col_id2name(col_num, value)
-	
-		_, base.err = base.db.Exec("DELETE FROM competiteurs WHERE " + id_col + " = " + value)
-		if base.err != nil {
-			fmt.Println("Echec lors de la suppression: \n", base.err)
-			} else {
-			fmt.Println("Suppression des competiteurs avec " + id_col + " = " + value)
+		value = fmt.Sprint("'",value,"'")
+		
+		if col_num==1 {
+			id_col = "id"		
+		} else if col_num==2{
+			id_col = "equipe"		
+		}
+		
+		if !(col_num < 1 && col_num > 2){
+			_, base.err = base.db.Exec("DELETE FROM competiteurs WHERE " + id_col + " = " + value)
+			if base.err != nil {
+				fmt.Println("Echec lors de la suppression: \n", base.err)
+				} else {
+				fmt.Println("Suppression des competiteurs avec " + id_col + " = " + value)
+			}
+		} else {
+			err := "Le numéro entré est invalide!"
+			fmt.Println(err);
 		}
 	}
 

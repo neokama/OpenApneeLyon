@@ -162,8 +162,7 @@ func Parsage(){
 			var col_num int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
-			fmt.Println("1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
-			fmt.Println("8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
+			fmt.Println("1- Id \n 2- Equipe")
 			in1, err1 := readInt(1)
 			fmt.Println(err1)
 			col_num = in1[0]

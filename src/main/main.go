@@ -39,10 +39,10 @@ func main() {
 	
 	//%%%%%%%%% Planning %%%%%%%%%
 
-	base := newBdd("../src/database/OpenApneeLyon")
-	base.reset()
-	fmt.Println("\n")
-	base.importCompetiteur("../ressources/import.csv")
+	// base := newBdd("../src/database/OpenApneeLyon")
+	// base.reset()
+	// fmt.Println("\n")
+	// base.importCompetiteur("../ressources/import.csv")
 	//base.exportCompetiteur("../ressources/pourquoipas.csv")
 	//fmt.Println("\n")
 	//p := newPlanning("../src/database/OpenApneeLyon")
@@ -58,8 +58,8 @@ func main() {
 	// %%%%%%%% VALIDATION EQUIPES %%%%%%%%
 	// fmt.Println("\n Trier ->")
 	// base.orderby_comp()
-	 //fmt.Println("\n Verification équipe ->")
-	 base.check_team()
-	//Parsage()
+	//fmt.Println("\n Verification équipe ->")
+	//base.check_team()
+	Parsage()
 
 }
