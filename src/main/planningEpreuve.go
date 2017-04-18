@@ -10,7 +10,7 @@ import (
 
 	func (trieur triAnnonces) Len() int           { return len(trieur) }
 	func (trieur triAnnonces) Swap(i, j int)      { trieur[i], trieur[j] = trieur[j], trieur[i] }
-	func (trieur triAnnonces) Less(i, j int) bool { return trieur[i].annonce > trieur[j].annonce }
+	func (trieur triAnnonces) Less(i, j int) bool { return trieur[i].annonce < trieur[j].annonce }
 
 	type PlanningEpreuve struct
 	{

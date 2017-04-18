@@ -216,25 +216,12 @@ func Parsage(){
 			
 		} else if *c == "import" {
 			base := newBdd("../src/database/OpenApneeLyon")
-			fmt.Println("Saisissez le chemin et le nom du fichier .csv contenant les compétiteurs")
-			in1, err1 := readString(1)
-			fmt.Println(err1)
-			cheminFichier:= in1[0]
-			base.importCompetiteur(cheminFichier)
+			base.importCompetiteur()
 			
 		} else if *c == "export" {
 			base := newBdd("../src/database/OpenApneeLyon")
-			fmt.Println("Saisissez le chemin vers le fichier vers lequel vous désirez enregistrer les compétiteurs")
-			in1, err1 := readString(1)
-			fmt.Println(err1)
-			cheminFichier:= in1[0]
-			fmt.Println("Saisissez le nom de votre fichier")
-			in2, err2 := readString(1)
-			fmt.Println(err2)
-			nom := in2[0]
-			cheminComplet := fmt.Sprint(cheminFichier, "/", nom)
-			base.exportCompetiteur(cheminComplet)
-					
+			base.exportCompetiteur()
+			fmt.Println("Fichier \"competiteurs\" exporté dans le dossier \"export\".")		
 		} else {
 			fmt.Println("Vous pouvez ajouter un competiteur en tapant -c=add apres votre derniere commande\n")
 			fmt.Println("Vous pouvez supprimer un competiteur en tapant -c=remove apres votre derniere commande\n")

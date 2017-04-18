@@ -14,7 +14,7 @@ import (
 	/*base := newBdd("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
-	base.importCompetiteur("import.csv")
+	base.importCompetiteur()
 	fmt.Println("\n ")
 	base.disp_comp()
 	fmt.Println("\n unicité ->")

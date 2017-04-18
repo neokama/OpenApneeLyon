@@ -10,6 +10,7 @@
 	"bufio"
 	"strings"
 	"regexp"
+	"time"
 	)
 	
 	
@@ -211,7 +212,7 @@
 	*		Méthode permettant d'exporter un fichier CSV contenant tous les
 	*		compétiteurs de la base de données.
 	*/
-	func (base Bdd) exportCompetiteur(cheminFichier string){
+	func (base Bdd) exportCompetiteur(){
 	
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs")
 		if base.err != nil {
@@ -219,9 +220,12 @@
 		}
 		defer base.resultat.Close()
 		
-		file, err := os.Create(fmt.Sprint(cheminFichier,".csv"))
+			t := time.Now()
+			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
+		
+		file, err := os.Create(fmt.Sprint("export/",date,"-competiteurs.csv"))
 			if err != nil {
-				fmt.Println("Erreur lors de la création du fichier")
+				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 				log.Fatal(err)
 			}
 		
@@ -250,9 +254,10 @@
 	*		Méthode permettant d'importer les compétiteurs contenu dans un fichier CSV
 	*/
 	
-	func (base Bdd) importCompetiteur(chemin string){
-		file, err := os.Open(chemin)
+	func (base Bdd) importCompetiteur(){
+		file, err := os.Open("import/competiteurs.csv")
 		if err != nil {
+			println("Impossible d'ouvrir le fichier \"competiteurs.csv\" dans le dossier import")
 			log.Fatal(err)
 		}
 		defer file.Close()
