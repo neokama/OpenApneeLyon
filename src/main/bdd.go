@@ -315,7 +315,7 @@
 					verif4 =true
 					}
 				case 5 : 
-					if(info[5]=="Statique" || info[5]=="Speed 100" || info[5]=="DWF" || info[5]=="DNF" || info[5]=="16*50"){
+					if(info[5]=="Statique" || info[5]=="Speed 100" || info[5]=="DWF" || info[5]=="DNF" || info[5]=="16*50" || info[5]=="sta" || info[5]=="spd" || info[5]=="dwf" || info[5]=="dnf" || info[5]=="1650"){
 					verif5 =true
 					}
 				case 6 : 
@@ -324,7 +324,7 @@
 					verif6 =true
 					}
 				case 7 : 
-					if(info[7]=="Statique" || info[7]=="Speed 100" || info[7]=="DWF" || info[7]=="DNF" || info[7]=="16*50"){
+					if(info[7]=="Statique" || info[7]=="Speed 100" || info[7]=="DWF" || info[7]=="DNF" || info[7]=="16*50"|| info[5]=="sta" || info[5]=="spd" || info[5]=="dwf" || info[5]=="dnf" || info[5]=="1650"){
 					verif7 =true
 					}
 				case 8 : 
@@ -610,6 +610,61 @@
 			case 5: comp5=false
 			}
 			}		
+			case "sta": 
+			nbSTA= nbSTA+1
+			if (info[8]=="dwf" && info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
+			}
+			case "dwf":
+			nbDWF= nbDWF+1
+			if (info[8]=="spd" || info[8]=="sta" && info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
+			}
+			case "spd":
+			nbSPE= nbSPE+1
+			if (info[8]=="dnf" || info[8]=="dwf"&& info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
+			}
+			case "dnf":
+			nbDNF= nbDNF+1
+			if (info[8]=="1650" || info[8]=="spd"&& info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
+			}
+			case "1650":
+			nbSFC= nbSFC+1
+			if (info[8]=="dnf"&& info[8]!=info[6]){
+			switch(n){
+			case 1: comp1=false
+			case 2: comp2=false
+			case 3: comp3=false
+			case 4: comp4=false
+			case 5: comp5=false
+			}
+			}		
 			}
 			switch(info[8]){
 			case "Statique": 
@@ -621,6 +676,16 @@
 			case "DNF":
 			nbDNF= nbDNF+1
 			case "16*50":
+			nbSFC= nbSFC+1
+			case "sta": 
+			nbSTA= nbSTA+1
+			case "dwf":
+			nbDWF= nbDWF+1
+			case "spd":
+			nbSPE= nbSPE+1
+			case "dnf":
+			nbDNF= nbDNF+1
+			case "1650":
 			nbSFC= nbSFC+1
 			}
 		}
