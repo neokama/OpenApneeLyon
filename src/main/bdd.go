@@ -690,9 +690,13 @@
 	func (base Bdd) check_team(){
 		
 		// CREATION FICHIER
-		file, err := os.Create("fichierVerification.txt")
+		t := time.Now()
+		date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
+		
+		file, err := os.Create(fmt.Sprint("verification/",date,"-fichierVerification.txt"))
+		
 		if err != nil {
-				fmt.Println("Erreur lors de la création du fichier planning:\n")
+				fmt.Println("Erreur lors de la création du fichier verification :\n")
 				log.Fatal(err)
 			}
 		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à lacomposition des équipes !\r\n")
