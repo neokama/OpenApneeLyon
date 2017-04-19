@@ -758,14 +758,15 @@
 		t := time.Now()
 		date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 		
-		file, err := os.Create(fmt.Sprint("verification/",date,"-fichierVerification.txt"))
+		file, err := os.Create(fmt.Sprint("export/",date,"-FichierVerification.txt"))
 		
 		if err != nil {
-				fmt.Println("Erreur lors de la création du fichier verification :\n")
+				fmt.Println("Erreur lors de la création du fichier verification\n")
 				log.Fatal(err)
 			}
-		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à lacomposition des équipes !\r\n")
-				
+		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !\r\n")
+		file.WriteString("\r\n")
+		
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT DISTINCT equipe FROM competiteurs "))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
