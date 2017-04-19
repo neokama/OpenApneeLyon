@@ -9,6 +9,7 @@ import (
 	"os"
 	"strings"
 	"sort"
+	"time"
 	)
 
 
@@ -36,6 +37,9 @@ func (p *Planning) getCompetiteur(){
 		
 		var nextcomp *Competiteur 
 		
+		//On "clear" l'ancien tableau:
+		p.comp = p.comp[:0]
+		
 		for p.base.resultat.Next() {
 			p.base.err = p.base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if p.base.err != nil {
@@ -53,9 +57,10 @@ func (p *Planning) getCompetiteur(){
 
 
 // Enregistrer les épreuves dans le tableau
-func (p *Planning) getConfigurationEpreuve(fichier string){
-	file, err := os.Open(fichier)
+func (p *Planning) getConfigurationEpreuve(){
+	file, err := os.Open("config/ConfigurationEpreuve.csv")
 	if err != nil {
+		fmt.Println("Impossible d'ouvrir le fichier \"ConfigurationEpreuve\": " )
 		log.Fatal(err)
 	}
 	defer file.Close()
@@ -66,21 +71,40 @@ func (p *Planning) getConfigurationEpreuve(fichier string){
 	var nextconfig *ConfigurationEpreuve
 	
 	scanner := bufio.NewScanner(file)
+	//On clear l'ancien tableau:
+	p.cfgEpreuves = p.cfgEpreuves[:0]
+	
 	for scanner.Scan() {
 		info := strings.Split(scanner.Text(), ";")
 		if !firstCall{
 		ordre, _ := strconv.Atoi(info[0])
 		seuilMin, _ := strconv.Atoi(info[2])
 		seuilMax, _ := strconv.Atoi(info[3])
-		nbPassages, _ := strconv.Atoi(info[4])
-		marge, _ := strconv.Atoi(info[5])
+		nbParPassage, _ := strconv.Atoi(info[4])
+		dureeEchauffement, _ := strconv.Atoi(info[5])
+		dureePassage, _ := strconv.Atoi(info[6])
+		dureeAppel, _ := strconv.Atoi(info[7])
+		surveillance, _ := strconv.Atoi(info[8])
+		battementSerie, _ := strconv.Atoi(info[9])
+		battementEpreuve, _ := strconv.Atoi(info[10])
 
 		
-		nextconfig = newConfigurationEpreuve(ordre, info[1], seuilMin, seuilMax,nbPassages, marge, info[6])
+		nextconfig = newConfigurationEpreuve(ordre, info[1], seuilMin, seuilMax, nbParPassage, dureeEchauffement, dureePassage, dureeAppel, surveillance,
+												battementSerie,battementEpreuve, info[11])
 		p.cfgEpreuves = append(p.cfgEpreuves, nextconfig)
 		}
 		firstCall = false
 	}
+	
+	//Nombre de participants par épreuve
+	for i := 0; i < len(p.cfgEpreuves); i++ {
+		for j := 0; j < len(p.comp); j++ {
+			if (p.comp[j].epreuve1 == p.cfgEpreuves[i].id) || (p.comp[j].epreuve2 == p.cfgEpreuves[i].id){
+				p.cfgEpreuves[i].nbParticipants = p.cfgEpreuves[i].nbParticipants + 1
+			}
+		}
+	}
+	
 	sort.Sort(triEpreuves(p.cfgEpreuves))
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
@@ -90,8 +114,9 @@ func (p *Planning) getConfigurationEpreuve(fichier string){
 
 
 func (p *Planning) EpGeneration(numEp int){
-	numEp = numEp - 1
 	if numEp < len(p.cfgEpreuves){
+		p.planEpreuves = p.planEpreuves[:0]
+
 		for j := 0; j < len(p.comp); j++ {
 			if p.comp[j].epreuve1 == p.cfgEpreuves[numEp].id{
 				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].annonce1)
@@ -109,95 +134,113 @@ func (p *Planning) EpGeneration(numEp int){
 }
 
 
-func (p *Planning) generationHoraires(numEp int){
+func (p *Planning) generationHoraires(fichier string){
 	var nbCompPassage int = 0
 	nbCompPassage = 0
 	var numSerie int
 	numSerie = 1
-	var annonceMax int
-	annonceMax = 0
-
-
-	numEp = numEp - 1
-	if numEp < len(p.cfgEpreuves){
-		heureSTR := strings.Split(p.cfgEpreuves[numEp].heureDebut, "h")
-		var heure []int
-		h,_ := strconv.Atoi(heureSTR[0])
-		m,_ := strconv.Atoi(heureSTR[1])
-		heure = append(heure, h, m)
+	
+	//Calcul de l'heure de début
+	if len(p.cfgEpreuves) < 1 {
+		log.Fatal("Aucune épreuve enregistrée.")
+	}
+	
+	heureSTR := strings.Split(p.cfgEpreuves[0].heureDebut, ":")
+	var heure []int
+	h,_ := strconv.Atoi(heureSTR[0])
+	m,_ := strconv.Atoi(heureSTR[1])
+	heure = append(heure, h, m)
 		
-		var UMesure string
-		UMesure = "m"
-		
-		if p.cfgEpreuves[numEp].id!="DNF" && p.cfgEpreuves[numEp].id!="DWF"{
-			UMesure = "s"
-		}
-		
-		
-		for j := 0; j < len(p.planEpreuves); j++ {
-			if p.planEpreuves[j].idEpreuve == p.cfgEpreuves[numEp].id{
-				//1 er competiteurs => Plus grosse annonce
-				if nbCompPassage == 0 && UMesure == "s"{
-					//Passage sec => Min
-					annonceMax = p.planEpreuves[j].annonce/60
-					if (p.planEpreuves[j].annonce%60) != 0{
-						annonceMax = annonceMax + 1
+	for i := 0; i < len(p.cfgEpreuves); i++ {
+			//Initialisation des séries/passages:
+			nbCompPassage = 0
+			numSerie = 1
+			
+			//Recherche des compétiteurs pour cette épreuve
+			p.EpGeneration(i)
+			
+			//Pour chaque competiteurs:
+			for j := 0; j < len(p.planEpreuves); j++ {
+				if p.planEpreuves[j].idEpreuve == p.cfgEpreuves[i].id{
+					
+					//Si le nombre de compétiteur est plein pour ce passage:
+					// On modifie l'heure du prochain passage (le temps de l'épreuve)
+					
+					if nbCompPassage == p.cfgEpreuves[i].nbParPassage{
+						nbCompPassage = 0
+						numSerie = numSerie + 1
+						heure[1] = heure[1] + p.cfgEpreuves[i].dureePassage+ p.cfgEpreuves[i].surveillance + p.cfgEpreuves[i].battementSerie
+						for heure[1] >= 60{
+							heure[1] = heure[1] - 60
+							heure[0] = heure[0]	+ 1				
+						}
 					}
-				}
-				//Configuration des seuils de pénalité:
-				p.planEpreuves[j].seuilMin = p.planEpreuves[j].annonce + p.cfgEpreuves[numEp].seuilMin
-				p.planEpreuves[j].seuilMax = p.planEpreuves[j].annonce + p.cfgEpreuves[numEp].seuilMax
-				
-				//Configuration de l'heure
-				if (heure[1] < 10){
-					p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],":0",heure[1])
-				} else{
-					p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],":",heure[1])
-				}
-				
-				nbCompPassage = nbCompPassage + 1
-				p.planEpreuves[j].numSerie = numSerie
-				p.planEpreuves[j].numPassage = nbCompPassage
-				
-				//Si le nombre de compétiteur est plein pour ce passage:
-				// On modifie l'heure du prochain passage (avec l'annonce max et la marge)
-				
-				if nbCompPassage == p.cfgEpreuves[numEp].nbPassages{
-					nbCompPassage = 0
-					numSerie = numSerie + 1
-					heure[1] = heure[1] + annonceMax + p.cfgEpreuves[numEp].marge
-					for heure[1] >= 60{
-						heure[1] = heure[1] - 60
-						heure[0] = heure[0]	+ 1				
+					//On formate l'heure
+					if (heure[1] < 10){
+						p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],":0",heure[1])
+					} else{
+						p.planEpreuves[j].heurePassage = fmt.Sprint(heure[0],":",heure[1])
 					}
+
+					//Configuration des seuils de pénalité:
+					p.planEpreuves[j].seuilMin = p.planEpreuves[j].annonce + p.cfgEpreuves[i].seuilMin
+					p.planEpreuves[j].seuilMax = p.planEpreuves[j].annonce + p.cfgEpreuves[i].seuilMax
+
+					//Configuration des numéro de passages
+					nbCompPassage = nbCompPassage + 1
+					p.planEpreuves[j].numSerie = numSerie
+					p.planEpreuves[j].numPassage = nbCompPassage
 				}
 			}
-		}
-	} else{
-		fmt.Println("Numéro d'épreuve invalide")
+			//Ouverture de l'épreuve suivante:
+			heure[1] = heure[1] + p.cfgEpreuves[i].dureePassage+ p.cfgEpreuves[i].surveillance + p.cfgEpreuves[i].battementSerie + p.cfgEpreuves[i].battementEpreuve
+			for heure[1] >= 60{
+				heure[1] = heure[1] - 60
+				heure[0] = heure[0]	+ 1		
+			}
+			//Export de l'épreuve dans le fichier
+			p.exportPlanEpreuve(fichier)
 	}
 }
 
-func (p *Planning) generationPlanning(fichier string){
-	file, err := os.Create(fmt.Sprint(fichier,".csv"))
-			if err != nil {
-				fmt.Println("Erreur lors de la création du fichier planning:\n")
-				log.Fatal(err)
-			}
-	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Num Serie; Num Passage; Heure de passage\r\n"))
-			
-	for j := 1; j <= len(p.cfgEpreuves); j++ {
-		p.planEpreuves = p.planEpreuves[:0]
-		p.EpGeneration(j)
-		p.generationHoraires(j)
-		p.exportPlanEpreuve(fichier)
-	}
 
+func (p *Planning) exportPlanCompetition(){
+	t := time.Now()
+	date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
+		file, err := os.Create(fmt.Sprint("export/",date,"-PlanningCompetition.csv"))
+		if err != nil {
+			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
+			log.Fatal(err)
+		}
+	
+		
+		
+	file.WriteString(fmt.Sprint("Id Epreuve; HeureOuverture(1ereEpreuve); Echauffement; Annonce; Temps/Series; nbSeries; Battement Epreuve\r\n"))
+		
+	for i := 0; i < len(p.cfgEpreuves); i++ {
+		var nbSeries int
+	
+		idEpreuve := p.cfgEpreuves[i].id
+		heureOuverture := p.cfgEpreuves[i].heureDebut
+		echauffement := p.cfgEpreuves[i].dureeEchauffement
+		appel := p.cfgEpreuves[i].dureeAppel
+		tempsSerie := p.cfgEpreuves[i].dureePassage + p.cfgEpreuves[i].dureeAppel + p.cfgEpreuves[i].surveillance + p.cfgEpreuves[i].battementSerie
+		nbSeries = p.cfgEpreuves[i].nbParticipants/p.cfgEpreuves[i].nbParPassage
+		
+		if p.cfgEpreuves[i].nbParticipants%p.cfgEpreuves[i].nbParPassage != 0{
+			nbSeries = nbSeries + 1
+		}
+		battementEp := p.cfgEpreuves[i].battementEpreuve
+		fmt.Println(fmt.Sprint(i,": ",nbSeries,", ",p.cfgEpreuves[i].nbParticipants,", ",p.cfgEpreuves[i].nbParPassage))
+		file.WriteString(fmt.Sprint( idEpreuve,";",heureOuverture,";",echauffement,";",appel,";",tempsSerie,";",nbSeries,";",battementEp,"\r\n"))
+	}
 }
 
 
 func (p *Planning) exportPlanEpreuve(fichier string){
-	file, err := os.OpenFile(fmt.Sprint(fichier,".csv"),os.O_APPEND|os.O_WRONLY, 0777)
+
+
+	file, err := os.OpenFile(fichier,os.O_APPEND|os.O_WRONLY, 0777)
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)
@@ -210,6 +253,29 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 			}
 
 }
+
+
+func (p *Planning) generationPlanning(){
+	t := time.Now()
+	date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
+	fichier := fmt.Sprint("export/",date,"-PlanningEpreuve.csv")
+	
+	file, err := os.Create(fichier)
+			if err != nil {
+				fmt.Println("Erreur lors de la création du fichier planning:\n")
+				log.Fatal(err)
+			}
+	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Num Serie; Num Passage; Heure de passage\r\n"))
+			
+	p.getCompetiteur()
+	p.getConfigurationEpreuve()
+
+		p.planEpreuves = p.planEpreuves[:0]
+		p.generationHoraires(fichier)
+		p.exportPlanCompetition()
+}
+
+
 
 func (p Planning) displayCompetiteur(){
 	for j := 0; j < len(p.comp); j++ {

@@ -240,20 +240,9 @@ func Parsage(){
 			
 		} else if *e == "planning" {
 			plan := newPlanning("../src/database/OpenApneeLyon")
-			fmt.Println("Saisissez le chemin et le nom du fichier de configuration des épreuves")
-			in, err := readString(1)
-			fmt.Println(err)
-			chemin1 := in[0]
 			plan.getCompetiteur()
-			plan.getConfigurationEpreuve(chemin1)
-			fmt.Println("Saisissez le chemin vers lequel vous souhaitez enregistrer votre planning")
-			in, err = readString(1)
-			chemin2 := in[0]
-			fmt.Println("Saisissez le nom du fichier")
-			in, err = readString(1)
-			nom := in[0]
-			cheminComplet := fmt.Sprint(chemin2, "/", nom)
-			plan.generationPlanning(cheminComplet)
+			plan.getConfigurationEpreuve()
+			plan.generationPlanning()
 		
 		} else {
 			fmt.Println("Vous pouvez verifier la validite dune equipe en tapant -e=check apres votre derniere commande\n")

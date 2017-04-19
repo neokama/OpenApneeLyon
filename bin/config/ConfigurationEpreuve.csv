@@ -1,0 +1,6 @@
+Ordre;Epreuve;Seuil min(s/m);Seuil max(s/m);Passages simultanés;Echauffement;Duree Passage (min);Appel;Surveillance;Battement series;Battement Epreuve;Début Epreuve
+1;Statique;-60;60;4;30;10;3;1;1;10;10:15
+5;16*50;-30;60;5;30;7;3;1;1;10;
+2;DWF;-25;25;2;30;5;3;1;1;10;
+4;DNF;-25;25;2;30;7;3;1;1;10;
+3;Speed 100;-10;20;4;30;21;3;1;1;10;
