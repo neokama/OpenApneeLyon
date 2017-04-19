@@ -30,8 +30,8 @@ func (p *Planning) getCompetiteur(){
 		defer p.base.resultat.Close()
 		
 		var info [10]string
-		var temps1 int
-		var temps2 int
+		var annonce1 int
+		var annonce2 int
 		var id int
 		
 		var nextcomp *Competiteur 
@@ -42,11 +42,11 @@ func (p *Planning) getCompetiteur(){
 			fmt.Println("Erreur lors de la récupération des résultats: \n")
 			log.Fatal(p.base.err)
 			}
-		temps1,_ = strconv.Atoi(info[7])
-		temps2,_ = strconv.Atoi(info[9])
+		annonce1,_ = strconv.Atoi(info[7])
+		annonce2,_ = strconv.Atoi(info[9])
 		id,_ = strconv.Atoi(info[0])
 		
-		nextcomp = newCompetiteur(id, info[1], info[2], info[3], info[4], info[5], info[6], temps1, info[8], temps2)
+		nextcomp = newCompetiteur(id, info[1], info[2], info[3], info[4], info[5], info[6], annonce1, info[8], annonce2)
 		p.comp = append(p.comp, nextcomp)
 		}
 }
@@ -94,11 +94,11 @@ func (p *Planning) EpGeneration(numEp int){
 	if numEp < len(p.cfgEpreuves){
 		for j := 0; j < len(p.comp); j++ {
 			if p.comp[j].epreuve1 == p.cfgEpreuves[numEp].id{
-				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].temps1)
+				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].annonce1)
 				p.planEpreuves = append(p.planEpreuves,plannEp)
 
 			} else if p.comp[j].epreuve2 == p.cfgEpreuves[numEp].id{
-				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].temps2)
+				plannEp := newPlanningEpreuve(p.cfgEpreuves[numEp].id, p.comp[j].id, p.comp[j].prenom, p.comp[j].nom, p.comp[j].sexe, p.comp[j].equipe, p.comp[j].annonce2)
 				p.planEpreuves = append(p.planEpreuves,plannEp)
 			}
 		}

@@ -131,9 +131,9 @@
 		comp.num_license + "','" +
 		comp.equipe + "','" +
 		comp.epreuve1 + "'," +
-		strconv.Itoa(comp.temps1) + ",'" +
+		strconv.Itoa(comp.annonce1) + ",'" +
 		comp.epreuve2 + "'," +
-		strconv.Itoa(comp.temps2) + ")")
+		strconv.Itoa(comp.annonce2) + ")")
 		
 		
 		
@@ -232,7 +232,7 @@
 			var info [10]string
 			
 			
-			file.WriteString(fmt.Sprint("Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; temps1; Epreuve2; temps2\r\n"))
+			file.WriteString(fmt.Sprint("Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2\r\n"))
 			
 			for base.resultat.Next() {
 				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
@@ -418,13 +418,13 @@
 				col_id = "epreuve1"
 				value = fmt.Sprint("'",value,"'")
 			case 8:
-				col_id = "temps1"
+				col_id = "annonce1"
 				value = fmt.Sprint("'",value,"'")
 			case 9:
 				col_id = "epreuve2"
 				value = fmt.Sprint("'",value,"'")
 			case 10:
-				col_id = "temps2"
+				col_id = "annonce2"
 				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
