@@ -232,7 +232,7 @@
 			var info [10]string
 			
 			
-			file.WriteString(fmt.Sprint("Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2\r\n"))
+			file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2\r\n"))
 			
 			for base.resultat.Next() {
 				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
@@ -240,7 +240,7 @@
 					fmt.Println("Erreur lors de la récupération des résultats: \n")
 					log.Fatal(base.err)
 			}
-		file.WriteString(fmt.Sprint(info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
+		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
 		}
 	}
 	
