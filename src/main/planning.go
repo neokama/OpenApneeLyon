@@ -224,14 +224,13 @@ func (p *Planning) exportPlanCompetition(){
 		heureOuverture := p.cfgEpreuves[i].heureDebut
 		echauffement := p.cfgEpreuves[i].dureeEchauffement
 		appel := p.cfgEpreuves[i].dureeAppel
-		tempsSerie := p.cfgEpreuves[i].dureePassage + p.cfgEpreuves[i].dureeAppel + p.cfgEpreuves[i].surveillance + p.cfgEpreuves[i].battementSerie
+		tempsSerie := p.cfgEpreuves[i].dureePassage + p.cfgEpreuves[i].surveillance + p.cfgEpreuves[i].battementSerie
 		nbSeries = p.cfgEpreuves[i].nbParticipants/p.cfgEpreuves[i].nbParPassage
 		
 		if p.cfgEpreuves[i].nbParticipants%p.cfgEpreuves[i].nbParPassage != 0{
 			nbSeries = nbSeries + 1
 		}
 		battementEp := p.cfgEpreuves[i].battementEpreuve
-		fmt.Println(fmt.Sprint(i,": ",nbSeries,", ",p.cfgEpreuves[i].nbParticipants,", ",p.cfgEpreuves[i].nbParPassage))
 		file.WriteString(fmt.Sprint( idEpreuve,";",heureOuverture,";",echauffement,";",appel,";",tempsSerie,";",nbSeries,";",battementEp,"\r\n"))
 	}
 }
@@ -247,9 +246,9 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 			}
 
 			for j := 0; j < len(p.planEpreuves); j++ {
-						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].idComp,";",
+						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].idComp,";",
 						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
-						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].heurePassage,"\r\n"))
+						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].heurePassage,"\r\n"))
 			}
 
 }
@@ -265,10 +264,10 @@ func (p *Planning) generationPlanning(){
 				fmt.Println("Erreur lors de la création du fichier planning:\n")
 				log.Fatal(err)
 			}
-	file.WriteString(fmt.Sprint("Epreuve; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Num Serie; Num Passage; Heure de passage\r\n"))
+	file.WriteString(fmt.Sprint("Epreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage\r\n"))
 			
-	p.getCompetiteur()
-	p.getConfigurationEpreuve()
+		p.getCompetiteur()
+		p.getConfigurationEpreuve()
 
 		p.planEpreuves = p.planEpreuves[:0]
 		p.generationHoraires(fichier)

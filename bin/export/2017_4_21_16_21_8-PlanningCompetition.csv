@@ -1,0 +1,6 @@
+Id Epreuve; HeureOuverture(1ereEpreuve); Echauffement; Annonce; Temps/Series; nbSeries; Battement Epreuve
+sta;10:15;30;3;12;5;10
+dwf;;30;3;9;9;10
+spd;;30;3;7;5;10
+dnf;;30;3;9;9;10
+1650;;30;3;23;4;10
