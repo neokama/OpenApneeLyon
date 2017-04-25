@@ -22,11 +22,7 @@
 		db *sql.DB
 		err error
 	}
-	
-	type Fichier struct{
-		cheminFichier string
-		err error
-	}
+
 	
 	/*
 	* 		Bdd.connection:
