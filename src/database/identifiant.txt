@@ -4,7 +4,7 @@ numéro
 
 
 CREATE TABLE competiteurs (id INTEGER PRIMARY KEY AUTOINCREMENT, prenom varchar(30), nom varchar(30), sexe CHARACTER(1), num_license varchar(30), equipe varchar(30), epreuve1 varchar(30), annonce1 INTEGER, epreuve2 varchar(30), annonce2 INTEGER)
-
+CREATE TABLE classement (id INTEGER PRIMARY KEY AUTOINCREMENT, prenom varchar(30), nom varchar(30), sexe CHARACTER(1), equipe varchar(30), epreuve varchar(30), resultat INTEGER)
 
 
 	/*

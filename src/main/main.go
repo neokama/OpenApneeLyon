@@ -60,6 +60,25 @@ func main() {
 	// base.orderby_comp()
 	// fmt.Println("\n Verification équipe ->")
 	// base.check_team()
-	Parsage()
+	
+	
+	
+	//Parsage()
 
+	
+	// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
+	base := newBddResult("../src/database/OpenApneeLyon")
+	base.reset()
+	fmt.Println("\n")
+	// base.displayCompetiteur()
+	// base.exportCompetiteur()
+	base.importResultat()
+	fmt.Println("\n")
+	base.displayCompetiteur()
+	fmt.Println("\n")
+	//base.searchCompetiteur(3, "RICAUD")
+	// base.modifCompetiteur("ARI1", 2, "nouveau-prenom")
+	// fmt.Println("\n")
+	//base.displayCompetiteur()
+	fmt.Println("\n")
 }
