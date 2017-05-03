@@ -260,4 +260,81 @@ package main
 		
 		return base
 	}
+	/*
+	* 		col_id2name:
+	* Paramètres:
+	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
+	*	- value:	Nouvelle valeur à entrée pour la colonne choisie.
+	*
+	* Description: 		
+	*		Méthode permettant à partir d'un numéro de colonne, de retourner le nom de la colonne.
+	*		De plus, la valeur entrée ("value") est retournée au format adéquat pour une requête SQL
+	*		(Ex: "VariableString" => "'VariableString'")
+	*/
+	
+	
+	func col_id2name2(col_num int, value string)(string, string){
+		var col_idr string
+		
+		switch col_num{
+		    case 1:
+				col_idr = "id"
+				value = fmt.Sprint("'",value,"'")
+			case 2:
+				col_idr = "prenom"
+				value = fmt.Sprint("'",value,"'")
+			case 3:
+				col_idr = "nom"
+				value = fmt.Sprint("'",value,"'")
+			case 4:
+				col_idr = "sexe"
+				value = fmt.Sprint("'",value,"'")
+			case 5:
+				col_idr = "equipe"
+				value = fmt.Sprint("'",value,"'")
+			case 6:
+				col_idr = "epreuve"
+				value = fmt.Sprint("'",value,"'")
+			case 7:
+				col_idr = "resultat"
+				value = fmt.Sprint("'",value,"'")
+			default:
+				log.Fatal("Numéro invalide")
+			}
+		return col_idr, value
+	}
+	
+	
+	/*
+	*
+	*
+	*
+	*
+	*/
+	func (base BddResult) exportClassement(value string, sexe string){
+		var id_col string 
+		id_col, value = col_id2name2(6, value)
+		
+		var id_col2 string 
+		id_col2, sexe = col_id2name2(4, sexe)
+		fmt.Println(value," - Classement ",sexe)
+		
+	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," AND ", id_col2, " = ", sexe," ORDER BY resultat"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+		}
+		defer base.resultat.Close()
+	var info [7]string
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+		}
+		fmt.Println(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6])
+		}
+	
+	}
+	
+	
 	
