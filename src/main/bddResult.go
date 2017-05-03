@@ -10,7 +10,7 @@ package main
 	"bufio"
 	"strings"
 	//"regexp"
-	//"time"
+	"time"
 	)
 	
 	
@@ -311,29 +311,38 @@ package main
 	*
 	*
 	*/
-	func (base BddResult) exportClassement(value string, sexe string){
+	func (base BddResult) exportClassement(value string){ 
+		t := time.Now()
+			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
+		
+		file, err := os.Create(fmt.Sprint("export/",date,"-",value,".csv"))
+			if err != nil {
+				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
+				log.Fatal(err)
+			}
+			
 		var id_col string 
 		id_col, value = col_id2name2(6, value)
 		
-		var id_col2 string 
-		id_col2, sexe = col_id2name2(4, sexe)
-		fmt.Println(value," - Classement ",sexe)
 		
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," AND ", id_col2, " = ", sexe," ORDER BY resultat"))
+
+	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
 		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête")
+			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
-		defer base.resultat.Close()
+		 defer base.resultat.Close()
 	var info [7]string
+	
+	file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Equipe; Epreuve; Resultat\r\n"))
+			
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 		}
-		fmt.Println(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6])
+		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],"\r\n"))
 		}
-	
 	}
 	
 	
