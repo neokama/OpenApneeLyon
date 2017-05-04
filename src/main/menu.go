@@ -2,6 +2,8 @@ package main
 
 import "flag"
 import "fmt"
+import "bufio"
+import "os"
 
 
 /*
@@ -81,12 +83,13 @@ func Parsage(){
 			var nom string
 			var sexe string
 			var num_license string
-			var equipe string
+			equipe := ""
 			var epreuve1 string
 			var annonce1 int
 			var epreuve2 string
 			var annonce2 int
-			i := 1 
+			scanner := bufio.NewScanner(os.Stdin)
+			i := 2 
 			for i!= 11 {
 				if i == 1{
 					fmt.Println("Quel est l'id du competiteur que vous souhaitez ajouter ? \n")
@@ -116,9 +119,12 @@ func Parsage(){
 					nom = in[0]
 					i++ 
 				} else if i == 4 {
-					fmt.Println("Quel est le sexe du competiteur que vous souhaitez ajouter ? \n")
+					fmt.Println("Quel est le sexe du competiteur que vous souhaitez ajouter (H/F) ? \n")
 					in , err := readString(1)
-					if (err != nil) {
+					for (err != nil || (in[0] != "H" && in[0] != "F")) {
+						fmt.Println("Veuillez saisir H ou F svp \n")
+						in, err = readString(1)
+						continue
 						fmt.Println(err)
 					}
 					sexe = in[0]
@@ -133,16 +139,28 @@ func Parsage(){
 					i++ 
 				} else if i == 6 {
 					fmt.Println("Quel est l'équipe du competiteur que vous souhaitez ajouter ? \n")
-					in , err := readString(1)
+					//scanner := bufio.NewScanner(os.Stdin)
+					for scanner.Scan(){
+						equipe = scanner.Text()
+						//fmt.Println(s)
+						if (equipe != ""){
+							break
+						}
+					}
+					/*in , err := readString(1)
 					if (err != nil) {
 						fmt.Println(err)
 					}
-					equipe = in[0]
+					equipe = in[0]*/
 					i++ 
 				} else if i == 7 {
 					fmt.Println("Quel est la première épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
+					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 1650 ?\n") 
 					in , err := readString(1)
-					if (err != nil) {
+					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
+						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+						in, err = readString(1)
+						continue
 						fmt.Println(err)
 					}
 					epreuve1 = in[0]
@@ -160,8 +178,12 @@ func Parsage(){
 					i++ 
 				} else if i == 9 {
 					fmt.Println("Quel est la seconde épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
+					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 1650 ?\n")
 					in , err := readString(1)
-					if (err != nil) {
+					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
+						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+						in, err = readString(1)
+						continue
 						fmt.Println(err)
 					}
 					epreuve2 = in[0]
