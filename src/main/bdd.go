@@ -17,7 +17,6 @@
 	type Bdd struct
 	{
 		cheminbdd string
-		chemincsv string
 		resultat *sql.Rows
 		db *sql.DB
 		err error
@@ -42,7 +41,7 @@
 	
 	
 	/*
-	* 		Bdd.disp_comp:
+	* 		Bdd.displayCompetiteur:
 	* Description: 	
 	* 		Méthode permettant d'afficher l'integralité des
 	* 		competiteurs de la base de données
@@ -200,10 +199,6 @@
 		
 	/*
 	* 		Bdd.exportCompetiteur:
-	* Paramètres:
-	*	- cheminFichier: 	Chemin du fichier à exporter.
-	*	- nomFichier:	Nom du fichier à exporter (sans ".CSV")
-	*
 	* Description: 		
 	*		Méthode permettant d'exporter un fichier CSV contenant tous les
 	*		compétiteurs de la base de données.
@@ -361,10 +356,9 @@
 	*		Méthode permettant de modifier une valeur d'un compétiteur de la base de données.
 	*/
 	
-	func (base Bdd) modifCompetiteur (id_comp string, col_num int, newvalue string){
+	func (base Bdd) modifCompetiteur (id_comp int, col_num int, newvalue string){
 		
 		col_id, value := col_id2name(col_num, newvalue)
-		id_comp = fmt.Sprint("'",id_comp,"'")
 		
 		_, base.err = base.db.Exec("UPDATE competiteurs SET " + col_id + " = " + value + " WHERE id = " + id_comp)
 		
@@ -442,7 +436,6 @@
 	func newBdd(cheminBdd string)(*Bdd){
 		base := new(Bdd)
 		base.cheminbdd = cheminBdd
-		base.chemincsv = ""
 		
 		base.db, base.err = sql.Open("sqlite3", base.cheminbdd)
 		if base.err != nil {
