@@ -360,12 +360,12 @@
 		
 		col_id, value := col_id2name(col_num, newvalue)
 		
-		_, base.err = base.db.Exec("UPDATE competiteurs SET " + col_id + " = " + value + " WHERE id = " + id_comp)
+		_, base.err = base.db.Exec("UPDATE competiteurs SET " + col_id + " = " + value + " WHERE id = " + strconv.Itoa(id_comp))
 		
 		if base.err != nil {
 			fmt.Println("Echec lors de la modification: \n", base.err)
 		} else {
-			fmt.Println("Modification du competiteur " + id_comp + " avec " + col_id + " = " + value)
+			fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
 		}
 	}
 	

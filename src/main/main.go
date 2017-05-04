@@ -63,10 +63,10 @@ func main() {
 	
 	
 	
-	//Parsage()
+	Parsage()
 
 	
-	// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
+	/*// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
 	base := newBddResult("../src/database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
@@ -88,5 +88,5 @@ func main() {
 	fmt.Println("\n")
 	tab:=getConfigurationEpreuve1()
 	tab[0].display()
-	//fmt.Println(tab[0])
+	//fmt.Println(tab[0])*/
 }

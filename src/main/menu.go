@@ -75,7 +75,7 @@ func Parsage(){
 	if *c != "deff" {
 	
 		if *c == "add"{
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			var id int
 			var prenom string
 			var nom string
@@ -83,143 +83,195 @@ func Parsage(){
 			var num_license string
 			var equipe string
 			var epreuve1 string
-			var temps1 int
+			var annonce1 int
 			var epreuve2 string
-			var temps2 int
+			var annonce2 int
 			i := 1 
 			for i!= 11 {
 				if i == 1{
 					fmt.Println("Quel est l'id du competiteur que vous souhaitez ajouter ? \n")
 					in , err := readInt(1)
-					fmt.Println(err)
+					for (err != nil) {
+						fmt.Println("Veuillez saisir un entier positif svp \n")
+						in, err = readInt(1)
+						continue
+						fmt.Println(err)
+					}
 					id = in[0]
 					i++ 
 				} else if i ==2 {
 					fmt.Println("Quel est le prénom du competiteur que vous souhaitez ajouter ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					prenom = in[0]
 					i++ 
 				} else if i == 3 {
 					fmt.Println("Quel est le nom du competiteur que vous souhaitez ajouter ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					nom = in[0]
 					i++ 
 				} else if i == 4 {
 					fmt.Println("Quel est le sexe du competiteur que vous souhaitez ajouter ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					sexe = in[0]
 					i++ 
 				} else if i == 5 {
 					fmt.Println("Quel est le numéro de license du competiteur que vous souhaitez ajouter ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					num_license = in[0]
 					i++ 
 				} else if i == 6 {
 					fmt.Println("Quel est l'équipe du competiteur que vous souhaitez ajouter ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					equipe = in[0]
 					i++ 
 				} else if i == 7 {
 					fmt.Println("Quel est la première épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					epreuve1 = in[0]
 					i++ 
 				} else if i == 8 {
 					fmt.Println("Quel est la première annonce du competiteur que vous souhaitez ajouter ? (en mètre ou en seconde) \n")
 					in , err := readInt(1)
-					fmt.Println(err)
-					temps1 = in[0]
+					for (err != nil) {
+						fmt.Println("Veuillez saisir un entier positif svp \n")
+						in, err = readInt(1)
+						continue
+						fmt.Println(err)
+					}
+					annonce1 = in[0]
 					i++ 
 				} else if i == 9 {
 					fmt.Println("Quel est la seconde épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
 					in , err := readString(1)
-					fmt.Println(err)
+					if (err != nil) {
+						fmt.Println(err)
+					}
 					epreuve2 = in[0]
 					i++ 
 				} else if i == 10 {
 					fmt.Println("Quel est la seconde annonce du competiteur que vous souhaitez ajouter ? (en mètre ou en seconde) \n")
 					in , err := readInt(1)
-					fmt.Println(err)
-					temps2 = in[0]
+					for (err != nil) {
+						fmt.Println("Veuillez saisir un entier positif svp \n")
+						in, err= readInt(1)
+						continue
+						fmt.Println(err)
+					}
+					annonce2 = in[0]
 					i++ 
 				} else {
 					fmt.Println("Les informations saisies ne sont pas conformes, veuillez recommencer \n")
 				}
 			}
-			competiteur := newCompetiteur(id, prenom, nom, sexe, num_license, equipe, epreuve1, temps1, epreuve2, temps2)
+			competiteur := newCompetiteur(id, prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2)
 			base.addCompetiteur(competiteur)
-			// fmt.Println(id, " | ", prenom, " | ", nom, " | ", sexe, " | ", num_license, " | ", equipe, " | ", epreuve1, " | ", temps1, " | ", epreuve2, " | ", temps2)
 			
 			
 		} else if *c == "remove" {
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			var col_num int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
-			fmt.Println("1- Id \n 2- Equipe")
+			fmt.Println(" 1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
+			fmt.Println(" 8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
 			in1, err1 := readInt(1)
-			fmt.Println(err1)
+			for (err1 != nil || in1[0] > 10) {
+				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 10 svp \n")
+				in1, err1 = readInt(1)
+				continue
+				fmt.Println(err1)
+			}
 			col_num = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
 			in2, err2 := readString(1)
-			fmt.Println(err2)
+			if (err2 != nil) {
+				fmt.Println(err2)
+			}
 			value = in2[0]
 			base.deleteCompetiteur(col_num, value)
 		
 		} else if *c == "modify" {
-			base := newBdd("../src/database/OpenApneeLyon")
-			var id_comp string
+			base := newBdd("database/OpenApneeLyon")
+			var id_comp int
 			var col_num int 
 			var newvalue string
 			fmt.Println("Saisissez l'id du participant que vous souhaitez modifier")
-			in1, err1 := readString(1)
-			fmt.Println(err1)
+			in1, err1 := readInt(1)
+			if (err1 != nil) {
+				fmt.Println(err1)
+			}
 			id_comp = in1[0]
 			fmt.Println("Quel est le critère que vous souhaitez modifier ?")
-			fmt.Println("1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
-			fmt.Println("8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
+			fmt.Println(" 1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
+			fmt.Println(" 8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
 			in2, err2 := readInt(1)
-			fmt.Println(err2)
+			for (err2 != nil) {
+				fmt.Println("Veuillez saisir un entier positif svp \n")
+				in2, err2 = readInt(1)
+				continue
+				fmt.Println(err2)
+			}
 			col_num = in2[0]
 			fmt.Println("Quelle la nouvelle valeur de ce critère ?")
 			in3, err3 := readString(1)
-			fmt.Println(err3)
+			if (err3 != nil) {
+				fmt.Println(err3)
+			}
 			newvalue = in3[0]
 			base.modifCompetiteur (id_comp, col_num, newvalue)
 			
 			
 		} else if *c == "search" {
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			var col_num int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
 			fmt.Println(" 1- Id \n2- Prénom \n3- Nom \n4- Sexe \n5- Numéro de license \n6- Equipe \n7- Première épreuve du participant")
 			fmt.Println(" 8- Première annonce \n9- Deuxième épreuve du participant \n10- Deuxième annonce")
 			in1, err1 := readInt(1)
-			fmt.Println(err1)
+			for (err1 != nil) {
+				fmt.Println("Veuillez saisir un entier positif svp \n")
+				in1, err1 = readInt(1)
+				continue
+				fmt.Println(err1)
+			}
 			col_num = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
 			in2, err2 := readString(1)
-			fmt.Println(err2)
+			if (err2 != nil) {
+				fmt.Println(err2)
+			}
 			value = in2[0]
 			base.searchCompetiteur(col_num, value)
 			
 		} else if *c == "display" {
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			base.displayCompetiteur()
 			
 		} else if *c == "import" {
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			base.importCompetiteur()
 			
 		} else if *c == "export" {
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			base.exportCompetiteur()
 			fmt.Println("Fichier \"competiteurs\" exporté dans le dossier \"export\".")		
 		} else {
@@ -235,11 +287,11 @@ func Parsage(){
 	} else if *e != "deff" {
 	
 		if *e == "check" {
-			base := newBdd("../src/database/OpenApneeLyon")
+			base := newBdd("database/OpenApneeLyon")
 			base.check_team()
 			
 		} else if *e == "planning" {
-			plan := newPlanning("../src/database/OpenApneeLyon")
+			plan := newPlanning("database/OpenApneeLyon")
 			plan.getCompetiteur()
 			plan.getConfigurationEpreuve()
 			plan.generationPlanning()
@@ -252,10 +304,12 @@ func Parsage(){
 	} else if *bdd != "deff" {
 	
 		if *bdd == "reset" {
-				base := newBdd("../src/database/OpenApneeLyon")
+				base := newBdd("database/OpenApneeLyon")
 				fmt.Println("Confirmez ? (o/n)")
 				in, err := readString(1)
-				fmt.Println(err)
+				if (err != nil) {
+					fmt.Println(err)
+				}
 				reponse := in[0]
 				if reponse == "o" {
 					base.reset()
