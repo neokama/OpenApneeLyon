@@ -36,12 +36,12 @@ import (
 	func (pers Competiteur) check()(bool){
 		var verif = true
 		verif = true
-		match, _ := regexp.MatchString("([:alpha:])", pers.prenom )
+		match, _ := regexp.MatchString("([:alpha:]*)", pers.prenom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du prénom.")
 			}
-		match, _ = regexp.MatchString("([:alpha:])", pers.nom )
+		match, _ = regexp.MatchString("([:alpha:]*)", pers.nom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom.")
