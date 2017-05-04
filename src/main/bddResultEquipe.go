@@ -1,6 +1,6 @@
 package main
 	
-	import (
+	/*import (
 	"strconv"
 	"database/sql"
 	"fmt"
@@ -9,17 +9,17 @@ package main
 	"os"
 	"bufio"
 	"strings"
-	"time"
-	)
+	//"time"
+	)*/
 		
-	type BddResultE struct
+	/*type BddResultE struct
 	{
 		cheminbdd string
 		chemincsv string
 		resultat *sql.Rows
 		db *sql.DB
 		err error
-	}
+	}*/
 	
 	/*
 	* 		Bdd.connection:
@@ -28,12 +28,12 @@ package main
 	* 		données située au chemin contenu dans l'attribut "cheminBdd"
 	*/	
 	
-	func (base BddResultE) connection() (){
+	/*func (base BddResultE) connection() (){
 		base.db, base.err = sql.Open("sqlite3", base.cheminbdd)
 		if base.err != nil {
 			log.Fatal("Erreur de connection à la base de données:\n", base.err)
 		}
-	}
+	}*/
 	
 	/*
 	* 		Bdd.reset:
@@ -42,7 +42,7 @@ package main
 	*		données.
 	*/
 	
-	func (base BddResultE) reset(){
+	/*func (base BddResultE) reset(){
 		_, base.err = base.db.Exec("DELETE FROM classementequipe")
 		if base.err != nil {
 			fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
@@ -55,7 +55,7 @@ package main
 			
 			}
 		}
-	}
+	}*/
 	/*
 	* 		Bdd.disp_comp:
 	* Description: 	
@@ -63,7 +63,7 @@ package main
 	* 		competiteurs de la base de données
 	*/
 	
-	func (base BddResultE) displayCompetiteur(){
+	/*func (base BddResultE) displayCompetiteur(){
 	
 		base.resultat, base.err = base.db.Query("SELECT * FROM classementequipe")
 		if base.err != nil {
@@ -82,7 +82,7 @@ package main
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2])
 		}
-	}
+	}*/
 	
 	/*
 	* 		Bdd.searchCompetiteur:
@@ -95,7 +95,7 @@ package main
 	* 		competiteurs de la base de données
 	*/
 	
-	func (base BddResultE) searchCompetiteur(col_num int, value string){
+	/*func (base BddResultE) searchCompetiteur(col_num int, value string){
 		
 		var id_col string
 		var searchValue string
@@ -120,7 +120,7 @@ package main
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2])
 		}
-	}
+	}*/
 	
 	
 		/*
@@ -134,20 +134,18 @@ package main
 	* 		base de données
 	*/
 
-	func (base BddResultE) addCompetiteur(boardE *ClassementEquipe){
+/*	func (base BddResultE) addCompetiteur(boardE *ClassementEquipe){
 		
 		_, base.err = base.db.Exec("INSERT INTO classementequipe ( equipe, point) VALUES('" +
 		boardE.equipe + "'," +
-		strconv.Itoa(boardE.resultat) + ")")
-		
-		
+		strconv.Itoa(boardE.point) + ")")
 		
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : "+ boardE.equipe, base.err)
 			} else {
 			fmt.Println("Ajout validé du resulat equipe " + boardE.equipe)
 		}
-	}
+	}*/
 	
 	/*
 	* 		Bdd.deleteCompetiteur:
@@ -160,7 +158,7 @@ package main
 	*		en entrée.
 	*/
 
-	func (base BddResultE) deleteCompetiteur(col_num int, value string){
+	/*func (base BddResultE) deleteCompetiteur(col_num int, value string){
 		var id_col string
 		value = fmt.Sprint("'",value,"'")
 		
@@ -181,7 +179,7 @@ package main
 			err := "Le numéro entré est invalide!"
 			fmt.Println(err);
 		}
-	}
+	}*/
 	
 	/*
 	* 		newBdd:
@@ -191,9 +189,7 @@ package main
 	* Description: 		
 	*		Méthode permettant d'ouvrir une connection vers une base de données.
 	*/
-	
-	
-	func newBddResultE(cheminBdd string)(*BddResultE){
+	/*func newBddResultE(cheminBdd string)(*BddResultE){
 		base := new(BddResultE)
 		base.cheminbdd = cheminBdd
 		base.chemincsv = ""
@@ -205,7 +201,7 @@ package main
 		base.resultat = new(sql.Rows)
 		
 		return base
-	}
+	}*/
 	/*
 	* 		col_id2name:
 	* Paramètres:
@@ -219,7 +215,7 @@ package main
 	*/
 	
 	
-	func col_id2name2(col_num int, value string)(string, string){
+	/*func col_id2name3(col_num int, value string)(string, string){
 		var col_idr string
 		
 		switch col_num{
@@ -236,5 +232,49 @@ package main
 				log.Fatal("Numéro invalide")
 			}
 		return col_idr, value
+	}*/
+	
+	// Enregistrer les épreuves dans le tableau
+/*func getConfigurationEpreuve1()(*ConfigurationEpreuve){
+	file, err := os.Open("config/ConfigurationEpreuve.csv")
+	if err != nil {
+		fmt.Println("Impossible d'ouvrir le fichier \"ConfigurationEpreuve\": " )
+		log.Fatal(err)
 	}
+	defer file.Close()
+	
+	
+	var firstCall bool
+	firstCall = true
+	var nextconfig *ConfigurationEpreuve
+	
+	scanner := bufio.NewScanner(file)
+	//On clear l'ancien tableau:
+	//p.cfgEpreuves = p.cfgEpreuves[:0]
+	
+	for scanner.Scan() {
+		info := strings.Split(scanner.Text(), ";")
+		if !firstCall{
+		ordre, _ := strconv.Atoi(info[0])
+		seuilMin, _ := strconv.Atoi(info[2])
+		seuilMax, _ := strconv.Atoi(info[3])
+		nbParPassage, _ := strconv.Atoi(info[4])
+		dureeEchauffement, _ := strconv.Atoi(info[5])
+		dureePassage, _ := strconv.Atoi(info[6])
+		dureeAppel, _ := strconv.Atoi(info[7])
+		surveillance, _ := strconv.Atoi(info[8])
+		battementSerie, _ := strconv.Atoi(info[9])
+		battementEpreuve, _ := strconv.Atoi(info[10])
+	
+		nextconfig = newConfigurationEpreuve(ordre, info[1], seuilMin, seuilMax, nbParPassage, dureeEchauffement, dureePassage, dureeAppel, surveillance,
+												battementSerie,battementEpreuve, info[11])
+		}
+		firstCall = false
+	}
+	
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return nextconfig
+}*/
 	

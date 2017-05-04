@@ -346,3 +346,53 @@ package main
 	
 	
 	
+	/*
+	*
+	*
+	*/
+	func getConfigurationEpreuve1()([]*ConfigurationEpreuve){
+	file, err := os.Open("config/ConfigurationEpreuve.csv")
+	if err != nil {
+		fmt.Println("Impossible d'ouvrir le fichier \"ConfigurationEpreuve\": " )
+		log.Fatal(err)
+	}
+	defer file.Close()
+	
+	
+	var firstCall bool
+	firstCall = true
+	var nextconfig *ConfigurationEpreuve
+	
+	scanner := bufio.NewScanner(file)
+	//On clear l'ancien tableau:
+	var tabConfig[] *ConfigurationEpreuve 
+	tabConfig=tabConfig[:0]
+	
+	for scanner.Scan() {
+		info := strings.Split(scanner.Text(), ";")
+		if !firstCall{
+		ordre, _ := strconv.Atoi(info[0])
+		seuilMin, _ := strconv.Atoi(info[2])
+		seuilMax, _ := strconv.Atoi(info[3])
+		nbParPassage, _ := strconv.Atoi(info[4])
+		dureeEchauffement, _ := strconv.Atoi(info[5])
+		dureePassage, _ := strconv.Atoi(info[6])
+		dureeAppel, _ := strconv.Atoi(info[7])
+		surveillance, _ := strconv.Atoi(info[8])
+		battementSerie, _ := strconv.Atoi(info[9])
+		battementEpreuve, _ := strconv.Atoi(info[10])
+	
+		nextconfig = newConfigurationEpreuve(ordre, info[1], seuilMin, seuilMax, nbParPassage, dureeEchauffement, dureePassage, dureeAppel, surveillance,
+												battementSerie,battementEpreuve, info[11])
+		tabConfig=append(tabConfig,nextconfig)
+		}
+		firstCall = false
+	}
+	
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
+	}
+	return tabConfig
+}
+	
+	

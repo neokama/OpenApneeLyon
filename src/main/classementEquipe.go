@@ -19,7 +19,7 @@ package main
 	}
 	
 	func newClassementE(id int, equipe string, point int)(*ClassementEquipe){
-		boardE := new(Classement)
+		boardE := new(ClassementEquipe)
 		boardE.id = id
 		boardE.equipe = equipe
 		boardE.point = point
