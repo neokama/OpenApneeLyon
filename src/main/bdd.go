@@ -9,7 +9,6 @@
 	"os"
 	"bufio"
 	"strings"
-	"regexp"
 	"time"
 	)
 	
@@ -118,7 +117,10 @@
 	*/
 
 	func (base Bdd) addCompetiteur(comp *Competiteur){
-		
+		var test bool 
+		test = comp.check()
+	
+		if (test) {
 		_, base.err = base.db.Exec("INSERT INTO competiteurs (prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2) VALUES('" +
 		comp.prenom + "','" +
 		comp.nom + "','" +
@@ -129,8 +131,9 @@
 		strconv.Itoa(comp.annonce1) + ",'" +
 		comp.epreuve2 + "'," +
 		strconv.Itoa(comp.annonce2) + ")")
-		
-		
+		} else {
+			log.Fatal(fmt.Sprint("Erreur lors de l'ajout du compétiteur ",comp.prenom," ",comp.nom,". données entrées eronnées."))
+		}
 		
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout: \n", base.err)
@@ -252,88 +255,29 @@
 			log.Fatal(err)
 		}
 		defer file.Close()
-	
 		var firstCall bool
 		
 		firstCall = true
 		
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
-			var verif0 bool = false
-			var verif1 bool = false
-			var verif2 bool = false
-			var verif3 bool = false
-			var verif4 bool = false
-			var verif5 bool = false
-			var verif6 bool = false
-			var verif7 bool = false
-			var verif8 bool = false
 			info := strings.Split(scanner.Text(), ";")
 			if !firstCall{
-			temps1,errr := strconv.Atoi(info[6])
-			temps2,er := strconv.Atoi(info[8])
-			if er != nil {
-			log.Fatal(er)
-			}
-			if errr != nil {
-			log.Fatal(errr)
-			}
-			for n := 0; n < 9; n++{
-			
-				switch(n){
-				case 0 : match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[0] )
-					if(match){
-					verif0 =true
-					}
-				case 1:  
-				match, _ := regexp.MatchString("([:alpha:]*)([:digit:]{0})", info[1] )
-					if(match){
-					verif1 =true
-					}
-				case 2 : 
-				match, _ := regexp.MatchString("([F|H]{1})", info[2] )
-				 if(match){
-				 verif2 = true
+				temps1,errr := strconv.Atoi(info[6])
+				temps2,er := strconv.Atoi(info[8])
+				if er != nil {
+				log.Fatal(er)
 				}
-				case 3 : 
-				match, _ := regexp.MatchString("([:digit:]*)+([:alpha:]*)", info[3] )
-					if(match){
-					verif3 =true
-					}
-				case 4 : 
-				match, _ := regexp.MatchString("([:alpha:]*)", info[4] )
-					 if(match){
-					verif4 =true
-					}
-				case 5 : 
-					if(info[5]=="Statique" || info[5]=="Speed 100" || info[5]=="DWF" || info[5]=="DNF" || info[5]=="16*50" || info[5]=="sta" || info[5]=="spd" || info[5]=="dwf" || info[5]=="dnf" || info[5]=="1650"){
-					verif5 =true
-					}
-				case 6 : 
-				match, _ := regexp.MatchString("([[:digit:]]{1,5})", info[6] )
-					if(match){
-					verif6 =true
-					}
-				case 7 : 
-					if(info[7]=="Statique" || info[7]=="Speed 100" || info[7]=="DWF" || info[7]=="DNF" || info[7]=="16*50"|| info[5]=="sta" || info[5]=="spd" || info[5]=="dwf" || info[5]=="dnf" || info[5]=="1650"){
-					verif7 =true
-					}
-				case 8 : 
-				match, _ := regexp.MatchString("([[:digit:]]{1,4})", info[8] )
-					if(match){
-					verif8 =true
-					}
+				if errr != nil {
+				log.Fatal(errr)
 				}
-			}
-			if (verif0 && verif1 && verif2 && verif3 && verif4 && verif5 && verif6 && verif7 && verif8){
-			comp := newCompetiteur(0, info[0], info[1], info[2], info[3], info[4], info[5], temps1, info[7],temps2)
-			base.addCompetiteur(comp)
-			}else{
-			fmt.Println("Echec lors de l'ajout de "+ info[0] + " " + info[1])
-			}
+
+				comp := newCompetiteur(0, info[0], info[1], info[2], info[3], info[4], info[5], temps1, info[7],temps2)
+				base.addCompetiteur(comp)
 			}
 			firstCall = false
 		}
+			
 
 		if err := scanner.Err(); err != nil {
 			log.Fatal(err)
