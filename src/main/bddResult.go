@@ -64,8 +64,7 @@ package main
 	* 		competiteurs de la base de données
 	*/
 	
-	func (base BddResult) displayCompetiteur(){
-	
+	func (base BddResult) displayCompetiteur1(){
 		base.resultat, base.err = base.db.Query("SELECT * FROM classement")
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
@@ -73,15 +72,15 @@ package main
 		}
 		defer base.resultat.Close()
 		
-		var info [7]string
+		var info [9]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8])
 		}
 	}
 	
@@ -111,15 +110,15 @@ package main
 		}
 		defer base.resultat.Close()
 		
-		var info [7]string
+		var info [9]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8])
 		}
 	}
 	
@@ -137,18 +136,18 @@ package main
 
 	func (base BddResult) addCompetiteur(board *Classement){
 		
-		_, base.err = base.db.Exec("INSERT INTO classement ( prenom, nom, sexe, equipe, epreuve, resultat) VALUES('" +
+		_, base.err = base.db.Exec("INSERT INTO classement ( prenom, nom, sexe, equipe, epreuve, annonce, resultat, place) VALUES('" +
 		board.prenom + "','" +
 		board.nom + "','" +
 		board.sexe + "','" +
 		board.equipe + "','" +
 		board.epreuve + "'," +
-		strconv.Itoa(board.resultat) + ")")
-		
-		
-		
+		strconv.Itoa(board.annonce) + "," +
+		strconv.Itoa(board.resultat) + "," +
+		strconv.Itoa(board.place) + ")")
+	
 		if base.err != nil {
-			fmt.Println("Echec lors de l'ajout : "+ board.nom +" "+ board.prenom, base.err)
+			fmt.Println("Echec lors de l'ajout1 : "+ board.nom +" "+ board.prenom, base.err)
 			} else {
 			fmt.Println("Ajout validé du resulat compétiteur " + board.nom +" "+ board.prenom)
 		}
@@ -215,14 +214,19 @@ package main
 			if !firstCall{
 			temps,er := strconv.Atoi(info[6])
 			idd,errr := strconv.Atoi(info[0])
+			base2 := newBdd("database/OpenApneeLyon")
+			annonce := base2.recupAnnonce(info[1],info[2],info[3], info[5])
 			if er != nil {
 			log.Fatal(er)
 			}
 			if errr != nil {
 			log.Fatal(errr)
 			}
-			classemt := newClassement(idd, info[1], info[2], info[3],info[4], info[5], temps)
+			
+			classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps,0)
+			//classemt.display()
 			base.addCompetiteur(classemt)
+			
 			}
 			firstCall = false
 		}
@@ -236,6 +240,59 @@ package main
 		//fmt.Println("\r\n")
 		
 	}
+	/*
+	*
+	*
+	*
+	*/
+	func (base Bdd)recupAnnonce(prenom string, nom string, sexe string, epreuve string)(int){
+	var id_col string
+	id_col, prenom = col_id2name2(2, prenom)
+	var id_col2 string
+	id_col2, nom = col_id2name2(3, nom)
+	var id_col3 string
+	id_col3, sexe = col_id2name2(4, sexe)
+	//var id_col4 string
+	//id_col3, epreuve = col_id2name2(6, epreuve)
+	
+		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + prenom + " AND " + id_col2 + " = " + nom + " AND " + id_col3 + " = " + sexe)
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [10]string
+		var resultat int
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+			if (epreuve==info[6]){
+			resultat,_ = strconv.Atoi(info[7])
+			}else if (epreuve==info[8]){
+			resultat,_ = strconv.Atoi(info[9])
+			} else{
+			resultat = 0
+			}
+			
+		}
+		return resultat
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	/*
 	* 		newBdd:
 	* Paramètres:
@@ -295,7 +352,13 @@ package main
 				col_idr = "epreuve"
 				value = fmt.Sprint("'",value,"'")
 			case 7:
+				col_idr = "annonce"
+				value = fmt.Sprint("'",value,"'")
+			case 8:
 				col_idr = "resultat"
+				value = fmt.Sprint("'",value,"'")
+			case 9:
+				col_idr = "place"
 				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
@@ -330,17 +393,25 @@ package main
 			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
 		 defer base.resultat.Close()
-	var info [7]string
+	var info [9]string
+	var numPlaceF int =1
+	var numPlaceH int =1
+	var sexe string ="F"
 	
-	file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Equipe; Epreuve; Resultat\r\n"))
+	file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place\r\n"))
 			
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)
-		}
-		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],"\r\n"))
+				log.Fatal(base.err)}
+			if(info[3]==sexe){
+				info[8]=strconv.Itoa(numPlaceF)
+				numPlaceF=numPlaceF+1
+			}else{
+				info[8]=strconv.Itoa(numPlaceH)
+				numPlaceH=numPlaceH+1}
+		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],"\r\n"))
 		}
 	}
 	
