@@ -36,12 +36,12 @@ import (
 	func (pers Competiteur) check()(bool){
 		var verif = true
 		verif = true
-		match, _ := regexp.MatchString("([:alpha:]*)", pers.prenom )
+		match, _ := regexp.MatchString("^[A-Za-z-]*$", pers.prenom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du prénom.")
 			}
-		match, _ = regexp.MatchString("([:alpha:]*)", pers.nom )
+		match, _ = regexp.MatchString("^[A-Za-z-]*$", pers.nom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom.")
@@ -51,12 +51,12 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du sexe.")
 			}
-		match, _ = regexp.MatchString("([:digit:]*)+([:alpha:]*)", pers.num_license )
+		match, _ = regexp.MatchString("^[A-Za-z0-9]*$", pers.num_license )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du numéro de license.")
 			}
-		match, _ = regexp.MatchString("([:alpha:]*)", pers.equipe )
+		match, _ = regexp.MatchString("^[A-Za-z0-9- _]*$", pers.equipe )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom d'équipe.")
