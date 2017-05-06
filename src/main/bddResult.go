@@ -72,15 +72,15 @@ package main
 		}
 		defer base.resultat.Close()
 		
-		var info [9]string
+		var info [11]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10])
 		}
 	}
 	
@@ -110,15 +110,15 @@ package main
 		}
 		defer base.resultat.Close()
 		
-		var info [9]string
+		var info [11]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10])
 		}
 	}
 	
@@ -136,7 +136,7 @@ package main
 
 	func (base BddResult) addCompetiteur(board *Classement){
 		
-		_, base.err = base.db.Exec("INSERT INTO classement ( prenom, nom, sexe, equipe, epreuve, annonce, resultat, place) VALUES('" +
+		_, base.err = base.db.Exec("INSERT INTO classement ( prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc) VALUES('" +
 		board.prenom + "','" +
 		board.nom + "','" +
 		board.sexe + "','" +
@@ -144,7 +144,9 @@ package main
 		board.epreuve + "'," +
 		strconv.Itoa(board.annonce) + "," +
 		strconv.Itoa(board.resultat) + "," +
-		strconv.Itoa(board.place) + ")")
+		strconv.Itoa(board.place) + "," +
+		strconv.Itoa(board.rslt) + "," +
+		strconv.Itoa(board.plc) + ")")
 	
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout1 : "+ board.nom +" "+ board.prenom, base.err)
@@ -223,8 +225,7 @@ package main
 			log.Fatal(errr)
 			}
 			
-			classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps,0)
-			//classemt.display()
+			classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps,0,0,0)
 			base.addCompetiteur(classemt)
 			
 			}
@@ -233,12 +234,7 @@ package main
 
 		if err := scanner.Err(); err != nil {
 			log.Fatal(err)
-		}
-		// Verification de l'unicité
-		//fmt.Println("Unicité:")
-		//base.uniqueness()
-		//fmt.Println("\r\n")
-		
+		}	
 	}
 	/*
 	*
@@ -281,18 +277,7 @@ package main
 		}
 		return resultat
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	/*
 	* 		newBdd:
 	* Paramètres:
@@ -301,8 +286,6 @@ package main
 	* Description: 		
 	*		Méthode permettant d'ouvrir une connection vers une base de données.
 	*/
-	
-	
 	func newBddResult(cheminBdd string)(*BddResult){
 		base := new(BddResult)
 		base.cheminbdd = cheminBdd
@@ -360,6 +343,12 @@ package main
 			case 9:
 				col_idr = "place"
 				value = fmt.Sprint("'",value,"'")
+			case 10:
+				col_idr = "rslt"
+				value = fmt.Sprint("'",value,"'")
+			case 11:
+				col_idr = "plc"
+				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
 			}
@@ -393,15 +382,15 @@ package main
 			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
 		 defer base.resultat.Close()
-	var info [9]string
+	var info [11]string
 	var numPlaceF int =1
 	var numPlaceH int =1
 	var sexe string ="F"
 	
-	file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place\r\n"))
+	file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe\r\n"))
 			
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}
@@ -411,11 +400,59 @@ package main
 			}else{
 				info[8]=strconv.Itoa(numPlaceH)
 				numPlaceH=numPlaceH+1}
-		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],"\r\n"))
+				
+				
+			switch(info[5]){
+			case "spd": 
+			info[9]=calculResultat("spd",info[6],info[7])
+			break
+			case "1650":
+			break
+			case "dnf":
+			break
+			case "dwf":
+			break
+			case "sta":
+			break
+			}
+		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
+		
 		}
 	}
 	
+	func calculResultat(epreuve string, annonce string, resultat string)(string){
+	var sMin int
+	var sMax int
+	var res string
+	var result int
+	var annon int
+	var tab[] *ConfigurationEpreuve
+	result,_ =strconv.Atoi(resultat)
+	annon,_ =strconv.Atoi(annonce)
+	tab=getConfigurationEpreuve1()
 	
+	for i := 0; i < 5; i++{
+	if (tab[i].id==epreuve){
+	sMin=tab[i].seuilMin
+	sMax=tab[i].seuilMax
+	}
+	}
+	max:=annon+sMax
+	//min:=annon-sMin
+	
+	if(result>max){
+	tot :=(result-(annon+20))*3
+	res=strconv.Itoa(tot)
+	}else{ 
+	if(result<annon-sMin){
+	tot2:=annon-10
+	res=strconv.Itoa(tot2)
+	}else{
+	res=resultat
+	}
+	}
+	return res
+	}
 	
 	/*
 	*
@@ -465,5 +502,6 @@ package main
 	}
 	return tabConfig
 }
+
 	
 	

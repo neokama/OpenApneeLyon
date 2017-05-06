@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	//"strings"
 	)
 	
 	
@@ -86,7 +87,4 @@ func main() {
 	// fmt.Println("\n")
 	//base.displayCompetiteur()
 	fmt.Println("\n")
-	tab:=getConfigurationEpreuve1()
-	tab[0].display()
-	//fmt.Println(tab[0])
 }
