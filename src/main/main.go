@@ -64,11 +64,11 @@ func main() {
 	
 	
 	
-	//Parsage()
+	Parsage()
 
 	
 	// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
-	base := newBddResult("database/OpenApneeLyon")
+	/*base := newBddResult("database/OpenApneeLyon")
 	base.reset()
 	fmt.Println("\n")
 	// base.displayCompetiteur()
@@ -86,5 +86,5 @@ func main() {
 	// base.modifCompetiteur("ARI1", 2, "nouveau-prenom")
 	// fmt.Println("\n")
 	//base.displayCompetiteur()
-	fmt.Println("\n")
+	fmt.Println("\n")*/
 }

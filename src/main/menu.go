@@ -6,6 +6,170 @@ import "bufio"
 import "os"
 
 
+
+/*
+* 		Menu.readString:
+* Description: 
+* 		Méthode permettant de vérifier si un mot comporte un caratère accentué
+*/
+
+func checkCaracteres() (motFinal string) {
+	Ascii := convertToAscii()
+	motFinal = ""
+	i := 0
+	for (i < len(Ascii)) {
+		if (Ascii[i] == 83 && Ascii[i+1] == 204 && Ascii[i+2] == 140){
+			motFinal += "è"
+			i += 2
+		} else if (Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 136) {
+			motFinal += "õ"
+			i += 2
+		} else if (Ascii[i] == 99 && Ascii[i+1] == 204 && Ascii[i+2] == 167) {
+			motFinal += "þ"
+			i += 2
+		} else if (Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 129) {
+			motFinal += "ß"
+			i += 2
+		} else if (Ascii[i] == 105 && Ascii[i+1] == 204 && Ascii[i+2] == 128) {
+			motFinal += "ý"
+			i += 2
+		}
+		if ((Ascii[i] < 65) || (Ascii[i] > 90 && Ascii[i] < 97) || (Ascii[i] > 122)) {
+			lettre, j := traduireCaractere(i, Ascii)
+			i = j
+			motFinal += lettre
+		} else {
+			motFinal += string(Ascii[i])
+		}
+		i += 1
+	}
+	return motFinal
+}
+
+/*
+* 		Menu.traduireCaractere:
+* Description: 
+* 		Méthode permettant de reconnaitre un caractère accentué à partir de son code Ascii
+*/
+
+func traduireCaractere(i int, Ascii []byte) (lettre string, j int) {
+	lettre = ""
+	if (Ascii[i] == 226 && Ascii[i+1]  == 128 && Ascii[i+2] == 154) {
+		lettre = "é"
+		i += 2
+	} else if (Ascii[i] == 194 && Ascii[i+1] == 160) {
+		lettre = "á"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 166){
+		lettre = "à"
+		i += 2
+	} else if (Ascii[i] == 198 && Ascii[i+1] == 146) {
+		lettre = "â"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 158) {
+		lettre = "ä"
+		i += 2
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 160) {
+		lettre = "å"
+		i += 2
+	} else if (Ascii[i] == 195 && Ascii[i+1] == 134) {
+		lettre = "ã"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 152) {
+		lettre = "æ"
+		i += 2
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 161) {
+		lettre = "ç"
+		i += 2
+	} else if (Ascii[i] == 203 && Ascii[i+1] == 134) {
+		lettre = "ê"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 176) {
+		lettre = "ë"
+		i += 2
+	} else if (Ascii[i] == 194 && Ascii[i+1] == 141) {
+		lettre = "ì"
+		i += 1
+	} else if (Ascii[i] == 197 && Ascii[i+1] == 146) {
+		lettre = "î"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 185) {
+		lettre = "ï"
+		i += 2
+	} else if (Ascii[i] == 194 && Ascii[i+1] == 164) {
+		lettre += "ñ"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 156) {
+		lettre = "ô"
+		i += 2
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 157) {
+		lettre = "ö"
+		i += 2
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 186) {
+		lettre = "ø"
+		i += 2
+	} else if (Ascii[i] == 195 && Ascii[i+1] == 144) {
+		lettre = "ð"
+		i += 1
+	} else if (Ascii[i] == 203 && Ascii[i+1] == 156) {
+		lettre = "ÿ"
+		i += 1
+	} else if (Ascii[i] == 194 && Ascii[i+1] == 129) {
+		lettre = "ü"
+		i += 1
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 148) {
+		lettre = "ù"
+		i += 1
+	} else if (Ascii[i] == 194 && Ascii[i+1] == 163) {
+		lettre = "ú"
+		i += 1
+	} else if (Ascii[i] == 39) {
+		lettre = "'"
+	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 147) {
+		lettre = "û"
+		i += 2
+	} else if (Ascii[i] == 45) {
+		lettre = "-"
+	} else if (Ascii[i] == 95) {
+		lettre = "_"
+	} else if (Ascii[i] == 32) {
+		lettre = " "
+	}
+	j = i
+	return lettre, j
+}
+
+/*
+* 		Menu.convertToAscii:
+* Description: 
+* 		Méthode permettant de convertir un caractère en son code Ascii
+*/
+
+func convertToAscii() (Ascii []byte) {
+	equipe := read()
+	Ascii = []byte(equipe)
+	return Ascii
+}
+
+/*
+* 		Menu.read:
+* Description: 
+* 		Méthode permettant de lire un String entré par l'utilisateur à l'entrée standard même ci celui-ci contient des accents
+*/
+
+func read() (string) {
+	scanner := bufio.NewScanner(os.Stdin)
+	equipe := ""
+	for scanner.Scan(){
+		equipe = scanner.Text()
+		if (equipe != ""){
+			break
+		}
+	}
+	return equipe
+}
+
+
 /*
 * 		Menu.readString:
 * Description: 
@@ -88,35 +252,15 @@ func Parsage(){
 			var annonce1 int
 			var epreuve2 string
 			var annonce2 int
-			scanner := bufio.NewScanner(os.Stdin)
 			i := 2 
 			for i!= 11 {
-				if i == 1{
-					fmt.Println("Quel est l'id du competiteur que vous souhaitez ajouter ? \n")
-					in , err := readInt(1)
-					for (err != nil) {
-						fmt.Println("Veuillez saisir un entier positif svp \n")
-						in, err = readInt(1)
-						continue
-						fmt.Println(err)
-					}
-					id = in[0]
-					i++ 
-				} else if i ==2 {
+				if i ==2 {
 					fmt.Println("Quel est le prénom du competiteur que vous souhaitez ajouter ? \n")
-					in , err := readString(1)
-					if (err != nil) {
-						fmt.Println(err)
-					}
-					prenom = in[0]
+					prenom = checkCaracteres()
 					i++ 
 				} else if i == 3 {
 					fmt.Println("Quel est le nom du competiteur que vous souhaitez ajouter ? \n")
-					in , err := readString(1)
-					if (err != nil) {
-						fmt.Println(err)
-					}
-					nom = in[0]
+					nom = checkCaracteres()
 					i++ 
 				} else if i == 4 {
 					fmt.Println("Quel est le sexe du competiteur que vous souhaitez ajouter (H/F) ? \n")
@@ -139,19 +283,7 @@ func Parsage(){
 					i++ 
 				} else if i == 6 {
 					fmt.Println("Quel est l'équipe du competiteur que vous souhaitez ajouter ? \n")
-					//scanner := bufio.NewScanner(os.Stdin)
-					for scanner.Scan(){
-						equipe = scanner.Text()
-						//fmt.Println(s)
-						if (equipe != ""){
-							break
-						}
-					}
-					/*in , err := readString(1)
-					if (err != nil) {
-						fmt.Println(err)
-					}
-					equipe = in[0]*/
+					equipe = checkCaracteres()
 					i++ 
 				} else if i == 7 {
 					fmt.Println("Quel est la première épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
@@ -376,7 +508,3 @@ func Parsage(){
 		fmt.Println("Vous pouvez acceder aux options de gestion des resultats en tapant -r=help apres votre derniere commande\n")
 	}	
 }
-
-/* func main(){
-	Parsage()
-} */
