@@ -217,7 +217,9 @@
 			t := time.Now()
 			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 		
-		file, err := os.Create(fmt.Sprint("export/",date,"-competiteurs.csv"))
+		file, err := os.Create(fmt.Sprint("export/archives/",date,"-competiteurs.csv"))
+		file2, err := os.Create(fmt.Sprint("export/competiteurs.csv"))
+		
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 				log.Fatal(err)
@@ -225,8 +227,8 @@
 		
 			var info [10]string
 			
-			
-			file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2\r\n"))
+			file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2\r\n"))
+			file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2\r\n"))
 			
 			for base.resultat.Next() {
 				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
@@ -235,6 +237,7 @@
 					log.Fatal(base.err)
 			}
 		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
+		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
 		}
 	}
 	
@@ -691,14 +694,15 @@
 		t := time.Now()
 		date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 		
-		file, err := os.Create(fmt.Sprint("export/",date,"-FichierVerification.txt"))
-		
+		file, err := os.Create(fmt.Sprint("export/archives/",date,"-FichierVerification.txt"))
+		file2, err := os.Create(fmt.Sprint("export/FichierVerification.txt"))
 		if err != nil {
 				fmt.Println("Erreur lors de la création du fichier verification\n")
 				log.Fatal(err)
 			}
 		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !\r\n")
 		file.WriteString("\r\n")
+		file2.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !\r\n\r\n")
 		
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT DISTINCT equipe FROM competiteurs "))
 		if base.err != nil {
@@ -744,17 +748,21 @@
 			res2="Erreur sur nombres épreuves"}
 			
 			file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
+			file2.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
 			
 			if (nb_comp!="5"){
 				file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
+				file2.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
 			}
 			
 			if (nb_sexeH != "3"){
 				file.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
+				file2.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
 			}
 			
 			if (nb_sexeF != "2"){
 				file.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
+				file2.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
 			}
 			
 		

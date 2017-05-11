@@ -207,16 +207,15 @@ func (p *Planning) generationHoraires(fichier string){
 func (p *Planning) exportPlanCompetition(){
 	t := time.Now()
 	date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
-		file, err := os.Create(fmt.Sprint("export/",date,"-PlanningCompetition.csv"))
+		file, err := os.Create(fmt.Sprint("export/archives/",date,"-PlanningCompetition.csv"))
+		file2, err := os.Create(fmt.Sprint("export/PlanningCompetition.csv"))
 		if err != nil {
-			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
+			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export/archives\" dans le dossier de l'application?")
 			log.Fatal(err)
 		}
 	
-		
-		
-	file.WriteString(fmt.Sprint("Id Epreuve; HeureOuverture(1ereEpreuve); Echauffement; Annonce; Temps/Series; nbSeries; Battement Epreuve\r\n"))
-		
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId Epreuve; HeureOuverture(1ereEpreuve); Echauffement; Annonce; Temps/Series; nbSeries; Battement Epreuve\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId Epreuve; HeureOuverture(1ereEpreuve); Echauffement; Annonce; Temps/Series; nbSeries; Battement Epreuve\r\n"))
 	for i := 0; i < len(p.cfgEpreuves); i++ {
 		var nbSeries int
 	
@@ -232,6 +231,7 @@ func (p *Planning) exportPlanCompetition(){
 		}
 		battementEp := p.cfgEpreuves[i].battementEpreuve
 		file.WriteString(fmt.Sprint( idEpreuve,";",heureOuverture,";",echauffement,";",appel,";",tempsSerie,";",nbSeries,";",battementEp,"\r\n"))
+		file2.WriteString(fmt.Sprint( idEpreuve,";",heureOuverture,";",echauffement,";",appel,";",tempsSerie,";",nbSeries,";",battementEp,"\r\n"))
 	}
 }
 
@@ -240,6 +240,7 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 
 
 	file, err := os.OpenFile(fichier,os.O_APPEND|os.O_WRONLY, 0777)
+	file2, err := os.OpenFile("export/PlanningEpreuve.csv",os.O_APPEND|os.O_WRONLY, 0777)
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)
@@ -247,6 +248,10 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 
 			for j := 0; j < len(p.planEpreuves); j++ {
 						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].idComp,";",
+						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
+						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].heurePassage,"\r\n"))
+						
+						file2.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].idComp,";",
 						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
 						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].heurePassage,"\r\n"))
 			}
@@ -257,15 +262,16 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 func (p *Planning) generationPlanning(){
 	t := time.Now()
 	date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
-	fichier := fmt.Sprint("export/",date,"-PlanningEpreuve.csv")
+	fichier := fmt.Sprint("export/archives/",date,"-PlanningEpreuve.csv")
 	
 	file, err := os.Create(fichier)
+	file2, err := os.Create("export/PlanningEpreuve.csv")
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier planning:\n")
 				log.Fatal(err)
 			}
-	file.WriteString(fmt.Sprint("Epreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage\r\n"))
-			
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage\r\n"))
 		p.getCompetiteur()
 		p.getConfigurationEpreuve()
 

@@ -1,0 +1,95 @@
+Epreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage
+sta;1;1;47;léo;Dôl;H;Bonjour;123;63;183;10:15
+sta;1;2;13;Rodoplhe;DUCRUIX;H;Enjoy And Relax;210;150;270;10:15
+sta;1;3;34;Stéphane;PETTENUZZO;H;LIMULES;215;155;275;10:15
+sta;1;4;27;Christopher;BRATANIC;H;Les Cormorans 2;230;170;290;10:15
+sta;2;1;41;Omr;SALEH;H;SOLO;240;180;300;10:27
+sta;2;2;25;Michelle;QUERY;F;Les Cormorans 1;250;190;310;10:27
+sta;2;3;22;Alexandre;GASS;H;Les Cormorans 1;265;205;325;10:27
+sta;2;4;15;Stephanie;DELICOURT;F;Enjoy And Relax;270;210;330;10:27
+sta;3;1;10;Benoît;ROUX;H;CYRNEA;270;210;330;10:39
+sta;3;2;29;Xavier;HERENT;H;Les Cormorans 2;270;210;330;10:39
+sta;3;3;46;coralie;MARIE;F;Sportpleizh;285;225;345;10:39
+sta;3;4;7;Anne;BORGAT;F;CYRNEA;300;240;360;10:39
+sta;4;1;19;Charles;TISSOT;H;Imashi;300;240;360;10:51
+sta;4;2;31;Olivier;DURET;H;LIMULES;300;240;360;10:51
+sta;4;3;38;Philippe;GUILLOUX;H;SavoyOuBien?;330;270;390;10:51
+sta;4;4;20;Richard;JAUFFRAUD;H;Imashi;345;285;405;10:51
+sta;5;1;37;Aurélien;LANOISELIER;H;SavoyOuBien?;360;300;420;11:03
+sta;5;2;4;Katerina;SURANSKA;F;Apneaman, Praha, Czech Republic;360;300;420;11:03
+sta;5;3;1;Martin;ZAJAC;H;Apneaman, Praha, Czech Republic;375;315;435;11:03
+sta;5;4;42;Christian;VOGLER;H;Sportpleizh;390;330;450;11:03
+dwf;1;1;30;Melissa;REIN;F;Les Cormorans 2;75;50;100;11:25
+dwf;1;2;26;Rachel;LEITNER;F;Les Cormorans 2;80;55;105;11:25
+dwf;2;1;47;léo;Dôl;H;Bonjour;83;58;108;11:34
+dwf;2;2;5;Jana;SKROBOVA;F;Apneaman, Praha, Czech Republic;100;75;125;11:34
+dwf;3;1;6;jean-david;SOULA;H;CYRNEA;100;75;125;11:43
+dwf;3;2;8;Estelle;RIGAUD;F;CYRNEA;100;75;125;11:43
+dwf;4;1;33;Frédérique;CORDIER;F;LIMULES;100;75;125;11:52
+dwf;4;2;24;Loraine;HARTMANN;F;Les Cormorans 1;100;75;125;11:52
+dwf;5;1;43;Laetitia;ORSKI SIMONET;F;Sportpleizh;113;88;138;12:01
+dwf;5;2;16;Albane;GAUBERT;F;Imashi;115;90;140;12:01
+dwf;6;1;35;Marie;DEVANLAY;F;LIMULES;120;95;145;12:10
+dwf;6;2;17;Caroline;REGNARD;F;Imashi;126;101;151;12:10
+dwf;7;1;14;Aude;GATA;F;Enjoy And Relax;140;115;165;12:19
+dwf;7;2;44;Patrice;PIERRAT;H;Sportpleizh;140;115;165;12:19
+dwf;8;1;39;Marie-pierre;EKSTETS;F;SavoyOuBien?;150;125;175;12:28
+dwf;8;2;40;Emilie;VERNIER;F;SavoyOuBien?;150;125;175;12:28
+dwf;9;1;23;Olivier;ELU;H;Les Cormorans 1;175;150;200;12:37
+dwf;9;2;11;Pascal;HURON;H;Enjoy And Relax;200;175;225;12:37
+dwf;10;1;2;Michal;RISIAN;H;Apneaman, Praha, Czech Republic;200;175;225;12:46
+spd;1;1;18;Kevin;OLLIVO;H;Imashi;45;35;65;13:05
+spd;1;2;22;Alexandre;GASS;H;Les Cormorans 1;45;35;65;13:05
+spd;1;3;3;Michal;SVADLENKA;H;Apneaman, Praha, Czech Republic;50;40;70;13:05
+spd;1;4;42;Christian;VOGLER;H;Sportpleizh;50;40;70;13:05
+spd;2;1;9;Mathieu;CARCHI;H;CYRNEA;50;40;70;13:12
+spd;2;2;1;Martin;ZAJAC;H;Apneaman, Praha, Czech Republic;50;40;70;13:12
+spd;2;3;21;Alexandre;BRATANIC;H;Les Cormorans 1;55;45;75;13:12
+spd;2;4;32;Stéphane;BERRUCAZ;H;LIMULES;60;50;80;13:12
+spd;3;1;37;Aurélien;LANOISELIER;H;SavoyOuBien?;60;50;80;13:19
+spd;3;2;36;Réda;GUEHRIA;H;SavoyOuBien?;60;50;80;13:19
+spd;3;3;27;Christopher;BRATANIC;H;Les Cormorans 2;60;50;80;13:19
+spd;3;4;45;Pascale;AUBRY;H;Sportpleizh;65;55;85;13:19
+spd;4;1;12;Michel;SGARRA;H;Enjoy And Relax;70;60;90;13:26
+spd;4;2;7;Anne;BORGAT;F;CYRNEA;70;60;90;13:26
+spd;4;3;28;François;BUZET;H;Les Cormorans 2;75;65;95;13:26
+spd;4;4;20;Richard;JAUFFRAUD;H;Imashi;75;65;95;13:26
+spd;5;1;34;Stéphane;PETTENUZZO;H;LIMULES;85;75;105;13:33
+spd;5;2;41;Omr;SALEH;H;SOLO;100;90;120;13:33
+spd;5;3;15;Stephanie;DELICOURT;F;Enjoy And Relax;120;110;140;13:33
+dnf;1;1;30;Melissa;REIN;F;Les Cormorans 2;50;25;75;13:50
+dnf;1;2;25;Michelle;QUERY;F;Les Cormorans 1;53;28;78;13:50
+dnf;2;1;29;Xavier;HERENT;H;Les Cormorans 2;65;40;90;13:59
+dnf;2;2;19;Charles;TISSOT;H;Imashi;70;45;95;13:59
+dnf;3;1;6;jean-david;SOULA;H;CYRNEA;75;50;100;14:08
+dnf;3;2;8;Estelle;RIGAUD;F;CYRNEA;75;50;100;14:08
+dnf;4;1;35;Marie;DEVANLAY;F;LIMULES;90;65;115;14:17
+dnf;4;2;17;Caroline;REGNARD;F;Imashi;92;67;117;14:17
+dnf;5;1;5;Jana;SKROBOVA;F;Apneaman, Praha, Czech Republic;95;70;120;14:26
+dnf;5;2;24;Loraine;HARTMANN;F;Les Cormorans 1;100;75;125;14:26
+dnf;6;1;43;Laetitia;ORSKI SIMONET;F;Sportpleizh;100;75;125;14:35
+dnf;6;2;14;Aude;GATA;F;Enjoy And Relax;100;75;125;14:35
+dnf;7;1;44;Patrice;PIERRAT;H;Sportpleizh;100;75;125;14:44
+dnf;7;2;33;Frédérique;CORDIER;F;LIMULES;103;78;128;14:44
+dnf;8;1;39;Marie-pierre;EKSTETS;F;SavoyOuBien?;110;85;135;14:53
+dnf;8;2;38;Philippe;GUILLOUX;H;SavoyOuBien?;125;100;150;14:53
+dnf;9;1;11;Pascal;HURON;H;Enjoy And Relax;150;125;175;15:02
+dnf;9;2;2;Michal;RISIAN;H;Apneaman, Praha, Czech Republic;160;135;185;15:02
+1650;1;1;18;Kevin;OLLIVO;H;Imashi;795;765;855;15:21
+1650;1;2;3;Michal;SVADLENKA;H;Apneaman, Praha, Czech Republic;890;860;950;15:21
+1650;1;3;23;Olivier;ELU;H;Les Cormorans 1;960;930;1020;15:21
+1650;1;4;26;Rachel;LEITNER;F;Les Cormorans 2;990;960;1050;15:21
+1650;1;5;9;Mathieu;CARCHI;H;CYRNEA;1020;990;1080;15:21
+1650;2;1;21;Alexandre;BRATANIC;H;Les Cormorans 1;1020;990;1080;15:44
+1650;2;2;4;Katerina;SURANSKA;F;Apneaman, Praha, Czech Republic;1050;1020;1110;15:44
+1650;2;3;40;Emilie;VERNIER;F;SavoyOuBien?;1080;1050;1140;15:44
+1650;2;4;31;Olivier;DURET;H;LIMULES;1080;1050;1140;15:44
+1650;2;5;45;Pascale;AUBRY;H;Sportpleizh;1080;1050;1140;15:44
+1650;3;1;36;Réda;GUEHRIA;H;SavoyOuBien?;1140;1110;1200;16:07
+1650;3;2;28;François;BUZET;H;Les Cormorans 2;1200;1170;1260;16:07
+1650;3;3;10;Benoît;ROUX;H;CYRNEA;1200;1170;1260;16:07
+1650;3;4;12;Michel;SGARRA;H;Enjoy And Relax;1260;1230;1320;16:07
+1650;3;5;46;coralie;MARIE;F;Sportpleizh;1315;1285;1375;16:07
+1650;4;1;16;Albane;GAUBERT;F;Imashi;1370;1340;1430;16:30
+1650;4;2;32;Stéphane;BERRUCAZ;H;LIMULES;1440;1410;1500;16:30
+1650;4;3;13;Rodoplhe;DUCRUIX;H;Enjoy And Relax;1560;1530;1620;16:30
