@@ -10,6 +10,7 @@
 	"bufio"
 	"strings"
 	"time"
+	"regexp"
 	)
 	
 	
@@ -145,7 +146,7 @@
 	/*
 	* 		Bdd.deleteCompetiteur:
 	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
+	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (1 => id/ 2 => équipe).
 	*	- value:	valeur à rechercher dans la colonne choisie.
 	*
 	* Description: 		
@@ -304,15 +305,20 @@
 	*/
 	
 	func (base Bdd) modifCompetiteur (id_comp int, col_num int, newvalue string){
-		
+		var test = true
 		col_id, value := col_id2name(col_num, newvalue)
 		
-		_, base.err = base.db.Exec("UPDATE competiteurs SET " + col_id + " = " + value + " WHERE id = " + strconv.Itoa(id_comp))
-		
-		if base.err != nil {
-			fmt.Println("Echec lors de la modification: \n", base.err)
+		test = verifValue(col_num, newvalue)
+		if (test){
+			_, base.err = base.db.Exec("UPDATE competiteurs SET " + col_id + " = " + value + " WHERE id = " + strconv.Itoa(id_comp))
+			
+			if base.err != nil {
+				fmt.Println("Echec lors de la modification: \n", base.err)
+			} else {
+				fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			}
 		} else {
-			fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			fmt.Println("Erreur lors de la modifications du compétiteur!")
 		}
 	}
 	
@@ -327,7 +333,50 @@
 	*		De plus, la valeur entrée ("value") est retournée au format adéquat pour une requête SQL
 	*		(Ex: "VariableString" => "'VariableString'")
 	*/
-	
+	func verifValue(col_num int, value string)(bool){
+		var verif = true
+		verif = true
+		switch col_num{
+		    case 2, 3:
+				match, _ := regexp.MatchString("[\\p{L}- ]*$", value )
+				if(!match){
+					verif =false
+					fmt.Println("Erreur! Format du prénom.")
+				}
+			case 4:
+				match, _ := regexp.MatchString("([F|H])", value )
+				if(!match || len(value) > 1){
+					verif =false
+					fmt.Println("Erreur! Format du sexe.")
+				}
+			case 5:
+				match, _ := regexp.MatchString("^[A-Za-z0-9]*$", value )
+				if(!match){
+					verif =false
+					fmt.Println("Erreur! Format du numéro de license.")
+				}
+			case 6:
+				match, _ := regexp.MatchString("[\\p{L}- _]*$", value )
+				if(!match){
+					verif =false
+					fmt.Println("Erreur! Format du nom d'équipe.")
+				}
+			case 7,9:
+				if(value!="sta" && value!="spd" && value!="dwf" && value!="dnf" && value!="1650"){
+					verif =false
+					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
+				}
+			case 8,10:
+				match, _ := regexp.MatchString("([[:digit:]])", value)
+				if(!match){
+					verif = false
+					fmt.Println("Erreur! Format du annonce1.")
+				}
+			default:
+				log.Fatal("Numéro de colone invalide")
+			}
+		return verif
+	}
 	
 	func col_id2name(col_num int, value string)(string, string){
 		var col_id string

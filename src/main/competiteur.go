@@ -35,13 +35,21 @@ import (
 	
 	func (pers Competiteur) check()(bool){
 		var verif = true
+		var re = regexp.MustCompile("[\\p{L}- ]*$")
 		verif = true
-		match, _ := regexp.MatchString("[\\p{L}- ]*$", pers.prenom )
+			
+			re = regexp.MustCompile(`[\p{L}- ]*$`)
+			var str = `Arnaud48`
+			for i, match := range re.FindAllString(str, -1) {
+				fmt.Println(match, "found at index", i)
+			}
+		
+		match := re.MatchString(pers.prenom)
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du prénom.")
 			}
-		match, _ = regexp.MatchString("[\\p{L}- ]*$", pers.nom )
+		match, _ = regexp.MatchString(`[\p{L}- ]*$`, pers.nom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom.")
