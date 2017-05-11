@@ -338,7 +338,7 @@
 		verif = true
 		switch col_num{
 		    case 2, 3:
-				match, _ := regexp.MatchString("[\\p{L}- ]*$", value )
+				match, _ := regexp.MatchString("^[\\p{L}- ]*$", value )
 				if(!match){
 					verif =false
 					fmt.Println("Erreur! Format du prénom.")
@@ -356,7 +356,7 @@
 					fmt.Println("Erreur! Format du numéro de license.")
 				}
 			case 6:
-				match, _ := regexp.MatchString("[\\p{L}- _]*$", value )
+				match, _ := regexp.MatchString("^[\\p{L}- _]*$", value )
 				if(!match){
 					verif =false
 					fmt.Println("Erreur! Format du nom d'équipe.")
@@ -367,10 +367,10 @@
 					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 				}
 			case 8,10:
-				match, _ := regexp.MatchString("([[:digit:]])", value)
+				match, _ := regexp.MatchString("(^[[:digit:]]$)", value)
 				if(!match){
 					verif = false
-					fmt.Println("Erreur! Format du annonce1.")
+					fmt.Println("Erreur! Format du annonce.")
 				}
 			default:
 				log.Fatal("Numéro de colone invalide")
