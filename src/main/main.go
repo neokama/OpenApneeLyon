@@ -68,7 +68,7 @@ func main() {
 
 	
 	// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
-	base := newBddResult("database/OpenApneeLyon")
+	base := newBdd("database/OpenApneeLyon")
 	base.reset()
 	//fmt.Println("\n")
 	// base.displayCompetiteur()
@@ -79,10 +79,10 @@ func main() {
 	fmt.Println(" classement ->\n")
 	base.exportClassement("spd")
 	//for n := 0; n <= 40; n++ {
-	//base.modifResult(42, 11, "1")
+	//base.modifResult(n, 11, "1")
 	//}
 	//base.calculPlace("spd")
-	base.displayCompetiteur1()
+	base.displayClassement()
 	//base.exportClassement("dnf")
 	//base.exportClassement("dwf")
 	//base.exportClassement("1650")

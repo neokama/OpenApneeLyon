@@ -194,8 +194,12 @@
 			if base.err != nil {
 				fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
 				} else {
-				fmt.Println("Remise à zéro de la base de données effectuée")
-			
+				_, base.err = base.db.Exec("DELETE FROM classement")
+						if base.err != nil {
+							fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+						} else {
+							fmt.Println("Remise à zéro de la base de données effectuée")
+						}
 			}
 		}
 	}

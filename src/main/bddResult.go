@@ -2,7 +2,6 @@ package main
 	
 	import (
 	"strconv"
-	"database/sql"
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
@@ -12,59 +11,7 @@ package main
 	"time"
 	)
 	
-	
-	type BddResult struct
-	{
-		cheminbdd string
-		chemincsv string
-		resultat *sql.Rows
-		db *sql.DB
-		err error
-	}
-	
-	/*
-	* 		Bdd.connection:
-	* Description: 
-	* 		Méthode permettant de se connecter à la base de 
-	* 		données située au chemin contenu dans l'attribut "cheminBdd"
-	*/	
-	
-	func (base BddResult) connection() (){
-		base.db, base.err = sql.Open("sqlite3", base.cheminbdd)
-		if base.err != nil {
-			log.Fatal("Erreur de connection à la base de données:\n", base.err)
-		}
-	}
-	
-	/*
-	* 		Bdd.reset:
-	* Description: 		
-	*		Méthode permettant de supprimer tous les compétiteurs contenus dans la base de
-	*		données.
-	*/
-	
-	func (base BddResult) reset(){
-		_, base.err = base.db.Exec("DELETE FROM classement")
-		if base.err != nil {
-			fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-		} else {
-			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classement'")
-			if base.err != nil {
-				fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-				} else {
-				fmt.Println("Remise à zéro de la base de données effectuée")
-			
-			}
-		}
-	}
-	/*
-	* 		Bdd.disp_comp:
-	* Description: 	
-	* 		Méthode permettant d'afficher l'integralité des
-	* 		competiteurs de la base de données
-	*/
-	
-	func (base BddResult) displayCompetiteur1(){
+	func (base Bdd) displayClassement(){
 		base.resultat, base.err = base.db.Query("SELECT * FROM classement")
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
@@ -95,7 +42,7 @@ package main
 	* 		competiteurs de la base de données
 	*/
 	
-	func (base BddResult) searchCompetiteur(col_num int, value string){
+	func (base Bdd) searchCompetiteurClassement(col_num int, value string){
 		
 		var id_col string
 		var searchValue string
@@ -134,7 +81,7 @@ package main
 	* 		base de données
 	*/
 
-	func (base BddResult) addCompetiteur(board *Classement){
+	func (base Bdd) addCompetiteurClassement(board *Classement){
 		
 		_, base.err = base.db.Exec("INSERT INTO classement ( prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc) VALUES('" +
 		board.prenom + "','" +
@@ -166,7 +113,7 @@ package main
 	*		en entrée.
 	*/
 
-	func (base BddResult) deleteCompetiteur(col_num int, value string){
+	func (base Bdd) deleteCompetiteurClassement(col_num int, value string){
 		var id_col string
 		value = fmt.Sprint("'",value,"'")
 		
@@ -199,7 +146,7 @@ package main
 	*		Méthode permettant d'importer les compétiteurs contenu dans un fichier CSV
 	*/
 	
-	func (base BddResult) importResultat(){
+	func (base Bdd) importResultat(){
 		file, err := os.Open("import/classement.csv")
 		if err != nil {
 			println("Impossible d'ouvrir le fichier \"classement.csv\" dans le dossier import")
@@ -222,8 +169,7 @@ package main
 			if !firstCall{
 			temps,er := strconv.Atoi(info[6])
 			idd,errr := strconv.Atoi(info[0])
-			base2 := newBdd("database/OpenApneeLyon")
-			annonce := base2.recupAnnonce(info[1],info[2],info[3], info[5])
+			annonce := base.recupAnnonce(info[1],info[2],info[3], info[5])
 			if er != nil {
 			log.Fatal(er)
 			}
@@ -256,7 +202,7 @@ package main
 				}*/	
 				
 			classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps,place,res,plc)
-			base.addCompetiteur(classemt)
+			base.addCompetiteurClassement(classemt)
 			/*//calcul de la place equipe
 			switch(info[5]){
 			case "spd": 
@@ -326,27 +272,6 @@ package main
 	}
 		
 	/*
-	* 		newBdd:
-	* Paramètres:
-	*	- cheminBdd:  Chemin et nom de la base de données à ouvrir.
-	*
-	* Description: 		
-	*		Méthode permettant d'ouvrir une connection vers une base de données.
-	*/
-	func newBddResult(cheminBdd string)(*BddResult){
-		base := new(BddResult)
-		base.cheminbdd = cheminBdd
-		base.chemincsv = ""
-		
-		base.db, base.err = sql.Open("sqlite3", base.cheminbdd)
-		if base.err != nil {
-		log.Fatal("Erreur de connection à la base de données:\n", base.err)
-		}
-		base.resultat = new(sql.Rows)
-		
-		return base
-	}
-	/*
 	* 		col_id2name:
 	* Paramètres:
 	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
@@ -409,7 +334,7 @@ package main
 	*
 	*
 	*/
-	func (base BddResult) exportClassement(value string){ 
+	func (base Bdd) exportClassement(value string){ 
 		t := time.Now()
 			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 		
@@ -441,7 +366,6 @@ package main
 			
 		var id_col string 
 		id_col, value = col_id2name2(6, value)
-		
 	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
@@ -474,8 +398,7 @@ package main
 		}
 	}
 	
-	func (base BddResult) modifResult(id_comp int, col_num int, newvalue string){
-	//base2 := newBddResult("database/OpenApneeLyon")
+	func (base Bdd) modifResult(id_comp int, col_num int, newvalue string){
 		col_id, value := col_id2name2(col_num, newvalue)
 		id := strconv.Itoa(id_comp)
 		fmt.Println("id ",id_comp," ", value, "col ", col_id )
@@ -487,14 +410,12 @@ package main
 			} else {
 			fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
 		}
-		// defer base2.Close()
-	
 	}
 	
 	/*
 	*
 	*/
-	func (base BddResult) calculPlace(epreuve string){
+	func (base Bdd) calculPlace(epreuve string){
 	var id_col string 
 		id_col, epreuve = col_id2name2(6, epreuve)
 	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt DESC"))
@@ -505,7 +426,8 @@ package main
 	var numPlaceF int =1
 	var numPlaceH int =1
 	var sexe string ="F" 
-				
+	var tabClassement []*Classement
+	var nextResult *Classement
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
 			if base.err != nil {
@@ -520,12 +442,23 @@ package main
 				info[10]=strconv.Itoa(numPlaceH)
 				numPlaceH=numPlaceH+1
 				}
+				
+				
 				id,_:=strconv.Atoi(info[0])
-		        base.modifResult(id,11,info[10])
-		//fmt.Println(base.resulat.)
+				annonce,_ := strconv.Atoi(info[6])
+				resultat,_ := strconv.Atoi(info[7])
+				place,_ := strconv.Atoi(info[8])
+				rslt,_ := strconv.Atoi(info[9])
+				plc,_ := strconv.Atoi(info[10])
+				
+				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc)
+				tabClassement = append(tabClassement, nextResult)
 		}
-		
-		 //base.resultat.Close()
+		base.resultat.Close()
+		 
+			for i := 0; i < len(tabClassement); i++{
+				base.modifResult(tabClassement[i].id ,11,strconv.Itoa(tabClassement[i].plc))
+			}
 
 	}
 	
