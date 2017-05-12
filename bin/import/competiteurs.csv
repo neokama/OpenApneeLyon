@@ -1,47 +1,47 @@
-ï»¿PrÃ©nom; Nom; Sexe; NÂ°License;Equipe; Epreuve1; temps1; Epreuve2; temps2
-Martin;ZAJAC;H;1;Apneaman, Praha, Czech Republic;spd;50;sta;375
-Michal;RISIAN;H;2;Apneaman, Praha, Czech Republic;dnf;160;dwf;200
-Michal;SVADLENKA;H;3;Apneaman, Praha, Czech Republic;1650;890;spd;50
-Katerina;SURANSKA;F;4;Apneaman, Praha, Czech Republic;1650;1050;sta;360
-Jana;SKROBOVA;F;5;Apneaman, Praha, Czech Republic;dnf;95;dwf;100
-jean-david;SOULA;H;6;CYRNEA;dnf;75;dwf;100
-Anne;BORGAT;F;7;CYRNEA;spd;70;sta;300
-Estelle;RIGAUD;F;8;CYRNEA;dnf;75;dwf;100
-Mathieu;CARCHI;H;9;CYRNEA;1650;1020;spd;50
-BenoÃ®t;ROUX;H;10;CYRNEA;1650;1200;sta;270
-Pascal;HURON;H;11;Enjoy And Relax;dnf;150;dwf;200
-Michel;SGARRA;H;12;Enjoy And Relax;1650;1260;spd;70
-Rodoplhe;DUCRUIX;H;13;Enjoy And Relax;1650;1560;sta;210
-Aude;GATA;F;14;Enjoy And Relax;dnf;100;dwf;140
-Stephanie;DELICOURT;F;15;Enjoy And Relax;spd;120;sta;270
-Albane;GAUBERT;F;16;Imashi;1650;1370;dwf;115
-Caroline;REGNARD;F;17;Imashi;dnf;92;dwf;126
-Kevin;OLLIVO;H;18;Imashi;1650;795;spd;45
-Charles;TISSOT;H;19;Imashi;dnf;70;sta;300
-Richard;JAUFFRAUD;H;20;Imashi;spd;75;sta;345
-Alexandre;BRATANIC;H;21;Les Cormorans 1;1650;1020;spd;55
-Alexandre;GASS;H;22;Les Cormorans 1;spd;45;sta;265
-Olivier;ELU;H;23;Les Cormorans 1;1650;960;dwf;175
-Loraine;HARTMANN;F;24;Les Cormorans 1;dnf;100;dwf;100
-Michelle;QUERY;F;25;Les Cormorans 1;dnf;53;sta;250
-Rachel;LEITNER;F;26;Les Cormorans 2;1650;990;dwf;80
-Christopher;BRATANIC;H;27;Les Cormorans 2;spd;60;sta;230
-FranÃ§ois;BUZET;H;28;Les Cormorans 2;1650;1200;spd;75
-Xavier;HERENT;H;29;Les Cormorans 2;dnf;65;sta;270
-Melissa;REIN;F;30;Les Cormorans 2;dnf;50;dwf;75
-Olivier;DURET;H;31;LIMULES;1650;1080;sta;300
-StÃ©phane;BERRUCAZ;H;32;LIMULES;1650;1440;spd;60
-FrÃ©dÃ©rique;CORDIER;F;33;LIMULES;dnf;103;dwf;100
-StÃ©phane;PETTENUZZO;H;34;LIMULES;spd;85;sta;215
-Marie;DEVANLAY;F;35;LIMULES;dnf;90;dwf;120
-RÃ©da;GUEHRIA;H;36;SavoyOuBien?;1650;1140;spd;60
-AurÃ©lien;LANOISELIER;H;37;SavoyOuBien?;spd;60;sta;360
-Philippe;GUILLOUX;H;38;SavoyOuBien?;dnf;125;sta;330
-Marie-pierre;EKSTETS;F;39;SavoyOuBien?;dnf;110;dwf;150
-Emilie;VERNIER;F;40;SavoyOuBien?;1650;1080;dwf;150
-Omr;SALEH;H;41;SOLO;spd;100;sta;240
-Christian;VOGLER;H;42;Sportpleizh;spd;50;sta;390
-Laetitia;ORSKI SIMONET;F;43;Sportpleizh;dnf;100;dwf;113
-Patrice;PIERRAT;H;44;Sportpleizh;dnf;100;dwf;140
-Pascale;AUBRY;H;45;Sportpleizh;1650;1080;spd;65
-coralie;MARIE;F;46;Sportpleizh;1650;1315;sta;285
+Prénom	 Nom	 Sexe	 N°License	Equipe	 Epreuve1	 temps1	 Epreuve2	 temps2
+Martin	ZAJAC	H	1	Apneaman, Praha, Czech Republic	spd	50	sta	375
+Michal	RISIAN	H	2	Apneaman, Praha, Czech Republic	dnf	160	dwf	200
+Michal	SVADLENKA	H	3	Apneaman, Praha, Czech Republic	1650	890	spd	50
+Katerina	SURANSKA	F	4	Apneaman, Praha, Czech Republic	1650	1050	sta	360
+Jana	SKROBOVA	F	5	Apneaman, Praha, Czech Republic	dnf	95	dwf	100
+jean-david	SOULA	H	6	CYRNEA	dnf	75	dwf	100
+Anne	BORGAT	F	7	CYRNEA	spd	70	sta	300
+Estelle	RIGAUD	F	8	CYRNEA	dnf	75	dwf	100
+Mathieu	CARCHI	H	9	CYRNEA	1650	1020	spd	50
+Benoît	ROUX	H	10	CYRNEA	1650	1200	sta	270
+Pascal	HURON	H	11	Enjoy And Relax	dnf	150	dwf	200
+Michel	SGARRA	H	12	Enjoy And Relax	1650	1260	spd	70
+Rodoplhe	DUCRUIX	H	13	Enjoy And Relax	1650	1560	sta	210
+Aude	GATA	F	14	Enjoy And Relax	dnf	100	dwf	140
+Stephanie	DELICOURT	F	15	Enjoy And Relax	spd	120	sta	270
+Albane	GAUBERT	F	16	Imashi	1650	1370	dwf	115
+Caroline	REGNARD	F	17	Imashi	dnf	92	dwf	126
+Kevin	OLLIVO	H	18	Imashi	1650	795	spd	45
+Charles	TISSOT	H	19	Imashi	dnf	70	sta	300
+Richard	JAUFFRAUD	H	20	Imashi	spd	75	sta	345
+Alexandre	BRATANIC	H	21	Les Cormorans 1	1650	1020	spd	55
+Alexandre	GASS	H	22	Les Cormorans 1	spd	45	sta	265
+Olivier	ELU	H	23	Les Cormorans 1	1650	960	dwf	175
+Loraine	HARTMANN	F	24	Les Cormorans 1	dnf	100	dwf	100
+Michelle	QUERY	F	25	Les Cormorans 1	dnf	53	sta	250
+Rachel	LEITNER	F	26	Les Cormorans 2	1650	990	dwf	80
+Christopher	BRATANIC	H	27	Les Cormorans 2	spd	55	sta	230
+François	BUZET	H	28	Les Cormorans 2	1650	1200	spd	75
+Xavier	HERENT	H	29	Les Cormorans 2	dnf	65	sta	270
+Melissa	REIN	F	30	Les Cormorans 2	dnf	50	dwf	75
+Olivier	DURET	H	31	LIMULES	1650	1080	sta	300
+Stéphane	BERRUCAZ	H	32	LIMULES	1650	1440	spd	60
+Frédérique	CORDIER	F	33	LIMULES	dnf	103	dwf	100
+Stéphane	PETTENUZZO	H	34	LIMULES	spd	85	sta	215
+Marie	DEVANLAY	F	35	LIMULES	dnf	90	dwf	120
+Réda	GUEHRIA	H	36	SavoyOuBien?	1650	1140	spd	60
+Aurélien	LANOISELIER	H	37	SavoyOuBien?	spd	60	sta	360
+Philippe	GUILLOUX	H	38	SavoyOuBien?	dnf	125	sta	330
+Marie-pierre	EKSTETS	F	39	SavoyOuBien?	dnf	110	dwf	150
+Emilie	VERNIER	F	40	SavoyOuBien?	1650	1080	dwf	150
+Omr	SALEH	H	41	SOLO	spd	100	sta	240
+Christian	VOGLER	H	42	Sportpleizh	spd	50	sta	390
+Laetitia	ORSKI SIMONET	F	43	Sportpleizh	dnf	100	dwf	113
+Patrice	PIERRAT	H	44	Sportpleizh	dnf	100	dwf	140
+Pascale	AUBRY	H	45	Sportpleizh	1650	1080	spd	65
+coralie	MARIE	F	46	Sportpleizh	1650	1315	sta	285

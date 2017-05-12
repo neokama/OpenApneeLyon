@@ -64,20 +64,25 @@ func main() {
 	
 	
 	
-	Parsage()
+	//Parsage()
 
 	
 	// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
-	/*base := newBddResult("database/OpenApneeLyon")
+	base := newBddResult("database/OpenApneeLyon")
 	base.reset()
-	fmt.Println("\n")
+	//fmt.Println("\n")
 	// base.displayCompetiteur()
 	// base.exportCompetiteur()
 	base.importResultat()
 	fmt.Println("\n")
-	base.displayCompetiteur1()
+	//base.displayCompetiteur1()
 	fmt.Println(" classement ->\n")
 	base.exportClassement("spd")
+	//for n := 0; n <= 40; n++ {
+	//base.modifResult(42, 11, "1")
+	//}
+	//base.calculPlace("spd")
+	base.displayCompetiteur1()
 	//base.exportClassement("dnf")
 	//base.exportClassement("dwf")
 	//base.exportClassement("1650")
@@ -86,5 +91,5 @@ func main() {
 	// base.modifCompetiteur("ARI1", 2, "nouveau-prenom")
 	// fmt.Println("\n")
 	//base.displayCompetiteur()
-	fmt.Println("\n")*/
+	fmt.Println("\n")
 }
