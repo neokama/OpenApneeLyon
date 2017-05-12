@@ -33,7 +33,25 @@ func checkCaracteres() (motFinal string) {
 		} else if (Ascii[i] == 105 && Ascii[i+1] == 204 && Ascii[i+2] == 128) {
 			motFinal += "ý"
 			i += 2
-		}
+		} else if (Ascii[i] == 49) {
+			motFinal += "1"
+		} else if (Ascii[i] == 50) {
+			motFinal += "2"
+		} else if (Ascii[i] == 51) {
+			motFinal += "3"
+		} else if (Ascii[i] == 52) {
+			motFinal += "4"
+		} else if (Ascii[i] == 53) {
+			motFinal += "5"
+		} else if (Ascii[i] == 54) {
+			motFinal += "6"
+		} else if (Ascii[i] == 55) {
+			motFinal += "7"
+		} else if (Ascii[i] == 56) {
+			motFinal += "8"
+		} else if (Ascii[i] == 57) {
+			motFinal += "9"
+		} 
 		if ((Ascii[i] < 65) || (Ascii[i] > 90 && Ascii[i] < 97) || (Ascii[i] > 122)) {
 			lettre, j := traduireCaractere(i, Ascii)
 			i = j

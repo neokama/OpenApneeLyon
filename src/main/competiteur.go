@@ -36,12 +36,12 @@ import (
 	func (pers Competiteur) check()(bool){
 		var verif = true
 		verif = true
-		match, _ := regexp.MatchString("[\\p{L}- ]*$", pers.prenom )
+		match, _ := regexp.MatchString("^[\\p{L}- ]*$", pers.prenom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du prénom.")
 			}
-		match, _ = regexp.MatchString("[\\p{L}- ]*$", pers.nom )
+		match, _ = regexp.MatchString("^[\\p{L}- ]*$", pers.nom )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom.")
@@ -56,7 +56,7 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du numéro de license.")
 			}
-		match, _ = regexp.MatchString("[\\p{L}- _]*$", pers.equipe )
+		match, _ = regexp.MatchString("^[\\p{L}- _]*$", pers.equipe )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom d'équipe.")
@@ -65,7 +65,7 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du epreuve1 (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 			}
-		match, _ = regexp.MatchString("([[:digit:]])", strconv.Itoa(pers.annonce1))
+		match, _ = regexp.MatchString("(^[[:digit:]]*)", strconv.Itoa(pers.annonce1))
 			if(!match){
 				verif = false
 				fmt.Println("Erreur! Format du annonce1.")
@@ -74,7 +74,7 @@ import (
 				verif = false
 				fmt.Println("Erreur! Format du epreuve2 (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 			}
-		match, _ = regexp.MatchString("([[:digit:]])", strconv.Itoa(pers.annonce2))
+		match, _ = regexp.MatchString("(^[[:digit:]]*)", strconv.Itoa(pers.annonce2))
 			if(!match){
 				verif = false
 				fmt.Println("Erreur! Format du annonce2.")

@@ -1,0 +1,50 @@
+Id; Prenom; Nom; Sexe; Num_License; Equipe; Epreuve1; annonce1; Epreuve2; annonce2
+1;Martin;ZAJAC;H;1;Apneaman, Praha, Czech Republic;spd;50;sta;375
+2;Michal;RISIAN;H;2;Apneaman, Praha, Czech Republic;dnf;160;dwf;200
+3;Michal;SVADLENKA;H;3;Apneaman, Praha, Czech Republic;1650;890;spd;50
+4;Katerina;SURANSKA;F;4;Apneaman, Praha, Czech Republic;1650;1050;sta;360
+5;Jana;SKROBOVA;F;5;Apneaman, Praha, Czech Republic;dnf;95;dwf;100
+6;jean-david;SOULA;H;6;CYRNEA;dnf;75;dwf;100
+7;Anne;BORGAT;F;7;CYRNEA;spd;70;sta;300
+8;Estelle;RIGAUD;F;8;CYRNEA;dnf;75;dwf;100
+9;Mathieu;CARCHI;H;9;CYRNEA;1650;1020;spd;50
+10;Benoît;ROUX;H;10;CYRNEA;1650;1200;sta;270
+11;Pascal;HURON;H;11;Enjoy And Relax;dnf;150;dwf;200
+12;Michel;SGARRA;H;12;Enjoy And Relax;1650;1260;spd;70
+13;Rodoplhe;DUCRUIX;H;13;Enjoy And Relax;1650;1560;sta;210
+14;Aude;GATA;F;14;Enjoy And Relax;dnf;100;dwf;140
+15;Stephanie;DELICOURT;F;15;Enjoy And Relax;spd;120;sta;270
+16;Albane;GAUBERT;F;16;Imashi;1650;1370;dwf;115
+17;Caroline;REGNARD;F;17;Imashi;dnf;92;dwf;126
+18;Kevin;OLLIVO;H;18;Imashi;1650;795;spd;45
+19;Charles;TISSOT;H;19;Imashi;dnf;70;sta;300
+20;Richard;JAUFFRAUD;H;20;Imashi;spd;75;sta;345
+21;Alexandre;BRATANIC;H;21;Les Cormorans 1;1650;1020;spd;55
+22;Alexandre;GASS;H;22;Les Cormorans 1;spd;45;sta;265
+23;Olivier;ELU;H;23;Les Cormorans 1;1650;960;dwf;175
+24;Loraine;HARTMANN;F;24;Les Cormorans 1;dnf;100;dwf;100
+25;Michelle;QUERY;F;25;Les Cormorans 1;dnf;53;sta;250
+26;Rachel;LEITNER;F;26;Les Cormorans 2;1650;990;dwf;80
+27;Christopher;BRATANIC;H;27;Les Cormorans 2;spd;60;sta;230
+28;François;BUZET;H;28;Les Cormorans 2;1650;1200;spd;75
+29;Xavier;HERENT;H;29;Les Cormorans 2;dnf;65;sta;270
+30;Melissa;REIN;F;30;Les Cormorans 2;dnf;50;dwf;75
+31;Olivier;DURET;H;31;LIMULES;1650;1080;sta;300
+32;Stéphane;BERRUCAZ;H;32;LIMULES;1650;1440;spd;60
+33;Frédérique;CORDIER;F;33;LIMULES;dnf;103;dwf;100
+34;Stéphane;PETTENUZZO;H;34;LIMULES;spd;85;sta;215
+35;Marie;DEVANLAY;F;35;LIMULES;dnf;90;dwf;120
+36;Réda;GUEHRIA;H;36;SavoyOuBien?;1650;1140;spd;60
+37;Aurélien;LANOISELIER;H;37;SavoyOuBien?;spd;60;sta;360
+38;Philippe;GUILLOUX;H;38;SavoyOuBien?;dnf;125;sta;330
+39;Marie-pierre;EKSTETS;F;39;SavoyOuBien?;dnf;110;dwf;150
+40;Emilie;VERNIER;F;40;SavoyOuBien?;1650;1080;dwf;150
+41;Omr;SALEH;H;41;SOLO;spd;100;sta;240
+42;Christian;VOGLER;H;42;Sportpleizh;spd;50;sta;390
+43;Laetitia;ORSKI SIMONET;F;43;Sportpleizh;dnf;100;dwf;113
+44;Patrice;PIERRAT;H;44;Sportpleizh;dnf;100;dwf;140
+45;Pascale;AUBRY;H;45;Sportpleizh;1650;1080;spd;65
+46;coralie;MARIE;F;46;Sportpleizh;1650;1315;sta;285
+47;dad;ezf;geg;rg;rg;gre;123;fz;123
+48;123;12;H;1233;;sta;123;spd;238
+49;leo;dol;H;13031995;team Otaient;sta;1733;spd;873
