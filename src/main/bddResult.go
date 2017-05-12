@@ -83,7 +83,8 @@ package main
 
 	func (base Bdd) addCompetiteurClassement(board *Classement){
 		
-		_, base.err = base.db.Exec("INSERT INTO classement ( prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc) VALUES('" +
+		_, base.err = base.db.Exec("INSERT INTO classement ( id, prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc) VALUES(" +
+		strconv.Itoa(board.id) + ",'" +
 		board.prenom + "','" +
 		board.nom + "','" +
 		board.sexe + "','" +
@@ -156,10 +157,6 @@ package main
 	
 		var firstCall bool	
 		firstCall = true
-		
-	/*	var numPlaceF int =1
-		var numPlaceH int =1
-		var sexe string ="F"*/
 		var res int
 		var place int
 		var plc int
@@ -193,34 +190,9 @@ package main
 			res=calculResultat("sta",annonce,info[6])
 			break
 			}
-			/*if(info[3]==sexe){
-				place=numPlaceF
-				numPlaceF=numPlaceF+1
-			}else{
-				place=numPlaceH
-				numPlaceH=numPlaceH+1
-				}*/	
 				
 			classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps,place,res,plc)
 			base.addCompetiteurClassement(classemt)
-			/*//calcul de la place equipe
-			switch(info[5]){
-			case "spd": 
-			base.calculPlace("spd")
-			break
-			case "1650":
-			base.calculPlace("1650")
-			break
-			case "dnf":
-			base.calculPlace("dnf")
-			break
-			case "dwf":
-			base.calculPlace("dwf")
-			break
-			case "sta":
-			base.calculPlace("sta")
-			break
-			}*/
 			}
 			firstCall = false
 		}
@@ -241,9 +213,7 @@ package main
 	id_col2, nom = col_id2name2(3, nom)
 	var id_col3 string
 	id_col3, sexe = col_id2name2(4, sexe)
-	//var id_col4 string
-	//id_col3, epreuve = col_id2name2(6, epreuve)
-	
+//faire avec l'id
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + prenom + " AND " + id_col2 + " = " + nom + " AND " + id_col3 + " = " + sexe)
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
@@ -265,8 +235,7 @@ package main
 			resultat,_ = strconv.Atoi(info[9])
 			} else{
 			resultat = 0
-			}
-			
+			}	
 		}
 		return resultat
 	}
@@ -332,7 +301,6 @@ package main
 	*
 	*
 	*
-	*
 	*/
 	func (base Bdd) exportClassement(value string){ 
 		t := time.Now()
@@ -355,7 +323,7 @@ package main
 			case "spd": 
 			base.calculPlace("spd")
 			break
-			/*case "1650":
+			case "1650":
 			base.calculPlace("1650")
 			break
 			case "dnf":
@@ -366,7 +334,7 @@ package main
 			break
 			case "sta":
 			base.calculPlace("sta")
-			break*/
+			break
 			}
 			
 		var id_col string 
@@ -397,7 +365,6 @@ package main
 				info[8]=strconv.Itoa(numPlaceH)
 				numPlaceH=numPlaceH+1}
 				
-			fmt.Println(info[2]," ",info[9])
 		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
 		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
 		}
@@ -406,14 +373,12 @@ package main
 	func (base Bdd) modifResult(id_comp int, col_num int, newvalue string){
 		col_id, value := col_id2name2(col_num, newvalue)
 		id := strconv.Itoa(id_comp)
-		fmt.Println("id ",id_comp," ", value, "col ", col_id )
-
 		_, base.err = base.db.Exec("UPDATE classement SET "  + col_id + " = " + value +  " WHERE id = " + id)
 	
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : ", base.err)
 			} else {
-			fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
 		}
 	}
 	
@@ -497,12 +462,16 @@ package main
 	tot =(result-(annonce+20))*3
 	break
 	case "1650":
+	tot = (result-(annonce+60))*3
 	break
 	case "dnf":
+	tot = (annonce+25)
 	break
 	case "dwf":
+	tot = (annonce+25)
 	break
 	case "sta":
+	tot = (annonce+60)
 	break	
 	}
 	res=tot
@@ -512,12 +481,16 @@ package main
 	tot2=annonce-10
 	break
 	case "1650":
+	tot2=annonce-30
 	break
 	case "dnf":
+	tot2=((annonce-25)-result)*3
 	break
 	case "dwf":
+	tot2=((annonce-25)-result)*3
 	break
 	case "sta":
+	tot2=((annonce-60)-result)*3
 	break	
 	}
 	res=tot2

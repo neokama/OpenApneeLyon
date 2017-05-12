@@ -1,11 +1,11 @@
 ï»¿Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe
-329;Anne;BORGAT;F;CYRNEA;spd;0;480;1;1380;1
-337;Stephanie;DELICOURT;F;Enjoy And Relax;spd;0;120;2;300;2
-323;Martin;ZAJAC;H;Apneaman, Praha, Czech Republic;spd;0;7500;1;22440;1
-363;Omr;SALEH;H;SOLO;spd;0;100;2;240;2
-356;Stéphane;PETTENUZZO;H;LIMULES;spd;0;85;3;195;3
-342;Richard;JAUFFRAUD;H;Imashi;spd;0;75;4;165;4
-349;Christopher;BRATANIC;H;Les Cormorans 2;spd;0;60;5;120;5
-359;Aurélien;LANOISELIER;H;SavoyOuBien?;spd;0;60;6;120;6
-364;Christian;VOGLER;H;Sportpleizh;spd;0;50;7;90;7
-344;Alexandre;GASS;H;Les Cormorans 1;spd;0;45;8;75;8
+7;Anne;BORGAT;F;CYRNEA;spd;0;480;1;1380;1
+15;Stephanie;DELICOURT;F;Enjoy And Relax;spd;0;120;2;300;2
+1;Martin;ZAJAC;H;Apneaman, Praha, Czech Republic;spd;0;7500;1;22440;1
+41;Omr;SALEH;H;SOLO;spd;0;100;2;240;2
+34;Stéphane;PETTENUZZO;H;LIMULES;spd;0;85;3;195;3
+20;Richard;JAUFFRAUD;H;Imashi;spd;0;75;4;165;4
+27;Christopher;BRATANIC;H;Les Cormorans 2;spd;0;60;5;120;5
+37;Aurélien;LANOISELIER;H;SavoyOuBien?;spd;0;60;6;120;6
+42;Christian;VOGLER;H;Sportpleizh;spd;0;50;7;90;7
+22;Alexandre;GASS;H;Les Cormorans 1;spd;0;45;8;75;8
