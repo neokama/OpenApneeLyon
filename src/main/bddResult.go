@@ -338,11 +338,16 @@ package main
 		t := time.Now()
 			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 		
-		file, err := os.Create(fmt.Sprint("export/",date,"-",value,".csv"))
+		file, err := os.Create(fmt.Sprint("export/archives/",date,"-",value,".csv"))
 			if err != nil {
-				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
+				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export/archives\" dans le dossier de l'application?")
 				log.Fatal(err)
 			}
+		file2, err := os.Create(fmt.Sprint("export/Classement-",value,".csv"))
+		if err != nil {
+			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
+			log.Fatal(err)
+		}
 			
 			
 			//calcul de la place equipe
@@ -377,8 +382,8 @@ package main
 	var sexe string ="F" 
 	
 	
-	file.WriteString(fmt.Sprint("Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe\r\n"))
-			
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe\r\n"))	
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
 			if base.err != nil {
@@ -394,7 +399,7 @@ package main
 				
 			fmt.Println(info[2]," ",info[9])
 		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
-		
+		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
 		}
 	}
 	
