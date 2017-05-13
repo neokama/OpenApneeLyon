@@ -166,7 +166,7 @@ package main
 			if !firstCall{
 			temps,er := strconv.Atoi(info[6])
 			idd,errr := strconv.Atoi(info[0])
-			annonce := base.recupAnnonce(info[1],info[2],info[3], info[5])
+			annonce := base.recupAnnonce(info[1],info[2],info[3],info[5])
 			if er != nil {
 			log.Fatal(er)
 			}
@@ -207,13 +207,12 @@ package main
 	*
 	*/
 	func (base Bdd)recupAnnonce(prenom string, nom string, sexe string, epreuve string)(int){
-	var id_col string
-	id_col, prenom = col_id2name2(2, prenom)
-	var id_col2 string
-	id_col2, nom = col_id2name2(3, nom)
-	var id_col3 string
-	id_col3, sexe = col_id2name2(4, sexe)
-//faire avec l'id
+		var id_col string
+		id_col, prenom = col_id2name2(2, prenom)
+		var id_col2 string
+		id_col2, nom = col_id2name2(3, nom)
+		var id_col3 string
+		id_col3, sexe = col_id2name2(4, sexe)
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + prenom + " AND " + id_col2 + " = " + nom + " AND " + id_col3 + " = " + sexe)
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
@@ -364,7 +363,9 @@ package main
 			}else{
 				info[8]=strconv.Itoa(numPlaceH)
 				numPlaceH=numPlaceH+1}
-				
+				//id,_:=strconv.Atoi(info[0])
+			//base.modifResult(id,9,info[8])
+
 		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
 		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
 		}
@@ -438,7 +439,6 @@ package main
 	var sMax int =0
 	var res int
 	var result int
-	var ok bool = false
 	var tot int
 	var tot2 int
 	
@@ -450,10 +450,8 @@ package main
 	if (tab[i].id==epreuve){
 	sMin=tab[i].seuilMin
 	sMax=tab[i].seuilMax
-	ok = true
-	}else{ok =false}
+	}
 	
-	if (ok){
 	max:=annonce+sMax
 	min:=annonce+sMin
 	if(result>max){
@@ -494,11 +492,10 @@ package main
 	break	
 	}
 	res=tot2
-	}else{
-	res,_=strconv.Atoi(resultat)
+	}else if (result == annonce){
+	res= result
 	}
-	}else{
-	res=0}
+	
 	}
 	
 	return res
