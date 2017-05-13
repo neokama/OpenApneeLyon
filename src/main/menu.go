@@ -18,21 +18,23 @@ func checkCaracteres() (motFinal string) {
 	motFinal = ""
 	i := 0
 	for (i < len(Ascii)) {
-		if (Ascii[i] == 83 && Ascii[i+1] == 204 && Ascii[i+2] == 140){
+		if (i < len(Ascii)-2 && Ascii[i] == 83 && Ascii[i+1] == 204 && Ascii[i+2] == 140){
 			motFinal += "è"
 			i += 2
-		} else if (Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 136) {
+		} else if (i < len(Ascii)-2 && Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 136) {
 			motFinal += "õ"
 			i += 2
-		} else if (Ascii[i] == 99 && Ascii[i+1] == 204 && Ascii[i+2] == 167) {
+		} else if (i < len(Ascii)-2 && Ascii[i] == 99 && Ascii[i+1] == 204 && Ascii[i+2] == 167) {
 			motFinal += "þ"
 			i += 2
-		} else if (Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 129) {
+		} else if (i < len(Ascii)-2 && Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 129) {
 			motFinal += "ß"
 			i += 2
-		} else if (Ascii[i] == 105 && Ascii[i+1] == 204 && Ascii[i+2] == 128) {
+		} else if (i < len(Ascii)-2 && Ascii[i] == 105 && Ascii[i+1] == 204 && Ascii[i+2] == 128) {
 			motFinal += "ý"
 			i += 2
+		} else if (Ascii[i] == 48) {
+			motFinal += "0"
 		} else if (Ascii[i] == 49) {
 			motFinal += "1"
 		} else if (Ascii[i] == 50) {
@@ -51,8 +53,7 @@ func checkCaracteres() (motFinal string) {
 			motFinal += "8"
 		} else if (Ascii[i] == 57) {
 			motFinal += "9"
-		} 
-		if ((Ascii[i] < 65) || (Ascii[i] > 90 && Ascii[i] < 97) || (Ascii[i] > 122)) {
+		} else if ((Ascii[i] < 65) || (Ascii[i] > 90 && Ascii[i] < 97) || (Ascii[i] > 122)) {
 			lettre, j := traduireCaractere(i, Ascii)
 			i = j
 			motFinal += lettre
@@ -166,6 +167,7 @@ func traduireCaractere(i int, Ascii []byte) (lettre string, j int) {
 func convertToAscii() (Ascii []byte) {
 	equipe := read()
 	Ascii = []byte(equipe)
+	//fmt.Println(Ascii)
 	return Ascii
 }
 
@@ -275,6 +277,7 @@ func Parsage(){
 				if i ==2 {
 					fmt.Println("Quel est le prénom du competiteur que vous souhaitez ajouter ? \n")
 					prenom = checkCaracteres()
+					fmt.Println(prenom)
 					i++ 
 				} else if i == 3 {
 					fmt.Println("Quel est le nom du competiteur que vous souhaitez ajouter ? \n")
@@ -362,29 +365,32 @@ func Parsage(){
 			var col_num int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
-			fmt.Println(" 1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
-			fmt.Println(" 8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
+			fmt.Println(" 1- Id \n 2- Equipe")
 			in1, err1 := readInt(1)
-			for (err1 != nil || in1[0] > 10) {
-				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 10 svp \n")
+			for (err1 != nil || in1[0] > 2) {
+				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 2 svp \n")
 				in1, err1 = readInt(1)
 				continue
 				fmt.Println(err1)
 			}
 			col_num = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
-			in2, err2 := readString(1)
-			if (err2 != nil) {
-				fmt.Println(err2)
+			if (col_num == 1) {
+				in2, err2 := readString(1)
+				if (err2 != nil) {
+					fmt.Println(err2)
+				}
+				value = in2[0]
+			} else if (col_num == 2) {
+				value = checkCaracteres()
 			}
-			value = in2[0]
 			base.deleteCompetiteur(col_num, value)
 		
 		} else if *c == "modify" {
 			base := newBdd("database/OpenApneeLyon")
 			var id_comp int
 			var col_num int 
-			var newvalue string
+			//var newvalue string
 			fmt.Println("Saisissez l'id du participant que vous souhaitez modifier")
 			in1, err1 := readInt(1)
 			if (err1 != nil) {
@@ -392,23 +398,93 @@ func Parsage(){
 			}
 			id_comp = in1[0]
 			fmt.Println("Quel est le critère que vous souhaitez modifier ?")
-			fmt.Println(" 1- Id \n 2- Prénom \n 3- Nom \n 4- Sexe \n 5- Numéro de license \n 6- Equipe \n 7- Première épreuve du participant")
-			fmt.Println(" 8- Première annonce \n 9- Deuxième épreuve du participant \n 10- Deuxième annonce")
+			fmt.Println(" 1- Prénom \n 2- Nom \n 3- Sexe \n 4- Numéro de license \n 5- Equipe \n 6- Première épreuve du participant")
+			fmt.Println(" 7- Première annonce \n 8- Deuxième épreuve du participant \n 9- Deuxième annonce")
 			in2, err2 := readInt(1)
-			for (err2 != nil) {
-				fmt.Println("Veuillez saisir un entier positif svp \n")
+			for (err2 != nil || in2[0] > 9) {
+				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 9 svp \n")
 				in2, err2 = readInt(1)
 				continue
 				fmt.Println(err2)
 			}
-			col_num = in2[0]
+			col_num = in2[0]+1
 			fmt.Println("Quelle la nouvelle valeur de ce critère ?")
-			in3, err3 := readString(1)
+			
+			// #############################################
+			if (col_num == 2) {
+				prenom := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, prenom)
+			} else if (col_num == 3) {
+				nom := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, nom)
+			} else if (col_num == 4) {
+				in , err := readString(1)
+				for (err != nil || (in[0] != "H" && in[0] != "F")) {
+					fmt.Println("Veuillez saisir H ou F svp \n")
+					in, err = readString(1)
+					continue
+					fmt.Println(err)
+				}
+				sexe := in[0]
+				base.modifCompetiteur (id_comp, col_num, sexe)
+			} else if (col_num == 5) {
+				in , err := readString(1)
+				if (err != nil) {
+					fmt.Println(err)
+				}
+				num_license := in[0]
+				base.modifCompetiteur (id_comp, col_num, num_license)
+			} else if (col_num == 6) {
+				equipe := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, equipe)
+			} else if (col_num == 7) {
+				in , err := readString(1)
+				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
+					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+					in, err = readString(1)
+					continue
+					fmt.Println(err)
+				}
+				epreuve1 := in[0]
+				base.modifCompetiteur (id_comp, col_num, epreuve1)
+			/*} else if (col_num == 8) {
+				in , err := readInt(1)
+				for (err != nil) {
+					fmt.Println("Veuillez saisir un entier positif svp \n")
+					in, err = readInt(1)
+					continue
+					fmt.Println(err)
+				}
+				annonce1 := in[0]
+				base.modifCompetiteur (id_comp, col_num, annonce1)*/
+			} else if (col_num == 9) {
+				in , err := readString(1)
+				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
+					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+					in, err = readString(1)
+					continue
+					fmt.Println(err)
+				}
+				epreuve2 := in[0]
+				base.modifCompetiteur (id_comp, col_num, epreuve2)
+			/*} else if (col_num == 10) {
+				in , err := readInt(1)
+				for (err != nil) {
+					fmt.Println("Veuillez saisir un entier positif svp \n")
+					in, err = readInt(1)
+					continue
+					fmt.Println(err)
+				}
+				annonce2 := in[0]
+				base.modifCompetiteur (id_comp, col_num, annonce2)*/
+			}
+			// ###################################################
+			/*in3, err3 := readString(1)
 			if (err3 != nil) {
 				fmt.Println(err3)
 			}
 			newvalue = in3[0]
-			base.modifCompetiteur (id_comp, col_num, newvalue)
+			base.modifCompetiteur (id_comp, col_num, newvalue)*/
 			
 			
 		} else if *c == "search" {
