@@ -44,6 +44,8 @@ package main
 		defer base.resultat.Close()
 	var info [4]string
 	var numPlace int =0
+	var tabPlace []int
+	var tab []string
 	
 	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place\r\n"))
 	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place\r\n"))	
@@ -54,11 +56,16 @@ package main
 				log.Fatal(base.err)}				
 			
 				numPlace=numPlace+1
-				
+				tabPlace=append(tabPlace,numPlace)
+				tab=append(tab,info[1])
 
 		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,"\r\n"))
 		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,"\r\n"))
 		}
+		for n:=0;n<len(tabPlace);n++{
+		   	base.modifPlace(tab[n],strconv.Itoa(tabPlace[n]))
+			}	
+		
 	}
 	
 	
@@ -123,7 +130,6 @@ package main
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}
 			equipe = info[1]
-			fmt.Println(equipe)
 		tab=append(tab,equipe)
 		
 		}
@@ -133,7 +139,6 @@ package main
 		var id_col string
 		var equipe2 string
 		id_col, equipe2 = col_id2name2(5, tab[n])
-		fmt.Println(equipe2,id_col)
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE " + id_col + " = " + equipe2))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
@@ -168,9 +173,24 @@ package main
 	func (base Bdd) modifPoint(equipe string, newvalue string){
 		col_id2, equipe := col_id2name3(2, equipe)
 		col_id, value := col_id2name3(3, newvalue)
-		col_id2="0"
-		fmt.Println(col_id2)
-		fmt.Println(value)
+		if(col_id2=="0"){
+		//on doit utiliser col_id2
+		}
+		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
+	
+		if base.err != nil {
+			fmt.Println("Echec lors de l'ajout : ", base.err)
+			} else {
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+		}
+	}
+	
+	func (base Bdd) modifPlace(equipe string, newvalue string){
+		col_id2, equipe := col_id2name3(2, equipe)
+		col_id, value := col_id2name3(4, newvalue)
+		if(col_id2=="0"){
+		//on doit utiliser col_id2
+		}
 		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
 	
 		if base.err != nil {
