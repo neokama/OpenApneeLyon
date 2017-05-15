@@ -409,8 +409,6 @@ func Parsage(){
 			}
 			col_num = in2[0]+1
 			fmt.Println("Quelle la nouvelle valeur de ce critère ?")
-			
-			// #############################################
 			if (col_num == 2) {
 				prenom := checkCaracteres()
 				base.modifCompetiteur (id_comp, col_num, prenom)
@@ -447,16 +445,9 @@ func Parsage(){
 				}
 				epreuve1 := in[0]
 				base.modifCompetiteur (id_comp, col_num, epreuve1)
-			/*} else if (col_num == 8) {
-				in , err := readInt(1)
-				for (err != nil) {
-					fmt.Println("Veuillez saisir un entier positif svp \n")
-					in, err = readInt(1)
-					continue
-					fmt.Println(err)
-				}
-				annonce1 := in[0]
-				base.modifCompetiteur (id_comp, col_num, annonce1)*/
+			} else if (col_num == 8) {
+				annonce1 := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, annonce1)
 			} else if (col_num == 9) {
 				in , err := readString(1)
 				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
@@ -467,25 +458,10 @@ func Parsage(){
 				}
 				epreuve2 := in[0]
 				base.modifCompetiteur (id_comp, col_num, epreuve2)
-			/*} else if (col_num == 10) {
-				in , err := readInt(1)
-				for (err != nil) {
-					fmt.Println("Veuillez saisir un entier positif svp \n")
-					in, err = readInt(1)
-					continue
-					fmt.Println(err)
-				}
-				annonce2 := in[0]
-				base.modifCompetiteur (id_comp, col_num, annonce2)*/
+			} else if (col_num == 10) {
+				annonce2 := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, annonce2)
 			}
-			// ###################################################
-			/*in3, err3 := readString(1)
-			if (err3 != nil) {
-				fmt.Println(err3)
-			}
-			newvalue = in3[0]
-			base.modifCompetiteur (id_comp, col_num, newvalue)*/
-			
 			
 		} else if *c == "search" {
 			base := newBdd("database/OpenApneeLyon")
