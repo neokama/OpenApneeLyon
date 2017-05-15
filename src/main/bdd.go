@@ -368,7 +368,7 @@
 					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 				}
 			case 8,10:
-				match, _ := regexp.MatchString("(^[[:digit:]]$)", value)
+				match, _ := regexp.MatchString("(^[0-9]$)", value)
 				if(!match){
 					verif = false
 					fmt.Println("Erreur! Format du annonce.")
