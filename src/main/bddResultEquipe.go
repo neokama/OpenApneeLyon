@@ -1,221 +1,68 @@
 package main
 	
-	/*import (
+	import (
 	"strconv"
-	"database/sql"
+	//"database/sql"
 	"fmt"
 	_ "github.com/mattn/go-sqlite3"
 	"log"
 	"os"
-	"bufio"
-	"strings"
-	//"time"
-	)*/
+	//"bufio"
+	//"strings"
+	"time"
+	)
 		
-	/*type BddResultE struct
-	{
-		cheminbdd string
-		chemincsv string
-		resultat *sql.Rows
-		db *sql.DB
-		err error
-	}*/
-	
 	/*
-	* 		Bdd.connection:
-	* Description: 
-	* 		Méthode permettant de se connecter à la base de 
-	* 		données située au chemin contenu dans l'attribut "cheminBdd"
-	*/	
-	
-	/*func (base BddResultE) connection() (){
-		base.db, base.err = sql.Open("sqlite3", base.cheminbdd)
-		if base.err != nil {
-			log.Fatal("Erreur de connection à la base de données:\n", base.err)
-		}
-	}*/
-	
-	/*
-	* 		Bdd.reset:
-	* Description: 		
-	*		Méthode permettant de supprimer tous les compétiteurs contenus dans la base de
-	*		données.
+	*
+	*
+	*
 	*/
+	func (base Bdd) exportClassementEquipe(){ 
 	
-	/*func (base BddResultE) reset(){
-		_, base.err = base.db.Exec("DELETE FROM classementequipe")
+	base.importEquipe()
+	base.importPoint()
+	
+	
+		t := time.Now()
+			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
+		
+		file, err := os.Create(fmt.Sprint("export/archives/",date,"-equipe.csv"))
+			if err != nil {
+				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export/archives\" dans le dossier de l'application?")
+				log.Fatal(err)
+			}
+		file2, err := os.Create(fmt.Sprint("export/Classement-Equipe.csv"))
+		if err != nil {
+			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
+			log.Fatal(err)
+		}
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classementequipe ORDER BY point ASC"))
 		if base.err != nil {
-			fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-		} else {
-			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
+			fmt.Println("Erreur lors de l'execution de la requête 1")
+		}
+		
+		defer base.resultat.Close()
+	var info [4]string
+	var numPlace int =0
+	
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place\r\n"))	
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3])
 			if base.err != nil {
-				fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-				} else {
-				fmt.Println("Remise à zéro de la base de données effectuée")
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)}				
 			
-			}
-		}
-	}*/
-	/*
-	* 		Bdd.disp_comp:
-	* Description: 	
-	* 		Méthode permettant d'afficher l'integralité des
-	* 		competiteurs de la base de données
-	*/
-	
-	/*func (base BddResultE) displayCompetiteur(){
-	
-		base.resultat, base.err = base.db.Query("SELECT * FROM classementequipe")
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête")
-			log.Fatal(base.err)
-		}
-		defer base.resultat.Close()
-		
-		var info [3]string
+				numPlace=numPlace+1
+				
 
-		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2])
-			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)
-			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2])
+		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,"\r\n"))
+		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,"\r\n"))
 		}
-	}*/
-	
-	/*
-	* 		Bdd.searchCompetiteur:
-	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
-	*	- value:	valeur à rechercher dans la colonne choisie.
-	*
-	* Description: 		
-	*		Méthode permettant de rechercher un compétiteur en
-	* 		competiteurs de la base de données
-	*/
-	
-	/*func (base BddResultE) searchCompetiteur(col_num int, value string){
-		
-		var id_col string
-		var searchValue string
-		
-		searchValue = fmt.Sprint("'%",value,"%'")
-		id_col, value = col_id2name(col_num, value)
-		
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classementequipe WHERE ", id_col, " LIKE ", searchValue))
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête")
-			log.Fatal(base.err)
-		}
-		defer base.resultat.Close()
-		
-		var info [3]string
-
-		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2])
-			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)
-			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2])
-		}
-	}*/
+	}
 	
 	
-		/*
-	* 		Bdd.addCompetiteur:
-	* Paramètres:
-	*	- comp: 	Les informations du compétiteur à ajouter sous la
-	*				forme d'une structure de type "competiteur"
-	*
-	* Description: 		
-	*		Méthode permettant d'ajouter un compétiteur dans la 
-	* 		base de données
-	*/
-
-/*	func (base BddResultE) addCompetiteur(boardE *ClassementEquipe){
-		
-		_, base.err = base.db.Exec("INSERT INTO classementequipe ( equipe, point) VALUES('" +
-		boardE.equipe + "'," +
-		strconv.Itoa(boardE.point) + ")")
-		
-		if base.err != nil {
-			fmt.Println("Echec lors de l'ajout : "+ boardE.equipe, base.err)
-			} else {
-			fmt.Println("Ajout validé du resulat equipe " + boardE.equipe)
-		}
-	}*/
-	
-	/*
-	* 		Bdd.deleteCompetiteur:
-	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
-	*	- value:	valeur à rechercher dans la colonne choisie.
-	*
-	* Description: 		
-	*		Méthode permettant de supprimer les compétiteurs en fonction des critères
-	*		en entrée.
-	*/
-
-	/*func (base BddResultE) deleteCompetiteur(col_num int, value string){
-		var id_col string
-		value = fmt.Sprint("'",value,"'")
-		
-		if col_num==1 {
-			id_col = "id"		
-		} else if col_num==2{
-			id_col = "equipe"		
-		}
-		
-		if !(col_num < 1 && col_num > 2){
-			_, base.err = base.db.Exec("DELETE FROM classementequipe WHERE " + id_col + " = " + value)
-			if base.err != nil {
-				fmt.Println("Echec lors de la suppression: \n", base.err)
-				} else {
-				fmt.Println("Suppression des competiteurs avec " + id_col + " = " + value)
-			}
-		} else {
-			err := "Le numéro entré est invalide!"
-			fmt.Println(err);
-		}
-	}*/
-	
-	/*
-	* 		newBdd:
-	* Paramètres:
-	*	- cheminBdd:  Chemin et nom de la base de données à ouvrir.
-	*
-	* Description: 		
-	*		Méthode permettant d'ouvrir une connection vers une base de données.
-	*/
-	/*func newBddResultE(cheminBdd string)(*BddResultE){
-		base := new(BddResultE)
-		base.cheminbdd = cheminBdd
-		base.chemincsv = ""
-		
-		base.db, base.err = sql.Open("sqlite3", base.cheminbdd)
-		if base.err != nil {
-		log.Fatal("Erreur de connection à la base de données:\n", base.err)
-		}
-		base.resultat = new(sql.Rows)
-		
-		return base
-	}*/
-	/*
-	* 		col_id2name:
-	* Paramètres:
-	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
-	*	- value:	Nouvelle valeur à entrée pour la colonne choisie.
-	*
-	* Description: 		
-	*		Méthode permettant à partir d'un numéro de colonne, de retourner le nom de la colonne.
-	*		De plus, la valeur entrée ("value") est retournée au format adéquat pour une requête SQL
-	*		(Ex: "VariableString" => "'VariableString'")
-	*/
-	
-	
-	/*func col_id2name3(col_num int, value string)(string, string){
+	func col_id2name3(col_num int, value string)(string, string){
 		var col_idr string
 		
 		switch col_num{
@@ -228,53 +75,141 @@ package main
 			case 3:
 				col_idr = "point"
 				value = fmt.Sprint("'",value,"'")
+			case 4:
+				col_idr = "place"
+				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
 			}
 		return col_idr, value
-	}*/
-	
-	// Enregistrer les épreuves dans le tableau
-/*func getConfigurationEpreuve1()(*ConfigurationEpreuve){
-	file, err := os.Open("config/ConfigurationEpreuve.csv")
-	if err != nil {
-		fmt.Println("Impossible d'ouvrir le fichier \"ConfigurationEpreuve\": " )
-		log.Fatal(err)
 	}
-	defer file.Close()
 	
-	
-	var firstCall bool
-	firstCall = true
-	var nextconfig *ConfigurationEpreuve
-	
-	scanner := bufio.NewScanner(file)
-	//On clear l'ancien tableau:
-	//p.cfgEpreuves = p.cfgEpreuves[:0]
-	
-	for scanner.Scan() {
-		info := strings.Split(scanner.Text(), ";")
-		if !firstCall{
-		ordre, _ := strconv.Atoi(info[0])
-		seuilMin, _ := strconv.Atoi(info[2])
-		seuilMax, _ := strconv.Atoi(info[3])
-		nbParPassage, _ := strconv.Atoi(info[4])
-		dureeEchauffement, _ := strconv.Atoi(info[5])
-		dureePassage, _ := strconv.Atoi(info[6])
-		dureeAppel, _ := strconv.Atoi(info[7])
-		surveillance, _ := strconv.Atoi(info[8])
-		battementSerie, _ := strconv.Atoi(info[9])
-		battementEpreuve, _ := strconv.Atoi(info[10])
-	
-		nextconfig = newConfigurationEpreuve(ordre, info[1], seuilMin, seuilMax, nbParPassage, dureeEchauffement, dureePassage, dureeAppel, surveillance,
-												battementSerie,battementEpreuve, info[11])
+	func (base Bdd) importEquipe(){
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs GROUP BY equipe"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
-		firstCall = false
+		defer base.resultat.Close()
+		var info [10]string
+		var tab []string
+		var equipe string
+		for base.resultat.Next() {
+		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)}
+			equipe = info[5]
+		tab=append(tab,equipe)
+		
+		}
+		for n:=0;n<len(tab);n++{
+		classemt := newClassementE(0, tab[n],0 ,0)
+		base.addEquipe(classemt)
+		}
 	}
 	
-	if err := scanner.Err(); err != nil {
-		log.Fatal(err)
+	func (base Bdd) importPoint(){
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classementequipe GROUP BY equipe"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête 1")
+		}
+		defer base.resultat.Close()
+		var info [4]string
+		var tab []string
+		var equipe string
+		for base.resultat.Next() {
+		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)}
+			equipe = info[1]
+			fmt.Println(equipe)
+		tab=append(tab,equipe)
+		
+		}
+		
+		for n:=0;n<len(tab);n++{
+		
+		var id_col string
+		var equipe2 string
+		id_col, equipe2 = col_id2name2(5, tab[n])
+		fmt.Println(equipe2,id_col)
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE " + id_col + " = " + equipe2))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête 1")
+		}
+		defer base.resultat.Close()
+		var info [11]string
+		var tabpoint []string
+		var point string
+		var nbpoint int
+		var nb int
+		for base.resultat.Next() {
+		
+		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3],&info[4], &info[5], &info[6], &info[7],&info[8], &info[9], &info[10])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)}
+				
+			point = info[10]
+			
+		tabpoint=append(tabpoint,point)
+		}
+			for n:=0;n<len(tabpoint);n++{
+			nb,_=strconv.Atoi(tabpoint[n])
+		    nbpoint=nbpoint+nb
+			}	
+			base.modifPoint(tab[n],strconv.Itoa(nbpoint))
+		}
+		
+		
 	}
-	return nextconfig
-}*/
 	
+	func (base Bdd) modifPoint(equipe string, newvalue string){
+		col_id2, equipe := col_id2name3(2, equipe)
+		col_id, value := col_id2name3(3, newvalue)
+		col_id2="0"
+		fmt.Println(col_id2)
+		fmt.Println(value)
+		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
+	
+		if base.err != nil {
+			fmt.Println("Echec lors de l'ajout : ", base.err)
+			} else {
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+		}
+	}
+	
+	func (base Bdd) addEquipe(board *ClassementEquipe){
+		
+		_, base.err = base.db.Exec("INSERT INTO classementequipe (equipe, point, place) VALUES('" +
+		board.equipe + "'," +
+		strconv.Itoa(board.point) + "," +
+		strconv.Itoa(board.place)+")")
+	
+		if base.err != nil {
+			fmt.Println("Echec lors de l'ajout : "+ board.equipe, base.err)
+			} else {
+			fmt.Println("Ajout validé de l'equipe " + board.equipe)
+		}
+	}
+	
+	func (base Bdd) displayEquipe(){
+		base.resultat, base.err = base.db.Query("SELECT * FROM classementequipe")
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête")
+			log.Fatal(base.err)
+		}
+		defer base.resultat.Close()
+		
+		var info [4]string
+
+		for base.resultat.Next() {
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3])
+			if base.err != nil {
+				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				log.Fatal(base.err)
+			}
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3])
+		}
+	}

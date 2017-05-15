@@ -198,8 +198,18 @@
 						if base.err != nil {
 							fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
 						} else {
-							fmt.Println("Remise à zéro de la base de données effectuée")
+								_, base.err = base.db.Exec("DELETE FROM classementequipe")
+							if base.err != nil {
+								fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+							} else {
+								_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
+								if base.err != nil {
+									fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+									}else{
+								fmt.Println("Remise à zéro de la base de données effectuée")
+							}
 						}
+					}
 			}
 		}
 	}
@@ -279,7 +289,6 @@
 				if errr != nil {
 				log.Fatal(errr)
 				}
-
 				comp := newCompetiteur(0, info[0], info[1], info[2], info[3], info[4], info[5], temps1, info[7],temps2)
 				base.addCompetiteur(comp)
 			}
@@ -357,7 +366,7 @@
 					fmt.Println("Erreur! Format du numéro de license.")
 				}
 			case 6:
-				match, _ := regexp.MatchString("^[\\p{L}- _0-9]*$", value )
+				match, _ := regexp.MatchString("^[\\p{L}- _]*$", value )
 				if(!match){
 					verif =false
 					fmt.Println("Erreur! Format du nom d'équipe.")
@@ -368,10 +377,10 @@
 					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 				}
 			case 8,10:
-				match, _ := regexp.MatchString("^[[:digit:]]*$", value)
+				match, _ := regexp.MatchString("(^[[:digit:]]$)", value)
 				if(!match){
 					verif = false
-					fmt.Println("Erreur! Format du format de l'annonce.")
+					fmt.Println("Erreur! Format du annonce.")
 				}
 			default:
 				log.Fatal("Numéro de colone invalide")

@@ -166,7 +166,7 @@ package main
 			if !firstCall{
 			temps,er := strconv.Atoi(info[6])
 			idd,errr := strconv.Atoi(info[0])
-			annonce := base.recupAnnonce(info[0],info[5]) //info[1],info[2],info[3],info[5]
+			annonce := base.recupAnnonce(info[0],info[5]) 
 			if er != nil {
 			log.Fatal(er)
 			}
