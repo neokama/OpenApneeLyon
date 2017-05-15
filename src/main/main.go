@@ -8,7 +8,9 @@ import (
 	
 func main() {
 	fmt.Println("Début: \n")
+	Parsage()
 
+<<<<<<< HEAD
 	// %%%%%%%%% Compétiteurs %%%%%%%%%
 	//Moi := newCompetiteur(0,"Arnaud","RICAUD","M","23111995N1","TeamNono","Stat",150,"16x50",1250)
 	//Moi.display()
@@ -83,4 +85,23 @@ func main() {
 	// base.exportClassement("sta")
 	// base.displayCompetiteur()
 	// fmt.Println("\n")
+=======
+	/*
+	// %%%%%%%%%% TEST CLASSEMENT %%%%%%%%
+	base := newBdd("database/OpenApneeLyon")
+	base.reset()
+	base.importCompetiteur()
+	base.importResultat()
+	fmt.Println(" classement ->\n")
+	//base.displayClassement()
+	base.exportClassement("spd")
+	//base.displayClassement()
+	//base.exportClassement("dnf")
+	//base.exportClassement("dwf")
+	//base.exportClassement("1650")
+	//base.exportClassement("sta")
+	//base.displayClassement()
+	//base.displayCompetiteur()
+	fmt.Println("\n")*/
+>>>>>>> origin/master
 }

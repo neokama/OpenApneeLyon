@@ -291,10 +291,7 @@
 			log.Fatal(err)
 		}
 		// Verification de l'unicité
-		fmt.Println("Unicité:")
-		base.uniqueness()
-		fmt.Println("\r\n")
-		
+		base.uniqueness()		
 	}
 	
 	/*

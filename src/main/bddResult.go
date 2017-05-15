@@ -166,7 +166,7 @@ package main
 			if !firstCall{
 			temps,er := strconv.Atoi(info[6])
 			idd,errr := strconv.Atoi(info[0])
-			annonce := base.recupAnnonce(info[1],info[2],info[3],info[5])
+			annonce := base.recupAnnonce(info[0],info[5]) //info[1],info[2],info[3],info[5]
 			if er != nil {
 			log.Fatal(er)
 			}
@@ -206,14 +206,14 @@ package main
 	*
 	*
 	*/
-	func (base Bdd)recupAnnonce(prenom string, nom string, sexe string, epreuve string)(int){
+	func (base Bdd)recupAnnonce(id string, epreuve string)(int){
 		var id_col string
-		id_col, prenom = col_id2name2(2, prenom)
-		var id_col2 string
+		id_col, id = col_id2name2(1, id)
+		/*var id_col2 string
 		id_col2, nom = col_id2name2(3, nom)
 		var id_col3 string
-		id_col3, sexe = col_id2name2(4, sexe)
-		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + prenom + " AND " + id_col2 + " = " + nom + " AND " + id_col3 + " = " + sexe)
+		id_col3, sexe = col_id2name2(4, sexe)*/
+		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + id)
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -316,7 +316,7 @@ package main
 			log.Fatal(err)
 		}
 			
-			
+			var epreuve string = value
 			//calcul de la place equipe
 			switch(value){
 			case "spd": 
@@ -338,9 +338,16 @@ package main
 			
 		var id_col string 
 		id_col, value = col_id2name2(6, value)
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
+		if(epreuve=="spd" || epreuve == "1650"){
+	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat ASC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
+		}
+		}else{
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête 1")
+		}
 		}
 		defer base.resultat.Close()
 	var info [11]string
@@ -389,9 +396,16 @@ package main
 	func (base Bdd) calculPlace(epreuve string){
 	var id_col string 
 		id_col, epreuve = col_id2name2(6, epreuve)
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt DESC"))
+		if( epreuve == "'spd'" || epreuve == "'1650'"){
+	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt ASC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
+		}
+		}else{
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt DESC"))
+		if base.err != nil {
+			fmt.Println("Erreur lors de l'execution de la requête 2")
+		}
 		}
 	var info [11]string
 	var numPlaceF int =1
@@ -457,10 +471,10 @@ package main
 	if(result>max){
 	switch(epreuve){
 	case "spd": 
-	tot =(result-(annonce+20))*3
+	tot =result + (result-(annonce+20))*3
 	break
 	case "1650":
-	tot = (result-(annonce+60))*3
+	tot = result + (result-(annonce+60))*3
 	break
 	case "dnf":
 	tot = (annonce+25)
@@ -482,17 +496,17 @@ package main
 	tot2=annonce-30
 	break
 	case "dnf":
-	tot2=((annonce-25)-result)*3
+	tot2=result-((annonce-25)-result)*3
 	break
 	case "dwf":
-	tot2=((annonce-25)-result)*3
+	tot2=result-((annonce-25)-result)*3
 	break
 	case "sta":
-	tot2=((annonce-60)-result)*3
+	tot2=result-((annonce-60)-result)*3
 	break	
 	}
 	res=tot2
-	}else if (result == annonce){
+	}else if (result >= min && result <= max){
 	res= result
 	}
 	
