@@ -368,10 +368,10 @@
 					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 				}
 			case 8,10:
-				match, _ := regexp.MatchString("(^[0-9]$)", value)
+				match, _ := regexp.MatchString("^[[:digit:]]*$", value)
 				if(!match){
 					verif = false
-					fmt.Println("Erreur! Format du annonce.")
+					fmt.Println("Erreur! Format du format de l'annonce.")
 				}
 			default:
 				log.Fatal("Numéro de colone invalide")
