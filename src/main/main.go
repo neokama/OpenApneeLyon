@@ -17,8 +17,8 @@ func main() {
 	base.importCompetiteur()
 	base.importResultat()
 	fmt.Println(" classement ->\n")
-	//base.displayClassement()
-	base.exportClassement("spd")
+	base.displayClassement()
+	/*base.exportClassement("spd")
 	//base.displayClassement()
 	base.exportClassement("dnf")
 	base.exportClassement("dwf")
@@ -29,6 +29,7 @@ func main() {
 	fmt.Println("\n")
 	fmt.Println("Equipe -> ")
 	base.exportClassementEquipe()
-	base.displayEquipe()
+	base.displayEquipe()*/
+
 	
 }

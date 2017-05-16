@@ -19,15 +19,15 @@ package main
 		}
 		defer base.resultat.Close()
 		
-		var info [11]string
+		var info [13]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12])
 		}
 	}
 	
@@ -57,15 +57,15 @@ package main
 		}
 		defer base.resultat.Close()
 		
-		var info [11]string
+		var info [13]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12])
 		}
 	}
 	
@@ -83,7 +83,7 @@ package main
 
 	func (base Bdd) addCompetiteurClassement(board *Classement){
 		
-		_, base.err = base.db.Exec("INSERT INTO classement ( id, prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc) VALUES(" +
+		_, base.err = base.db.Exec("INSERT INTO classement ( id, prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc, disq, description) VALUES(" +
 		strconv.Itoa(board.id) + ",'" +
 		board.prenom + "','" +
 		board.nom + "','" +
@@ -94,7 +94,9 @@ package main
 		strconv.Itoa(board.resultat) + "," +
 		strconv.Itoa(board.place) + "," +
 		strconv.Itoa(board.rslt) + "," +
-		strconv.Itoa(board.plc) + ")")
+		strconv.Itoa(board.plc) + ",'" +
+		strconv.FormatBool(board.disq) + "','" +
+		board.description + "')")
 	
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout1 : "+ board.nom +" "+ board.prenom, base.err)
@@ -161,38 +163,41 @@ package main
 		var place int
 		var plc int
 		scanner := bufio.NewScanner(file)
+		
 		for scanner.Scan() {
 			info := strings.Split(scanner.Text(), ";")
+			
 			if !firstCall{
-			temps,er := strconv.Atoi(info[6])
-			idd,errr := strconv.Atoi(info[0])
-			annonce := base.recupAnnonce(info[0],info[5]) 
-			if er != nil {
-			log.Fatal(er)
-			}
-			if errr != nil {
-			log.Fatal(errr)
-			}
-			switch(info[5]){
-			case "spd": 
-			res=calculResultat("spd",annonce,info[6])
-			break
-			case "1650":
-			res=calculResultat("1650",annonce,info[6])
-			break
-			case "dnf":
-			res=calculResultat("dnf",annonce,info[6])
-			break
-			case "dwf":
-			res=calculResultat("dwf",annonce,info[6])
-			break
-			case "sta":
-			res=calculResultat("sta",annonce,info[6])
-			break
-			}
+				temps,er := strconv.Atoi(info[6])
+				idd,errr := strconv.Atoi(info[0])
+				annonce := base.recupAnnonce(info[0],info[5]) 
+				disq,_ := strconv.ParseBool(info[7])
+				if er != nil {
+					log.Fatal(er)
+				}
+				if errr != nil {
+					log.Fatal(errr)
+				}
+				switch(info[5]){
+				case "spd": 
+					res=calculResultat("spd",annonce,info[6])
+				break
+				case "1650":
+					res=calculResultat("1650",annonce,info[6])
+				break
+				case "dnf":
+					res=calculResultat("dnf",annonce,info[6])
+				break
+				case "dwf":
+					res=calculResultat("dwf",annonce,info[6])
+				break
+				case "sta":
+					res=calculResultat("sta",annonce,info[6])
+				break
+				}
 				
-			classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps,place,res,plc)
-			base.addCompetiteurClassement(classemt)
+				classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps, place, res, plc, disq, info[8])
+				base.addCompetiteurClassement(classemt)
 			}
 			firstCall = false
 		}
@@ -201,6 +206,8 @@ package main
 			log.Fatal(err)
 		}	
 	}
+	
+	
 	/*
 	*
 	*
@@ -209,15 +216,11 @@ package main
 	func (base Bdd)recupAnnonce(id string, epreuve string)(int){
 		var id_col string
 		id_col, id = col_id2name2(1, id)
-		/*var id_col2 string
-		id_col2, nom = col_id2name2(3, nom)
-		var id_col3 string
-		id_col3, sexe = col_id2name2(4, sexe)*/
 		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + id)
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête")
-			log.Fatal(base.err)
-		}
+			if base.err != nil {
+				fmt.Println("Erreur lors de l'execution de la requête")
+				log.Fatal(base.err)
+			}
 		defer base.resultat.Close()
 		
 		var info [10]string
@@ -229,11 +232,11 @@ package main
 				log.Fatal(base.err)
 			}
 			if (epreuve==info[6]){
-			resultat,_ = strconv.Atoi(info[7])
+				resultat,_ = strconv.Atoi(info[7])
 			}else if (epreuve==info[8]){
-			resultat,_ = strconv.Atoi(info[9])
+				resultat,_ = strconv.Atoi(info[9])
 			} else{
-			resultat = 0
+				resultat = 0
 			}	
 		}
 		return resultat
@@ -289,6 +292,12 @@ package main
 			case 11:
 				col_idr = "plc"
 				value = fmt.Sprint("'",value,"'")
+			case 12:
+				col_idr = "disq"
+				value = fmt.Sprint("'",value,"'")
+			case 13:
+				col_idr = "description"
+				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
 			}
@@ -320,21 +329,25 @@ package main
 			//calcul de la place equipe
 			switch(value){
 			case "spd": 
-			base.calculPlace("spd")
+				base.calculPlace("spd")
 			break
 			case "1650":
-			base.calculPlace("1650")
+				base.calculPlace("1650")
 			break
 			case "dnf":
-			base.calculPlace("dnf")
+				base.calculPlace("dnf")
 			break
 			case "dwf":
-			base.calculPlace("dwf")
+				base.calculPlace("dwf")
 			break
 			case "sta":
-			base.calculPlace("sta")
+				base.calculPlace("sta")
+			break
+			default:
+				log.Fatal("Epreuve invalide")
 			break
 			}
+			
 			
 		var id_col string 
 		id_col, value = col_id2name2(6, value)
@@ -350,16 +363,16 @@ package main
 		}
 		}
 		defer base.resultat.Close()
-	var info [11]string
+	var info [13]string
 	var numPlaceF int =1
 	var numPlaceH int =1
 	var sexe string ="F" 
 	
 	
-	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe\r\n"))
-	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe\r\n"))	
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))	
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}				
@@ -369,15 +382,19 @@ package main
 				numPlaceF=numPlaceF+1
 			}else{
 				info[8]=strconv.Itoa(numPlaceH)
-				numPlaceH=numPlaceH+1}
-				//id,_:=strconv.Atoi(info[0])
-			//base.modifResult(id,9,info[8])
+				numPlaceH=numPlaceH+1
+			}
 
-		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
-		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],"\r\n"))
+		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
+		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
 		}
 	}
 	
+	
+	/*
+	*
+	*
+	*/
 	func (base Bdd) modifResult(id_comp int, col_num int, newvalue string){
 		col_id, value := col_id2name2(col_num, newvalue)
 		id := strconv.Itoa(id_comp)
@@ -407,14 +424,14 @@ package main
 			fmt.Println("Erreur lors de l'execution de la requête 2")
 		}
 		}
-	var info [11]string
+	var info [13]string
 	var numPlaceF int =1
 	var numPlaceH int =1
 	var sexe string ="F" 
 	var tabClassement []*Classement
 	var nextResult *Classement
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}				
@@ -435,8 +452,9 @@ package main
 				place,_ := strconv.Atoi(info[8])
 				rslt,_ := strconv.Atoi(info[9])
 				plc,_ := strconv.Atoi(info[10])
+				disq,_ := strconv.ParseBool(info[11])
 				
-				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc)
+				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
 				tabClassement = append(tabClassement, nextResult)
 		}
 		base.resultat.Close()
@@ -449,70 +467,69 @@ package main
 	
 	
 	func calculResultat(epreuve string, annonce int, resultat string)(int){
-	var sMin int =0 
-	var sMax int =0
-	var res int
-	var result int
-	var tot int
-	var tot2 int
+		var sMin int =0 
+		var sMax int =0
+		var res int
+		var result int
+		var tot int
+		var tot2 int
+		var tab[] *ConfigurationEpreuve
+		
+		result,_ =strconv.Atoi(resultat)
+		tab=getConfigurationEpreuve1()
+		
+		for i := 0; i < 5; i++{
+			if (tab[i].id==epreuve){
+				sMin=tab[i].seuilMin
+				sMax=tab[i].seuilMax
+			}
 	
-	var tab[] *ConfigurationEpreuve
-	result,_ =strconv.Atoi(resultat)
-	tab=getConfigurationEpreuve1()
-	
-	for i := 0; i < 5; i++{
-	if (tab[i].id==epreuve){
-	sMin=tab[i].seuilMin
-	sMax=tab[i].seuilMax
-	}
-	
-	max:=annonce+sMax
-	min:=annonce+sMin
-	if(result>max){
-	switch(epreuve){
-	case "spd": 
-	tot =result + (result-(annonce+20))*3
-	break
-	case "1650":
-	tot = result + (result-(annonce+60))*3
-	break
-	case "dnf":
-	tot = (annonce+25)
-	break
-	case "dwf":
-	tot = (annonce+25)
-	break
-	case "sta":
-	tot = (annonce+60)
-	break	
-	}
-	res=tot
-	}else if(result<min){
-	switch(epreuve){
-	case "spd": 
-	tot2=annonce-10
-	break
-	case "1650":
-	tot2=annonce-30
-	break
-	case "dnf":
-	tot2=result-((annonce-25)-result)*3
-	break
-	case "dwf":
-	tot2=result-((annonce-25)-result)*3
-	break
-	case "sta":
-	tot2=result-((annonce-60)-result)*3
-	break	
-	}
-	res=tot2
-	}else if (result >= min && result <= max){
-	res= result
-	}
-	
-	}
-	
-	return res
+			max:=annonce+sMax
+			min:=annonce+sMin
+			
+			if(result>max){
+				switch(epreuve){
+				case "spd": 
+					tot =result + (result-(annonce+20))*3
+				break
+				case "1650":
+					tot = result + (result-(annonce+60))*3
+				break
+				case "dnf":
+					tot = (annonce+25)
+				break
+				case "dwf":
+					tot = (annonce+25)
+				break
+				case "sta":
+					tot = (annonce+60)
+				break	
+				}
+				res=tot
+			}else if(result<min){
+				switch(epreuve){
+				case "spd": 
+					tot2=annonce-10
+				break
+				case "1650":
+					tot2=annonce-30
+				break
+				case "dnf":
+					tot2=result-((annonce-25)-result)*3
+				break
+				case "dwf":
+					tot2=result-((annonce-25)-result)*3
+				break
+				case "sta":
+					tot2=result-((annonce-60)-result)*3
+				break	
+				}
+			res=tot2
+			}else if (result >= min && result <= max){
+			res= result
+			}
+		}
+		return res
 	}
 	
 	/*
