@@ -367,7 +367,8 @@ package main
 	var numPlaceF int =1
 	var numPlaceH int =1
 	var sexe string ="F" 
-	
+	var tabPlace []*Classement
+	var nextResult *Classement
 	
 	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))
 	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))	
@@ -380,14 +381,28 @@ package main
 			if(info[3]==sexe){
 				info[8]=strconv.Itoa(numPlaceF)
 				numPlaceF=numPlaceF+1
+				
 			}else{
 				info[8]=strconv.Itoa(numPlaceH)
 				numPlaceH=numPlaceH+1
 			}
-
+				id,_:=strconv.Atoi(info[0])
+				annonce,_ := strconv.Atoi(info[6])
+				resultat,_ := strconv.Atoi(info[7])
+				place,_ := strconv.Atoi(info[8])
+				rslt,_ := strconv.Atoi(info[9])
+				plc,_ := strconv.Atoi(info[10])
+				disq,_ := strconv.ParseBool(info[11])
+				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+				tabPlace=append(tabPlace,nextResult)
+				
 		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
 		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
 		}
+		
+		for i := 0; i < len(tabPlace); i++{
+				base.modifResult(tabPlace[i].id ,9,strconv.Itoa(tabPlace[i].place))
+			}
 	}
 	
 	

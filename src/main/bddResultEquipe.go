@@ -144,14 +144,14 @@ package main
 			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
 		defer base.resultat.Close()
-		var info [11]string
+		var info [13]string
 		var tabpoint []string
 		var point string
 		var nbpoint int
 		var nb int
 		for base.resultat.Next() {
 		
-		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3],&info[4], &info[5], &info[6], &info[7],&info[8], &info[9], &info[10])
+		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3],&info[4], &info[5], &info[6], &info[7],&info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}
