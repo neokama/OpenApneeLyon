@@ -400,6 +400,8 @@ package main
 					if lastResult==Resultnow{
 						info[8]=strconv.Itoa(numPlaceF-2-egalF)
 						egalF =egalF + 1
+					}else{
+					egalF=0
 					}
 					lastResult,_=strconv.Atoi(info[7])
 				}else{
@@ -410,6 +412,8 @@ package main
 					if lastResult==Resultnow{
 						info[8]=strconv.Itoa(numPlaceH-2-egalH)
 						egalH =egalH + 1
+					}else{
+					egalH=0
 					}
 					lastResult,_=strconv.Atoi(info[7])
 				}
@@ -486,7 +490,6 @@ package main
 		for i := 0; i < len(tabPlace); i++{
 				base.modifResult(tabPlace[i].id ,9,strconv.Itoa(tabPlace[i].place))
 			}		
-		
 	}
 	
 	
@@ -510,7 +513,9 @@ package main
 	*
 	*/
 	func (base Bdd) calculPlace(epreuve string){
-	
+	var egalF int =0
+	var egalH int =0
+	var lastResult int=-1
 	var id_col string 
 		id_col, epreuve = col_id2name2(6, epreuve)
 	
@@ -543,7 +548,7 @@ package main
 				if info[3]=="H"{
 			    id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.Atoi(info[7])
+				resultat,_ := strconv.(info[7])
 				place,_ := strconv.Atoi(info[8])
 				rslt,_ := strconv.Atoi(info[9])
 				plc,_ := strconv.Atoi(info[10])
@@ -563,13 +568,32 @@ package main
 
 			tabF=append(tabF,nextResult)}
 			}else{
+			fmt.Println(info[10], " ", info[9])
 				if(info[3]==sexe){
 					info[10]=strconv.Itoa(numPlaceF)
-					numPlaceF=numPlaceF+1
+					numPlaceF=numPlaceF+1	
 					
+					Resultnow,_:=strconv.Atoi(info[9])
+					if lastResult==Resultnow{
+						info[10]=strconv.Itoa(numPlaceF-2-egalF)
+						egalF =egalF + 1
+					}else{
+					egalF=0
+					}
+					lastResult,_=strconv.Atoi(info[9])
 				}else{
 					info[10]=strconv.Itoa(numPlaceH)
 					numPlaceH=numPlaceH+1
+					
+					Resultnow,_:=strconv.Atoi(info[9])
+					fmt.Println("now :",Resultnow," last :",lastResult)
+					if lastResult==Resultnow{
+						info[10]=strconv.Itoa(numPlaceH-2-egalH)
+						egalH =egalH + 1
+					}else{
+					egalH=0
+					}
+					lastResult,_=strconv.Atoi(info[9])
 					}
 			}
 				
