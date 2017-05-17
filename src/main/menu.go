@@ -277,7 +277,6 @@ func Parsage(){
 				if i ==2 {
 					fmt.Println("Quel est le prénom du competiteur que vous souhaitez ajouter ? \n")
 					prenom = checkCaracteres()
-					fmt.Println(prenom)
 					i++ 
 				} else if i == 3 {
 					fmt.Println("Quel est le nom du competiteur que vous souhaitez ajouter ? \n")
@@ -390,7 +389,6 @@ func Parsage(){
 			base := newBdd("database/OpenApneeLyon")
 			var id_comp int
 			var col_num int 
-			//var newvalue string
 			fmt.Println("Saisissez l'id du participant que vous souhaitez modifier")
 			in1, err1 := readInt(1)
 			if (err1 != nil) {
@@ -409,8 +407,7 @@ func Parsage(){
 			}
 			col_num = in2[0]+1
 			fmt.Println("Quelle la nouvelle valeur de ce critère ?")
-			
-			// #############################################
+
 			if (col_num == 2) {
 				prenom := checkCaracteres()
 				base.modifCompetiteur (id_comp, col_num, prenom)
@@ -447,16 +444,9 @@ func Parsage(){
 				}
 				epreuve1 := in[0]
 				base.modifCompetiteur (id_comp, col_num, epreuve1)
-			/*} else if (col_num == 8) {
-				in , err := readInt(1)
-				for (err != nil) {
-					fmt.Println("Veuillez saisir un entier positif svp \n")
-					in, err = readInt(1)
-					continue
-					fmt.Println(err)
-				}
-				annonce1 := in[0]
-				base.modifCompetiteur (id_comp, col_num, annonce1)*/
+			} else if (col_num == 8) {
+				annonce1 := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, annonce1)
 			} else if (col_num == 9) {
 				in , err := readString(1)
 				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
@@ -467,25 +457,10 @@ func Parsage(){
 				}
 				epreuve2 := in[0]
 				base.modifCompetiteur (id_comp, col_num, epreuve2)
-			/*} else if (col_num == 10) {
-				in , err := readInt(1)
-				for (err != nil) {
-					fmt.Println("Veuillez saisir un entier positif svp \n")
-					in, err = readInt(1)
-					continue
-					fmt.Println(err)
-				}
-				annonce2 := in[0]
-				base.modifCompetiteur (id_comp, col_num, annonce2)*/
-			}
-			// ###################################################
-			/*in3, err3 := readString(1)
-			if (err3 != nil) {
-				fmt.Println(err3)
-			}
-			newvalue = in3[0]
-			base.modifCompetiteur (id_comp, col_num, newvalue)*/
-			
+			} else if (col_num == 10) {
+				annonce2 := checkCaracteres()
+				base.modifCompetiteur (id_comp, col_num, annonce2)
+			}			
 			
 		} else if *c == "search" {
 			base := newBdd("database/OpenApneeLyon")
@@ -573,25 +548,22 @@ func Parsage(){
 			}
 			
 	} else if *r != "deff" {
-		if *r == "add" {
-			fmt.Println("Demande le nom et la performance du compétiteur ainsi que le nom de l’épreuve sur laquelle on veut ajouter des résultats afin de l’ajouter au tableau des scores")
-		} else if *r == "import" {
-			fmt.Println("Importe un fichier .csv de résultats d’une épreuve")
-		} else if *r == "modify" {
-			fmt.Println("Modifie le score d’un compétiteur")
-		} else if *r == "print" {
-			fmt.Println("Génère une feuille de résultats d’une épreuve lorsqu’elle est terminée")
-		} else if *r == "generateClass" {
-			fmt.Println("Lance la génération du classement final une fois que les épreuves sont terminées")
-		} else if *r == "remove" {
-			fmt.Println("Supprime le score d’un participant à une épreuve")
+		if *r == "classInd" {
+			base := newBdd("database/OpenApneeLyon")
+			base.importResultat()
+			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
+			fmt.Println("Saisissez le nom de l'épreuve dont vous voulez obtenir le classement svp \n")
+			epreuve := checkCaracteres()
+			base.exportClassement(epreuve)
+			fmt.Println("Export du classement réalisé")
+		} else if *r == "teamClass" {
+			base := newBdd("database/OpenApneeLyon")
+			base.importResultat()
+			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
+			base.exportClassementEquipe()
 		} else {
-			fmt.Println("Vous pouvez inscrire la performance dun competiteur en tapant -r=add apres votre derniere commande\n")
-			fmt.Println("Vous pouvez importer un fichier csv de resultats en tapant -r=import apres votre derniere commande\n")
-			fmt.Println("Vous pouvez modifier le score dun competiteur en tapant -r=modify apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer une feuille de resultat pour une epreuve donnee en tapant -r=print apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer le classement final en tapant -r=generateClass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez supprimer le score dun participant a une epreuve en tapant -r=remove apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour une epreuve donnee en tapant -r=classInd apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=teamClass apres votre derniere commande\n")
 		}
 		
 	} else {
