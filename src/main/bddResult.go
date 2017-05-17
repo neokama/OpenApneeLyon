@@ -352,57 +352,130 @@ package main
 		var id_col string 
 		id_col, value = col_id2name2(6, value)
 		if(epreuve=="spd" || epreuve == "1650"){
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat ASC"))
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête 1")
-		}
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat ASC"))
+			if base.err != nil {
+				fmt.Println("Erreur lors de l'execution de la requête 1")
+			}
 		}else{
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
-		if base.err != nil {
-			fmt.Println("Erreur lors de l'execution de la requête 1")
-		}
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
+			if base.err != nil {
+				fmt.Println("Erreur lors de l'execution de la requête 1")
+			}
 		}
 		defer base.resultat.Close()
 	var info [13]string
 	var numPlaceF int =1
 	var numPlaceH int =1
+	var nbF int =0
+	var nbH int =0
 	var sexe string ="F" 
 	var tabPlace []*Classement
 	var nextResult *Classement
 	
+	var tabDisqH []*Classement
+	var tabDisqF []*Classement
+	var tabHomme []*Classement
+	
 	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))
 	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))	
+		
+		
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
+		
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)}				
+				log.Fatal(base.err)}
+				
+			if info[7]!="0" || info[11]=="false"{	
+				if(info[3]==sexe){
+					info[8]=strconv.Itoa(numPlaceF)
+					numPlaceF=numPlaceF+1	
+				}else{
+					info[8]=strconv.Itoa(numPlaceH)
+					numPlaceH=numPlaceH+1
+				}
+					id,_:=strconv.Atoi(info[0])
+					annonce,_ := strconv.Atoi(info[6])
+					resultat,_ := strconv.Atoi(info[7])
+					place,_ := strconv.Atoi(info[8])
+					rslt,_ := strconv.Atoi(info[9])
+					plc,_ := strconv.Atoi(info[10])
+					disq,_ := strconv.ParseBool(info[11])
+					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+					tabPlace=append(tabPlace,nextResult)
+					
+					if info[3]=="F" {
+						file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
+						file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
+					}else{
+						tabHomme=append(tabHomme,nextResult)
+					}
+				}else{
+					if(info[3]=="F"){
+						nbF= nbF + 1
+					}else{
+						nbH= nbH + 1
+					}
+					info[8]=strconv.Itoa(100)
+					id,_:=strconv.Atoi(info[0])
+					annonce,_ := strconv.Atoi(info[6])
+					resultat,_ := strconv.Atoi(info[7])
+					place,_ := strconv.Atoi(info[8])
+					rslt,_ := strconv.Atoi(info[9])
+					plc,_ := strconv.Atoi(info[10])
+					disq,_ := strconv.ParseBool(info[11])
+					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+					
+					if(info[3]=="F"){
+						tabDisqF=append(tabDisqF,nextResult)
+					}else{
+						tabDisqH=append(tabDisqH,nextResult)
+					}					
+				}			
+		}
 			
-			if(info[3]==sexe){
-				info[8]=strconv.Itoa(numPlaceF)
-				numPlaceF=numPlaceF+1
+		for i := 0; i < len(tabDisqF); i++{
+		var place string
+					//if(info[3]=="F"){
+						place=strconv.Itoa(numPlaceF+nbF-1)	
+					/*}else{
+						place=strconv.Itoa(numPlaceH+nbH-1)
+						}*/
+				file.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
 				
-			}else{
-				info[8]=strconv.Itoa(numPlaceH)
-				numPlaceH=numPlaceH+1
-			}
-				id,_:=strconv.Atoi(info[0])
-				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.Atoi(info[7])
-				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.Atoi(info[9])
-				plc,_ := strconv.Atoi(info[10])
-				disq,_ := strconv.ParseBool(info[11])
-				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+				pla,_:=strconv.Atoi(place)
+				nextResult = newClassement(tabDisqF[i].id,tabDisqF[i].prenom,tabDisqF[i].nom,tabDisqF[i].sexe,tabDisqF[i].equipe,tabDisqF[i].epreuve,tabDisqF[i].annonce, tabDisqF[i].resultat,pla,tabDisqF[i].rslt,tabDisqF[i].plc, tabDisqF[i].disq, tabDisqF[i].description)
 				tabPlace=append(tabPlace,nextResult)
+		}
+		for i := 0; i < len(tabHomme); i++{
+
+				file.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rslt,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rslt,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
+				nextResult = newClassement(tabHomme[i].id,tabHomme[i].prenom,tabHomme[i].nom,tabHomme[i].sexe,tabHomme[i].equipe,tabHomme[i].epreuve,tabHomme[i].annonce, tabHomme[i].resultat,tabHomme[i].place,tabHomme[i].rslt,tabHomme[i].plc, tabHomme[i].disq, tabHomme[i].description)
+				tabPlace=append(tabPlace,nextResult)
+		}
+		
+		for i := 0; i < len(tabDisqH); i++{
+		var place string
+					/*if(info[3]=="F"){
+						place=strconv.Itoa(numPlaceF+nbF-1)	
+					}else{*/
+						place=strconv.Itoa(numPlaceH+nbH-1)
+						//}
+				file.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
 				
-		file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
-		file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
+				pla,_:=strconv.Atoi(place)
+				nextResult = newClassement(tabDisqH[i].id,tabDisqH[i].prenom,tabDisqH[i].nom,tabDisqH[i].sexe,tabDisqH[i].equipe,tabDisqH[i].epreuve,tabDisqH[i].annonce, tabDisqH[i].resultat,pla,tabDisqH[i].rslt,tabDisqH[i].plc, tabDisqH[i].disq, tabDisqH[i].description)
+				tabPlace=append(tabPlace,nextResult)
 		}
 		
 		for i := 0; i < len(tabPlace); i++{
 				base.modifResult(tabPlace[i].id ,9,strconv.Itoa(tabPlace[i].place))
-			}
+			}		
+			
 	}
 	
 	
