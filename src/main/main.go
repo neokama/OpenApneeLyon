@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	//"strings"
 	)
 	
 	
 func main() {
-	// fmt.Println("Début: \n")
+	//fmt.Println("Début: \n")
 	Parsage()
 
 	

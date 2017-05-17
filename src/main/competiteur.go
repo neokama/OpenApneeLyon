@@ -51,7 +51,7 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du sexe.")
 			}
-		match, _ = regexp.MatchString("^[A-Za-z0-9]*$", pers.num_license )
+		match, _ = regexp.MatchString("^[A-Za-z0-9-]*$", pers.num_license )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du numéro de license.")

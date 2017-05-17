@@ -360,7 +360,7 @@
 					fmt.Println("Erreur! Format du sexe.")
 				}
 			case 5:
-				match, _ := regexp.MatchString("^[A-Za-z0-9]*$", value )
+				match, _ := regexp.MatchString("^[A-Za-z0-9-]*$", value )
 				if(!match){
 					verif =false
 					fmt.Println("Erreur! Format du numéro de license.")
