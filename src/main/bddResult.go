@@ -371,10 +371,12 @@ package main
 	var sexe string ="F" 
 	var tabPlace []*Classement
 	var nextResult *Classement
-	
+	var lastResult int=-1
 	var tabDisqH []*Classement
 	var tabDisqF []*Classement
 	var tabHomme []*Classement
+	var egalF int =0
+	var egalH int =0
 	
 	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))
 	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))	
@@ -387,13 +389,29 @@ package main
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}
 				
+			
+			
 			if info[7]!="0" || info[11]=="false"{	
 				if(info[3]==sexe){
 					info[8]=strconv.Itoa(numPlaceF)
 					numPlaceF=numPlaceF+1	
+					
+					Resultnow,_:=strconv.Atoi(info[7])
+					if lastResult==Resultnow{
+						info[8]=strconv.Itoa(numPlaceF-2-egalF)
+						egalF =egalF + 1
+					}
+					lastResult,_=strconv.Atoi(info[7])
 				}else{
 					info[8]=strconv.Itoa(numPlaceH)
 					numPlaceH=numPlaceH+1
+					
+					Resultnow,_:=strconv.Atoi(info[7])
+					if lastResult==Resultnow{
+						info[8]=strconv.Itoa(numPlaceH-2-egalH)
+						egalH =egalH + 1
+					}
+					lastResult,_=strconv.Atoi(info[7])
 				}
 					id,_:=strconv.Atoi(info[0])
 					annonce,_ := strconv.Atoi(info[6])
