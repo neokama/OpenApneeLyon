@@ -515,7 +515,7 @@ package main
 	func (base Bdd) calculPlace(epreuve string){
 	var egalF int =0
 	var egalH int =0
-	var lastResult int=-1
+	var lastResult float64=-1
 	var id_col string 
 		id_col, epreuve = col_id2name2(6, epreuve)
 	
@@ -568,32 +568,30 @@ package main
 
 			tabF=append(tabF,nextResult)}
 			}else{
-			fmt.Println(info[10], " ", info[9])
 				if(info[3]==sexe){
 					info[10]=strconv.Itoa(numPlaceF)
 					numPlaceF=numPlaceF+1	
 					
-					Resultnow,_:=strconv.Atoi(info[9])
+					Resultnow,_:=strconv.ParseFloat(info[9], 64)
 					if lastResult==Resultnow{
 						info[10]=strconv.Itoa(numPlaceF-2-egalF)
 						egalF =egalF + 1
 					}else{
 					egalF=0
 					}
-					lastResult,_=strconv.Atoi(info[9])
+					lastResult,_=strconv.ParseFloat(info[9], 64)
 				}else{
 					info[10]=strconv.Itoa(numPlaceH)
 					numPlaceH=numPlaceH+1
 					
-					Resultnow,_:=strconv.Atoi(info[9])
-					fmt.Println("now :",Resultnow," last :",lastResult)
+					Resultnow,_:=strconv.ParseFloat(info[9], 64)
 					if lastResult==Resultnow{
 						info[10]=strconv.Itoa(numPlaceH-2-egalH)
 						egalH =egalH + 1
 					}else{
 					egalH=0
 					}
-					lastResult,_=strconv.Atoi(info[9])
+					lastResult,_=strconv.ParseFloat(info[9], 64)
 					}
 			}
 				
