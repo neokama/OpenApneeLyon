@@ -1,11 +1,11 @@
 ﻿Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description
-7;Anne;BORGAT;F;CYRNEA;spd;70;80;1;80;2;false;parce que il est trop nul
-15;Stephanie;DELICOURT;F;Enjoy And Relax;spd;120;90;2;110;3;false;rien
-1;Martin;ZAJAC;F;Apneaman, Praha, Czech Republic;spd;50;7500;3;29790;4;false;rien
-20;Richard;JAUFFRAUD;F;Imashi;spd;75;0;4;65;1;true;rien
-42;Christian;VOGLER;H;Sportpleizh;spd;50;50;1;50;3;false;rien
-37;Aurélien;LANOISELIER;H;SavoyOuBien?;spd;60;60;2;60;4;false;rien
-34;Stéphane;PETTENUZZO;H;LIMULES;spd;85;85;3;85;5;false;rien
-41;Omr;SALEH;H;SOLO;spd;100;100;4;100;6;false;rien
-22;Alexandre;GASS;H;Les Cormorans 1;spd;45;0;6;35;1;true;faute de frappe
-27;Christopher;BRATANIC;H;Les Cormorans 2;spd;55;0;6;45;2;true;rien
+7;Anne;BORGAT;F;CYRNEA;spd;70;80;1;80;1;false;parce que il est trop nul
+15;Stephanie;DELICOURT;F;Enjoy And Relax;spd;120;90;2;110;2;false;rien
+1;Martin;ZAJAC;F;Apneaman, Praha, Czech Republic;spd;50;7500;3;29790;3;false;rien
+20;Richard;JAUFFRAUD;F;Imashi;spd;75;0;4;0;4;true;rien
+34;Stéphane;PETTENUZZO;H;LIMULES;spd;85;0;1;75;3;false;rien
+42;Christian;VOGLER;H;Sportpleizh;spd;50;50;2;50;1;false;rien
+37;Aurélien;LANOISELIER;H;SavoyOuBien?;spd;60;60;3;60;2;false;rien
+41;Omr;SALEH;H;SOLO;spd;100;100;4;100;4;false;rien
+22;Alexandre;GASS;H;Les Cormorans 1;spd;45;0;6;0;6;true;faute de frappe
+27;Christopher;BRATANIC;H;Les Cormorans 2;spd;55;0;6;0;6;true;rien

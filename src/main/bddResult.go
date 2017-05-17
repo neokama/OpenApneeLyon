@@ -180,19 +180,19 @@ package main
 				}
 				switch(info[5]){
 				case "spd": 
-					res=calculResultat("spd",annonce,info[6])
+					res=calculResultat("spd",annonce,info[6],info[7])
 				break
 				case "1650":
-					res=calculResultat("1650",annonce,info[6])
+					res=calculResultat("1650",annonce,info[6],info[7])
 				break
 				case "dnf":
-					res=calculResultat("dnf",annonce,info[6])
+					res=calculResultat("dnf",annonce,info[6],info[7])
 				break
 				case "dwf":
-					res=calculResultat("dwf",annonce,info[6])
+					res=calculResultat("dwf",annonce,info[6],info[7])
 				break
 				case "sta":
-					res=calculResultat("sta",annonce,info[6])
+					res=calculResultat("sta",annonce,info[6],info[7])
 				break
 				}
 				
@@ -326,8 +326,8 @@ package main
 		}
 			
 			var epreuve string = value
-			//calcul de la place equipe
-			switch(value){
+				//calcul de la place equipe
+			switch(epreuve){
 			case "spd": 
 				base.calculPlace("spd")
 			break
@@ -437,11 +437,7 @@ package main
 			
 		for i := 0; i < len(tabDisqF); i++{
 		var place string
-					//if(info[3]=="F"){
-						place=strconv.Itoa(numPlaceF+nbF-1)	
-					/*}else{
-						place=strconv.Itoa(numPlaceH+nbH-1)
-						}*/
+				place=strconv.Itoa(numPlaceF+nbF-1)	
 				file.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
 				file2.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
 				
@@ -459,11 +455,8 @@ package main
 		
 		for i := 0; i < len(tabDisqH); i++{
 		var place string
-					/*if(info[3]=="F"){
-						place=strconv.Itoa(numPlaceF+nbF-1)	
-					}else{*/
-						place=strconv.Itoa(numPlaceH+nbH-1)
-						//}
+				place=strconv.Itoa(numPlaceH+nbH-1)
+						
 				file.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
 				file2.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
 				
@@ -475,7 +468,7 @@ package main
 		for i := 0; i < len(tabPlace); i++{
 				base.modifResult(tabPlace[i].id ,9,strconv.Itoa(tabPlace[i].place))
 			}		
-			
+		
 	}
 	
 	
@@ -499,8 +492,10 @@ package main
 	*
 	*/
 	func (base Bdd) calculPlace(epreuve string){
+	
 	var id_col string 
 		id_col, epreuve = col_id2name2(6, epreuve)
+	
 		if( epreuve == "'spd'" || epreuve == "'1650'"){
 	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt ASC"))
 		if base.err != nil {
@@ -518,21 +513,47 @@ package main
 	var sexe string ="F" 
 	var tabClassement []*Classement
 	var nextResult *Classement
+	var tabH []*Classement
+	var tabF []*Classement
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)}				
+				log.Fatal(base.err)}
 				
-		if(info[3]==sexe){
-				info[10]=strconv.Itoa(numPlaceF)
-				numPlaceF=numPlaceF+1
-				
+			if info[9]=="0" && info[11]=="true"{
+				if info[3]=="H"{
+			    id,_:=strconv.Atoi(info[0])
+				annonce,_ := strconv.Atoi(info[6])
+				resultat,_ := strconv.Atoi(info[7])
+				place,_ := strconv.Atoi(info[8])
+				rslt,_ := strconv.Atoi(info[9])
+				plc,_ := strconv.Atoi(info[10])
+				disq,_ := strconv.ParseBool(info[11])
+			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+
+			tabH=append(tabH,nextResult)
 			}else{
-				info[10]=strconv.Itoa(numPlaceH)
-				numPlaceH=numPlaceH+1
-				}
-				
+			 id,_:=strconv.Atoi(info[0])
+				annonce,_ := strconv.Atoi(info[6])
+				resultat,_ := strconv.Atoi(info[7])
+				place,_ := strconv.Atoi(info[8])
+				rslt,_ := strconv.Atoi(info[9])
+				plc,_ := strconv.Atoi(info[10])
+				disq,_ := strconv.ParseBool(info[11])
+			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+
+			tabF=append(tabF,nextResult)}
+			}else{
+				if(info[3]==sexe){
+					info[10]=strconv.Itoa(numPlaceF)
+					numPlaceF=numPlaceF+1
+					
+				}else{
+					info[10]=strconv.Itoa(numPlaceH)
+					numPlaceH=numPlaceH+1
+					}
+			}
 				
 				id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
@@ -550,11 +571,20 @@ package main
 			for i := 0; i < len(tabClassement); i++{
 				base.modifResult(tabClassement[i].id ,11,strconv.Itoa(tabClassement[i].plc))
 			}
+			
+			for i := 0; i < len(tabH); i++{
+			placeH :=numPlaceH +len(tabH)-1
+				base.modifResult(tabH[i].id ,11,strconv.Itoa(placeH))
+			}
+			for i := 0; i < len(tabF); i++{
+			placeF :=numPlaceF +len(tabF)-1
+				base.modifResult(tabF[i].id ,11,strconv.Itoa(placeF))
+			}
 
 	}
 	
 	
-	func calculResultat(epreuve string, annonce int, resultat string)(int){
+	func calculResultat(epreuve string, annonce int, resultat string, disq string)(int){
 		var sMin int =0 
 		var sMax int =0
 		var res int
@@ -575,6 +605,9 @@ package main
 			max:=annonce+sMax
 			min:=annonce+sMin
 			
+			if (result == 0 && disq == "true"){
+			res=0
+			}else{
 			if(result>max){
 				switch(epreuve){
 				case "spd": 
@@ -615,6 +648,7 @@ package main
 			res=tot2
 			}else if (result >= min && result <= max){
 			res= result
+			}
 			}
 		}
 		return res
