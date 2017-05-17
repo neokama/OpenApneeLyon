@@ -91,9 +91,9 @@ package main
 		board.equipe + "','" +
 		board.epreuve + "'," +
 		strconv.Itoa(board.annonce) + "," +
-		strconv.Itoa(board.resultat) + "," +
+		strconv.FormatFloat(board.resultat, 'f', -1, 64) + "," +
 		strconv.Itoa(board.place) + "," +
-		strconv.Itoa(board.rslt) + "," +
+		strconv.FormatFloat(board.rslt, 'f', -1, 64) + "," +
 		strconv.Itoa(board.plc) + ",'" +
 		strconv.FormatBool(board.disq) + "','" +
 		board.description + "')")
@@ -159,7 +159,7 @@ package main
 	
 		var firstCall bool	
 		firstCall = true
-		var res int
+		var res float64
 		var place int
 		var plc int
 		scanner := bufio.NewScanner(file)
@@ -168,7 +168,7 @@ package main
 			info := strings.Split(scanner.Text(), ";")
 			
 			if !firstCall{
-				temps,er := strconv.Atoi(info[6])
+				temps,er := strconv.ParseFloat(info[6],64)
 				idd,errr := strconv.Atoi(info[0])
 				annonce := base.recupAnnonce(info[0],info[5]) 
 				disq,_ := strconv.ParseBool(info[7])
@@ -371,7 +371,7 @@ package main
 	var sexe string ="F" 
 	var tabPlace []*Classement
 	var nextResult *Classement
-	var lastResult int=-1
+	var lastResult float64=-1
 	var tabDisqH []*Classement
 	var tabDisqF []*Classement
 	var tabHomme []*Classement
@@ -396,32 +396,32 @@ package main
 					info[8]=strconv.Itoa(numPlaceF)
 					numPlaceF=numPlaceF+1	
 					
-					Resultnow,_:=strconv.Atoi(info[7])
+					Resultnow,_:=strconv.ParseFloat(info[7],64)
 					if lastResult==Resultnow{
 						info[8]=strconv.Itoa(numPlaceF-2-egalF)
 						egalF =egalF + 1
 					}else{
 					egalF=0
 					}
-					lastResult,_=strconv.Atoi(info[7])
+					lastResult,_=strconv.ParseFloat(info[7],64)
 				}else{
 					info[8]=strconv.Itoa(numPlaceH)
 					numPlaceH=numPlaceH+1
 					
-					Resultnow,_:=strconv.Atoi(info[7])
+					Resultnow,_:=strconv.ParseFloat(info[7],64)
 					if lastResult==Resultnow{
 						info[8]=strconv.Itoa(numPlaceH-2-egalH)
 						egalH =egalH + 1
 					}else{
 					egalH=0
 					}
-					lastResult,_=strconv.Atoi(info[7])
+					lastResult,_= strconv.ParseFloat(info[7],64)
 				}
 					id,_:=strconv.Atoi(info[0])
 					annonce,_ := strconv.Atoi(info[6])
-					resultat,_ := strconv.Atoi(info[7])
+					resultat,_ := strconv.ParseFloat(info[7], 64)
 					place,_ := strconv.Atoi(info[8])
-					rslt,_ := strconv.Atoi(info[9])
+					rslt,_ := strconv.ParseFloat(info[9], 64)
 					plc,_ := strconv.Atoi(info[10])
 					disq,_ := strconv.ParseBool(info[11])
 					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
@@ -442,9 +442,9 @@ package main
 					info[8]=strconv.Itoa(100)
 					id,_:=strconv.Atoi(info[0])
 					annonce,_ := strconv.Atoi(info[6])
-					resultat,_ := strconv.Atoi(info[7])
+					resultat,_ := strconv.ParseFloat(info[7], 64)
 					place,_ := strconv.Atoi(info[8])
-					rslt,_ := strconv.Atoi(info[9])
+					rslt,_ := strconv.ParseFloat(info[9], 64)
 					plc,_ := strconv.Atoi(info[10])
 					disq,_ := strconv.ParseBool(info[11])
 					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
@@ -548,9 +548,9 @@ package main
 				if info[3]=="H"{
 			    id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.(info[7])
+				resultat,_ := strconv.ParseFloat(info[7], 64)
 				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.Atoi(info[9])
+				rslt,_ := strconv.ParseFloat(info[9], 64)
 				plc,_ := strconv.Atoi(info[10])
 				disq,_ := strconv.ParseBool(info[11])
 			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
@@ -559,9 +559,9 @@ package main
 			}else{
 			 id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.Atoi(info[7])
+				resultat,_ := strconv.ParseFloat(info[7], 64)
 				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.Atoi(info[9])
+				rslt,_ := strconv.ParseFloat(info[9], 64)
 				plc,_ := strconv.Atoi(info[10])
 				disq,_ := strconv.ParseBool(info[11])
 			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
@@ -599,9 +599,9 @@ package main
 				
 				id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.Atoi(info[7])
+				resultat,_ := strconv.ParseFloat(info[7], 64)
 				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.Atoi(info[9])
+				rslt,_ := strconv.ParseFloat(info[9], 64)
 				plc,_ := strconv.Atoi(info[10])
 				disq,_ := strconv.ParseBool(info[11])
 				
@@ -626,16 +626,17 @@ package main
 	}
 	
 	
-	func calculResultat(epreuve string, annonce int, resultat string, disq string)(int){
+	func calculResultat(epreuve string, annonce int, resultat string, disq string)(float64){
 		var sMin int =0 
 		var sMax int =0
-		var res int
-		var result int
-		var tot int
-		var tot2 int
+		var res float64
+		var result float64
+		var tot float64
+		var tot2 float64
 		var tab[] *ConfigurationEpreuve
+		var annoncef float64 = float64(annonce)
 		
-		result,_ =strconv.Atoi(resultat)
+		result,_ = strconv.ParseFloat(resultat, 64)
 		tab=getConfigurationEpreuve1()
 		
 		for i := 0; i < 5; i++{
@@ -643,52 +644,52 @@ package main
 				sMin=tab[i].seuilMin
 				sMax=tab[i].seuilMax
 			}
-	
+		
 			max:=annonce+sMax
 			min:=annonce+sMin
 			
 			if (result == 0 && disq == "true"){
 			res=0
 			}else{
-			if(result>max){
+			if(result>float64(max)){
 				switch(epreuve){
 				case "spd": 
-					tot =result + (result-(annonce+20))*3
+					tot =result + (result-(annoncef)+20)*3
 				break
 				case "1650":
-					tot = result + (result-(annonce+60))*3
+					tot = result + (result-(annoncef)+60)*3
 				break
 				case "dnf":
-					tot = (annonce+25)
+					tot = (annoncef+25)
 				break
 				case "dwf":
-					tot = (annonce+25)
+					tot = (annoncef+25)
 				break
 				case "sta":
-					tot = (annonce+60)
+					tot = (annoncef+60)
 				break	
 				}
 				res=tot
-			}else if(result<min){
+			}else if(result<float64(min)){
 				switch(epreuve){
 				case "spd": 
-					tot2=annonce-10
+					tot2=annoncef-10
 				break
 				case "1650":
-					tot2=annonce-30
+					tot2=annoncef-30
 				break
 				case "dnf":
-					tot2=result-((annonce-25)-result)*3
+					tot2=result-((annoncef-25)-result)*3
 				break
 				case "dwf":
-					tot2=result-((annonce-25)-result)*3
+					tot2=result-((annoncef-25)-result)*3
 				break
 				case "sta":
-					tot2=result-((annonce-60)-result)*3
+					tot2=result-((annoncef-60)-result)*3
 				break	
 				}
 			res=tot2
-			}else if (result >= min && result <= max){
+			}else if (result >= float64(min) && result <= float64(max)){
 			res= result
 			}
 			}

@@ -14,9 +14,9 @@ package main
 	equipe string
 	epreuve string
 	annonce int
-	resultat int 
+	resultat float64 
 	place int
-	rslt int
+	rslt float64
 	plc int
 	disq bool
 	description string
@@ -30,15 +30,15 @@ package main
 		board.equipe + "; " +
 		board.epreuve + "; " +
 		strconv.Itoa(board.annonce)+ "; " +
-		strconv.Itoa(board.resultat)+ "; " +
+		strconv.FormatFloat(board.resultat, 'f', -1, 64)+ "; " +
 		strconv.Itoa(board.place)+ "; " +
-		strconv.Itoa(board.rslt)+ "; " +
+		strconv.FormatFloat(board.rslt, 'f', -1, 64)+ "; " +
 		strconv.Itoa(board.plc) + ";" +
 		strconv.FormatBool(board.disq) + ";" +
 		board.description)
 	}
 	
-	func newClassement(id int, prenom string, nom string, sexe string, equipe string, epreuve string, annonce int, resultat int, place int, rslt int, plc int, disq bool, description string)(*Classement){
+	func newClassement(id int, prenom string, nom string, sexe string, equipe string, epreuve string, annonce int, resultat float64, place int, rslt float64, plc int, disq bool, description string)(*Classement){
 		board := new(Classement)
 		board.id = id
 		board.nom = nom
