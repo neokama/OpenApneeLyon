@@ -47,7 +47,7 @@
 23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;spd;55;false;ras
 24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;spd;70;false;ras
 24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;960;false;ras
-25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;0;true;mort
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;0;true;Syncope
 25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;140;false;ras
 26;Caroline;REGNARD;F;Imashi;sta;195;false;ras
 26;Caroline;REGNARD;F;Imashi;spd;60;false;ras
@@ -79,3 +79,13 @@
 39;Laurent;JAILLET;H;Blue Mussels;spd;70;false;ras
 40;Valérie;TERRENOIRE;F;Blue Mussels;sta;270;false;ras
 40;Valérie;TERRENOIRE;F;Blue Mussels;1650;1200;false;ras
+41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;sta;360;spd;40;false;ras
+41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;spd;40;false;ras
+42;David;VENCL;H;Apneaman - Praha - Czech Republic;sta;410;false;ras
+42;David;VENCL;H;Apneaman - Praha - Czech Republic;dnf;125;false;ras
+43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;spd;45;false;ras
+43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;1650;890;false;ras
+44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;dwf;150;false;ras
+44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;dnf;100;false;ras
+45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;dwf;175;false;ras
+45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;1650;890;false;ras
