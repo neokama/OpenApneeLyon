@@ -497,6 +497,10 @@ func Parsage(){
 			base := newBdd("database/OpenApneeLyon")
 			base.exportCompetiteur()
 			fmt.Println("Fichier \"competiteurs\" exporté dans le dossier \"export\".")		
+		} else if *c == "reset" {
+			base := newBdd("database/OpenApneeLyon")
+			base.resetCompetiteurs()
+			fmt.Println("Tous les compétiteurs ont été effacés de la base de donnée")
 		} else {
 			fmt.Println("Vous pouvez ajouter un competiteur en tapant -c=add apres votre derniere commande\n")
 			fmt.Println("Vous pouvez supprimer un competiteur en tapant -c=remove apres votre derniere commande\n")
@@ -505,6 +509,7 @@ func Parsage(){
 			fmt.Println("Vous pouvez afficher l'intégralité des compétiteurs en tapant -c=display apres votre derniere commande\n")
 			fmt.Println("Vous pouvez importer un fichier csv contenant des compétiteurs en tapant -c=import apres votre derniere commande\n")
 			fmt.Println("Vous pouvez exporter un fichier csv contenant des compétiteurs en tapant -c=export apres votre derniere commande\n")
+			fmt.Println("Vous pouvez supprimer tous les compétiteurs de la base de donnée en tapant -c=reset après votre derniere commande\n")
 		}
 		
 	} else if *e != "deff" {
@@ -548,22 +553,50 @@ func Parsage(){
 			}
 			
 	} else if *r != "deff" {
-		if *r == "classInd" {
+		if *r == "import" {
 			base := newBdd("database/OpenApneeLyon")
 			base.importResultat()
 			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-			fmt.Println("Saisissez le nom de l'épreuve dont vous voulez obtenir le classement svp \n")
-			epreuve := checkCaracteres()
-			base.exportClassement(epreuve)
-			fmt.Println("Export du classement réalisé")
-		} else if *r == "teamClass" {
+		} else if *r == "staclass" {
 			base := newBdd("database/OpenApneeLyon")
-			base.importResultat()
+			base.exportClassement("sta")
+			fmt.Println("Export du classement réalisé")
+		} else if *r == "spdclass" {
+			base := newBdd("database/OpenApneeLyon")
+			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
+			base.exportClassement("spd")
+			fmt.Println("Export du classement réalisé")
+		} else if *r == "dwfclass" {
+			base := newBdd("database/OpenApneeLyon")
+			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
+			base.exportClassement("dwf")
+			fmt.Println("Export du classement réalisé")
+		} else if *r == "dnfclass" {
+			base := newBdd("database/OpenApneeLyon")
+			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
+			base.exportClassement("dnf")
+			fmt.Println("Export du classement réalisé")
+		} else if *r == "1650class" {
+			base := newBdd("database/OpenApneeLyon")
+			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
+			base.exportClassement("1650")
+			fmt.Println("Export du classement réalisé")
+		} else if *r == "teamclass" {
+			base := newBdd("database/OpenApneeLyon")
 			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassementEquipe()
-		} else {
-			fmt.Println("Vous pouvez generer un classement individuel pour une epreuve donnee en tapant -r=classInd apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=teamClass apres votre derniere commande\n")
+		} else if *r == "resetclass" {
+			base := newBdd("database/OpenApneeLyon")
+			base.resetClassement()
+		}else {
+			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve sta en tapant -r=staclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve spd en tapant -r=spdclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dwf en tapant -r=dwfclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dnf en tapant -r=dnfclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve 1650 en tapant -r=1650class apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=teamclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande\n")
 		}
 		
 	} else {
