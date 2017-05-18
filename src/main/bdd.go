@@ -366,7 +366,7 @@
 					fmt.Println("Erreur! Format du numéro de license.")
 				}
 			case 6:
-				match, _ := regexp.MatchString("^[\\p{L}- _]*$", value )
+				match, _ := regexp.MatchString("^[\\p{L}0-9- _]*$", value )
 				if(!match){
 					verif =false
 					fmt.Println("Erreur! Format du nom d'équipe.")

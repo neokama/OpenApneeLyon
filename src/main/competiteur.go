@@ -56,7 +56,7 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du numéro de license.")
 			}
-		match, _ = regexp.MatchString("^[\\p{L}- _]*$", pers.equipe )
+		match, _ = regexp.MatchString("^[\\p{L}0-9- _]*$", pers.equipe )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du nom d'équipe.")
