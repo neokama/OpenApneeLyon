@@ -65,7 +65,7 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du epreuve1 (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 			}
-		match, _ = regexp.MatchString("(^[[:digit:]]*)", strconv.Itoa(pers.annonce1))
+		match, _ = regexp.MatchString("(^[0-9]*$)", strconv.Itoa(pers.annonce1))
 			if(!match){
 				verif = false
 				fmt.Println("Erreur! Format du annonce1.")
@@ -74,7 +74,7 @@ import (
 				verif = false
 				fmt.Println("Erreur! Format du epreuve2 (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
 			}
-		match, _ = regexp.MatchString("(^[[:digit:]]*)", strconv.Itoa(pers.annonce2))
+		match, _ = regexp.MatchString("(^[0-9]*$)", strconv.Itoa(pers.annonce2))
 			if(!match){
 				verif = false
 				fmt.Println("Erreur! Format du annonce2.")
