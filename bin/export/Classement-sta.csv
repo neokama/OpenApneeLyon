@@ -1,1 +1,17 @@
 ﻿Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;sta;360;362.8;1;362.8;1;false;ras
+40;Valérie;TERRENOIRE;F;Blue Mussels;sta;270;270;2;270;2;false;ras
+35;Sophie;BRUYERE;F;APNEEAU;sta;210;210;3;210;3;false;ras
+26;Caroline;REGNARD;F;Imashi;sta;195;195;4;195;4;false;ras
+2;Marion;DAUBANNAIS;F;Zen Team Panda 5;sta;210;180.9;5;180.9;5;false;ras
+19;Nadia;GRAVIER NOEL;F;STARFISH;sta;180;180;6;180;6;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;sta;360;3602;1;420;1;false;ras
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;sta;390;390;2;390;2;false;ras
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;sta;360;360;3;360;3;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;sta;315;315;4;315;4;false;ras
+30;Omr;SALEH;H;Imashi;sta;335;315;4;315;4;false;ras
+6;Benoit;ROUX;H;Cyrnea;sta;270;300;6;300;6;false;ras
+16;Robert;OLTRA;H;STARFISH;sta;300;300;6;300;6;false;ras
+39;Laurent;JAILLET;H;Blue Mussels;sta;300;300;6;300;6;false;ras
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;sta;285;250;9;250;9;false;ras
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;330;0;10;0;10;true;mort

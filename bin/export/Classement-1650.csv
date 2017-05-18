@@ -1,19 +1,17 @@
 ﻿Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description
-26;Rachel;LEITNER;F;Les Cormorans 2;1650;990;990;1;990;1;false;rien
-4;Katerina;SURANSKA;F;Apneaman, Praha, Czech Republic;1650;1050;1050;2;1050;2;false;rien
-40;Emilie;VERNIER;F;SavoyOuBien?;1650;1080;1080;3;1080;3;false;rien
-46;Coralie;MARIE;F;Sportpleizh;1650;1315;1315;4;1315;4;false;rien
-16;Albane;GAUBERT;F;Imashi;1650;1370;1370;5;1370;5;false;rien
-18;Kevin;OLLIVO;H;Imashi;1650;795;795;1;795;1;false;rien
-3;Michal;SVADLENKA;H;Apneaman, Praha, Czech Republic;1650;890;890;2;890;2;false;rien
-23;Olivier;ELU;H;Les Cormorans 1;1650;960;960;3;960;3;false;rien
-9;Mathieu;CARCHI;H;CYRNEA;1650;1020;1020;4;1020;4;false;rien
-21;Alexandre;BRATANIC;H;Les Cormorans 1;1650;1020;1020;4;1020;5;false;rien
-31;Olivier;DURET;H;LIMULES;1650;1080;1080;6;1080;6;false;rien
-45;Pascale;AUBRY;H;Sportpleizh;1650;1080;1080;6;1080;7;false;rien
-36;Réda;GUEHRIA;H;SavoyOuBien?;1650;1140;1140;8;1140;8;false;rien
-10;Benoît;ROUX;H;CYRNEA;1650;1200;1200;9;1200;9;false;rien
-28;François;BUZET;H;Les Cormorans 2;1650;1200;1200;9;1200;10;false;rien
-12;Michel;SGARRA;H;Enjoy And Relax;1650;1260;1260;11;1260;11;false;rien
-32;Stéphane;BERRUCAZ;H;LIMULES;1650;1440;1440;12;1440;12;false;rien
-13;Rodoplhe;DUCRUIX;H;Enjoy And Relax;1650;1560;1560;13;1560;13;false;rien
+20;Pauline;LODETTI;F;STARFISH;1650;1080;180;1;1050;4;false;ras
+24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;960;960;2;960;1;false;ras
+27;Albane;GAUBERT;F;Imashi;1650;960;960;2;960;1;false;ras
+21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;1020;1020;4;1020;3;false;ras
+40;Valérie;TERRENOIRE;F;Blue Mussels;1650;1200;1200;5;1200;5;false;ras
+36;Frédérique;CORDIER;F;Blue Mussels;1650;1260;1260;6;1260;6;false;ras
+7;Anne;BORGAT;F;Cyrnea;1650;1315;1315;7;1315;7;false;ras
+14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;1650;705;705;1;705;1;false;ras
+28;Kevin;OLLIVO;H;Imashi;1650;780;780;2;780;2;false;ras
+13;Olivier;ELU;H;TOPSTAR DREAM TEAM;1650;840;840;3;840;3;false;ras
+18;Bastien;LAURENT ;H;STARFISH;1650;840;840;3;840;3;false;ras
+3;Laurent;CONTI;H;Zen Team Panda 5;1650;1020;1020.8;5;1020.8;5;false;ras
+31;Pascal;POMPIDOU;H;APNEEAU;1650;1200;1100;6;1170;6;false;ras
+5;Philippe;FLAUDIAS;H;Zen Team Panda 5;1650;1260;1200;7;1230;8;false;ras
+9;Jean-David;SOULA;H;Cyrnea;1650;1200;1220;8;1220;7;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;1650;960;9610;9;35740;9;false;ras

@@ -2,7 +2,7 @@
 1;Florence;TABOUREL;F;Zen Team Panda 5; dwf;100.2; false; ras
 1;Florence;TABOUREL;F;Zen Team Panda 5; dnf;110.0; false; ras
 2;Marion;DAUBANNAIS;F;Zen Team Panda 5;sta;180.9;false;ras
-2;Marion;DAUBANNAIS;F;Zen Team Panda 5;dnf;80;false;ras
+2;Marion;DAUBANNAIS;F;Zen Team Panda 5;dnf;0;true;faux départ
 3;Laurent;CONTI;H;Zen Team Panda 5;dwf;155;false;ras
 3;Laurent;CONTI;H;Zen Team Panda 5;1650;1020.8;false;ras
 4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;sta;250;false;ras
@@ -14,7 +14,7 @@
 7;Anne;BORGAT;F;Cyrnea;dwf;155;false;ras
 7;Anne;BORGAT;F;Cyrnea;1650;1315;false;ras
 8;Estelle;RIGAUD;F;Cyrnea;dwf;80.8;false;ras
-8;Estelle;RIGAUD;F;Cyrnea;dnf;200;false;ras
+8;Estelle;RIGAUD;F;Cyrnea;dnf;0;true;pénalité
 9;Jean-David;SOULA;H;Cyrnea;spd;85;false;ras
 9;Jean-David;SOULA;H;Cyrnea;1650;1220;false;ras
 10;Richard;JAUFFRAUD;H;Cyrnea;sta;315;false;ras
@@ -36,9 +36,9 @@
 18;Bastien;LAURENT ;H;STARFISH;spd;50;false;ras
 18;Bastien;LAURENT ;H;STARFISH;1650;840;false;ras
 19;Nadia;GRAVIER NOEL;F;STARFISH;sta;180;false;ras
-19;Nadia;GRAVIER NOEL;F;STARFISH;dnf;75;false;ras
+19;Nadia;GRAVIER NOEL;F;STARFISH;dnf;175;false;ras
 20;Pauline;LODETTI;F;STARFISH;dwf;100;false;ras
-20;Pauline;LODETTI;F;STARFISH;1650;1080;false;ras
+20;Pauline;LODETTI;F;STARFISH;1650;180;false;ras
 21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;dwf;155;false;ras
 21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;1020;false;ras
 22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;dwf;130;false;ras
@@ -47,22 +47,22 @@
 23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;spd;55;false;ras
 24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;spd;70;false;ras
 24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;960;false;ras
-25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;330;false;ras
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;0;true;mort
 25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;140;false;ras
 26;Caroline;REGNARD;F;Imashi;sta;195;false;ras
 26;Caroline;REGNARD;F;Imashi;spd;60;false;ras
-27;Albane;GAUBERT;F;Imashi;dwf;125;false;ras
+27;Albane;GAUBERT;F;Imashi;dwf;0;true;pause trop longue
 27;Albane;GAUBERT;F;Imashi;1650;960;false;ras
 28;Kevin;OLLIVO;H;Imashi;spd;44;false;ras
 28;Kevin;OLLIVO;H;Imashi;1650;780;false;ras
-29;Paul;GERARD;H;Imashi;dwf;140;false;ras
+29;Paul;GERARD;H;Imashi;dwf;0;true;faute éliminatoire
 29;Paul;GERARD;H;Imashi;dnf;90;false;ras
-30;Omr;SALEH;H;Imashi;sta;335;false;ras
-30;Omr;SALEH;H;Imashi;dnf;100;false;ras
-31;Pascal;POMPIDOU;H;APNEEAU;spd;60;false;ras
-31;Pascal;POMPIDOU;H;APNEEAU;1650;1200;false;ras
-32;Mathieu;PEBEYRE;H;APNEEAU;sta;360;false;ras
-32;Mathieu;PEBEYRE;H;APNEEAU;1650;960;false;ras
+30;Omr;SALEH;H;Imashi;sta;315;false;ras
+30;Omr;SALEH;H;Imashi;dnf;180;false;ras
+31;Pascal;POMPIDOU;H;APNEEAU;spd;40;false;ras
+31;Pascal;POMPIDOU;H;APNEEAU;1650;1100;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;sta;3602;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;1650;9610;false;ras
 33;David;STROPPIANA;H;APNEEAU;dwf;90;false;ras
 33;David;STROPPIANA;H;APNEEAU;dnf;60;false;ras
 34;Delphine;POMPIDOU;F;APNEEAU;dwf;65;false;ras

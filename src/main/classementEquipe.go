@@ -5,6 +5,11 @@ package main
 	"fmt"
 	)
 	
+	/*
+	* La structure ClassementEquipe permet de gérer un classement equipe.
+	*
+	*
+	**/
 	type ClassementEquipe struct 
 	{
 	id int

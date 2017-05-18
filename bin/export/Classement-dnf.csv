@@ -1,17 +1,16 @@
 ﻿Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description
-39;Marie-pierre;EKSTETS;F;SavoyOuBien?;dnf;110;110;1;110;1;false;rien
-33;Frédérique;CORDIER;F;LIMULES;dnf;103;103;2;103;2;false;rien
-14;Aude;GATA;F;Enjoy And Relax;dnf;100;100;3;100;3;false;rien
-24;Loraine;HARTMANN;F;Les Cormorans 1;dnf;100;100;3;100;3;false;rien
-43;Laetitia;ORSKI SIMONET;F;Sportpleizh;dnf;100;100;3;100;3;false;rien
-17;Caroline;REGNARD;F;Imashi;dnf;92;92;6;92;6;false;rien
-35;Marie;DEVANLAY;F;LIMULES;dnf;90;90;7;90;7;false;rien
-8;Estelle;RIGAUD;F;CYRNEA;dnf;75;75;8;75;8;false;rien
-25;Michelle;QUERY;F;Les Cormorans 1;dnf;53;53;9;53;9;false;rien
-30;Melissa;REIN;F;Les Cormorans 2;dnf;50;50;10;50;10;false;rien
-2;Michal;RISIAN;H;Apneaman, Praha, Czech Republic;dnf;160;160;1;160;1;false;rien
-11;Pascal;HURON;H;Enjoy And Relax;dnf;150;150;2;150;2;false;rien
-38;Philippe;GUILLOUX;H;SavoyOuBien?;dnf;125;125;3;125;3;false;rien
-44;Patrice;PIERRAT;H;Sportpleizh;dnf;100;100;4;100;4;false;rien
-19;Charles;TISSOT;H;Imashi;dnf;70;70;5;70;5;false;rien
-29;Xavier;HERENT;H;Les Cormorans 2;dnf;65;65;6;65;6;false;rien
+19;Nadia;GRAVIER NOEL;F;STARFISH;dnf;75;175;1;100;2;false;ras
+12;Eléonore;HELLE;F;TOPSTAR DREAM TEAM;dnf;125;125;2;125;1;false;ras
+34;Delphine;POMPIDOU;F;APNEEAU;dnf;30;30;3;30;3;false;ras
+2;Marion;DAUBANNAIS;F;Zen Team Panda 5;dnf;80;0;5;0;5;true;faux départ
+8;Estelle;RIGAUD;F;Cyrnea;dnf;100;0;5;0;5;true;pénalité
+30;Omr;SALEH;H;Imashi;dnf;100;180;1;125;2;false;ras
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;140;140;2;140;1;false;ras
+22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;110;110;3;110;3;false;ras
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;dnf;100;100;4;100;4;false;ras
+29;Paul;GERARD;H;Imashi;dnf;90;90;5;90;5;false;ras
+38;Damien;OJARDIAS;H;Blue Mussels;dnf;85;85;6;85;6;false;ras
+17;Olivier;CELLARIER;H;STARFISH;dnf;76;76;7;76;7;false;ras
+37;Stéphane;PETTENUZZO;H;Blue Mussels;dnf;75;75;8;75;8;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;dnf;70;70;9;70;9;false;ras
+33;David;STROPPIANA;H;APNEEAU;dnf;60;60;10;60;10;false;ras
