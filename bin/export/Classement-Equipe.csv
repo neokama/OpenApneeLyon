@@ -1,9 +1,9 @@
-﻿Id; Equipe; Point; Place
-7;TOPSTAR DREAM TEAM;20;1
-5;Imashi;38;2
-2;Annecy-Lyon-Mulhouse apnée connexion;40;3
-1;APNEEAU;44;4
-6;STARFISH;48;5
-3;Blue Mussels;50;6
-8;Zen Team Panda 5;54;7
-4;Cyrnea;58;8
+﻿Id; Equipe; Point; Place; Etat
+4;Cyrnea;0;1;false
+7;TOPSTAR DREAM TEAM;6;2;false
+6;STARFISH;10;3;false
+3;Blue Mussels;14;4;false
+1;APNEEAU;16;5;false
+8;Zen Team Panda 5;18;6;false
+2;Annecy-Lyon-Mulhouse apnée connexion;26;7;false
+5;Imashi;38;8;false

@@ -180,6 +180,7 @@ package main
 		var res float64
 		var place int
 		var plc int
+		var equipe string 
 		scanner := bufio.NewScanner(file)
 		
 		for scanner.Scan() {
@@ -190,6 +191,7 @@ package main
 				idd,errr := strconv.Atoi(info[0])
 				annonce := base.recupAnnonce(info[0],info[5]) 
 				disq,_ := strconv.ParseBool(info[7])
+				equipe = info[4]
 				if er != nil {
 					log.Fatal(er)
 				}
@@ -198,19 +200,19 @@ package main
 				}
 				switch(info[5]){
 				case "spd": 
-					res=calculResultat("spd",annonce,info[6],info[7])
+					res=calculResultat(equipe,"spd",annonce,info[6],info[7])
 				break
 				case "1650":
-					res=calculResultat("1650",annonce,info[6],info[7])
+					res=calculResultat(equipe,"1650",annonce,info[6],info[7])
 				break
 				case "dnf":
-					res=calculResultat("dnf",annonce,info[6],info[7])
+					res=calculResultat(equipe,"dnf",annonce,info[6],info[7])
 				break
 				case "dwf":
-					res=calculResultat("dwf",annonce,info[6],info[7])
+					res=calculResultat(equipe,"dwf",annonce,info[6],info[7])
 				break
 				case "sta":
-					res=calculResultat("sta",annonce,info[6],info[7])
+					res=calculResultat(equipe,"sta",annonce,info[6],info[7])
 				break
 				}
 				
@@ -328,38 +330,52 @@ package main
 	*
 	*
 	*/
-	func (base Bdd) exportClassement(value string){ 
+	func (base Bdd) exportClassement(){ 
 		t := time.Now()
 			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 		
-		file, err := os.Create(fmt.Sprint("export/archives/",date,"-",value,".csv"))
+		file, err := os.Create(fmt.Sprint("export/archives/",date,"-Classement.csv"))
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export/archives\" dans le dossier de l'application?")
 				log.Fatal(err)
 			}
-		file2, err := os.Create(fmt.Sprint("export/Classement-",value,".csv"))
+		file2, err := os.Create(fmt.Sprint("export/Classement.csv"))
 		if err != nil {
 			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 			log.Fatal(err)
 		}
-			
-			var epreuve string = value
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))	
+		
+		var value string
+		var epreuve string
+		for i := 1; i <= 5; i++{
 				//calcul de la place equipe
-			switch(epreuve){
-			case "spd": 
+			switch(i){
+			case 1: 
 				base.calculPlace("spd")
+				value = "'spd'"
+				epreuve = "spd"
 			break
-			case "1650":
+			case 2:
 				base.calculPlace("1650")
+				value = "'1650'"
+				epreuve = "1650"
 			break
-			case "dnf":
+			case 3:
 				base.calculPlace("dnf")
+				value = "'dnf'"
+				epreuve = "dnf"
 			break
-			case "dwf":
+			case 4:
 				base.calculPlace("dwf")
+				value = "'dwf'"
+				epreuve = "dwf"
 			break
-			case "sta":
+			case 5:
 				base.calculPlace("sta")
+				value = "'sta'"
+				epreuve = "sta"
 			break
 			default:
 				log.Fatal("Epreuve invalide")
@@ -367,15 +383,13 @@ package main
 			}
 			
 			
-		var id_col string 
-		id_col, value = col_id2name2(6, value)
 		if(epreuve=="spd" || epreuve == "1650"){
-			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat ASC"))
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, resultat ASC"))
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête 1")
 			}
 		}else{
-			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", value," ORDER BY sexe ASC, resultat DESC"))
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, resultat DESC"))
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête 1")
 			}
@@ -396,9 +410,7 @@ package main
 	var egalF int =0
 	var egalH int =0
 	
-	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))
-	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description\r\n"))	
-		
+
 		
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
@@ -507,7 +519,8 @@ package main
 		
 		for i := 0; i < len(tabPlace); i++{
 				base.modifResult(tabPlace[i].id ,9,strconv.Itoa(tabPlace[i].place))
-			}		
+			}
+		 }
 	}
 	
 	
@@ -562,7 +575,7 @@ package main
 				fmt.Println("Erreur lors de la récupération des résultats: \n")
 				log.Fatal(base.err)}
 				
-			if info[9]=="0" && info[11]=="true"{
+			if (info[9]=="0" && info[11]=="true") || (info[9]=="0" && info[4]=="SOLO"){
 				if info[3]=="H"{
 			    id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
@@ -642,7 +655,7 @@ package main
 	}
 	
 	
-	func calculResultat(epreuve string, annonce int, resultat string, disq string)(float64){
+	func calculResultat(equipe string, epreuve string, annonce int, resultat string, disq string)(float64){
 		var sMin int =0 
 		var sMax int =0
 		var res float64
@@ -664,50 +677,54 @@ package main
 			max:=annonce+sMax
 			min:=annonce+sMin
 			
-			if (result == 0 && disq == "true"){
-			res=0
+			if (equipe == "SOLO" || equipe == "Solo" || equipe == "solo"){
+				res=0
 			}else{
-			if(result>float64(max)){
-				switch(epreuve){
-				case "spd": 
-					tot =result + (result-(annoncef)+20)*3
-				break
-				case "1650":
-					tot = result + (result-(annoncef)+60)*3
-				break
-				case "dnf":
-					tot = (annoncef+25)
-				break
-				case "dwf":
-					tot = (annoncef+25)
-				break
-				case "sta":
-					tot = (annoncef+60)
-				break	
+				if (result == 0 && disq == "true"){
+					res=0
+				}else{
+					if(result>float64(max)){
+						switch(epreuve){
+						case "spd": 
+							tot =result + (result-(annoncef)+20)*3
+						break
+						case "1650":
+							tot = result + (result-(annoncef)+60)*3
+						break
+						case "dnf":
+							tot = (annoncef+25)
+						break
+						case "dwf":
+							tot = (annoncef+25)
+						break
+						case "sta":
+							tot = (annoncef+60)
+						break	
+						}
+						res=tot
+					}else if(result<float64(min)){
+						switch(epreuve){
+						case "spd": 
+							tot2=annoncef-10
+						break
+						case "1650":
+							tot2=annoncef-30
+						break
+						case "dnf":
+							tot2=result-((annoncef-25)-result)*3
+						break
+						case "dwf":
+							tot2=result-((annoncef-25)-result)*3
+						break
+						case "sta":
+							tot2=result-((annoncef-60)-result)*3
+						break	
+						}
+					res=tot2
+					}else if (result >= float64(min) && result <= float64(max)){
+						res= result
+					}
 				}
-				res=tot
-			}else if(result<float64(min)){
-				switch(epreuve){
-				case "spd": 
-					tot2=annoncef-10
-				break
-				case "1650":
-					tot2=annoncef-30
-				break
-				case "dnf":
-					tot2=result-((annoncef-25)-result)*3
-				break
-				case "dwf":
-					tot2=result-((annoncef-25)-result)*3
-				break
-				case "sta":
-					tot2=result-((annoncef-60)-result)*3
-				break	
-				}
-			res=tot2
-			}else if (result >= float64(min) && result <= float64(max)){
-			res= result
-			}
 			}
 		}
 		return res

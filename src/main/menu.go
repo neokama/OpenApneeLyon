@@ -556,46 +556,21 @@ func Parsage(){
 		if *r == "import" {
 			base := newBdd("database/OpenApneeLyon")
 			base.importResultat()
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-		} else if *r == "staclass" {
+			fmt.Println("importation des compétiteurs contenus dans le fichier \"classement.csv\" dans le dossier import \n")
+		} else if *r == "export" {
 			base := newBdd("database/OpenApneeLyon")
-			base.exportClassement("sta")
+			base.exportClassement()
 			fmt.Println("Export du classement réalisé")
-		} else if *r == "spdclass" {
+		} else if *r == "team" {
 			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-			base.exportClassement("spd")
-			fmt.Println("Export du classement réalisé")
-		} else if *r == "dwfclass" {
-			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-			base.exportClassement("dwf")
-			fmt.Println("Export du classement réalisé")
-		} else if *r == "dnfclass" {
-			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-			base.exportClassement("dnf")
-			fmt.Println("Export du classement réalisé")
-		} else if *r == "1650class" {
-			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-			base.exportClassement("1650")
-			fmt.Println("Export du classement réalisé")
-		} else if *r == "teamclass" {
-			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassementEquipe()
 		} else if *r == "resetclass" {
 			base := newBdd("database/OpenApneeLyon")
 			base.resetClassement()
 		}else {
 			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve sta en tapant -r=staclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve spd en tapant -r=spdclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dwf en tapant -r=dwfclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dnf en tapant -r=dnfclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve 1650 en tapant -r=1650class apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=teamclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel -r=export apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=team apres votre derniere commande\n")
 			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande\n")
 		}
 		

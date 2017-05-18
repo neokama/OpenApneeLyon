@@ -320,7 +320,11 @@
 			log.Fatal(err)
 		}
 		// Verification de l'unicité
-		base.uniqueness()		
+		base.uniqueness()	
+		//Importation equipe dans la Bdd 
+		base.importEquipe()
+
+		
 	}
 	
 	/*
