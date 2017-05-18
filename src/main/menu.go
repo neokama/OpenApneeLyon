@@ -544,12 +544,17 @@ func Parsage(){
 				} else {
 					Parsage()
 				}
-				
-			} else if *bdd == "save" {
-				fmt.Println("Copie les fichiers csv contenant les compétiteurs, les scores ainsi que le planning avec timestamp, les place dans un dossier save afin d’avoir des sauvegardes.")
+			} else if *bdd == "results" {
+				base := newBdd("database/OpenApneeLyon")
+				fmt.Println("Affichage de tous les résultats : \n")
+				base.displayClassement()
+			} else if *bdd == "display" {
+				base := newBdd("database/OpenApneeLyon")
+				base.displayEquipe()
 			} else {
 				fmt.Println("Vous pouvez remettre la bdd a zero en tapant -bdd=reset apres votre derniere commande\n")
-				fmt.Println("Vous pouvez creer des sauvegardes en tapant -bdd=save apres votre derniere commande\n")
+				fmt.Println("Vous pouvez afficher l'intégralité des résultats enregistrés en tapant -bdd=results apres votre derniere commande\n")
+				fmt.Println("Vous pouvez afficher le classement par équipe en tapant -bdd=display apres votre derniere commande\n")
 			}
 			
 	} else if *r != "deff" {
@@ -588,6 +593,9 @@ func Parsage(){
 		} else if *r == "resetclass" {
 			base := newBdd("database/OpenApneeLyon")
 			base.resetClassement()
+		} else if *r == "display" {
+				base := newBdd("database/OpenApneeLyon")
+				base.displayEquipe()
 		}else {
 			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande\n")
 			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve sta en tapant -r=staclass apres votre derniere commande\n")
@@ -595,8 +603,9 @@ func Parsage(){
 			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dwf en tapant -r=dwfclass apres votre derniere commande\n")
 			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dnf en tapant -r=dnfclass apres votre derniere commande\n")
 			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve 1650 en tapant -r=1650class apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=teamclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez exporter le classement final par équipe en tapant -r=teamclass apres votre derniere commande\n")
 			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez afficher le classement par équipe en tapant -r=display apres votre derniere commande\n")
 		}
 		
 	} else {
