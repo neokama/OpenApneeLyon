@@ -561,36 +561,31 @@ func Parsage(){
 		if *r == "import" {
 			base := newBdd("database/OpenApneeLyon")
 			base.importResultat()
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
-		} else if *r == "staclass" {
+			fmt.Println("importation des compétiteurs contenus dans le fichier \"classement.csv\" dans le dossier import \n")
+		} else if *r == "sta" {
 			base := newBdd("database/OpenApneeLyon")
 			base.exportClassement("sta")
 			fmt.Println("Export du classement réalisé")
-		} else if *r == "spdclass" {
+		} else if *r == "spd" {
 			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassement("spd")
 			fmt.Println("Export du classement réalisé")
-		} else if *r == "dwfclass" {
+		} else if *r == "dwf" {
 			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassement("dwf")
 			fmt.Println("Export du classement réalisé")
-		} else if *r == "dnfclass" {
+		} else if *r == "dnf" {
 			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassement("dnf")
 			fmt.Println("Export du classement réalisé")
-		} else if *r == "1650class" {
+		} else if *r == "1650" {
 			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassement("1650")
 			fmt.Println("Export du classement réalisé")
-		} else if *r == "teamclass" {
+		} else if *r == "team" {
 			base := newBdd("database/OpenApneeLyon")
-			fmt.Println("importation des compétiteurs contenu dans le fichier \"classement.csv\" dans le dossier import \n")
 			base.exportClassementEquipe()
-		} else if *r == "resetclass" {
+		} else if *r == "reset" {
 			base := newBdd("database/OpenApneeLyon")
 			base.resetClassement()
 		} else if *r == "display" {
@@ -598,13 +593,13 @@ func Parsage(){
 				base.displayEquipe()
 		}else {
 			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve sta en tapant -r=staclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve spd en tapant -r=spdclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dwf en tapant -r=dwfclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dnf en tapant -r=dnfclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve 1650 en tapant -r=1650class apres votre derniere commande\n")
-			fmt.Println("Vous pouvez exporter le classement final par équipe en tapant -r=teamclass apres votre derniere commande\n")
-			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve sta en tapant -r=sta apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve spd en tapant -r=spd apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dwf en tapant -r=dwf apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve dnf en tapant -r=dnf apres votre derniere commande\n")
+			fmt.Println("Vous pouvez generer un classement individuel pour l'epreuve 1650 en tapant -r=1650 apres votre derniere commande\n")
+			fmt.Println("Vous pouvez exporter le classement final par équipe en tapant -r=team apres votre derniere commande\n")
+			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=reset apres votre derniere commande\n")
 			fmt.Println("Vous pouvez afficher le classement par équipe en tapant -r=display apres votre derniere commande\n")
 		}
 		
