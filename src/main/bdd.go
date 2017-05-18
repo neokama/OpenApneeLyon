@@ -21,6 +21,12 @@
 		db *sql.DB
 		err error
 	}
+	
+	type EtatEquipe struct
+	{
+		equipe string
+		etat bool
+	}
 
 	
 	/*
@@ -772,7 +778,6 @@
 	*/
 	
 	func (base Bdd) check_team(){
-		
 		// CREATION FICHIER
 		t := time.Now()
 		date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
@@ -795,61 +800,106 @@
 		defer base.resultat.Close()	
 	
 		var info [1]string
-		var nb_sexeH string ="0"
-		var nb_sexeF string ="0"
 		
+		var tabEquipe []*EtatEquipe
+		//On "clear" l'ancien tableau:
+			tabEquipe = tabEquipe[:0]
+			
+			
 		for base.resultat.Next() {
-		var ep1 bool
-		var ep2 bool
-		var ep3 bool
-		var ep4 bool
-		var ep5 bool
-		var nbSTA int =0
-		var nbDWF int =0
-		var nbSPE int =0
-		var nbDNF int =0
-		var nbSFC int =0
-		var res string
-		var res2 string
-			base.err = base.resultat.Scan(&info[0])
-			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
-				log.Fatal(base.err)
-			}
-			var nb_comp string = base.count_comp(6,info[0])
-			nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
-			ep1,ep2,ep3,ep4,ep5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC=base.count_epreuve_comp(6,info[0])
-			
-			if(ep1 && ep2 && ep3 && ep4 && ep5){
-			res = "Temps repos : OK"
+			if info[0]=="SOLO"{
+			//Faire vérification sur temps de repos
 			}else{
-			res = "Erreur temps de repos"}
-			
-			if(nbSTA==2 && nbDNF==2 && nbDWF==2 && nbSFC==2 && nbSPE==2){
-			res2="Nombres épreuves corrects"
-			}else{
-			res2="Erreur sur nombres épreuves"}
-			
-			file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
-			file2.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
-			
-			if (nb_comp!="5"){
-				file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
-				file2.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
+				var ep1 bool
+				var ep2 bool
+				var ep3 bool
+				var ep4 bool
+				var ep5 bool
+				var etat1 bool =false
+				var etat2 bool =false
+				var etat3 bool =false
+				var etat4 bool =false
+				var etat5 bool =false
+				var etat bool =false
+				EquipeEnCours := newEtatEquipe("vide",false) 
+				var nbSTA int =0
+				var nbDWF int =0
+				var nbSPE int =0
+				var nbDNF int =0
+				var nbSFC int =0
+				var res string
+				var res2 string
+				var nb_sexeH string ="0"
+				var nb_sexeF string ="0"
+				base.err = base.resultat.Scan(&info[0])
+				if base.err != nil {
+					fmt.Println("Erreur lors de la récupération des résultats: \n")
+					log.Fatal(base.err)
+				}
+				var nb_comp string = base.count_comp(6,info[0])
+				nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
+				ep1,ep2,ep3,ep4,ep5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC=base.count_epreuve_comp(6,info[0])
+				
+				if(ep1 && ep2 && ep3 && ep4 && ep5){
+				res = "Temps repos : OK"
+				etat1 =true
+				}else{
+				res = "Erreur temps de repos"
+				etat1 =false
+				}
+				
+				if(nbSTA==2 && nbDNF==2 && nbDWF==2 && nbSFC==2 && nbSPE==2){
+				res2="Nombres épreuves corrects"
+				etat2=true
+				}else{
+				res2="Erreur sur nombres épreuves"
+				etat2=false
+				}
+				
+				file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
+				file2.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
+				
+				if (nb_comp!="5"){
+					file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
+					file2.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
+					etat3=false
+				}else{
+					etat3=true
+				}
+				
+				if (nb_sexeH != "3"){
+					file.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
+					file2.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
+					etat4 =false
+				}else{
+				etat4 =true
+				}
+				
+				if (nb_sexeF != "2"){
+					file.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
+					file2.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
+					etat5 =false
+				}else{
+					etat5=true
+					
+				}
+				
+				if (etat1==true && etat2==true && etat3==true && etat4==true && etat5==true){
+					etat=true
+				}else{
+					etat=false
+				}
+				
+				EquipeEnCours.equipe=info[0]
+				EquipeEnCours.etat=etat
+				tabEquipe=append(tabEquipe,EquipeEnCours)
 			}
-			
-			if (nb_sexeH != "3"){
-				file.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
-				file2.WriteString("Erreur nombre d'homme dans l'equipe " + info[0] + " où il y a "+ nb_sexeH + " hommes !\r\n")
-			}
-			
-			if (nb_sexeF != "2"){
-				file.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
-				file2.WriteString("Erreur nombre de femme dans l'equipe " + info[0] + " où il y a " + nb_sexeF + " femmes !\r\n")
-			}
-			
-		
 		}
+		
+		for n:=0;n<len(tabEquipe);n++{
+		
+		  base.modifEtat(tabEquipe[n].equipe,tabEquipe[n].etat)
+		}	
 		
 	}
 	
@@ -907,4 +957,10 @@
 			}
 		}	
 	}
-	
+	func newEtatEquipe(equipe string, etat bool)(*EtatEquipe){
+		board := new(EtatEquipe)
+		board.equipe = equipe
+		board.etat = etat
+		
+		return board
+	}

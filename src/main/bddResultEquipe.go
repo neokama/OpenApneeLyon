@@ -54,7 +54,10 @@ package main
 		
 		// Parcours du resultat de la requête
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
+		
+		
+		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
+			if info[4]=="true"{
 			if base.err != nil {
 					fmt.Println("Erreur lors de la récupération des résultats: \n")
 					log.Fatal(base.err)
@@ -66,6 +69,7 @@ package main
 			//Ecriture dans les fichiers
 			file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,";", info[4],"\r\n"))
 			file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,";", info[4],"\r\n"))
+			}
 		}
 		
 		for n:=0;n<len(tabPlace);n++{
@@ -312,5 +316,29 @@ package main
 				log.Fatal(base.err)
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3]+ "|" + info[4])
+		}
+	}
+	/*
+	* 		Bdd.modifEtat:
+	* Description: 		
+	*		Méthode permettant de modifier l'etat d'une équipe dans la Bdd
+	* Paramètres:
+	*	- equipe : nom de l'équipe dont on veut modifier la place 
+	* 	- newvalue : nouvelle valeur de point à insérer dans la Bdd
+	*/
+	func (base Bdd) modifEtat(equipe string, newvalue bool){
+		value:=strconv.FormatBool(newvalue)
+		col_id2, equipe := col_id2name3(2, equipe)
+		col_id, value := col_id2name3(5, value)
+		if(col_id2=="0"){
+		//on doit utiliser col_id2
+		}
+		
+		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
+	
+		if base.err != nil {
+			fmt.Println("Echec lors de l'ajout : ", base.err)
+		}else {
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
 		}
 	}

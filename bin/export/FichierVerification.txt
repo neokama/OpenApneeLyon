@@ -1,9 +1,12 @@
 FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !
 
-Zen Team Panda 5|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Zen Team Panda 5|5|Homme : 4|Femme : 1|Temps repos : OK|Nombres épreuves corrects
+Erreur nombre d'homme dans l'equipe Zen Team Panda 5 où il y a 4 hommes !
+Erreur nombre de femme dans l'equipe Zen Team Panda 5 où il y a 1 femmes !
 Cyrnea|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
 TOPSTAR DREAM TEAM|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
 STARFISH|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
 Annecy-Lyon-Mulhouse apnée connexion|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
 Imashi|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
 APNEEAU|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Blue Mussels|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
