@@ -1,45 +1,81 @@
 ﻿Id;Prénom;Nom;Sexe;Equipe;Epreuve;Resultat;Disqualification;Description
-1;Martin;ZAJAC;F;Apneaman, Praha, Czech Republic;spd;7500;false;rien
-2;Michal;RISIAN;H;Apneaman, Praha, Czech Republic;dnf;160;False;rien
-3;Michal;SVADLENKA;H;Apneaman, Praha, Czech Republic;1650;890;False;rien
-4;Katerina;SURANSKA;F;Apneaman, Praha, Czech Republic;1650;1050;false;rien
-7;Anne;BORGAT;F;CYRNEA;spd;90;false;parce que il est trop nul
-8;Estelle;RIGAUD;F;CYRNEA;dnf;75;False;rien
-9;Mathieu;CARCHI;H;CYRNEA;1650;1020;False;rien
-10;Benoît;ROUX;H;CYRNEA;1650;1200;False;rien
-11;Pascal;HURON;H;Enjoy And Relax;dnf;150;False;rien
-12;Michel;SGARRA;H;Enjoy And Relax;1650;1260;False;rien
-13;Rodoplhe;DUCRUIX;H;Enjoy And Relax;1650;1560;False;rien
-14;Aude;GATA;F;Enjoy And Relax;dnf;100;False;rien
-15;Stephanie;DELICOURT;F;Enjoy And Relax;spd;90;False;rien
-16;Albane;GAUBERT;F;Imashi;1650;1370;False;rien
-17;Caroline;REGNARD;F;Imashi;dnf;92;False;rien
-18;Kevin;OLLIVO;H;Imashi;1650;795;False;rien
-19;Charles;TISSOT;H;Imashi;dnf;55.000001;False;rien
-20;Richard;JAUFFRAUD;H;Imashi;spd;100;false;rien
-21;Alexandre;BRATANIC;H;Les Cormorans 1;1650;1020;False;rien
-22;Alexandre;GASS;H;Les Cormorans 1;spd;0;true;faute de frappe
-23;Olivier;ELU;H;Les Cormorans 1;1650;960;False;rien
-24;Loraine;HARTMANN;F;Les Cormorans 1;dnf;100;False;rien
-25;Michelle;QUERY;F;Les Cormorans 1;dnf;53;False;rien
-26;Rachel;LEITNER;F;Les Cormorans 2;1650;990;False;rien
-27;Christopher;BRATANIC;H;Les Cormorans 2;spd;10;false;rien
-28;François;BUZET;H;Les Cormorans 2;1650;1200;False;rien
-29;Xavier;HERENT;H;Les Cormorans 2;dnf;55.000002;False;rien
-30;Melissa;REIN;F;Les Cormorans 2;dnf;50;False;rien
-31;Olivier;DURET;H;LIMULES;1650;1080;False;rien
-32;Stéphane;BERRUCAZ;H;LIMULES;1650;1440;False;rien
-33;Frédérique;CORDIER;F;LIMULES;dnf;103;False;rien
-34;Stéphane;PETTENUZZO;H;LIMULES;spd;10;False;rien
-35;Marie;DEVANLAY;F;LIMULES;dnf;90;False;rien
-36;Réda;GUEHRIA;H;SavoyOuBien?;1650;1140;False;rien
-37;Aurélien;LANOISELIER;H;SavoyOuBien?;spd;10;False;rien
-38;Philippe;GUILLOUX;H;SavoyOuBien?;dnf;125;False;rien
-39;Marie-pierre;EKSTETS;F;SavoyOuBien?;dnf;110;False;rien
-40;Emilie;VERNIER;F;SavoyOuBien?;1650;1080;False;rien
-41;Omr;SALEH;H;SOLO;spd;100;False;rien
-42;Christian;VOGLER;H;Sportpleizh;spd;50;False;rien
-43;Laetitia;ORSKI SIMONET;F;Sportpleizh;dnf;100;False;rien
-44;Patrice;PIERRAT;H;Sportpleizh;dnf;100;False;rien
-45;Pascale;AUBRY;H;Sportpleizh;1650;1080;False;rien
-46;Coralie;MARIE;F;Sportpleizh;1650;1315;False;rien
+1;Florence;TABOUREL;F;Zen Team Panda 5; dwf; 100.2; false; ras
+1;Florence;TABOUREL;F;Zen Team Panda 5; dnf; 110.0; false; ras
+2;Marion;DAUBANNAIS;F;Zen Team Panda 5;sta;180.9;false;ras
+2;Marion;DAUBANNAIS;F;Zen Team Panda 5;dnf;80;false;ras
+3;Laurent;CONTI;H;Zen Team Panda 5;dwf;155;false;ras
+3;Laurent;CONTI;H;Zen Team Panda 5;1650;1020.8;false ras
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;sta;250;false;ras
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;spd;100.2;false;ras
+5;Philippe;FLAUDIAS;H;Zen Team Panda 5;spd;95.6;false;ras
+5;Philippe;FLAUDIAS;H;Zen Team Panda 5;1650;1200;false
+6;Benoit;ROUX;H;Cyrnea;sta;300;false;ras
+6;Benoit;ROUX;H;Cyrnea;spd;70.1;false;ras
+7;Anne;BORGAT;F;Cyrnea;dwf;155;false;ras
+7;Anne;BORGAT;F;Cyrnea;1650;1315;false;ras
+8;Estelle;RIGAUD;F;Cyrnea;dwf;80.8;false;ras
+8;Estelle;RIGAUD;F;Cyrnea;dnf;200;false;ras
+9;Jean-David;SOULA;H;Cyrnea;spd;85;false;ras
+9;Jean-David;SOULA;H;Cyrnea;1650;1220;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;sta;315;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;dnf;70;false;ras
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;sta;362.8;false;ras
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;spd;60.6;false;ras
+12;Eléonore;HELLE;F;TOPSTAR DREAM TEAM;dwf;150;false;ras
+12;Eléonore;HELLE;F;TOPSTAR DREAM TEAM;dnf;125;false;ras
+13;Olivier;ELU;H;TOPSTAR DREAM TEAM;dwf;200;
+13;Olivier;ELU;H;TOPSTAR DREAM TEAM;1650;840;
+14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;spd;35;
+14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;1650;705;
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;sta;390;
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;dnf;100;
+16;Robert;OLTRA;H;STARFISH;sta;300;
+16;Robert;OLTRA;H;STARFISH;spd;60;
+17;Olivier;CELLARIER;H;STARFISH;dwf;100;
+17;Olivier;CELLARIER;H;STARFISH;dnf;76;
+18;Bastien;LAURENT ;H;STARFISH;spd;50;
+18;Bastien;LAURENT ;H;STARFISH;1650;840;
+19;Nadia;GRAVIER NOEL;F;STARFISH;sta;180;
+19;Nadia;GRAVIER NOEL;F;STARFISH;dnf;75;
+20;Pauline;LODETTI;F;STARFISH;dwf;100;
+20;Pauline;LODETTI;F;STARFISH;1650;1080;
+21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;dwf;155;
+21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;1020;
+22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;dwf;130;
+22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;110;
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;sta;360;
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;spd;55;
+24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;spd;70;
+24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;960;
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;330;
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;140;
+26;Caroline;REGNARD;F;Imashi;sta;195;
+26;Caroline;REGNARD;F;Imashi;spd;60;
+27;Albane;GAUBERT;F;Imashi;dwf;125;
+27;Albane;GAUBERT;F;Imashi;1650;960;
+28;Kevin;OLLIVO;H;Imashi;spd;44;
+28;Kevin;OLLIVO;H;Imashi;1650;780
+29;Paul;GERARD;H;Imashi;dwf;140;
+29;Paul;GERARD;H;Imashi;dnf;90;
+30;Omr;SALEH;H;Imashi;sta;335;
+30;Omr;SALEH;H;Imashi;dnf;100;
+31;Pascal;POMPIDOU;H;APNEEAU;spd;60;
+31;Pascal;POMPIDOU;H;APNEEAU;1650;1200;
+32;Mathieu;PEBEYRE;H;APNEEAU;sta;360;
+32;Mathieu;PEBEYRE;H;APNEEAU;1650;960;
+33;David;STROPPIANA;H;APNEEAU;dwf;90;
+33;David;STROPPIANA;H;APNEEAU;dnf;60;
+34;Delphine;POMPIDOU;F;APNEEAU;dwf;65;
+34;Delphine;POMPIDOU;F;APNEEAU;dnf;30;
+35;Sophie;BRUYERE;F;APNEEAU;sta;210;
+35;Sophie;BRUYERE;F;APNEEAU;spd;80;
+36;Frédérique;CORDIER;F;Blue Mussels;spd;65;
+36;Frédérique;CORDIER;F;Blue Mussels;1650;1260;
+37;Stéphane;PETTENUZZO;H;Blue Mussels;dwf;85;
+37;Stéphane;PETTENUZZO;H;Blue Mussels;dnf;75;
+38;Damien;OJARDIAS;H;Blue Mussels;dwf;105;
+38;Damien;OJARDIAS;H;Blue Mussels;dnf;85;
+39;Laurent;JAILLET;H;Blue Mussels;sta;300;
+39;Laurent;JAILLET;H;Blue Mussels;spd;70;
+40;Valérie;TERRENOIRE;F;Blue Mussels;sta;270;
+40;Valérie;TERRENOIRE;F;Blue Mussels;1650;1200;
