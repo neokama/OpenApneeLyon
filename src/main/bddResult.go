@@ -139,6 +139,24 @@ package main
 		}
 	}
 	
+	func (base Bdd) resetClassement(){
+		_, base.err = base.db.Exec("DELETE FROM classement")
+			if base.err != nil {
+				fmt.Println("Echec lors de la remise à 0 de la table classement: \n", base.err)
+			} else {
+					_, base.err = base.db.Exec("DELETE FROM classementequipe")
+				if base.err != nil {
+					fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
+				} else {
+					_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
+					if base.err != nil {
+						fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
+						}else{
+					fmt.Println("Remise à zéro des tables classement et classementequipe effectuée")
+				}
+			}
+		}
+	}
 	
 	/*
 	* 		Bdd.importCompetiteur:

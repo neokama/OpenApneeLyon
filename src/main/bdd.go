@@ -194,25 +194,45 @@
 			if base.err != nil {
 				fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
 				} else {
-				_, base.err = base.db.Exec("DELETE FROM classement")
+					_, base.err = base.db.Exec("DELETE FROM classement")
+					if base.err != nil {
+						fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+					} else {
+							_, base.err = base.db.Exec("DELETE FROM classementequipe")
 						if base.err != nil {
 							fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
 						} else {
-								_, base.err = base.db.Exec("DELETE FROM classementequipe")
+							_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
 							if base.err != nil {
 								fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-							} else {
-								_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
-								if base.err != nil {
-									fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
-									}else{
+								}else{
 								fmt.Println("Remise à zéro de la base de données effectuée")
 							}
 						}
 					}
+				
+				}
 			}
 		}
-	}
+	
+	/*
+	* 		Bdd.resetCompetiteurs:
+	* Description: 		
+	*		Méthode permettant de supprimer tous les compétiteurs contenus dans la base de
+	*		données.
+	*/
+	
+	func (base Bdd) resetCompetiteurs(){
+		_, base.err = base.db.Exec("DELETE FROM competiteurs")
+		if base.err != nil {
+			fmt.Println("Echec lors de la remise à 0 de la table competiteurs. \n", base.err)
+		} else {
+			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='competiteurs'")
+			if base.err != nil {
+				fmt.Println("Echec lors de la remise à 0 de la table competiteurs: \n", base.err)
+				} 
+			}
+		}
 	
 		
 	/*
