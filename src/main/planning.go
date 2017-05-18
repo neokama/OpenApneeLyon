@@ -127,7 +127,12 @@ func (p *Planning) EpGeneration(numEp int){
 				p.planEpreuves = append(p.planEpreuves,plannEp)
 			}
 		}
-		sort.Sort(triAnnonces(p.planEpreuves))
+		if (p.cfgEpreuves[numEp].id == "spd" || p.cfgEpreuves[numEp].id == "1650"){
+			sort.Sort(sort.Reverse(triAnnonces(p.planEpreuves)))
+			} else {
+			sort.Sort(triAnnonces(p.planEpreuves))
+			}
+		
 	} else{
 		fmt.Println("Numéro d'épreuve invalide")
 	}
