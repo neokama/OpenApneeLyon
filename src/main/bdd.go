@@ -800,6 +800,7 @@
 		defer base.resultat.Close()	
 	
 		var info [1]string
+		var nbSolo int =0
 		
 		var tabEquipe []*EtatEquipe
 		//On "clear" l'ancien tableau:
@@ -808,6 +809,7 @@
 			
 		for base.resultat.Next() {
 			if info[0]=="SOLO"{
+				nbSolo = nbSolo + 1
 			//Faire vérification sur temps de repos
 			}else{
 				var ep1 bool
@@ -886,8 +888,11 @@
 				
 				if (etat1==true && etat2==true && etat3==true && etat4==true && etat5==true){
 					etat=true
+					fmt.Println("Equipe : ",info[0],", Etat : OK")
 				}else{
 					etat=false
+					fmt.Println("Equipe : ",info[0],", Etat : Erreur")
+
 				}
 				
 				EquipeEnCours.equipe=info[0]
@@ -900,7 +905,9 @@
 		
 		  base.modifEtat(tabEquipe[n].equipe,tabEquipe[n].etat)
 		}	
-		
+		if nbSolo != 0{
+			fmt.Println("Présence de ",nbSolo," compétiteurs dans l'équipe SOLO")
+		}
 	}
 	
 		
