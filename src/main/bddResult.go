@@ -518,7 +518,7 @@ package main
 		}
 		
 		for i := 0; i < len(tabPlace); i++{
-				base.modifResult(tabPlace[i].id ,9,strconv.Itoa(tabPlace[i].place))
+				base.modifResult(tabPlace[i].id ,9, tabPlace[i].epreuve, strconv.Itoa(tabPlace[i].place))
 			}
 		 }
 	}
@@ -528,10 +528,10 @@ package main
 	*
 	*
 	*/
-	func (base Bdd) modifResult(id_comp int, col_num int, newvalue string){
+	func (base Bdd) modifResult(id_comp int, col_num int,epreuve string, newvalue string){
 		col_id, value := col_id2name2(col_num, newvalue)
 		id := strconv.Itoa(id_comp)
-		_, base.err = base.db.Exec("UPDATE classement SET "  + col_id + " = " + value +  " WHERE id = " + id)
+		_, base.err = base.db.Exec("UPDATE classement SET "  + col_id + " = " + value +  " WHERE id = " + id + " AND epreuve = '" + epreuve +"'" )
 	
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : ", base.err)
@@ -640,16 +640,16 @@ package main
 		base.resultat.Close()
 		 
 			for i := 0; i < len(tabClassement); i++{
-				base.modifResult(tabClassement[i].id ,11,strconv.Itoa(tabClassement[i].plc))
+				base.modifResult(tabClassement[i].id ,11,tabClassement[i].epreuve, strconv.Itoa(tabClassement[i].plc))
 			}
 			
 			for i := 0; i < len(tabH); i++{
 			placeH :=numPlaceH +len(tabH)-1
-				base.modifResult(tabH[i].id ,11,strconv.Itoa(placeH))
+				base.modifResult(tabH[i].id ,11,tabH[i].epreuve, strconv.Itoa(placeH))
 			}
 			for i := 0; i < len(tabF); i++{
 			placeF :=numPlaceF +len(tabF)-1
-				base.modifResult(tabF[i].id ,11,strconv.Itoa(placeF))
+				base.modifResult(tabF[i].id ,11,tabF[i].epreuve,strconv.Itoa(placeF))
 			}
 
 	}
