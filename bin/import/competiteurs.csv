@@ -1,46 +1,46 @@
-Prénom;Nom;Sexe;N°License;Equipe;Epreuve1;temps1;Epreuve2;temps2
-Florence;TABOUREL;F;1;Zen Team Panda 5;dwf;105;dnf;95
-Marion;DAUBANNAIS;F;2;Zen Team Panda 5;sta;210;dnf;80
-Laurent;CONTI;H;3;Zen Team Panda 5;dwf;160;1650;1020
-Aurélien;FAIVRE DUBOZ;H;4;Zen Team Panda 5;sta;285;spd;100
-Philippe;FLAUDIAS;H;5;Zen Team Panda 5;spd;105;1650;1260
-Benoit;ROUX;H;6;Cyrnea;sta;270;spd;70
-Anne;BORGAT;F;7;Cyrnea;dwf;155;1650;1315
-Estelle;RIGAUD;F;8;Cyrnea;dwf;75;dnf;100
-Jean-David;SOULA;H;9;Cyrnea;spd;80;1650;1200
-Richard;JAUFFRAUD;H;10;Cyrnea;sta;315;dnf;70
-Magalie;SITERRE;F;11;TOPSTAR DREAM TEAM;sta;360;spd;50
-Eléonore;HELLE;F;12;TOPSTAR DREAM TEAM;dwf;150;dnf;125
-Olivier;ELU;H;13;TOPSTAR DREAM TEAM;dwf;200;1650;840
-Laurent;BREIDENBACH;H;14;TOPSTAR DREAM TEAM;spd;35;1650;705
-Jean-Baptiste;SAVORNIN;H;15;TOPSTAR DREAM TEAM;sta;390;dnf;100
-Robert;OLTRA;H;16;STARFISH;sta;300;spd;60
-Olivier;CELLARIER;H;17;STARFISH;dwf;100;dnf;76
-Bastien;LAURENT ;H;18;STARFISH;spd;50;1650;840
-Nadia;GRAVIER NOEL;F;19;STARFISH;sta;180;dnf;75
-Pauline;LODETTI;F;20;STARFISH;dwf;100;1650;1080
-Emilie;VERNIER;F;21;Annecy-Lyon-Mulhouse apnée connexion;dwf;155;1650;1020
-Olivier;DURET;H;22;Annecy-Lyon-Mulhouse apnée connexion;dwf;130;dnf;110
-Aurélien;LANOISELIER;H;23;Annecy-Lyon-Mulhouse apnée connexion;sta;360;spd;55
-Rachel;LEITNER;F;24;Annecy-Lyon-Mulhouse apnée connexion;spd;56;1650;930
-Jérémy;MACIA;H;25;Annecy-Lyon-Mulhouse apnée connexion;sta;330;dnf;140
-Caroline;REGNARD;F;26;Imashi;sta;195;spd;60
-Albane;GAUBERT;F;27;Imashi;dwf;125;1650;960
-Kevin;OLLIVO;H;28;Imashi;spd;44;1650;780
-Paul;GERARD;H;29;Imashi;dwf;140;dnf;90
-Omr;SALEH;H;30;Imashi;sta;335;dnf;100
-Pascal;POMPIDOU;H;31;APNEEAU;spd;60;1650;1200
-Mathieu;PEBEYRE;H;32;APNEEAU;sta;360;1650;960
-David;STROPPIANA;H;33;APNEEAU;dwf;90;dnf;60
-Delphine;POMPIDOU;F;34;APNEEAU;dwf;65;dnf;30
-Sophie;BRUYERE;F;35;APNEEAU;sta;210;spd;80
-Frédérique;CORDIER;F;36;Blue Mussels;spd;65;1650;1260
-Stéphane;PETTENUZZO;H;37;Blue Mussels;dwf;85;dnf;75
-Damien;OJARDIAS;H;38;Blue Mussels;dwf;105;dnf;85
-Laurent;JAILLET;H;39;Blue Mussels;sta;300;spd;70
-Valérie;TERRENOIRE;F;40;Blue Mussels;sta;270;1650;1200
-Martin;ZAJAC;H;41;Apneaman - Praha - Czech Republic;sta;360;spd;40
-David;VENCL;H;42;Apneaman - Praha - Czech Republic;sta;410;dnf;125
-Michal;SVADLENKA;H;43;Apneaman - Praha - Czech Republic;spd;45;1650;890
-Katerina;SURANSKA;F;44;Apneaman - Praha - Czech Republic;dwf;150;dnf;100
-Barbora;IVANSKA;F;45;Apneaman - Praha - Czech Republic;dwf;175;1650;890
+Prénom;Nom;Sexe;n°Licence;Equipe;Epreuve1;temps1;Epreuve2;temps2
+Florence;TABOUREL;F;A-11-507970;Zen Team Panda 5;dwf;105;dnf;95
+Claire;CHARPENTIER;F;A-14-645507;Zen Team Panda 5;sta;230;dnf;60
+Laurent;CONTI;H;A-08-398224;Zen Team Panda 5;dwf;160;1650;1020
+Aurélien;FAIVRE DUBOZ;H;A-15-703556;Zen Team Panda 5;sta;285;spd;100
+Philippe;FLAUDIAS;H;A-03-128565;Zen Team Panda 5;spd;105;1650;1260
+Benoit;ROUX;H;A-15-695595;Cyrnea;sta;270;spd;70
+Anne;BORGAT;F;A-03-132681;Cyrnea;dwf;155;1650;1315
+Estelle;RIGAUD;F;A-10-480614;Cyrnea;dwf;75;dnf;100
+Jean-David;SOULA;H;A-14-645485;Cyrnea;spd;80;1650;1200
+Richard;JAUFFRAUD;H;A-13-608994;Cyrnea;sta;315;dnf;70
+Magalie;SITERRE;F;A-538474;TOPSTAR DREAM TEAM;sta;360;spd;50
+Sandrine;MURBACH;F;A-07-341155;TOPSTAR DREAM TEAM;dwf;135;dnf;115
+Olivier;ELU;H;A-06-293518;TOPSTAR DREAM TEAM;dwf;200;1650;840
+Laurent;BREIDENBACH;H;A-04-179988;TOPSTAR DREAM TEAM;spd;35;1650;675
+Jean-Baptiste;SAVORNIN;H;A-03-003628;TOPSTAR DREAM TEAM;sta;390;dnf;100
+Robert;OLTRA;H;A-07-341349;STARFISH;sta;300;spd;60
+Olivier;CELLARIER;H;A-09-451201;STARFISH;dwf;100;dnf;76
+Bastien;LAURENT ;H;A-11-507846;STARFISH;spd;50;1650;840
+Nadia;GRAVIER NOEL;F;A-14-668732;STARFISH;sta;180;dnf;75
+Pauline;LODETTI;F;A-13-607886;STARFISH;dwf;100;1650;1080
+Emilie;VERNIER;F;A-09-423942;Annecy-Lyon-Mulhouse apnée connexion;dwf;155;1650;1020
+Olivier;DURET;H;A-11-528857;Annecy-Lyon-Mulhouse apnée connexion;dwf;130;dnf;110
+Aurélien;LANOISELIER;H;A-13-616713;Annecy-Lyon-Mulhouse apnée connexion;sta;360;spd;55
+Rachel;LEITNER;F;A-16-722273;Annecy-Lyon-Mulhouse apnée connexion;spd;56;1650;930
+Jérémy;MACIA;H;A-16-725827;Annecy-Lyon-Mulhouse apnée connexion;sta;330;dnf;140
+Caroline;REGNARD;F;A-12-555029;Imashi;dwf;126;1650;1380
+Albane;GAUBERT;F;A-14-649585;Imashi;spd;50;1650;915
+François;BUZER;H;A-03-082533;Imashi;sta;240;spd;60
+Paul;GERARD;H;A-12-584585;Imashi;dwf;140;dnf;90
+Omr;SALEH;H;A-08-399215;Imashi;sta;335;dnf;100
+Pascal;POMPIDOU;H;A-10-480497;APNEEAU;spd;60;1650;1200
+Mathieu;PEBEYRE;H;A-11-530568;APNEEAU;sta;360;1650;960
+David;STROPPIANA;H;A-03-084309;APNEEAU;dwf;90;dnf;60
+Delphine;POMPIDOU;F;A-15-704942;APNEEAU;dwf;65;dnf;30
+Sophie;BRUYERE;F;A-09-436669;APNEEAU;sta;210;spd;80
+Frédérique;CORDIER;F;A-03-000444;Blue Mussels;spd;65;1650;1260
+Stéphane;PETTENUZZO;H;A-14-645334;Blue Mussels;dwf;85;dnf;75
+Damien;OJARDIAS;H;A-07-341342;Blue Mussels;dwf;105;dnf;85
+Laurent;JAILLET;H;A-04-153530;Blue Mussels;sta;300;spd;70
+Valérie;TERRENOIRE;F;A-11-510180;Blue Mussels;sta;270;1650;1200
+Martin;ZAJAC;H;CZEF00APN000004;Apneaman - Praha - Czech Republic;sta;360;spd;40
+David;VENCL;H;CZEF00APN000018;Apneaman - Praha - Czech Republic;sta;410;dnf;125
+Michal;SVADLENKA;H;CZEF00APN000006;Apneaman - Praha - Czech Republic;spd;45;1650;890
+Katerina;SURANSKA;F;CZEF00APN000022;Apneaman - Praha - Czech Republic;dwf;150;dnf;100
+Barbora;IVANSKA;F;CZEF00APN000008;Apneaman - Praha - Czech Republic;dwf;175;1650;890

@@ -1,8 +1,8 @@
 ﻿Epreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage
 sta;1;1;19;Nadia;GRAVIER NOEL;F;STARFISH;180;120;240;10:15
-sta;1;2;26;Caroline;REGNARD;F;Imashi;195;135;255;10:15
-sta;1;3;35;Sophie;BRUYERE;F;APNEEAU;210;150;270;10:15
-sta;1;4;2;Marion;DAUBANNAIS;F;Zen Team Panda 5;210;150;270;10:15
+sta;1;2;35;Sophie;BRUYERE;F;APNEEAU;210;150;270;10:15
+sta;1;3;2;Claire;CHARPENTIER;F;Zen Team Panda 5;230;170;290;10:15
+sta;1;4;28;François;BUZER;H;Imashi;240;180;300;10:15
 sta;1;5;40;Valérie;TERRENOIRE;F;Blue Mussels;270;210;330;10:15
 sta;2;1;6;Benoit;ROUX;H;Cyrnea;270;210;330;10:27
 sta;2;2;4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;285;225;345;10:27
@@ -25,11 +25,11 @@ dwf;3;1;17;Olivier;CELLARIER;H;STARFISH;100;75;125;11:31
 dwf;3;2;20;Pauline;LODETTI;F;STARFISH;100;75;125;11:31
 dwf;4;1;1;Florence;TABOUREL;F;Zen Team Panda 5;105;80;130;11:40
 dwf;4;2;38;Damien;OJARDIAS;H;Blue Mussels;105;80;130;11:40
-dwf;5;1;27;Albane;GAUBERT;F;Imashi;125;100;150;11:49
+dwf;5;1;26;Caroline;REGNARD;F;Imashi;126;101;151;11:49
 dwf;5;2;22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;130;105;155;11:49
-dwf;6;1;29;Paul;GERARD;H;Imashi;140;115;165;11:58
-dwf;6;2;44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;150;125;175;11:58
-dwf;7;1;12;Eléonore;HELLE;F;TOPSTAR DREAM TEAM;150;125;175;12:07
+dwf;6;1;12;Sandrine;MURBACH;F;TOPSTAR DREAM TEAM;135;110;160;11:58
+dwf;6;2;29;Paul;GERARD;H;Imashi;140;115;165;11:58
+dwf;7;1;44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;150;125;175;12:07
 dwf;7;2;7;Anne;BORGAT;F;Cyrnea;155;130;180;12:07
 dwf;8;1;21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;155;130;180;12:16
 dwf;8;2;3;Laurent;CONTI;H;Zen Team Panda 5;160;135;185;12:16
@@ -42,24 +42,24 @@ spd;1;4;9;Jean-David;SOULA;H;Cyrnea;80;70;100;12:59
 spd;2;1;6;Benoit;ROUX;H;Cyrnea;70;60;90;13:06
 spd;2;2;39;Laurent;JAILLET;H;Blue Mussels;70;60;90;13:06
 spd;2;3;36;Frédérique;CORDIER;F;Blue Mussels;65;55;85;13:06
-spd;2;4;26;Caroline;REGNARD;F;Imashi;60;50;80;13:06
+spd;2;4;28;François;BUZER;H;Imashi;60;50;80;13:06
 spd;3;1;16;Robert;OLTRA;H;STARFISH;60;50;80;13:13
 spd;3;2;31;Pascal;POMPIDOU;H;APNEEAU;60;50;80;13:13
 spd;3;3;24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;56;46;76;13:13
 spd;3;4;23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;55;45;75;13:13
-spd;4;1;18;Bastien;LAURENT ;H;STARFISH;50;40;70;13:20
-spd;4;2;11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;50;40;70;13:20
-spd;4;3;43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;45;35;65;13:20
-spd;4;4;28;Kevin;OLLIVO;H;Imashi;44;34;64;13:20
+spd;4;1;27;Albane;GAUBERT;F;Imashi;50;40;70;13:20
+spd;4;2;18;Bastien;LAURENT ;H;STARFISH;50;40;70;13:20
+spd;4;3;11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;50;40;70;13:20
+spd;4;4;43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;45;35;65;13:20
 spd;5;1;41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;40;30;60;13:27
 spd;5;2;14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;35;25;55;13:27
 dnf;1;1;34;Delphine;POMPIDOU;F;APNEEAU;30;5;55;13:59
-dnf;1;2;33;David;STROPPIANA;H;APNEEAU;60;35;85;13:59
-dnf;2;1;10;Richard;JAUFFRAUD;H;Cyrnea;70;45;95;14:08
-dnf;2;2;19;Nadia;GRAVIER NOEL;F;STARFISH;75;50;100;14:08
-dnf;3;1;37;Stéphane;PETTENUZZO;H;Blue Mussels;75;50;100;14:17
-dnf;3;2;17;Olivier;CELLARIER;H;STARFISH;76;51;101;14:17
-dnf;4;1;2;Marion;DAUBANNAIS;F;Zen Team Panda 5;80;55;105;14:26
+dnf;1;2;2;Claire;CHARPENTIER;F;Zen Team Panda 5;60;35;85;13:59
+dnf;2;1;33;David;STROPPIANA;H;APNEEAU;60;35;85;14:08
+dnf;2;2;10;Richard;JAUFFRAUD;H;Cyrnea;70;45;95;14:08
+dnf;3;1;19;Nadia;GRAVIER NOEL;F;STARFISH;75;50;100;14:17
+dnf;3;2;37;Stéphane;PETTENUZZO;H;Blue Mussels;75;50;100;14:17
+dnf;4;1;17;Olivier;CELLARIER;H;STARFISH;76;51;101;14:26
 dnf;4;2;38;Damien;OJARDIAS;H;Blue Mussels;85;60;110;14:26
 dnf;5;1;29;Paul;GERARD;H;Imashi;90;65;115;14:35
 dnf;5;2;1;Florence;TABOUREL;F;Zen Team Panda 5;95;70;120;14:35
@@ -68,24 +68,24 @@ dnf;6;2;30;Omr;SALEH;H;Imashi;100;75;125;14:44
 dnf;7;1;15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;100;75;125;14:53
 dnf;7;2;8;Estelle;RIGAUD;F;Cyrnea;100;75;125;14:53
 dnf;8;1;22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;110;85;135;15:02
-dnf;8;2;12;Eléonore;HELLE;F;TOPSTAR DREAM TEAM;125;100;150;15:02
+dnf;8;2;12;Sandrine;MURBACH;F;TOPSTAR DREAM TEAM;115;90;140;15:02
 dnf;9;1;42;David;VENCL;H;Apneaman - Praha - Czech Republic;125;100;150;15:11
 dnf;9;2;25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;140;115;165;15:11
-1650;1;1;7;Anne;BORGAT;F;Cyrnea;1315;1285;1375;15:30
-1650;1;2;5;Philippe;FLAUDIAS;H;Zen Team Panda 5;1260;1230;1320;15:30
-1650;1;3;36;Frédérique;CORDIER;F;Blue Mussels;1260;1230;1320;15:30
-1650;1;4;31;Pascal;POMPIDOU;H;APNEEAU;1200;1170;1260;15:30
-1650;1;5;9;Jean-David;SOULA;H;Cyrnea;1200;1170;1260;15:30
-1650;2;1;40;Valérie;TERRENOIRE;F;Blue Mussels;1200;1170;1260;15:53
-1650;2;2;20;Pauline;LODETTI;F;STARFISH;1080;1050;1140;15:53
-1650;2;3;21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1020;990;1080;15:53
-1650;2;4;3;Laurent;CONTI;H;Zen Team Panda 5;1020;990;1080;15:53
-1650;2;5;32;Mathieu;PEBEYRE;H;APNEEAU;960;930;1020;15:53
-1650;3;1;27;Albane;GAUBERT;F;Imashi;960;930;1020;16:16
+1650;1;1;26;Caroline;REGNARD;F;Imashi;1380;1350;1440;15:30
+1650;1;2;7;Anne;BORGAT;F;Cyrnea;1315;1285;1375;15:30
+1650;1;3;5;Philippe;FLAUDIAS;H;Zen Team Panda 5;1260;1230;1320;15:30
+1650;1;4;36;Frédérique;CORDIER;F;Blue Mussels;1260;1230;1320;15:30
+1650;1;5;31;Pascal;POMPIDOU;H;APNEEAU;1200;1170;1260;15:30
+1650;2;1;9;Jean-David;SOULA;H;Cyrnea;1200;1170;1260;15:53
+1650;2;2;40;Valérie;TERRENOIRE;F;Blue Mussels;1200;1170;1260;15:53
+1650;2;3;20;Pauline;LODETTI;F;STARFISH;1080;1050;1140;15:53
+1650;2;4;21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1020;990;1080;15:53
+1650;2;5;3;Laurent;CONTI;H;Zen Team Panda 5;1020;990;1080;15:53
+1650;3;1;32;Mathieu;PEBEYRE;H;APNEEAU;960;930;1020;16:16
 1650;3;2;24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;930;900;990;16:16
-1650;3;3;43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;890;860;950;16:16
-1650;3;4;45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;890;860;950;16:16
-1650;3;5;18;Bastien;LAURENT ;H;STARFISH;840;810;900;16:16
-1650;4;1;13;Olivier;ELU;H;TOPSTAR DREAM TEAM;840;810;900;16:39
-1650;4;2;28;Kevin;OLLIVO;H;Imashi;780;750;840;16:39
-1650;4;3;14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;705;675;765;16:39
+1650;3;3;27;Albane;GAUBERT;F;Imashi;915;885;975;16:16
+1650;3;4;43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;890;860;950;16:16
+1650;3;5;45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;890;860;950;16:16
+1650;4;1;18;Bastien;LAURENT ;H;STARFISH;840;810;900;16:39
+1650;4;2;13;Olivier;ELU;H;TOPSTAR DREAM TEAM;840;810;900;16:39
+1650;4;3;14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;675;645;735;16:39
