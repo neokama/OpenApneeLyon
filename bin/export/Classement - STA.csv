@@ -1,0 +1,19 @@
+﻿Id; Prenom; Nom; Sexe; Equipe; Epreuve; Annonce; Resultat; Place; Resultat pris en compte equipe; Place Equipe; Disqualification; Description
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;sta;360;370.895;1;370.895;1;false;ras
+19;Nadia;GRAVIER NOEL;F;STARFISH;sta;180;242.22;2;240;2;false;ras
+2;Claire;CHARPENTIER;F;Zen Team Panda 5;sta;230;231.925;3;231.925;3;false;ras
+35;Sophie;BRUYERE;F;APNEEAU;sta;210;197.16;4;197.16;4;false;ras
+42;David;VENCL;H;Apneaman - Praha - Czech Republic;sta;410;411.75;1;411.75;1;false;ras
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;sta;360;407.06;2;407.06;2;false;ras
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;sta;390;400.39;3;400.39;3;false;ras
+41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;sta;360;392.75;4;392.75;4;false;ras
+30;Omr;SALEH;H;Imashi;sta;335;386.825;5;386.825;5;false;ras
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;330;365.79;6;365.79;6;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;sta;360;329.125;7;329.125;7;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;sta;315;302.85;8;302.85;8;false;ras
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;sta;285;288.615;9;288.615;9;false;ras
+38;Damien;OJARDIAS;H;Blue Mussels;sta;300;271.87;10;271.87;10;false;ras
+16;Robert;OLTRA;H;STARFISH;sta;300;268.525;11;268.525;11;false;ras
+28;François;BUZER;H;Imashi;sta;240;234.205;12;234.205;12;false;ras
+6;Benoit;ROUX;H;Cyrnea;sta;270;221.875;13;221.875;13;false;ras
+39;Laurent;JAILLET;H;Blue Mussels;sta;270;168.875;14;45.5;14;false;ras
