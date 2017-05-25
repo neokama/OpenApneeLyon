@@ -1,5 +1,5 @@
 package main
-	
+
 	import (
 	"strconv"
 	"fmt"
@@ -141,25 +141,27 @@ package main
 	
 	func (base Bdd) resetClassement(){
 		_, base.err = base.db.Exec("DELETE FROM classement")
+		if base.err != nil {
+			fmt.Println("Echec lors de la remise à 0 de la table classement: \n", base.err)
+		} else{
+				fmt.Println("Remise à zéro des tables classement")
+		}
+	}
+	
+	func (base Bdd) resetClassementEquipe(){
+		_, base.err = base.db.Exec("DELETE FROM classementequipe")
+		if base.err != nil {
+			fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
+		} else {
+			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
 			if base.err != nil {
-				fmt.Println("Echec lors de la remise à 0 de la table classement: \n", base.err)
-			} else {
-					_, base.err = base.db.Exec("DELETE FROM classementequipe")
-				if base.err != nil {
-					fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
-				} else {
-					_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
-					if base.err != nil {
-						fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
-						}else{
-					fmt.Println("Remise à zéro des tables classement et classementequipe effectuée")
-				}
+				fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
 			}
 		}
 	}
 	
 	/*
-	* 		Bdd.importCompetiteur:
+	* 		Bdd.importResultats:
 	* Paramètres:
 	*	- chemin: 	Chemin du fichier à importer avec le nom du fichier et l'extension.
 	*

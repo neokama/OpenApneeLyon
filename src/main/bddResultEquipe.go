@@ -42,7 +42,7 @@ package main
 		}
 		
 		//Requête sql pour ordonner de manière croissante les équipes en fonction de leur points
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classementequipe ORDER BY point ASC"))
+		base.resultat, base.err = base.db.Query("SELECT * FROM classementequipe ORDER BY point ASC")
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
@@ -51,12 +51,10 @@ package main
 		//Ecriture dans les fichiers de la première ligne d'en-tête
 		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place; Etat\r\n"))
 		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place; Etat\r\n"))	
-		
+
 		// Parcours du resultat de la requête
 		for base.resultat.Next() {
-		
-		
-		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
 			if info[4]=="true"{
 			if base.err != nil {
 					fmt.Println("Erreur lors de la récupération des résultats: \n")
@@ -69,12 +67,15 @@ package main
 			//Ecriture dans les fichiers
 			file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,";", info[4],"\r\n"))
 			file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,";", info[4],"\r\n"))
+			} else {
+				fmt.Println(fmt.Sprint("Equipe ", info[1]," invalide. (Avez-vous utiliser la fonction check?)"))
 			}
 		}
 		
 		for n:=0;n<len(tabPlace);n++{
 		   	base.modifPlace(tab[n],strconv.Itoa(tabPlace[n]))
-		}		
+		}
+
 	}
 	
 	/*
