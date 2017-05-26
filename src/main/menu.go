@@ -487,11 +487,13 @@ func Parsage(){
 			
 		} else if *c == "display" {
 			base := newBdd("database/OpenApneeLyon")
+			fmt.Println("Contenu actuel de la base de donnee : \n")
 			base.displayCompetiteur()
 			
 		} else if *c == "import" {
 			base := newBdd("database/OpenApneeLyon")
 			base.importCompetiteur()
+			fmt.Println("\n importation dans la base de donnee effectuee ! \n")
 			
 		} else if *c == "export" {
 			base := newBdd("database/OpenApneeLyon")
@@ -517,12 +519,15 @@ func Parsage(){
 		if *e == "check" {
 			base := newBdd("database/OpenApneeLyon")
 			base.check_team()
+			fmt.Println("\n Verrification effectuee !\n")
 			
 		} else if *e == "planning" {
 			plan := newPlanning("database/OpenApneeLyon")
 			plan.getCompetiteur()
 			plan.getConfigurationEpreuve()
 			plan.generationPlanning()
+			fmt.Println("Generation des planning effectuee !")
+			
 		
 		} else {
 			fmt.Println("Vous pouvez verifier la validite dune equipe en tapant -e=check apres votre derniere commande\n")
@@ -549,6 +554,7 @@ func Parsage(){
 				fmt.Println("Affichage de tous les résultats : \n")
 				base.displayClassement()
 			} else if *bdd == "display" {
+				fmt.Println("Affichge du classement par equipe : ")
 				base := newBdd("database/OpenApneeLyon")
 				base.displayEquipe()
 			} else {
@@ -569,6 +575,7 @@ func Parsage(){
 		} else if *r == "team" {
 			base := newBdd("database/OpenApneeLyon")
 			base.exportClassementEquipe()
+			fmt.Println("Generation du classement final par equipe effectuee !")
 		} else if *r == "reset" {
 			base := newBdd("database/OpenApneeLyon")
 			base.resetClassement()
