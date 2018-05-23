@@ -1,12 +1,22 @@
 package main
-import (
-"fmt"
-_ "github.com/mattn/go-sqlite3"
-"log"
-"os"
-"time"
-)
 
+import (
+	"fmt"
+	_ "github.com/mattn/go-sqlite3"
+	"log"
+	"os"
+	"time"
+	)
+
+	/*
+	* 		EtatEquipe
+	* Description:
+	* La structure permet de connaitre l'etat d'une equipe. On calcule le classement equipe avec uniquement des equipes valides
+	*
+	* Paramètres: 
+	*	- equipe : nom de l'équipe
+	*	- etat : validiter de l'equipe
+	**/
 	type EtatEquipe struct
 	{
 		equipe string
@@ -134,8 +144,8 @@ _ "github.com/mattn/go-sqlite3"
 			case 5: comp5=false
 			}
 			}
-			case "Speed 100":
-			nbSPE= nbSPE+1
+			case "16*50":
+			nbSFC= nbSFC+1
 			if (info[8]=="DNF" || info[8]=="DWF"&& info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
@@ -156,8 +166,8 @@ _ "github.com/mattn/go-sqlite3"
 			case 5: comp5=false
 			}
 			}
-			case "16*50":
-			nbSFC= nbSFC+1
+			case "Speed 100":
+			nbSPE= nbSPE+1
 			if (info[8]=="DNF"&& info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
@@ -180,7 +190,7 @@ _ "github.com/mattn/go-sqlite3"
 			}
 			case "dwf":
 			nbDWF= nbDWF+1
-			if (info[8]=="spd" || info[8]=="sta" && info[8]!=info[6]){
+			if (info[8]=="1650" || info[8]=="sta" && info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -189,8 +199,8 @@ _ "github.com/mattn/go-sqlite3"
 			case 5: comp5=false
 			}
 			}
-			case "spd":
-			nbSPE= nbSPE+1
+			case "1650":
+			nbSFC= nbSFC+1
 			if (info[8]=="dnf" || info[8]=="dwf"&& info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
@@ -211,8 +221,8 @@ _ "github.com/mattn/go-sqlite3"
 			case 5: comp5=false
 			}
 			}
-			case "1650":
-			nbSFC= nbSFC+1
+			case "spd":
+			nbSPE= nbSPE+1
 			if (info[8]=="dnf"&& info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
@@ -441,7 +451,11 @@ _ "github.com/mattn/go-sqlite3"
 		}
 	}
 	
-		
+		/*
+	* 		Bdd.verif:
+	* Description: 		
+	*		Méthode permettant d'effectuer des vérifications sur la validité des champs de la bdd
+	*/
 	func (base Bdd) verif(val string, num int ){
 		var id_col string
 		var value string = val
@@ -467,7 +481,16 @@ _ "github.com/mattn/go-sqlite3"
 			}
 		}	
 	}
-	
+	/*
+	* 		newEtatEquipe:
+	* Description:
+	* 			La méthode permet de retourner un EtatEquipe
+	* Paramètres: 
+	*	- equipe : nom de l'équipe
+	*	- etat : validiter de l'equipe
+	* Sortie:
+	*	- une structure EtatEquipe
+	*/
 	func newEtatEquipe(equipe string, etat bool)(*EtatEquipe){
 		board := new(EtatEquipe)
 		board.equipe = equipe
