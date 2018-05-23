@@ -1,91 +1,121 @@
 ﻿Epreuve; Num Serie;  Num Passage; Id Competiteur; Prenom; Nom; Sexe; Equipe; Annonce(s/m); Seuil Min; Seuil Max; Heure de passage
-sta;1;1;19;Nadia;GRAVIER NOEL;F;STARFISH;180;120;240;10:15
-sta;1;2;35;Sophie;BRUYERE;F;APNEEAU;210;150;270;10:15
-sta;1;3;2;Claire;CHARPENTIER;F;Zen Team Panda 5;230;170;290;10:15
-sta;1;4;28;François;BUZER;H;Imashi;240;180;300;10:15
-sta;1;5;39;Laurent;JAILLET;H;Blue Mussels;270;210;330;10:15
-sta;2;1;6;Benoit;ROUX;H;Cyrnea;270;210;330;10:27
-sta;2;2;4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;285;225;345;10:27
-sta;2;3;38;Damien;OJARDIAS;H;Blue Mussels;300;240;360;10:27
-sta;2;4;16;Robert;OLTRA;H;STARFISH;300;240;360;10:27
-sta;2;5;10;Richard;JAUFFRAUD;H;Cyrnea;315;255;375;10:27
-sta;3;1;25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;330;270;390;10:39
-sta;3;2;30;Omr;SALEH;H;Imashi;335;275;395;10:39
-sta;3;3;32;Mathieu;PEBEYRE;H;APNEEAU;360;300;420;10:39
-sta;3;4;23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;360;300;420;10:39
-sta;3;5;11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;360;300;420;10:39
-sta;4;1;41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;360;300;420;10:51
-sta;4;2;15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;390;330;450;10:51
-sta;4;3;42;David;VENCL;H;Apneaman - Praha - Czech Republic;410;350;470;10:51
-dwf;1;1;34;Delphine;POMPIDOU;F;APNEEAU;65;40;90;11:20
-dwf;1;2;8;Estelle;RIGAUD;F;Cyrnea;75;50;100;11:20
-dwf;2;1;40;Valérie;TERRENOIRE;F;Blue Mussels;85;60;110;11:29
-dwf;2;2;33;David;STROPPIANA;H;APNEEAU;90;65;115;11:29
-dwf;3;1;17;Olivier;CELLARIER;H;STARFISH;100;75;125;11:38
-dwf;3;2;20;Pauline;LODETTI;F;STARFISH;100;75;125;11:38
-dwf;4;1;37;Stéphane;PETTENUZZO;H;Blue Mussels;105;80;130;11:47
-dwf;4;2;1;Florence;TABOUREL;F;Zen Team Panda 5;105;80;130;11:47
-dwf;5;1;26;Caroline;REGNARD;F;Imashi;126;101;151;11:56
-dwf;5;2;22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;130;105;155;11:56
-dwf;6;1;12;Sandrine;MURBACH;F;TOPSTAR DREAM TEAM;135;110;160;12:05
-dwf;6;2;29;Paul;GERARD;H;Imashi;140;115;165;12:05
-dwf;7;1;44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;150;125;175;12:14
-dwf;7;2;7;Anne;BORGAT;F;Cyrnea;155;130;180;12:14
-dwf;8;1;21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;155;130;180;12:23
-dwf;8;2;3;Laurent;CONTI;H;Zen Team Panda 5;160;135;185;12:23
-dwf;9;1;45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;175;150;200;12:32
-dwf;9;2;13;Olivier;ELU;H;TOPSTAR DREAM TEAM;200;175;225;12:32
-spd;1;1;5;Philippe;FLAUDIAS;H;Zen Team Panda 5;105;95;125;13:10
-spd;1;2;4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;100;90;120;13:10
-spd;1;3;35;Sophie;BRUYERE;F;APNEEAU;80;70;100;13:10
-spd;1;4;9;Jean-David;SOULA;H;Cyrnea;80;70;100;13:10
-spd;2;1;6;Benoit;ROUX;H;Cyrnea;70;60;90;13:17
-spd;2;2;38;Damien;OJARDIAS;H;Blue Mussels;70;60;90;13:17
-spd;2;3;36;Frédérique;CORDIER;F;Blue Mussels;65;55;85;13:17
-spd;2;4;28;François;BUZER;H;Imashi;60;50;80;13:17
-spd;3;1;16;Robert;OLTRA;H;STARFISH;60;50;80;13:24
-spd;3;2;31;Pascal;POMPIDOU;H;APNEEAU;60;50;80;13:24
-spd;3;3;24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;56;46;76;13:24
-spd;3;4;23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;55;45;75;13:24
-spd;4;1;27;Albane;GAUBERT;F;Imashi;50;40;70;13:31
-spd;4;2;18;Bastien;LAURENT ;H;STARFISH;50;40;70;13:31
-spd;4;3;11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;50;40;70;13:31
-spd;4;4;43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;45;35;65;13:31
-spd;5;1;41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;40;30;60;13:38
-spd;5;2;14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;35;25;55;13:38
-dnf;1;1;34;Delphine;POMPIDOU;F;APNEEAU;30;5;55;14:10
-dnf;1;2;2;Claire;CHARPENTIER;F;Zen Team Panda 5;60;35;85;14:10
-dnf;2;1;33;David;STROPPIANA;H;APNEEAU;60;35;85;14:19
-dnf;2;2;10;Richard;JAUFFRAUD;H;Cyrnea;70;45;95;14:19
-dnf;3;1;40;Valérie;TERRENOIRE;F;Blue Mussels;75;50;100;14:28
-dnf;3;2;19;Nadia;GRAVIER NOEL;F;STARFISH;75;50;100;14:28
-dnf;4;1;17;Olivier;CELLARIER;H;STARFISH;76;51;101;14:37
-dnf;4;2;37;Stéphane;PETTENUZZO;H;Blue Mussels;85;60;110;14:37
-dnf;5;1;29;Paul;GERARD;H;Imashi;90;65;115;14:46
-dnf;5;2;1;Florence;TABOUREL;F;Zen Team Panda 5;95;70;120;14:46
-dnf;6;1;44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;100;75;125;14:55
-dnf;6;2;30;Omr;SALEH;H;Imashi;100;75;125;14:55
-dnf;7;1;15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;100;75;125;15:04
-dnf;7;2;8;Estelle;RIGAUD;F;Cyrnea;100;75;125;15:04
-dnf;8;1;22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;110;85;135;15:13
-dnf;8;2;12;Sandrine;MURBACH;F;TOPSTAR DREAM TEAM;115;90;140;15:13
-dnf;9;1;42;David;VENCL;H;Apneaman - Praha - Czech Republic;125;100;150;15:22
-dnf;9;2;25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;140;115;165;15:22
-1650;1;1;26;Caroline;REGNARD;F;Imashi;1380;1350;1440;15:45
-1650;1;2;7;Anne;BORGAT;F;Cyrnea;1315;1285;1375;15:45
-1650;1;3;5;Philippe;FLAUDIAS;H;Zen Team Panda 5;1260;1230;1320;15:45
-1650;1;4;36;Frédérique;CORDIER;F;Blue Mussels;1260;1230;1320;15:45
-1650;1;5;31;Pascal;POMPIDOU;H;APNEEAU;1200;1170;1260;15:45
-1650;2;1;9;Jean-David;SOULA;H;Cyrnea;1200;1170;1260;16:08
-1650;2;2;39;Laurent;JAILLET;H;Blue Mussels;1200;1170;1260;16:08
-1650;2;3;20;Pauline;LODETTI;F;STARFISH;1080;1050;1140;16:08
-1650;2;4;21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1020;990;1080;16:08
-1650;2;5;3;Laurent;CONTI;H;Zen Team Panda 5;1020;990;1080;16:08
-1650;3;1;32;Mathieu;PEBEYRE;H;APNEEAU;960;930;1020;16:31
-1650;3;2;24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;930;900;990;16:31
-1650;3;3;27;Albane;GAUBERT;F;Imashi;915;885;975;16:31
-1650;3;4;43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;890;860;950;16:31
-1650;3;5;45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;890;860;950;16:31
-1650;4;1;18;Bastien;LAURENT ;H;STARFISH;840;810;900;16:54
-1650;4;2;13;Olivier;ELU;H;TOPSTAR DREAM TEAM;840;810;900;16:54
-1650;4;3;14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;675;645;735;16:54
+sta;1;1;60;edou;bbb;F;Equipe12;60;0;120;10:15
+sta;1;2;58;cdou;bbb;H;Equipe12;60;0;120;10:15
+sta;1;3;15;Paul;GERARD;H;FORZAPNEA;90;30;150;10:15
+sta;1;4;35;Pauline;LEROUX;F;Cantal Apnee;120;60;180;10:15
+sta;1;5;42;Rosa;KONG A SIOU;F;Les vieux de la vieille;150;90;210;10:15
+sta;2;1;18;Anais;DERRIER;F;Les Bras casses;150;90;210;10:29
+sta;2;2;50;Sabine;DERRIER;F;Pussy French;180;120;240;10:29
+sta;2;3;12;Eleonore;HELLE;F;FORZAPNEA;180;120;240;10:29
+sta;2;4;36;Quentin;FALVART;H;Les ponneys fringants;180;120;240;10:29
+sta;2;5;19;Odilon;REIGNEAUD;H;Les Bras casses;210;150;270;10:29
+sta;3;1;25;Philippe;SCHEIDT;H;Les Chocs Eau Suisses;210;150;270;10:43
+sta;3;2;7;Gaia;CANEPA;F;BBIG;220;160;280;10:43
+sta;3;3;4;Remi;BLASQUEZ;H;AURApnea;225;165;285;10:43
+sta;3;4;45;Olivier;FLEURY;H;Les vieux de la vieille;240;180;300;10:43
+sta;3;5;32;Lucas;GALLO;H;Cantal Apnee;240;180;300;10:43
+sta;4;1;5;Laurent;CONTI;H;AURApnea;255;195;315;10:57
+sta;4;2;23;Nicolas;DESVALLEES;H;Les Chocs Eau Suisses;260;200;320;10:57
+sta;4;3;40;Philippe;FLAUDIAS;H;Les ponneys fringants;270;210;330;10:57
+sta;4;4;10;Michael;HANSEN;H;BBIG;340;280;400;10:57
+sta;4;5;55;Magalie;SITERRE;F;TOPSTAR;360;300;420;10:57
+sta;5;1;47;Aurelien;LANOISELIER;H;Pussy French;375;315;435;11:11
+sta;5;2;29;Katerina;SURANSKA;F;Apneaman CZE;375;315;435;11:11
+sta;5;3;27;David;VENCL;H;Apneaman CZE;425;365;485;11:11
+sta;5;4;51;Thomas;BOUCHARD;H;TOPSTAR;450;390;510;11:11
+dwf;1;1;56;adouze;bbb;H;Equipe12;10;-15;35;11:45
+dwf;1;2;57;bdouze;bbb;H;Equipe12;10;-15;35;11:45
+dwf;1;3;34;Christelle;CHAMPAGNAC;F;Cantal Apnee;50;25;75;11:45
+dwf;2;1;22;Pilar;GIL JIMENEZ;F;Les Chocs Eau Suisses;50;25;75;11:54
+dwf;2;2;3;Greg;PLANCHAT;H;AURApnea;55;30;80;11:54
+dwf;2;3;38;Clara;HUGON;F;Les ponneys fringants;60;35;85;11:54
+dwf;3;1;39;Jeremy;NOTEUIL;H;Les ponneys fringants;65;40;90;12:03
+dwf;3;2;17;Claudia;BERGER;F;Les Bras casses;75;50;100;12:03
+dwf;3;3;20;Christian;NEYROUD;H;Les Bras casses;75;50;100;12:03
+dwf;4;1;13;Joanna;BOURRIEN;F;FORZAPNEA;75;50;100;12:12
+dwf;4;2;44;Patrick;BOUZAT;H;Les vieux de la vieille;78;53;103;12:12
+dwf;4;3;41;Martine;VERGNOLLE;F;Les vieux de la vieille;80;55;105;12:12
+dwf;5;1;48;Stephane;PETTENUZZO;H;Pussy French;120;95;145;12:21
+dwf;5;2;9;Rodolphe;ISNARD;H;BBIG;125;100;150;12:21
+dwf;5;3;31;Guillaume;BUSSIERE;H;Cantal Apnee;125;100;150;12:21
+dwf;6;1;2;Frederique;CORDIER;F;AURApnea;140;115;165;12:30
+dwf;6;2;53;Sandrine;MURBACH;F;TOPSTAR;150;125;175;12:30
+dwf;6;3;6;Loick;STIENNE;H;BBIG;155;130;180;12:30
+dwf;7;1;28;Michal;SURANSKY;H;Apneaman CZE;160;135;185;12:39
+dwf;7;2;21;Florie;VIDEBERG;F;Les Chocs Eau Suisses;160;135;185;12:39
+dwf;7;3;14;Guillaume;BOURDILLA;H;FORZAPNEA;175;150;200;12:39
+dwf;8;1;49;Anne;Borgat;F;Pussy French;175;150;200;12:48
+dwf;8;2;54;Olivier;ELU;H;TOPSTAR;200;175;225;12:48
+dwf;8;3;26;Martin;ZAJAC;H;Apneaman CZE;200;175;225;12:48
+1650;1;1;37;Leila;FABBI;F;Les ponneys fringants;1320;1290;1380;13:25
+1650;1;2;1;Florence;TABOUREL;F;AURApnea;1315;1285;1375;13:25
+1650;1;3;59;ddou;bbb;F;Equipe12;1201;1171;1261;13:25
+1650;1;4;60;edou;bbb;F;Equipe12;1201;1171;1261;13:25
+1650;1;5;18;Anais;DERRIER;F;Les Bras casses;1200;1170;1260;13:25
+1650;1;6;32;Lucas;GALLO;H;Cantal Apnee;1200;1170;1260;13:25
+1650;2;1;10;Michael;HANSEN;H;BBIG;1200;1170;1260;13:50
+1650;2;2;5;Laurent;CONTI;H;AURApnea;1170;1140;1230;13:50
+1650;2;3;24;Florian;PEDROLETTI;H;Les Chocs Eau Suisses;1140;1110;1200;13:50
+1650;2;4;25;Philippe;SCHEIDT;H;Les Chocs Eau Suisses;1140;1110;1200;13:50
+1650;2;5;42;Rosa;KONG A SIOU;F;Les vieux de la vieille;1110;1080;1170;13:50
+1650;2;6;40;Philippe;FLAUDIAS;H;Les ponneys fringants;1110;1080;1170;13:50
+1650;3;1;16;Cedrick;CHAUMARD;H;Les Bras casses;1080;1050;1140;14:15
+1650;3;2;33;Regis;VERBIGUIE;H;Cantal Apnee;1080;1050;1140;14:15
+1650;3;3;46;Olivier;DURET;H;Pussy French;1050;1020;1110;14:15
+1650;3;4;55;Magalie;SITERRE;F;TOPSTAR;1050;1020;1110;14:15
+1650;3;5;43;Jacques;FABBI;H;Les vieux de la vieille;1030;1000;1090;14:15
+1650;3;6;15;Paul;GERARD;H;FORZAPNEA;1020;990;1080;14:15
+1650;4;1;30;Jindriska;ZAJACOVA;F;Apneaman CZE;990;960;1050;14:40
+1650;4;2;47;Aurelien;LANOISELIER;H;Pussy French;960;930;1020;14:40
+1650;4;3;27;David;VENCL;H;Apneaman CZE;920;890;980;14:40
+1650;4;4;8;Maria;XIROUXAKI;F;BBIG;870;840;930;14:40
+1650;4;5;52;Laurent;BREIDENBACH;H;TOPSTAR;720;690;780;14:40
+1650;4;6;11;Kevin;PROVENZANI;H;FORZAPNEA;720;690;780;14:40
+dnf;1;1;56;adouze;bbb;H;Equipe12;10;-15;35;15:15
+dnf;1;2;57;bdouze;bbb;H;Equipe12;10;-15;35;15:15
+dnf;1;3;22;Pilar;GIL JIMENEZ;F;Les Chocs Eau Suisses;25;0;50;15:15
+dnf;2;1;36;Quentin;FALVART;H;Les ponneys fringants;30;5;55;15:25
+dnf;2;2;35;Pauline;LEROUX;F;Cantal Apnee;30;5;55;15:25
+dnf;2;3;45;Olivier;FLEURY;H;Les vieux de la vieille;40;15;65;15:25
+dnf;3;1;39;Jeremy;NOTEUIL;H;Les ponneys fringants;40;15;65;15:35
+dnf;3;2;20;Christian;NEYROUD;H;Les Bras casses;50;25;75;15:35
+dnf;3;3;17;Claudia;BERGER;F;Les Bras casses;50;25;75;15:35
+dnf;4;1;3;Greg;PLANCHAT;H;AURApnea;50;25;75;15:45
+dnf;4;2;41;Martine;VERGNOLLE;F;Les vieux de la vieille;55;30;80;15:45
+dnf;4;3;7;Gaia;CANEPA;F;BBIG;62;37;87;15:45
+dnf;5;1;48;Stephane;PETTENUZZO;H;Pussy French;90;65;115;15:55
+dnf;5;2;28;Michal;SURANSKY;H;Apneaman CZE;100;75;125;15:55
+dnf;5;3;29;Katerina;SURANSKA;F;Apneaman CZE;100;75;125;15:55
+dnf;6;1;12;Eleonore;HELLE;F;FORZAPNEA;100;75;125;16:05
+dnf;6;2;31;Guillaume;BUSSIERE;H;Cantal Apnee;100;75;125;16:05
+dnf;6;3;21;Florie;VIDEBERG;F;Les Chocs Eau Suisses;110;85;135;16:05
+dnf;7;1;9;Rodolphe;ISNARD;H;BBIG;110;85;135;16:15
+dnf;7;2;49;Anne;Borgat;F;Pussy French;125;100;150;16:15
+dnf;7;3;53;Sandrine;MURBACH;F;TOPSTAR;125;100;150;16:15
+dnf;8;1;51;Thomas;BOUCHARD;H;TOPSTAR;130;105;155;16:25
+dnf;8;2;2;Frederique;CORDIER;F;AURApnea;130;105;155;16:25
+dnf;8;3;14;Guillaume;BOURDILLA;H;FORZAPNEA;145;120;170;16:25
+spd;1;1;34;Christelle;CHAMPAGNAC;F;Cantal Apnee;180;170;200;16:50
+spd;1;2;50;Sabine;DERRIER;F;Pussy French;150;140;170;16:50
+spd;1;3;59;ddou;bbb;F;Equipe12;120;110;140;16:50
+spd;1;4;58;cdou;bbb;H;Equipe12;120;110;140;16:50
+spd;2;1;13;Joanna;BOURRIEN;F;FORZAPNEA;120;110;140;16:57
+spd;2;2;38;Clara;HUGON;F;Les ponneys fringants;120;110;140;16:57
+spd;2;3;37;Leila;FABBI;F;Les ponneys fringants;120;110;140;16:57
+spd;2;4;4;Remi;BLASQUEZ;H;AURApnea;110;100;130;16:57
+spd;3;1;44;Patrick;BOUZAT;H;Les vieux de la vieille;90;80;110;17:04
+spd;3;2;19;Odilon;REIGNEAUD;H;Les Bras casses;90;80;110;17:04
+spd;3;3;33;Regis;VERBIGUIE;H;Cantal Apnee;90;80;110;17:04
+spd;3;4;46;Olivier;DURET;H;Pussy French;80;70;100;17:04
+spd;4;1;23;Nicolas;DESVALLEES;H;Les Chocs Eau Suisses;70;60;90;17:11
+spd;4;2;16;Cedrick;CHAUMARD;H;Les Bras casses;70;60;90;17:11
+spd;4;3;43;Jacques;FABBI;H;Les vieux de la vieille;65;55;85;17:11
+spd;4;4;1;Florence;TABOUREL;F;AURApnea;60;50;80;17:11
+spd;5;1;24;Florian;PEDROLETTI;H;Les Chocs Eau Suisses;60;50;80;17:18
+spd;5;2;30;Jindriska;ZAJACOVA;F;Apneaman CZE;50;40;70;17:18
+spd;5;3;8;Maria;XIROUXAKI;F;BBIG;45;35;65;17:18
+spd;5;4;54;Olivier;ELU;H;TOPSTAR;45;35;65;17:18
+spd;6;1;6;Loick;STIENNE;H;BBIG;45;35;65;17:25
+spd;6;2;11;Kevin;PROVENZANI;H;FORZAPNEA;45;35;65;17:25
+spd;6;3;26;Martin;ZAJAC;H;Apneaman CZE;40;30;60;17:25
+spd;6;4;52;Laurent;BREIDENBACH;H;TOPSTAR;37;27;57;17:25
