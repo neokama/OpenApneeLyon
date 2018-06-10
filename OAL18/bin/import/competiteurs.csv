@@ -1,0 +1,61 @@
+Prenom;Nom;Sexe;n_Licence;Equipe;Epreuve1;temps1;Epreuve2;temps2
+Florence;TABOUREL;F;1;AURApnea;1650;1315;spd;60
+Frederique;CORDIER;F;2;AURApnea;dwf;140;dnf;130
+Greg;PLANCHAT;H;3;AURApnea;dwf;55;dnf;50
+Remi;BLASQUEZ;H;4;AURApnea;sta;210;spd;175
+Laurent;CONTI;H;5;AURApnea;sta;255;1650;1170
+Loick;STIENNE;H;6;BBIG;dwf;155;spd;45
+Gaia;CANEPA;F;7;BBIG;sta;220;dnf;62
+Maria;XIROUXAKI;F;8;BBIG;1650;1080;spd;45
+Rodolphe;ISNARD;H;9;BBIG;dwf;115;dnf;110
+Michael;HANSEN;H;10;BBIG;sta;340;1650;1200
+Kevin;PROVENZANI;H;11;FORZAPNEA;1650;630;spd;45
+Eleonore;HELLE;F;12;FORZAPNEA;sta;225;dnf;125
+Joanna;BOURRIEN;F;13;FORZAPNEA;dwf;125;spd;90
+Guillaume;BOURDILLA;H;14;FORZAPNEA;dwf;175;dnf;145
+Paul;GERARD;H;15;FORZAPNEA;sta;195;1650;1020
+Cedrick;CHAUMARD;H;16;Les Bras casses;1650;1200;spd;80
+Claudia;BERGER;F;17;Les Bras casses;dwf;75;dnf;50
+Anais;DERRIER;F;18;Les Bras casses;sta;150;1650;1200
+Odilon;REIGNEAUD;H;19;Les Bras casses;sta;200;spd;105
+Redha;LOUIBA;H;20;Les Bras casses;dwf;75;dnf;50
+Florie;VIDEBERG;F;21;Les Chocs Eau Suisses;dwf;160;dnf;110
+Pilar;GIL JIMENEZ;F;22;Les Chocs Eau Suisses;dwf;50;dnf;25
+Nicolas;DESVALLEES;H;23;Les Chocs Eau Suisses;sta;310;spd;70
+Florian;PEDROLETTI;H;24;Les Chocs Eau Suisses;1650;1140;spd;60
+Philippe;SCHEIDT;H;25;Les Chocs Eau Suisses;sta;210;1650;1140
+Martin;ZAJAC;H;26;Apneaman CZE;dwf;200;spd;40
+David;VENCL;H;27;Apneaman CZE;sta;425;1650;920
+Michal;SURANSKY;H;28;Apneaman CZE;dwf;160;dnf;100
+Katerina;SURANSKA;F;29;Apneaman CZE;sta;375;dnf;100
+Jindriska;ZAJACOVA;F;30;Apneaman CZE;1650;990;spd;50
+Guillaume;BUSSIERE;H;31;Cantal Apnee;dwf;125;dnf;100
+Lucas;GALLO;H;32;Cantal Apnee;sta;240;1650;1200
+Francois;BUZET;H;33;Cantal Apnee;1650;1200;spd;65
+Christelle;CHAMPAGNAC;F;34;Cantal Apnee;dwf;50;spd;180
+Pauline;LEROUX;F;35;Cantal Apnee;sta;120;dnf;30
+Quentin;FALVART;H;36;Les ponneys fringants;sta;180;dnf;30
+Leila;FABBI;F;37;Les ponneys fringants;1650;1320;spd;120
+Clara;HUGON;F;38;Les ponneys fringants;dwf;60;spd;120
+Jeremy;NOTEUIL;H;39;Les ponneys fringants;dwf;65;dnf;40
+Timothee;FLEURY;H;40;Les ponneys fringants;sta;180;1650;1260
+Martine;VERGNOLLE;F;41;Les vieux de la vieille;dwf;80;dnf;55
+Rosa;KONG A SIOU;F;42;Les vieux de la vieille;sta;150;1650;1110
+Philippe;FLAUDIAS;H;43;Les vieux de la vieille;1650;1110;spd;70
+Patrick;BOUZAT;H;44;Les vieux de la vieille;dwf;78;spd;90
+Olivier;FLEURY;H;45;Les vieux de la vieille;sta;240;dnf;40
+Olivier;DURET;H;46;Pussy French;1650;1050;spd;80
+Aurelien;LANOISELIER;H;47;Pussy French;sta;375;1650;855
+Stephane;PETTENUZZO;H;48;Pussy French;dwf;120;dnf;90
+Anne;Borgat;F;49;Pussy French;dwf;175;dnf;125
+Sabine;DERRIER;F;50;Pussy French;sta;180;spd;150
+Thomas;BOUCHARD;H;51;TOPSTAR;sta;450;dnf;130
+Laurent;BREIDENBACH;H;52;TOPSTAR;1650;720;spd;37
+Sandrine;MURBACH;F;53;TOPSTAR;dwf;150;dnf;125
+Olivier;ELU;H;54;TOPSTAR;dwf;200;spd;45
+Magalie;SITERRE;F;55;TOPSTAR;sta;360;1650;1050
+David;KOHUTIC;H;56;Apneaman2;dwf;130;dnf;100
+Jan;MARTINCIK;H;57;Apneaman2;sta;300;1650;1080
+Martin;CITEK;H;58;Apneaman2;1650;915;spd;55
+Svetlana;NOVOTKOVA;F;59;Apneaman2;sta;240;dnf;100
+Rebeka;STARKOVA;F;60;Apneaman2;dwf;100;spd;60
