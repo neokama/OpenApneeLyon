@@ -307,10 +307,10 @@ func Parsage(){
 					i++ 
 				} else if i == 7 {
 					fmt.Println("Quel est la première épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
-					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 1650 ?\n") 
+					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 850 ?\n") 
 					in , err := readString(1)
-					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
-						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
+						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 						in, err = readString(1)
 						continue
 						fmt.Println(err)
@@ -330,10 +330,10 @@ func Parsage(){
 					i++ 
 				} else if i == 9 {
 					fmt.Println("Quel est la seconde épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
-					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 1650 ?\n")
+					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 850 ?\n")
 					in , err := readString(1)
-					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
-						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
+						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 						in, err = readString(1)
 						continue
 						fmt.Println(err)
@@ -436,8 +436,8 @@ func Parsage(){
 				base.modifCompetiteur (id_comp, col_num, equipe)
 			} else if (col_num == 7) {
 				in , err := readString(1)
-				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
-					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
+					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 					in, err = readString(1)
 					continue
 					fmt.Println(err)
@@ -449,8 +449,8 @@ func Parsage(){
 				base.modifCompetiteur (id_comp, col_num, annonce1)
 			} else if (col_num == 9) {
 				in , err := readString(1)
-				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "1650")) {
-					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 1650")
+				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
+					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 					in, err = readString(1)
 					continue
 					fmt.Println(err)

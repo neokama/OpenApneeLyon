@@ -437,9 +437,9 @@ import (
 			fmt.Println("TEST EPREUVE 4:	OK\n")
 		}
 		
-		fmt.Println("TEST 5: EPREUVE 1650")
-		comp.epreuve1 = "1650"
-		comp.epreuve2 = "1650"
+		fmt.Println("TEST 5: EPREUVE 850")
+		comp.epreuve1 = "850"
+		comp.epreuve2 = "850"
 		test = comp.check()
 		if (!test){
 			fmt.Println("TEST EQUIPE 5:	ERROR\n")

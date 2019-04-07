@@ -144,7 +144,7 @@ import (
 			case 5: comp5=false
 			}
 			}
-			case "16*50":
+			case "8*50":
 			nbSFC= nbSFC+1
 			if (info[8]=="DNF" || info[8]=="DWF"&& info[8]!=info[6]){
 			switch(n){
@@ -157,7 +157,7 @@ import (
 			}
 			case "DNF":
 			nbDNF= nbDNF+1
-			if (info[8]=="16*50" || info[8]=="Speed 100"&& info[8]!=info[6]){
+			if (info[8]=="8*50" || info[8]=="Speed 100"&& info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -190,7 +190,7 @@ import (
 			}
 			case "dwf":
 			nbDWF= nbDWF+1
-			if (info[8]=="1650" || info[8]=="sta" && info[8]!=info[6]){
+			if (info[8]=="850" || info[8]=="sta" && info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -199,7 +199,7 @@ import (
 			case 5: comp5=false
 			}
 			}
-			case "1650":
+			case "850":
 			nbSFC= nbSFC+1
 			if (info[8]=="dnf" || info[8]=="dwf"&& info[8]!=info[6]){
 			switch(n){
@@ -212,7 +212,7 @@ import (
 			}
 			case "dnf":
 			nbDNF= nbDNF+1
-			if (info[8]=="1650" || info[8]=="spd"&& info[8]!=info[6]){
+			if (info[8]=="850" || info[8]=="spd"&& info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -242,7 +242,7 @@ import (
 			nbSPE= nbSPE+1
 			case "DNF":
 			nbDNF= nbDNF+1
-			case "16*50":
+			case "8*50":
 			nbSFC= nbSFC+1
 			case "sta": 
 			nbSTA= nbSTA+1
@@ -252,7 +252,7 @@ import (
 			nbSPE= nbSPE+1
 			case "dnf":
 			nbDNF= nbDNF+1
-			case "1650":
+			case "850":
 			nbSFC= nbSFC+1
 			}
 		}
