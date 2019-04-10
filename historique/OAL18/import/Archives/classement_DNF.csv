@@ -1,0 +1,19 @@
+Id	Prénom	Nom	Sexe	Equipe	Epreuve	Resultat	Disqualification	Description
+1	Florence	TABOUREL	F	Zen Team Panda 5	dnf	92.4	false	ras
+2	Claire	CHARPENTIER	F	Zen Team Panda 5	dnf	64	false	ras
+8	Estelle	RIGAUD	F	Cyrnea	dnf	110.13	false	ras
+10	Richard	JAUFFRAUD	H	Cyrnea	dnf	76.8	false	ras
+12	Sandrine	MURBACH	F	TOPSTAR DREAM TEAM	dnf	124.17	false	ras
+15	Jean-Baptiste	SAVORNIN	H	TOPSTAR DREAM TEAM	dnf	95.1	false	ras
+17	Olivier	CELLARIER	H	STARFISH	dnf	100	false	ras
+19	Nadia	GRAVIER NOEL	F	STARFISH	dnf	93.86	false	ras
+22	Olivier	DURET	H	Annecy-Lyon-Mulhouse apnée connexion	dnf	0	true	Absent(DSQ 1er épreuve)
+25	Jérémy	MACIA	H	Annecy-Lyon-Mulhouse apnée connexion	dnf	0	true	Syncope
+29	Paul	GERARD	H	Imashi	dnf	104.33	false	ras
+30	Omr	SALEH	H	Imashi	dnf	0	true	PCM (113.11m)
+33	David	STROPPIANA	H	APNEEAU	dnf	81.9	false	ras
+34	Delphine	POMPIDOU	F	APNEEAU	dnf	50	false	ras
+37	Stéphane	PETTENUZZO	H	Blue Mussels	dnf	87.64	false	ras
+40	Valérie	TERRENOIRE	F	Blue Mussels	dnf	0	true	répétition protocole (80.9m)
+42	David	VENCL	H	Apneaman - Praha - Czech Republic	dnf	110.75	false	ras
+44	Katerina	SURANSKA	F	Apneaman - Praha - Czech Republic	dnf	111.57	false	ras
