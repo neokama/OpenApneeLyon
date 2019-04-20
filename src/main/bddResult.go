@@ -204,8 +204,8 @@ package main
 				case "spd": 
 					res=calculResultat(equipe,"spd",annonce,info[6],info[7])
 				break
-				case "1650":
-					res=calculResultat(equipe,"1650",annonce,info[6],info[7])
+				case "850":
+					res=calculResultat(equipe,"850",annonce,info[6],info[7])
 				break
 				case "dnf":
 					res=calculResultat(equipe,"dnf",annonce,info[6],info[7])
@@ -360,9 +360,9 @@ package main
 				epreuve = "spd"
 			break
 			case 2:
-				base.calculPlace("1650")
-				value = "'1650'"
-				epreuve = "1650"
+				base.calculPlace("850")
+				value = "'850'"
+				epreuve = "850"
 			break
 			case 3:
 				base.calculPlace("dnf")
@@ -385,7 +385,7 @@ package main
 			}
 			
 			
-		if(epreuve=="spd" || epreuve == "1650"){
+		if(epreuve=="spd" || epreuve == "850"){
 			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, resultat ASC"))
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête 1")
@@ -552,7 +552,7 @@ package main
 	var id_col string 
 		id_col, epreuve = col_id2name2(6, epreuve)
 	
-		if( epreuve == "'spd'" || epreuve == "'1650'"){
+		if( epreuve == "'spd'" || epreuve == "'850'"){
 	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt ASC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
@@ -690,7 +690,7 @@ package main
 						case "spd": 
 							tot =result + (result-(annoncef)+20)*3
 						break
-						case "1650":
+						case "850":
 							tot = result + (result-(annoncef)+60)*3
 						break
 						case "dnf":
@@ -709,7 +709,7 @@ package main
 						case "spd": 
 							tot2=annoncef-10
 						break
-						case "1650":
+						case "850":
 							tot2=annoncef-30
 						break
 						case "dnf":

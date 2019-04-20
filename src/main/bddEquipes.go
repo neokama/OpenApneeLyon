@@ -88,7 +88,8 @@ import (
 	* 		Bdd.count_epreuve_comp:
 	* 
 	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe	
-	*		
+	*	
+	* Edition 2019 : Order should be as : STA, DWF, SPE100, DNF, 8x50m	
 	*/
 	func (base Bdd) count_epreuve_comp(col_num int, value string)(bool,bool,bool,bool,bool,int,int,int,int,int){
 	var id_col string
@@ -122,9 +123,9 @@ import (
 				log.Fatal(base.err)
 			}
 			switch (info[6]){
-			case "Statique": 
+			case "Statique", "sta": 
 			nbSTA= nbSTA+1
-			if (info[8]=="DWF" && info[8]!=info[6]){
+			if (info[8]=="DWF" || info[8]=="dwf" && info[8]!=info[6]) {
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -133,9 +134,9 @@ import (
 			case 5: comp5=false
 			}
 			}
-			case "DWF":
+			case "DWF", "dwf":
 			nbDWF= nbDWF+1
-			if (info[8]=="Speed 100" || info[8]=="Statique" && info[8]!=info[6]){
+			if (info[8]=="Speed 100" || info[8]=="Statique" || info[8]=="spd" || info[8]=="sta"  && info[8]!=info[6]) {
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -144,42 +145,9 @@ import (
 			case 5: comp5=false
 			}
 			}
-			case "16*50":
-			nbSFC= nbSFC+1
-			if (info[8]=="DNF" || info[8]=="DWF"&& info[8]!=info[6]){
-			switch(n){
-			case 1: comp1=false
-			case 2: comp2=false
-			case 3: comp3=false
-			case 4: comp4=false
-			case 5: comp5=false
-			}
-			}
-			case "DNF":
-			nbDNF= nbDNF+1
-			if (info[8]=="16*50" || info[8]=="Speed 100"&& info[8]!=info[6]){
-			switch(n){
-			case 1: comp1=false
-			case 2: comp2=false
-			case 3: comp3=false
-			case 4: comp4=false
-			case 5: comp5=false
-			}
-			}
-			case "Speed 100":
+			case "Speed 100", "spd":
 			nbSPE= nbSPE+1
-			if (info[8]=="DNF"&& info[8]!=info[6]){
-			switch(n){
-			case 1: comp1=false
-			case 2: comp2=false
-			case 3: comp3=false
-			case 4: comp4=false
-			case 5: comp5=false
-			}
-			}		
-			case "sta": 
-			nbSTA= nbSTA+1
-			if (info[8]=="dwf" && info[8]!=info[6]){
+			if (info[8]=="DNF" || info[8]=="DWF" || info[8]=="dnf" || info[8]=="dwf" && info[8]!=info[6]) {
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -188,31 +156,9 @@ import (
 			case 5: comp5=false
 			}
 			}
-			case "dwf":
-			nbDWF= nbDWF+1
-			if (info[8]=="1650" || info[8]=="sta" && info[8]!=info[6]){
-			switch(n){
-			case 1: comp1=false
-			case 2: comp2=false
-			case 3: comp3=false
-			case 4: comp4=false
-			case 5: comp5=false
-			}
-			}
-			case "1650":
-			nbSFC= nbSFC+1
-			if (info[8]=="dnf" || info[8]=="dwf"&& info[8]!=info[6]){
-			switch(n){
-			case 1: comp1=false
-			case 2: comp2=false
-			case 3: comp3=false
-			case 4: comp4=false
-			case 5: comp5=false
-			}
-			}
-			case "dnf":
+			case "DNF", "dnf":
 			nbDNF= nbDNF+1
-			if (info[8]=="1650" || info[8]=="spd"&& info[8]!=info[6]){
+			if (info[8]=="8*50" || info[8]=="Speed 100" || info[8]=="850" || info[8]=="Spd" && info[8]!=info[6]) {
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -221,9 +167,9 @@ import (
 			case 5: comp5=false
 			}
 			}
-			case "spd":
-			nbSPE= nbSPE+1
-			if (info[8]=="dnf"&& info[8]!=info[6]){
+			case "8*50", "850":
+			nbSFC= nbSFC+1
+			if (info[8]=="DNF" || info[8]=="dnf" && info[8]!=info[6]){
 			switch(n){
 			case 1: comp1=false
 			case 2: comp2=false
@@ -242,7 +188,7 @@ import (
 			nbSPE= nbSPE+1
 			case "DNF":
 			nbDNF= nbDNF+1
-			case "16*50":
+			case "8*50":
 			nbSFC= nbSFC+1
 			case "sta": 
 			nbSTA= nbSTA+1
@@ -252,7 +198,7 @@ import (
 			nbSPE= nbSPE+1
 			case "dnf":
 			nbDNF= nbDNF+1
-			case "1650":
+			case "850":
 			nbSFC= nbSFC+1
 			}
 		}

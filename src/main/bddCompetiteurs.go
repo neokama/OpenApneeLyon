@@ -355,9 +355,9 @@ _ "github.com/mattn/go-sqlite3"
 					fmt.Println("Erreur! Format du nom d'équipe.")
 				}
 			case 7,9:
-				if(value!="sta" && value!="spd" && value!="dwf" && value!="dnf" && value!="1650"){
+				if(value!="sta" && value!="spd" && value!="dwf" && value!="dnf" && value!="850"){
 					verif =false
-					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 1650).")
+					fmt.Println("Erreur! Format du epreuve (Rappel des valeurs possibles: sta, spd, dwf, dnf, 850).")
 				}
 			case 8,10:
 				match, _ := regexp.MatchString("(^[0-9]*$)", value)

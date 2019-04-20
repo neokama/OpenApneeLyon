@@ -1,0 +1,91 @@
+Id;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat;Place;Resultat pris en compte equipe;Place Equipe;Disqualification;Description
+27;Albane;GAUBERT;F;Imashi;spd;50;51.71;1;51.71;1;false;ras
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;spd;50;52.47;2;52.47;2;false;ras
+24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;spd;56;56.57;3;56.57;3;false;ras
+36;Frédérique;CORDIER;F;Blue Mussels;spd;65;64.08;4;64.08;4;false;ras
+35;Sophie;BRUYERE;F;APNEEAU;spd;80;109.98;5;259.92;5;false;ras
+14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;spd;35;37.18;1;37.18;1;false;ras
+41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;spd;40;41.5;2;41.5;2;false;ras
+43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;spd;45;45.14;3;45.14;3;false;ras
+18;Bastien;LAURENT ;H;STARFISH;spd;50;51.78;4;51.78;4;false;ras
+16;Robert;OLTRA;H;STARFISH;spd;60;56.81;5;56.81;5;false;ras
+28;François;BUZER;H;Imashi;spd;60;58.7;6;58.7;6;false;ras
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;spd;55;59.64;7;59.64;7;false;ras
+6;Benoit;ROUX;H;Cyrnea;spd;70;61.34;8;61.34;8;false;ras
+31;Pascal;POMPIDOU;H;APNEEAU;spd;60;63.25;9;63.25;9;false;ras
+9;Jean-David;SOULA;H;Cyrnea;spd;80;66.78;10;70;10;false;ras
+5;Philippe;FLAUDIAS;H;Zen Team Panda 5;spd;105;73.575;11;95;13;false;ras
+38;Damien;OJARDIAS;H;Blue Mussels;spd;70;75.165;12;75.165;11;false;ras
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;spd;100;77.6;13;90;12;false;ras
+45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;1650;890;914.91;1;914.91;1;false;ras
+24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;930;926.97;2;926.97;2;false;ras
+27;Albane;GAUBERT;F;Imashi;1650;915;967.26;3;967.26;3;false;ras
+21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;1650;1020;1061.63;4;1061.63;4;false;ras
+20;Pauline;LODETTI;F;STARFISH;1650;1080;1115.8;5;1115.8;5;false;ras
+26;Caroline;REGNARD;F;Imashi;1650;1380;1244.94;6;1350;7;false;ras
+7;Anne;BORGAT;F;Cyrnea;1650;1315;1308.96;7;1308.96;6;false;ras
+36;Frédérique;CORDIER;F;Blue Mussels;1650;1260;1401.31;8;2005.2399999999998;8;false;ras
+14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;1650;675;748.3;1;1148.1999999999998;5;false;ras
+13;Olivier;ELU;H;TOPSTAR DREAM TEAM;1650;840;830.12;2;830.12;1;false;ras
+18;Bastien;LAURENT ;H;STARFISH;1650;840;831.52;3;831.52;2;false;ras
+43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;1650;890;895.75;4;895.75;3;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;1650;960;1046.68;5;1486.7200000000003;9;false;ras
+3;Laurent;CONTI;H;Zen Team Panda 5;1650;1020;1050.69;6;1050.69;4;false;ras
+31;Pascal;POMPIDOU;H;APNEEAU;1650;1200;1129.88;7;1170;6;false;ras
+39;Laurent;JAILLET;H;Blue Mussels;1650;1200;1230;8;1230;7;false;ras
+9;Jean-David;SOULA;H;Cyrnea;1650;1200;1247.68;9;1247.68;8;false;ras
+5;Philippe;FLAUDIAS;H;Zen Team Panda 5;1650;1260;0;10;0;10;true;Changement Ligne
+12;Sandrine;MURBACH;F;TOPSTAR DREAM TEAM;dnf;115;124.17;1;124.17;1;false;ras
+44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;dnf;100;111.57;2;111.57;2;false;ras
+8;Estelle;RIGAUD;F;Cyrnea;dnf;100;110.13;3;110.13;3;false;ras
+19;Nadia;GRAVIER NOEL;F;STARFISH;dnf;75;93.86;4;93.86;4;false;ras
+1;Florence;TABOUREL;F;Zen Team Panda 5;dnf;95;92.4;5;92.4;5;false;ras
+2;Claire;CHARPENTIER;F;Zen Team Panda 5;dnf;60;64;6;64;6;false;ras
+34;Delphine;POMPIDOU;F;APNEEAU;dnf;30;50;7;50;7;false;ras
+40;Valérie;TERRENOIRE;F;Blue Mussels;dnf;75;0;8;0;8;true;répétition protocole (80.9m)
+42;David;VENCL;H;Apneaman - Praha - Czech Republic;dnf;125;110.75;1;110.75;1;false;ras
+29;Paul;GERARD;H;Imashi;dnf;90;104.33;2;104.33;2;false;ras
+17;Olivier;CELLARIER;H;STARFISH;dnf;76;100;3;100;3;false;ras
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;dnf;100;95.1;4;95.1;4;false;ras
+37;Stéphane;PETTENUZZO;H;Blue Mussels;dnf;85;87.64;5;87.64;5;false;ras
+33;David;STROPPIANA;H;APNEEAU;dnf;60;81.9;6;81.9;6;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;dnf;70;76.8;7;76.8;7;false;ras
+22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;110;0;10;0;10;true;Absent(DSQ 1er épreuve)
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;dnf;140;0;10;0;10;true;Syncope
+30;Omr;SALEH;H;Imashi;dnf;100;0;10;0;10;true;PCM (113.11m)
+21;Emilie;VERNIER;F;Annecy-Lyon-Mulhouse apnée connexion;dwf;155;167.5;1;167.5;1;false;1 nage surface hors zone virage (-10m)
+7;Anne;BORGAT;F;Cyrnea;dwf;155;164.3;2;164.3;2;false;ras
+45;Barbora;IVANSKA;F;Apneaman - Praha - Czech Republic;dwf;175;155.4;3;155.4;3;false;ras
+12;Sandrine;MURBACH;F;TOPSTAR DREAM TEAM;dwf;135;150;4;150;4;false;ras
+44;Katerina;SURANSKA;F;Apneaman - Praha - Czech Republic;dwf;150;130.5;5;130.5;5;false;ras
+1;Florence;TABOUREL;F;Zen Team Panda 5;dwf;105;118.9;6;118.9;6;false;ras
+8;Estelle;RIGAUD;F;Cyrnea;dwf;75;110.7;7;100;9;false;ras
+26;Caroline;REGNARD;F;Imashi;dwf;126;104.9;8;104.9;7;false;ras
+40;Valérie;TERRENOIRE;F;Blue Mussels;dwf;85;101;9;101;8;false;ras
+20;Pauline;LODETTI;F;STARFISH;dwf;100;100;10;100;9;false;ras
+34;Delphine;POMPIDOU;F;APNEEAU;dwf;65;77.1;11;77.1;11;false;ras
+13;Olivier;ELU;H;TOPSTAR DREAM TEAM;dwf;200;200;1;200;1;false;ras
+3;Laurent;CONTI;H;Zen Team Panda 5;dwf;160;173;2;173;2;false;ras
+17;Olivier;CELLARIER;H;STARFISH;dwf;100;123.8;3;123.8;3;false;ras
+29;Paul;GERARD;H;Imashi;dwf;140;117.5;4;117.5;4;false;ras
+33;David;STROPPIANA;H;APNEEAU;dwf;90;114.5;5;114.5;5;false;ras
+22;Olivier;DURET;H;Annecy-Lyon-Mulhouse apnée connexion;dwf;130;0;7;0;7;true;PCM
+37;Stéphane;PETTENUZZO;H;Blue Mussels;dwf;105;0;7;0;7;true;2 fin ok (signe)
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;sta;360;370.895;1;370.895;1;false;ras
+19;Nadia;GRAVIER NOEL;F;STARFISH;sta;180;242.22;2;240;2;false;ras
+2;Claire;CHARPENTIER;F;Zen Team Panda 5;sta;230;231.925;3;231.925;3;false;ras
+35;Sophie;BRUYERE;F;APNEEAU;sta;210;197.16;4;197.16;4;false;ras
+42;David;VENCL;H;Apneaman - Praha - Czech Republic;sta;410;411.75;1;411.75;1;false;ras
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;sta;360;407.06;2;407.06;2;false;ras
+15;Jean-Baptiste;SAVORNIN;H;TOPSTAR DREAM TEAM;sta;390;400.39;3;400.39;3;false;ras
+41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;sta;360;392.75;4;392.75;4;false;ras
+30;Omr;SALEH;H;Imashi;sta;335;386.825;5;386.825;5;false;ras
+25;Jérémy;MACIA;H;Annecy-Lyon-Mulhouse apnée connexion;sta;330;365.79;6;365.79;6;false;ras
+32;Mathieu;PEBEYRE;H;APNEEAU;sta;360;329.125;7;329.125;7;false;ras
+10;Richard;JAUFFRAUD;H;Cyrnea;sta;315;302.85;8;302.85;8;false;ras
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;sta;285;288.615;9;288.615;9;false;ras
+38;Damien;OJARDIAS;H;Blue Mussels;sta;300;271.87;10;271.87;10;false;ras
+16;Robert;OLTRA;H;STARFISH;sta;300;268.525;11;268.525;11;false;ras
+28;François;BUZER;H;Imashi;sta;240;234.205;12;234.205;12;false;ras
+6;Benoit;ROUX;H;Cyrnea;sta;270;221.375;13;221.375;13;false;ras
+39;Laurent;JAILLET;H;Blue Mussels;sta;270;168.875;14;45.5;14;false;ras
