@@ -1,0 +1,14 @@
+FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !
+
+AURApnea|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+BBIG|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+FORZAPNEA|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Bras casses|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Chocs Eau Suisses|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Apneaman CZE|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Cantal Apnee|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les ponneys fringants|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les vieux de la vieille|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Pussy French|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+TOPSTAR|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Apneaman2|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects

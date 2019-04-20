@@ -1,0 +1,14 @@
+FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à lacomposition des équipes !
+Apneaman, Praha, Czech Republic|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+CYRNEA|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Enjoy And Relax|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Imashi|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Cormorans 1|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Cormorans 2|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+LIMULES|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+SavoyOuBien?|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+SOLO|1|Homme : 1|Femme : 0|Temps repos : OK|Erreur sur nombres épreuves
+Erreur nombre de compétiteur dans l'equipe SOLO où il y a 1 compétiteurs !
+Erreur nombre d'homme dans l'equipe SOLO où il y a 1 hommes !
+Erreur nombre de femme dans l'equipe SOLO où il y a 0 femmes !
+Sportpleizh|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects

@@ -1,0 +1,19 @@
+﻿Id;Prénom;Nom;Sexe;Equipe;Epreuve;Resultat;Disqualification;Description
+4;Aurélien;FAIVRE DUBOZ;H;Zen Team Panda 5;spd;77.6;false;ras
+5;Philippe;FLAUDIAS;H;Zen Team Panda 5;spd;73.575;false;ras
+6;Benoit;ROUX;H;Cyrnea;spd;61.34;false;ras
+9;Jean-David;SOULA;H;Cyrnea;spd;66.78;false;ras
+11;Magalie;SITERRE;F;TOPSTAR DREAM TEAM;spd;52.47;false;ras
+14;Laurent;BREIDENBACH;H;TOPSTAR DREAM TEAM;spd;37.18;false;ras
+16;Robert;OLTRA;H;STARFISH;spd;56.81;false;ras
+18;Bastien;LAURENT ;H;STARFISH;spd;51.78;false;ras
+23;Aurélien;LANOISELIER;H;Annecy-Lyon-Mulhouse apnée connexion;spd;59.64;false;ras
+24;Rachel;LEITNER;F;Annecy-Lyon-Mulhouse apnée connexion;spd;56.57;false;ras
+27;Albane;GAUBERT;F;Imashi;spd;51.71;false;ras
+28;François;BUZER;H;Imashi;spd;58.70;false;ras
+31;Pascal;POMPIDOU;H;APNEEAU;spd;63.25;false;ras
+35;Sophie;BRUYERE;F;APNEEAU;spd;109.98;false;ras
+36;Frédérique;CORDIER;F;Blue Mussels;spd;64.08;false;ras
+38;Damien;OJARDIAS;H;Blue Mussels;spd;75.165;false;ras
+41;Martin;ZAJAC;H;Apneaman - Praha - Czech Republic;spd;41.50;false;ras
+43;Michal;SVADLENKA;H;Apneaman - Praha - Czech Republic;spd;45.14;false;ras

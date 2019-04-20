@@ -1,0 +1,121 @@
+Id,Prénom,Nom,Sexe,Equipe,Epreuve,Resultat,Disqualification,Description
+4,Remi,BLASQUEZ,H,AURApnea,sta,245,false,ras
+5,Laurent,CONTI,H,AURApnea,sta,272,false,ras
+7,Gaia,CANEPA,F,BBIG,sta,192,false,ras
+10,Michael,HANSEN,H,BBIG,sta,349,false,ras
+12,Eleonore,HELLE,F,FORZAPNEA,sta,239,false,ras
+15,Paul,GERARD,H,FORZAPNEA,sta,287,false,ras
+18,Anais,DERRIER,F,Les Bras casses,sta,172,false,ras
+19,Odilon,REIGNEAUD,H,Les Bras casses,sta,233,false,ras
+23,Nicolas,DESVALLEES,H,Les Chocs Eau Suisses,sta,311,false,ras
+25,Philippe,SCHEIDT,H,Les Chocs Eau Suisses,sta,249,false,ras
+27,David,VENCL,H,Apneaman CZE,sta,455,false,ras
+29,Katerina,SURANSKA,F,Apneaman CZE,sta,362,false,ras
+32,Lucas,GALLO,H,Cantal Apnee,sta,274,false,ras
+35,Pauline,LEROUX,F,Cantal Apnee,sta,167,false,ras
+36,Quentin,FALVART,H,Les ponneys fringants,sta,146,false,ras
+40,Timothee,FLEURY,H,Les ponneys fringants,sta,136,false,ras
+42,Rosa,KONG A SIOU,F,Les vieux de la vieille,sta,167,false,ras
+45,Olivier,FLEURY,H,Les vieux de la vieille,sta,255,false,ras
+47,Aurelien,LANOISELIER,H,Pussy French,sta,435,false,ras
+50,Sabine,DERRIER,F,Pussy French,sta,182,false,ras
+51,Thomas,BOUCHARD,H,TOPSTAR,sta,473,false,ras
+55,Magalie,SITERRE,F,TOPSTAR,sta,332,false,ras
+57,Jan,MARTINCIK,H,Apneaman2,sta,332,false,ras
+59,Svetlana,NOVOTKOVA,F,Apneaman2,sta,253,false,ras
+2,Frederique,CORDIER,F,AURApnea,dwf,,false,ras
+3,Greg,PLANCHAT,H,AURApnea,dwf,,false,ras
+6,Loick,STIENNE,H,BBIG,dwf,,false,ras
+9,Rodolphe,ISNARD,H,BBIG,dwf,,false,ras
+13,Joanna,BOURRIEN,F,FORZAPNEA,dwf,,false,ras
+14,Guillaume,BOURDILLA,H,FORZAPNEA,dwf,,false,ras
+17,Claudia,BERGER,F,Les Bras casses,dwf,,false,ras
+20,Redha,LOUIBA,H,Les Bras casses,dwf,,false,ras
+21,Florie,VIDEBERG,F,Les Chocs Eau Suisses,dwf,,false,ras
+22,Pilar,GIL JIMENEZ,F,Les Chocs Eau Suisses,dwf,,false,ras
+26,Martin,ZAJAC,H,Apneaman CZE,dwf,,false,ras
+28,Michal,SURANSKY,H,Apneaman CZE,dwf,,false,ras
+31,Guillaume,BUSSIERE,H,Cantal Apnee,dwf,,false,ras
+34,Christelle,CHAMPAGNAC,F,Cantal Apnee,dwf,,false,ras
+38,Clara,HUGON,F,Les ponneys fringants,dwf,,false,ras
+39,Jeremy,NOTEUIL,H,Les ponneys fringants,dwf,,false,ras
+41,Martine,VERGNOLLE,F,Les vieux de la vieille,dwf,,false,ras
+44,Patrick,BOUZAT,H,Les vieux de la vieille,dwf,,false,ras
+48,Stephane,PETTENUZZO,H,Pussy French,dwf,,false,ras
+49,Anne,Borgat,F,Pussy French,dwf,,false,ras
+53,Sandrine,MURBACH,F,TOPSTAR,dwf,,false,ras
+54,Olivier,ELU,H,TOPSTAR,dwf,,false,ras
+56,David,KOHUTIC,H,Apneaman2,dwf,,false,ras
+60,Rebeka,STARKOVA,F,Apneaman2,dwf,,false,ras
+1,Florence,TABOUREL,F,AURApnea,1650,,false,ras
+8,Maria,XIROUXAKI,F,BBIG,1650,,false,ras
+11,Kevin,PROVENZANI,H,FORZAPNEA,1650,,false,ras
+16,Cedrick,CHAUMARD,H,Les Bras casses,1650,,false,ras
+24,Florian,PEDROLETTI,H,Les Chocs Eau Suisses,1650,,false,ras
+30,Jindriska,ZAJACOVA,F,Apneaman CZE,1650,,false,ras
+33,Francois,BUZET,H,Cantal Apnee,1650,,false,ras
+37,Leila,FABBI,F,Les ponneys fringants,1650,,false,ras
+43,Philippe,FLAUDIAS,H,Les vieux de la vieille,1650,,false,ras
+46,Olivier,DURET,H,Pussy French,1650,,false,ras
+52,Laurent,BREIDENBACH,H,TOPSTAR,1650,,false,ras
+58,Martin,CITEK,H,Apneaman2,1650,,false,ras
+5,Laurent,CONTI,H,AURApnea,1650,,false,ras
+10,Michael,HANSEN,H,BBIG,1650,,false,ras
+15,Paul,GERARD,H,FORZAPNEA,1650,,false,ras
+18,Anais,DERRIER,F,Les Bras casses,1650,,false,ras
+25,Philippe,SCHEIDT,H,Les Chocs Eau Suisses,1650,,false,ras
+27,David,VENCL,H,Apneaman CZE,1650,,false,ras
+32,Lucas,GALLO,H,Cantal Apnee,1650,,false,ras
+40,Timothee,FLEURY,H,Les ponneys fringants,1650,,false,ras
+42,Rosa,KONG A SIOU,F,Les vieux de la vieille,1650,,false,ras
+47,Aurelien,LANOISELIER,H,Pussy French,1650,,false,ras
+55,Magalie,SITERRE,F,TOPSTAR,1650,,false,ras
+57,Jan,MARTINCIK,H,Apneaman2,1650,,false,ras
+2,Frederique,CORDIER,F,AURApnea,dnf,,false,ras
+3,Greg,PLANCHAT,H,AURApnea,dnf,,false,ras
+7,Gaia,CANEPA,F,BBIG,dnf,,false,ras
+9,Rodolphe,ISNARD,H,BBIG,dnf,,false,ras
+12,Eleonore,HELLE,F,FORZAPNEA,dnf,,false,ras
+14,Guillaume,BOURDILLA,H,FORZAPNEA,dnf,,false,ras
+17,Claudia,BERGER,F,Les Bras casses,dnf,,false,ras
+20,Redha,LOUIBA,H,Les Bras casses,dnf,,false,ras
+21,Florie,VIDEBERG,F,Les Chocs Eau Suisses,dnf,,false,ras
+22,Pilar,GIL JIMENEZ,F,Les Chocs Eau Suisses,dnf,,false,ras
+28,Michal,SURANSKY,H,Apneaman CZE,dnf,,false,ras
+29,Katerina,SURANSKA,F,Apneaman CZE,dnf,,false,ras
+31,Guillaume,BUSSIERE,H,Cantal Apnee,dnf,,false,ras
+35,Pauline,LEROUX,F,Cantal Apnee,dnf,,false,ras
+36,Quentin,FALVART,H,Les ponneys fringants,dnf,,false,ras
+39,Jeremy,NOTEUIL,H,Les ponneys fringants,dnf,,false,ras
+41,Martine,VERGNOLLE,F,Les vieux de la vieille,dnf,,false,ras
+45,Olivier,FLEURY,H,Les vieux de la vieille,dnf,,false,ras
+48,Stephane,PETTENUZZO,H,Pussy French,dnf,,false,ras
+49,Anne,Borgat,F,Pussy French,dnf,,false,ras
+51,Thomas,BOUCHARD,H,TOPSTAR,dnf,,false,ras
+53,Sandrine,MURBACH,F,TOPSTAR,dnf,,false,ras
+56,David,KOHUTIC,H,Apneaman2,dnf,,false,ras
+59,Svetlana,NOVOTKOVA,F,Apneaman2,dnf,,false,ras
+1,Florence,TABOUREL,F,AURApnea,spd,,false,ras
+4,Remi,BLASQUEZ,H,AURApnea,spd,,false,ras
+6,Loick,STIENNE,H,BBIG,spd,,false,ras
+8,Maria,XIROUXAKI,F,BBIG,spd,,false,ras
+11,Kevin,PROVENZANI,H,FORZAPNEA,spd,,false,ras
+13,Joanna,BOURRIEN,F,FORZAPNEA,spd,,false,ras
+16,Cedrick,CHAUMARD,H,Les Bras casses,spd,,false,ras
+19,Odilon,REIGNEAUD,H,Les Bras casses,spd,,false,ras
+23,Nicolas,DESVALLEES,H,Les Chocs Eau Suisses,spd,,false,ras
+24,Florian,PEDROLETTI,H,Les Chocs Eau Suisses,spd,,false,ras
+26,Martin,ZAJAC,H,Apneaman CZE,spd,,false,ras
+30,Jindriska,ZAJACOVA,F,Apneaman CZE,spd,,false,ras
+33,Francois,BUZET,H,Cantal Apnee,spd,,false,ras
+34,Christelle,CHAMPAGNAC,F,Cantal Apnee,spd,,false,ras
+37,Leila,FABBI,F,Les ponneys fringants,spd,,false,ras
+38,Clara,HUGON,F,Les ponneys fringants,spd,,false,ras
+43,Philippe,FLAUDIAS,H,Les vieux de la vieille,spd,,false,ras
+44,Patrick,BOUZAT,H,Les vieux de la vieille,spd,,false,ras
+46,Olivier,DURET,H,Pussy French,spd,,false,ras
+50,Sabine,DERRIER,F,Pussy French,spd,,false,ras
+52,Laurent,BREIDENBACH,H,TOPSTAR,spd,,false,ras
+54,Olivier,ELU,H,TOPSTAR,spd,,false,ras
+58,Martin,CITEK,H,Apneaman2,spd,,false,ras
+60,Rebeka,STARKOVA,F,Apneaman2,spd,,false,ras
