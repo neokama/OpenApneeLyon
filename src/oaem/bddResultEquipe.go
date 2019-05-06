@@ -49,8 +49,8 @@ package main
 		defer base.resultat.Close()
 
 		//Ecriture dans les fichiers de la première ligne d'en-tête
-		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place; Etat\r\n"))
-		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId; Equipe; Point; Place; Etat\r\n"))
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Equipe,Point,Place,Etat\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Equipe,Point,Place,Etat\r\n"))
 
 		// Parcours du resultat de la requête
 		for base.resultat.Next() {
@@ -65,8 +65,8 @@ package main
 			tab=append(tab,info[1])
 
 			//Ecriture dans les fichiers
-			file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,";", info[4],"\r\n"))
-			file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", numPlace,";", info[4],"\r\n"))
+			file.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", numPlace,",", info[4],"\r\n"))
+			file2.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", numPlace,",", info[4],"\r\n"))
 			} else {
 				fmt.Println(fmt.Sprint("Equipe ", info[1]," invalide. (Avez-vous utiliser la fonction check?)"))
 			}

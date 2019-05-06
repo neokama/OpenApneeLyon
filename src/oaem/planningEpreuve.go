@@ -29,15 +29,15 @@ import (
 	}
 	
 	func (planep PlanningEpreuve) display(){
-		fmt.Println(planep.idEpreuve + "; " +
-		strconv.Itoa(planep.idComp) + "; " +
-		planep.prenom + "; " +
-		planep.nom + "; " +
-		planep.sexe + "; " +
-		planep.equipe + "; " +
-		strconv.Itoa(planep.annonce) + "; " +
-		strconv.Itoa(planep.numSerie) + "; " +
-		strconv.Itoa(planep.numPassage) + "; " +
+		fmt.Println(planep.idEpreuve + "," +
+		strconv.Itoa(planep.idComp) + "," +
+		planep.prenom + "," +
+		planep.nom + "," +
+		planep.sexe + "," +
+		planep.equipe + "," +
+		strconv.Itoa(planep.annonce) + "," +
+		strconv.Itoa(planep.numSerie) + "," +
+		strconv.Itoa(planep.numPassage) + "," +
 		planep.heurePassage)
 	}
 	

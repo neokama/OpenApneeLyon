@@ -29,18 +29,18 @@ import (
 	}
 	
 	func (ep ConfigurationEpreuve) display(){
-		fmt.Println(strconv.Itoa(ep.ordre) + "; " +
-		ep.id + "; " +
-		strconv.Itoa(ep.seuilMin) + "; " +
-		strconv.Itoa(ep.seuilMax) + "; " +
-		strconv.Itoa(ep.nbParPassage) + "; " +
-		strconv.Itoa(ep.nbParticipants) + "; " +
-		strconv.Itoa(ep.dureeEchauffement) + "; " +
-		strconv.Itoa(ep.dureeAppel) + "; " +
-		strconv.Itoa(ep.dureePassage) + "; " +
-		strconv.Itoa(ep.surveillance) + "; " +
-		strconv.Itoa(ep.battementSerie) + "; " +
-		strconv.Itoa(ep.battementEpreuve) + "; " +
+		fmt.Println(strconv.Itoa(ep.ordre) + "," +
+		ep.id + "," +
+		strconv.Itoa(ep.seuilMin) + "," +
+		strconv.Itoa(ep.seuilMax) + "," +
+		strconv.Itoa(ep.nbParPassage) + "," +
+		strconv.Itoa(ep.nbParticipants) + "," +
+		strconv.Itoa(ep.dureeEchauffement) + "," +
+		strconv.Itoa(ep.dureeAppel) + "," +
+		strconv.Itoa(ep.dureePassage) + "," +
+		strconv.Itoa(ep.surveillance) + "," +
+		strconv.Itoa(ep.battementSerie) + "," +
+		strconv.Itoa(ep.battementEpreuve) + "," +
 		ep.heureDebut)
 	}
 	

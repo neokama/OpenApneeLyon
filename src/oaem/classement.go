@@ -23,18 +23,18 @@ package main
 	}
 	
 	func (board Classement) display(){
-		fmt.Println(strconv.Itoa(board.id) + "; " +
-		board.prenom + "; " +
-		board.nom + "; " +
-		board.sexe + "; " +
-		board.equipe + "; " +
-		board.epreuve + "; " +
-		strconv.Itoa(board.annonce)+ "; " +
-		strconv.FormatFloat(board.resultat, 'f', -1, 64)+ "; " +
-		strconv.Itoa(board.place)+ "; " +
-		strconv.FormatFloat(board.rslt, 'f', -1, 64)+ "; " +
-		strconv.Itoa(board.plc) + ";" +
-		strconv.FormatBool(board.disq) + ";" +
+		fmt.Println(strconv.Itoa(board.id) + "," +
+		board.prenom + "," +
+		board.nom + "," +
+		board.sexe + "," +
+		board.equipe + "," +
+		board.epreuve + "," +
+		strconv.Itoa(board.annonce)+ "," +
+		strconv.FormatFloat(board.resultat, 'f', -1, 64)+ "," +
+		strconv.Itoa(board.place)+ "," +
+		strconv.FormatFloat(board.rslt, 'f', -1, 64)+ "," +
+		strconv.Itoa(board.plc) + "," +
+		strconv.FormatBool(board.disq) + "," +
 		board.description)
 	}
 	
