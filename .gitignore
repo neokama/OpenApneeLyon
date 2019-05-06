@@ -1,6 +1,6 @@
 pkg
 export/archives*
 bin/main*
-bin/oasem*
+bin/oaem*
 archives
 export/
