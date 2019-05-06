@@ -245,7 +245,7 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 
 
 	file, err := os.OpenFile(fichier,os.O_APPEND|os.O_WRONLY, 0777)
-	file2, err := os.OpenFile("export/PlanningEpreuve.csv",os.O_APPEND|os.O_WRONLY, 0777)
+	file2, err := os.OpenFile("../var/export/PlanningEpreuve.csv",os.O_APPEND|os.O_WRONLY, 0777)
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier")
 				log.Fatal(err)

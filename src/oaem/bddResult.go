@@ -342,7 +342,7 @@ package main
 				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 				log.Fatal(err)
 			}
-		file2, err := os.Create(fmt.Sprint("export/Classement.csv"))
+		file2, err := os.Create(fmt.Sprint("../var/export/Classement.csv"))
 		if err != nil {
 			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 			log.Fatal(err)
