@@ -193,6 +193,7 @@ package main
 				idd,errr := strconv.Atoi(info[0])
 				annonce := base.recupAnnonce(info[0],info[5])
 				disq,_ := strconv.ParseBool(info[7])
+				sexe := info[3]
 				equipe = info[4]
 				if er != nil {
 					log.Fatal(er)
@@ -201,20 +202,20 @@ package main
 					log.Fatal(errr)
 				}
 				switch(info[5]){
-				case "spd":
-					res=calculResultat(equipe,"spd",annonce,info[6],info[7])
+				case "spd": 
+					res=calculResultat(sexe,equipe,"spd",annonce,info[6],info[7])
 				break
 				case "850":
-					res=calculResultat(equipe,"850",annonce,info[6],info[7])
+					res=calculResultat(sexe,equipe,"850",annonce,info[6],info[7])
 				break
 				case "dnf":
-					res=calculResultat(equipe,"dnf",annonce,info[6],info[7])
+					res=calculResultat(sexe,equipe,"dnf",annonce,info[6],info[7])
 				break
 				case "dwf":
-					res=calculResultat(equipe,"dwf",annonce,info[6],info[7])
+					res=calculResultat(sexe,equipe,"dwf",annonce,info[6],info[7])
 				break
 				case "sta":
-					res=calculResultat(equipe,"sta",annonce,info[6],info[7])
+					res=calculResultat(sexe,equipe,"sta",annonce,info[6],info[7])
 				break
 				}
 
@@ -657,8 +658,8 @@ package main
 	}
 
 
-	func calculResultat(equipe string, epreuve string, annonce int, resultat string, disq string)(float64){
-		var sMin int =0
+	func calculResultat(sexe string, equipe string, epreuve string, annonce int, resultat string, disq string)(float64){
+		var sMin int =0 
 		var sMax int =0
 		var res float64
 		var result float64
@@ -666,6 +667,7 @@ package main
 		var tot2 float64
 		var tab[] *ConfigurationEpreuve
 		var annoncef float64 = float64(annonce)
+		var eventMaxTimeCounted = float64(600)
 
 		result,_ = strconv.ParseFloat(resultat, 64)
 		tab=getConfigurationEpreuve1()
@@ -691,7 +693,14 @@ package main
 							tot =result + (result-(annoncef)+20)*3
 						break
 						case "850":
-							tot = result + (result-(annoncef)+60)*3
+							if(sexe == "F"){
+								eventMaxTimeCounted = float64(720)
+							}
+							if(result > eventMaxTimeCounted){
+								tot = eventMaxTimeCounted
+							} else {
+								tot = result + (result-(annoncef)+40)*3
+							}
 						break
 						case "dnf":
 							tot = (annoncef+25)
@@ -710,7 +719,7 @@ package main
 							tot2=annoncef-10
 						break
 						case "850":
-							tot2=annoncef-30
+							tot2=annoncef-20
 						break
 						case "dnf":
 							tot2=result-((annoncef-25)-result)*3
