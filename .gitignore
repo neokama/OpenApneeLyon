@@ -2,5 +2,7 @@ pkg
 export/archives*
 bin/main*
 bin/oaem*
+bin/go*
+bin/dlv
 archives
 export/
