@@ -12,7 +12,7 @@ import (
 		prenom string
 		nom string
 		sexe string
-		num_license string
+		numLicense string
 		equipe string
 		epreuve1 string
 		annonce1 int
@@ -25,7 +25,7 @@ import (
 		pers.prenom + "," +
 		pers.nom + "," +
 		pers.sexe + "," +
-		pers.num_license + "," +
+		pers.numLicense + "," +
 		pers.equipe + "," +
 		pers.epreuve1 + "," +
 		strconv.Itoa(pers.annonce1) + "," +
@@ -51,7 +51,7 @@ import (
 				verif =false
 				fmt.Println("Erreur! Format du sexe.")
 			}
-		match, _ = regexp.MatchString("^[A-Za-z0-9-]*$", pers.num_license )
+		match, _ = regexp.MatchString("^[A-Za-z0-9-]*$", pers.numLicense )
 			if(!match){
 				verif =false
 				fmt.Println("Erreur! Format du numéro de license.")
@@ -87,13 +87,13 @@ import (
 			}
 	}
 	
-	func newCompetiteur(id int, prenom string, nom string, sexe string, num_license string, equipe string, epreuve1 string, annonce1 int, epreuve2 string, annonce2 int)(*Competiteur){
+	func newCompetiteur(id int, prenom string, nom string, sexe string, numLicense string, equipe string, epreuve1 string, annonce1 int, epreuve2 string, annonce2 int)(*Competiteur){
 		pers := new(Competiteur)
 		pers.id = id
 		pers.nom = nom
 		pers.prenom = prenom
 		pers.sexe = sexe
-		pers.num_license = num_license
+		pers.numLicense = numLicense
 		pers.equipe = equipe
 		pers.epreuve1 = epreuve1
 		pers.annonce1 = annonce1

@@ -62,47 +62,47 @@ import (
 		err = false
 		
 		
-		fmt.Println("CHECK SUR LE PRENOM: \n")
+		fmt.Println("CHECK SUR LE PRENOM: ")
 		fmt.Println("TEST 1: Nom standard")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST PRENOM 1:	ERROR\n")
+			fmt.Println("TEST PRENOM 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST PRENOM 1:	OK\n")
+			fmt.Println("TEST PRENOM 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: PRENOM AVEC ACCENT")
 		comp.prenom = "Frédèrîqûê"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST PRENOM 2:	ERROR\n")
+			fmt.Println("TEST PRENOM 2:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST PRENOM 2:	OK\n")
+			fmt.Println("TEST PRENOM 2:	OK")
 		}
 		
 		fmt.Println("TEST 3: PRENOM AVEC TIRET")
 		comp.prenom = "Jean-Eude-Saint-Jean"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST PRENOM 3:	ERROR\n")
+			fmt.Println("TEST PRENOM 3:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST PRENOM 3:	OK\n")
+			fmt.Println("TEST PRENOM 3:	OK")
 		}
 		
 		fmt.Println("TEST 4: PRENOM AVEC SYMBOLE")
 		comp.prenom = "Jeanª╝É¾àzaea"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST PRENOM 4:	OK\n")
+			fmt.Println("TEST PRENOM 4:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST PRENOM 4:	ERROR\n")
+			fmt.Println("TEST PRENOM 4:	ERROR")
 			err = true
 		}
 		
@@ -110,10 +110,10 @@ import (
 		comp.prenom = "Bon123jour14"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST PRENOM 5:	OK\n")
+			fmt.Println("TEST PRENOM 5:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST PRENOM 5:	ERROR\n")
+			fmt.Println("TEST PRENOM 5:	ERROR")
 			err = true
 		}
 		return err
@@ -128,47 +128,47 @@ import (
 		test = true
 		err = false
 		
-		fmt.Println("CHECK SUR LE NOM: \n")
+		fmt.Println("CHECK SUR LE NOM: ")
 		fmt.Println("TEST 1: Nom standard")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST NOM 1:	ERROR\n")
+			fmt.Println("TEST NOM 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST NOM 1:	OK\n")
+			fmt.Println("TEST NOM 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: NOM AVEC ACCENT")
 		comp.prenom = "Frédèrîqûê"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST NOM 2:	ERROR\n")
+			fmt.Println("TEST NOM 2:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST NOM 2:	OK\n")
+			fmt.Println("TEST NOM 2:	OK")
 		}
 		
 		fmt.Println("TEST 3: NOM AVEC TIRET")
 		comp.prenom = "Jean-Eude-Saint-Jean"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST NOM 3:	ERROR\n")
+			fmt.Println("TEST NOM 3:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST NOM 3:	OK\n")
+			fmt.Println("TEST NOM 3:	OK")
 		}
 		
 		fmt.Println("TEST 4: NOM AVEC SYMBOLE")
 		comp.prenom = "Jeanª╝É¾àzaea"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST NOM 4:	OK\n")
+			fmt.Println("TEST NOM 4:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST NOM 4:	ERROR\n")
+			fmt.Println("TEST NOM 4:	ERROR")
 			err = true
 		}
 		
@@ -176,10 +176,10 @@ import (
 		comp.prenom = "Bon123jour14"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST NOM 5:	OK\n")
+			fmt.Println("TEST NOM 5:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST NOM 5:	ERROR\n")
+			fmt.Println("TEST NOM 5:	ERROR")
 			err = true
 		}
 		
@@ -196,37 +196,37 @@ import (
 		test = true
 		err = false
 		
-		fmt.Println("CHECK SUR LE SEXE: \n")
+		fmt.Println("CHECK SUR LE SEXE: ")
 		fmt.Println("TEST 1: SEXE HOMME")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST SEXE 1:	ERROR\n")
+			fmt.Println("TEST SEXE 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST SEXE 1:	OK\n")
+			fmt.Println("TEST SEXE 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: SEXE FEMME")
 		comp.sexe = "F"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST SEXE 2:	ERROR\n")
+			fmt.Println("TEST SEXE 2:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST SEXE 2:	OK\n")
+			fmt.Println("TEST SEXE 2:	OK")
 		}
 		
 		fmt.Println("TEST 3: SEXE PLUSIEURS CARACTERES")
 		comp.sexe = "FFF"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST SEXE 3:	OK\n")
+			fmt.Println("TEST SEXE 3:	OK")
 			test = true
 
 		} else {
-			fmt.Println("TEST SEXE 3:	ERROR\n")
+			fmt.Println("TEST SEXE 3:	ERROR")
 			err = true
 		}
 		
@@ -234,10 +234,10 @@ import (
 		comp.sexe = "I"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST SEXE 4:	OK\n")
+			fmt.Println("TEST SEXE 4:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST SEXE 4:	ERROR\n")
+			fmt.Println("TEST SEXE 4:	ERROR")
 			err = true
 		}
 		
@@ -245,10 +245,10 @@ import (
 		comp.sexe = "4"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST SEXE 5:	OK\n")
+			fmt.Println("TEST SEXE 5:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST SEXE 5:	ERROR\n")
+			fmt.Println("TEST SEXE 5:	ERROR")
 			err = true
 		}
 		return err
@@ -263,37 +263,37 @@ import (
 		test = true
 		err = false
 		
-		fmt.Println("CHECK SUR LA LICENCE: \n")
+		fmt.Println("CHECK SUR LA LICENCE: ")
 		fmt.Println("TEST 1: LICENCE CHIFFRE + LETTRES + \"-\"")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST LICENCE 1:	ERROR\n")
+			fmt.Println("TEST LICENCE 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST LICENCE 1:	OK\n")
+			fmt.Println("TEST LICENCE 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: LICENCE ACCENTS")
-		comp.num_license = "ASD-123-1ÉÉéê"
+		comp.numLicense = "ASD-123-1ÉÉéê"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST LICENCE 2:	OK\n")
+			fmt.Println("TEST LICENCE 2:	OK")
 			test = true	
 		} else {
-			fmt.Println("TEST LICENCE 2:	ERROR\n")
+			fmt.Println("TEST LICENCE 2:	ERROR")
 			err = true
 		}
 		
 		fmt.Println("TEST 3: LICENCE SYMBOLES")
-		comp.num_license = "ABC-123-∟>¹1S"
+		comp.numLicense = "ABC-123-∟>¹1S"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST LICENCE 3:	OK\n")
+			fmt.Println("TEST LICENCE 3:	OK")
 			test = true
 
 		} else {
-			fmt.Println("TEST LICENCE 3:	ERROR\n")
+			fmt.Println("TEST LICENCE 3:	ERROR")
 			err = true
 		}		
 		return err
@@ -308,26 +308,26 @@ import (
 		test = true
 		err = false
 		
-		fmt.Println("CHECK SUR LE NOM D'EQUIPE: \n")
+		fmt.Println("CHECK SUR LE NOM D'EQUIPE: ")
 		fmt.Println("TEST 1: NOM STANDARD")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 1:	ERROR\n")
+			fmt.Println("TEST EQUIPE 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EQUIPE 1:	OK\n")
+			fmt.Println("TEST EQUIPE 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: EQUIPE ACCENTS")
 		comp.equipe = "équîpeNûmèrô"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 2:	ERROR\n")
+			fmt.Println("TEST EQUIPE 2:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EQUIPE 2:	OK\n")
+			fmt.Println("TEST EQUIPE 2:	OK")
 
 		}
 		
@@ -335,11 +335,11 @@ import (
 		comp.equipe = "Loire42"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 3:	ERROR\n")
+			fmt.Println("TEST EQUIPE 3:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EQUIPE 3:	OK\n")
+			fmt.Println("TEST EQUIPE 3:	OK")
 
 		}		
 		
@@ -347,11 +347,11 @@ import (
 		comp.equipe = "Equipe du 42"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 4:	ERROR\n")
+			fmt.Println("TEST EQUIPE 4:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EQUIPE 4:	OK\n")
+			fmt.Println("TEST EQUIPE 4:	OK")
 
 		}
 		
@@ -359,21 +359,21 @@ import (
 		comp.equipe = "Equipe-du-42"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 5:	ERROR\n")
+			fmt.Println("TEST EQUIPE 5:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EQUIPE 5:	OK\n")
+			fmt.Println("TEST EQUIPE 5:	OK")
 		}
 		
 		fmt.Println("TEST 6: EQUIPE SYMBOLES")
 		comp.equipe = "Equipe◙ãÍ╚┼"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 6:	OK\n")
+			fmt.Println("TEST EQUIPE 6:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST EQUIPE 6:	ERROR\n")
+			fmt.Println("TEST EQUIPE 6:	ERROR")
 			err = true
 		}		
 		return err
@@ -388,15 +388,15 @@ import (
 		test = true
 		err = false
 		
-		fmt.Println("CHECK SUR LES EPREUVES: \n")
+		fmt.Println("CHECK SUR LES EPREUVES: ")
 		fmt.Println("TEST 1: EPREUVE STA")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EPREUVE 1:	ERROR\n")
+			fmt.Println("TEST EPREUVE 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EPREUVE 1:	OK\n")
+			fmt.Println("TEST EPREUVE 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: EPREUVE SPD")
@@ -404,11 +404,11 @@ import (
 		comp.epreuve2 = "spd"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EPREUVE 2:	ERROR\n")
+			fmt.Println("TEST EPREUVE 2:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EPREUVE 2:	OK\n")
+			fmt.Println("TEST EPREUVE 2:	OK")
 
 		}
 		
@@ -417,11 +417,11 @@ import (
 		comp.epreuve2 = "dwf"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EPREUVE 3:	ERROR\n")
+			fmt.Println("TEST EPREUVE 3:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EPREUVE 3:	OK\n")
+			fmt.Println("TEST EPREUVE 3:	OK")
 
 		}		
 		
@@ -430,11 +430,11 @@ import (
 		comp.epreuve2 = "dnf"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EPREUVE 4:	ERROR\n")
+			fmt.Println("TEST EPREUVE 4:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EPREUVE 4:	OK\n")
+			fmt.Println("TEST EPREUVE 4:	OK")
 		}
 		
 		fmt.Println("TEST 5: EPREUVE 850")
@@ -442,11 +442,11 @@ import (
 		comp.epreuve2 = "850"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 5:	ERROR\n")
+			fmt.Println("TEST EQUIPE 5:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST EQUIPE 5:	OK\n")
+			fmt.Println("TEST EQUIPE 5:	OK")
 		}
 		
 		fmt.Println("TEST 6: EPREUVE AUTRE")
@@ -454,10 +454,10 @@ import (
 		comp.epreuve2 = "123"
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST EQUIPE 6:	OK\n")
+			fmt.Println("TEST EQUIPE 6:	OK")
 			test = true
 		} else {
-			fmt.Println("TEST EQUIPE 6:	ERROR\n")
+			fmt.Println("TEST EQUIPE 6:	ERROR")
 			err = true
 		}
 		return err
@@ -472,15 +472,15 @@ import (
 		test = true
 		err = false
 		
-		fmt.Println("CHECK SUR L'ANNONCE: \n")
+		fmt.Println("CHECK SUR L'ANNONCE: ")
 		fmt.Println("TEST 1: ANNONCE STANDARD")
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST LICENCE 1:	ERROR\n")
+			fmt.Println("TEST LICENCE 1:	ERROR")
 			test = true
 			err = true
 		} else {
-			fmt.Println("TEST LICENCE 1:	OK\n")
+			fmt.Println("TEST LICENCE 1:	OK")
 		}
 		
 		fmt.Println("TEST 2: ANNONCE NEGATIVE")
@@ -488,10 +488,10 @@ import (
 		comp.annonce2 = -126
 		test = comp.check()
 		if (!test){
-			fmt.Println("TEST LICENCE 2:	OK\n")
+			fmt.Println("TEST LICENCE 2:	OK")
 			test = true	
 		} else {
-			fmt.Println("TEST LICENCE 2:	ERROR\n")
+			fmt.Println("TEST LICENCE 2:	ERROR")
 			err = true
 		}
 		return err

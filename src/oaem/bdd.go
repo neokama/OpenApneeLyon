@@ -7,7 +7,8 @@ package main
 	"log"
 	)
 
-
+		
+	// Bdd struct: "Structure of database handling".
 	type Bdd struct
 	{
 		cheminbdd string
@@ -43,23 +44,23 @@ package main
 	func (base Bdd) reset(){
 		_, base.err = base.db.Exec("DELETE FROM competiteurs")
 		if base.err != nil {
-			fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+			fmt.Println("Echec lors de la remise à 0 de la base: ", base.err)
 		} else {
 			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='competiteurs'")
 			if base.err != nil {
-				fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+				fmt.Println("Echec lors de la remise à 0 de la base: ", base.err)
 				} else {
 					_, base.err = base.db.Exec("DELETE FROM classement")
 					if base.err != nil {
-						fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+						fmt.Println("Echec lors de la remise à 0 de la base: ", base.err)
 					} else {
 							_, base.err = base.db.Exec("DELETE FROM classementequipe")
 						if base.err != nil {
-							fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+							fmt.Println("Echec lors de la remise à 0 de la base: ", base.err)
 						} else {
 							_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
 							if base.err != nil {
-								fmt.Println("Echec lors de la remise à 0 de la base: \n", base.err)
+								fmt.Println("Echec lors de la remise à 0 de la base: ", base.err)
 								}else{
 								fmt.Println("Remise à zéro de la base de données effectuée")
 							}

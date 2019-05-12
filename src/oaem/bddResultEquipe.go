@@ -17,7 +17,7 @@ package main
 	func (base Bdd) exportClassementEquipe(){
 		//---variables---
 		var info [5]string
-		var numPlace int =0
+		var numPlace int
 		var tabPlace []int
 		var tab []string
 		//---------------
@@ -57,7 +57,7 @@ package main
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
 			if info[4]=="true"{
 			if base.err != nil {
-					fmt.Println("Erreur lors de la récupération des résultats: \n")
+					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
 				}
 			numPlace=numPlace+1
@@ -79,9 +79,9 @@ package main
 	}
 
 	/*
-	* 		col_id2name3:
+	* 		idCol2name3:
 	* Paramètres:
-	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => équipe).
+	*	- colNum:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => équipe).
 	*	- value:	Nouvelle valeur à entrée pour la colonne choisie.
 	*
 	* Description:
@@ -89,31 +89,31 @@ package main
 	*		De plus, la valeur entrée ("value") est retournée au format adéquat pour une requête SQL
 	*		(Ex: "VariableString" => "'VariableString'")
 	*/
-	func col_id2name3(col_num int, value string)(string, string){
+	func idCol2name3(colNum int, value string)(string, string){
 		//---variables---
-		var col_idr string
+		var idrCol string
 		//---------------
 
-		switch col_num{
+		switch colNum{
 		    case 1:
-				col_idr = "id"
+				idrCol = "id"
 				value = fmt.Sprint("'",value,"'")
 			case 2:
-				col_idr = "equipe"
+				idrCol = "equipe"
 				value = fmt.Sprint("'",value,"'")
 			case 3:
-				col_idr = "point"
+				idrCol = "point"
 				value = fmt.Sprint("'",value,"'")
 			case 4:
-				col_idr = "place"
+				idrCol = "place"
 				value = fmt.Sprint("'",value,"'")
 			case 5:
-				col_idr = "etat"
+				idrCol = "etat"
 				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
 			}
-		return col_idr, value
+		return idrCol, value
 	}
 
 	/*
@@ -137,7 +137,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 				if base.err != nil {
-					fmt.Println("Erreur lors de la récupération des résultats: \n")
+					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
 					}
 				equipe = info[5]
@@ -173,7 +173,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
 				if base.err != nil {
-					fmt.Println("Erreur lors de la récupération des résultats: \n")
+					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
 					}
 				equipe = info[1]
@@ -181,20 +181,20 @@ package main
 		}
 
 		for n:=0;n<len(tab);n++{
-			var id_col string
+			var idCol string
 			var equipe2 string
 			var info [13]string
 			var tabpoint []string
 			var point string
 			var nbpoint int
 			var nb int
-			var nbCompetiteur int =0
+			var nbCompetiteur int
 
 			//On "clear" l'ancien tableau:
 			tabpoint = tabpoint[:0]
 
-			id_col, equipe2 = col_id2name2(5, tab[n])
-			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE " + id_col + " = " + equipe2))
+			idCol, equipe2 = idCol2name2(5, tab[n])
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE " + idCol + " = " + equipe2))
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête 1")
 			}
@@ -203,7 +203,7 @@ package main
 			for base.resultat.Next() {
 				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3],&info[4], &info[5], &info[6], &info[7],&info[8], &info[9], &info[10], &info[11], &info[12])
 				if base.err != nil {
-					fmt.Println("Erreur lors de la récupération des résultats: \n")
+					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
 				}
 				point = info[10]
@@ -235,19 +235,19 @@ package main
 	* 	- newvalue : nouvelle valeur de point à insérer dans la Bdd
 	*/
 	func (base Bdd) modifPoint(equipe string, newvalue string){
-		col_id2, equipe := col_id2name3(2, equipe)
-		col_id, value := col_id2name3(3, newvalue)
+		idCol2, equipe := idCol2name3(2, equipe)
+		idCol, value := idCol2name3(3, newvalue)
 
-		//on doit utiliser col_id2
-		if(col_id2=="0"){
+		//on doit utiliser idCol2
+		if(idCol2=="0"){
 		}
 
-		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
+		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + idCol + " = " + value +  " WHERE equipe = " + equipe)
 
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : ", base.err)
 		}else{
-			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(idComp) + " avec " + idCol + " = " + value)
 		}
 	}
 
@@ -260,18 +260,18 @@ package main
 	* 	- newvalue : nouvelle valeur de point à insérer dans la Bdd
 	*/
 	func (base Bdd) modifPlace(equipe string, newvalue string){
-		col_id2, equipe := col_id2name3(2, equipe)
-		col_id, value := col_id2name3(4, newvalue)
-		if(col_id2=="0"){
-		//on doit utiliser col_id2
+		idCol2, equipe := idCol2name3(2, equipe)
+		idCol, value := idCol2name3(4, newvalue)
+		if(idCol2=="0"){
+		//on doit utiliser idCol2
 		}
 
-		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
+		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + idCol + " = " + value +  " WHERE equipe = " + equipe)
 
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : ", base.err)
 		}else {
-			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(idComp) + " avec " + idCol + " = " + value)
 		}
 	}
 	/*
@@ -313,7 +313,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3]+ "|" + info[4])
@@ -329,17 +329,17 @@ package main
 	*/
 	func (base Bdd) modifEtat(equipe string, newvalue bool){
 		value:=strconv.FormatBool(newvalue)
-		col_id2, equipe := col_id2name3(2, equipe)
-		col_id, value := col_id2name3(5, value)
-		if(col_id2=="0"){
-		//on doit utiliser col_id2
+		idCol2, equipe := idCol2name3(2, equipe)
+		idCol, value := idCol2name3(5, value)
+		if(idCol2=="0"){
+		//on doit utiliser idCol2
 		}
 
-		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + col_id + " = " + value +  " WHERE equipe = " + equipe)
+		_, base.err = base.db.Exec("UPDATE classementequipe SET "  + idCol + " = " + value +  " WHERE equipe = " + equipe)
 
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : ", base.err)
 		}else {
-			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(idComp) + " avec " + idCol + " = " + value)
 		}
 	}

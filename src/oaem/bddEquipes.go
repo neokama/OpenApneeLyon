@@ -17,6 +17,7 @@ import (
 	*	- equipe : nom de l'équipe
 	*	- etat : validiter de l'equipe
 	**/
+	// EtatEquipe struct
 	type EtatEquipe struct
 	{
 		equipe string
@@ -24,14 +25,14 @@ import (
 	}
 
 	/*
-	* 		Bdd.orderby_comp:
+	* 		Bdd.orderByComp:
 	*
 	* Description:
 	*		Méthode permettant de trier les compétiteurs
 	*		par équipe.
 	*/
 
-	func (base Bdd) orderby_comp(){
+	func (base Bdd) orderByComp(){
 
 
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs ORDER BY equipe "))
@@ -46,7 +47,7 @@ import (
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9])
@@ -54,17 +55,17 @@ import (
 	}
 
 	/*
-	* 		Bdd.count_comp:
+	* 		Bdd.countComp:
 	*
 	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe
 	*
 	*/
-	func (base Bdd) count_comp(col_num int, value string)(string){
-	var id_col string
-		id_col, value = col_id2name(col_num, value)
+	func (base Bdd) countComp(colNum int, value string)(string){
+	var idCol string
+		idCol, value = idCol2name(colNum, value)
 
 
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", idCol, " = ", value))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -76,7 +77,7 @@ import (
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 
@@ -85,18 +86,18 @@ import (
 	}
 
 	/*
-	* 		Bdd.count_epreuve_comp:
+	* 		Bdd.countEpreuveComp:
 	*
 	* Description: Méthode permettent de vérifier le nombre de compétiteur par équipe
 	*
 	* Edition 2019 : Order should be as : STA, DWF, SPE100, DNF, 8x50m
 	*/
-	func (base Bdd) count_epreuve_comp(col_num int, value string)(bool,bool,bool,bool,bool,int,int,int,int,int){
-	var id_col string
-		id_col, value = col_id2name(col_num, value)
+	func (base Bdd) countEpreuveComp(colNum int, value string)(bool,bool,bool,bool,bool,int,int,int,int,int){
+	var idCol string
+		idCol, value = idCol2name(colNum, value)
 
 
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", id_col, " = ", value))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", idCol, " = ", value))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -119,7 +120,7 @@ import (
 			n=n+1
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 			switch (info[6]){
@@ -206,23 +207,23 @@ import (
 	}
 
 	/*
-	* 		Bdd.count_sexe_comp:
+	* 		Bdd.countSexeComp:
 	* Description:
 	*		Méthode permettent de vérifier le nombre de compétiteur par équipe.
 	*
 	*/
-	func (base Bdd) count_sexe_comp(col_num int, value string)(string,string){
-	var id_col string
-	var id_col2 string
-	var col_num2 int = 4
+	func (base Bdd) countSexeComp(colNum int, value string)(string,string){
+	var idCol string
+	var idCol2 string
+	var colNum2 int = 4
 	var valueH string = "H"
 	var valueF string = "F"
-		id_col, value = col_id2name(col_num, value)
-		id_col2, valueH = col_id2name(col_num2, valueH)
-		id_col2, valueF = col_id2name(col_num2, valueF)
+		idCol, value = idCol2name(colNum, value)
+		idCol2, valueH = idCol2name(colNum2, valueH)
+		idCol2, valueF = idCol2name(colNum2, valueF)
 
 
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value," AND ", id_col2, " = ", valueH))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", idCol, " = ", value," AND ", idCol2, " = ", valueH))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -234,11 +235,11 @@ import (
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&infoH[0])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 		}
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value," AND ", id_col2, " = ", valueF))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", idCol, " = ", value," AND ", idCol2, " = ", valueF))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -250,7 +251,7 @@ import (
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&infoF[0])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 		}
@@ -259,12 +260,12 @@ import (
 
 
 	/*
-	* 		Bdd.check_team:
+	* 		Bdd.checkTeam:
 	* Description:
 	*		Méthode permettant de vérifier la validité des equipes
 	*/
 
-	func (base Bdd) check_team(){
+	func (base Bdd) checkTeam(){
 		// CREATION FICHIER
 		t := time.Now()
 		date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
@@ -272,7 +273,7 @@ import (
 		file, err := os.Create(fmt.Sprint("../var/export/archives/",date,"-FichierVerification.txt"))
 		file2, err := os.Create(fmt.Sprint("../var/export/FichierVerification.txt"))
 		if err != nil {
-				fmt.Println("Erreur lors de la création du fichier verification\n")
+				fmt.Println("Erreur lors de la création du fichier verification")
 				log.Fatal(err)
 			}
 		file.WriteString("FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !\r\n")
@@ -322,12 +323,12 @@ import (
 				var nb_sexeF string ="0"
 				base.err = base.resultat.Scan(&info[0])
 				if base.err != nil {
-					fmt.Println("Erreur lors de la récupération des résultats: \n")
+					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
 				}
-				var nb_comp string = base.count_comp(6,info[0])
-				nb_sexeH,nb_sexeF=base.count_sexe_comp(6,info[0])
-				ep1,ep2,ep3,ep4,ep5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC=base.count_epreuve_comp(6,info[0])
+				var nb_comp string = base.countComp(6,info[0])
+				nb_sexeH,nb_sexeF=base.countSexeComp(6,info[0])
+				ep1,ep2,ep3,ep4,ep5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC=base.countEpreuveComp(6,info[0])
 
 				if(ep1 && ep2 && ep3 && ep4 && ep5){
 				res = "Temps repos : OK"
@@ -403,12 +404,12 @@ import (
 	*		Méthode permettant d'effectuer des vérifications sur la validité des champs de la bdd
 	*/
 	func (base Bdd) verif(val string, num int ){
-		var id_col string
+		var idCol string
 		var value string = val
 		if num == 1{
-		id_col, value = col_id2name(1, value)
-		}else{id_col, value = col_id2name(5, value)}
-			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", id_col, " = ", value))
+		idCol, value = idCol2name(1, value)
+		}else{idCol, value = idCol2name(5, value)}
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", idCol, " = ", value))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête (2)")
 			log.Fatal(base.err)}

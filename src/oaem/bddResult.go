@@ -24,7 +24,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12])
@@ -34,7 +34,7 @@ package main
 	/*
 	* 		Bdd.searchCompetiteur:
 	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
+	*	- colNum: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
 	*	- value:	valeur à rechercher dans la colonne choisie.
 	*
 	* Description:
@@ -42,15 +42,15 @@ package main
 	* 		competiteurs de la base de données
 	*/
 
-	func (base Bdd) searchCompetiteurClassement(col_num int, value string){
+	func (base Bdd) searchCompetiteurClassement(colNum int, value string){
 
-		var id_col string
+		var idCol string
 		var searchValue string
 
 		searchValue = fmt.Sprint("'%",value,"%'")
-		id_col, value = col_id2name(col_num, value)
+		idCol, value = idCol2name(colNum, value)
 
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " LIKE ", searchValue))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " LIKE ", searchValue))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -62,7 +62,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12])
@@ -108,7 +108,7 @@ package main
 	/*
 	* 		Bdd.deleteCompetiteur:
 	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
+	*	- colNum: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
 	*	- value:	valeur à rechercher dans la colonne choisie.
 	*
 	* Description:
@@ -116,22 +116,22 @@ package main
 	*		en entrée.
 	*/
 
-	func (base Bdd) deleteCompetiteurClassement(col_num int, value string){
-		var id_col string
+	func (base Bdd) deleteCompetiteurClassement(colNum int, value string){
+		var idCol string
 		value = fmt.Sprint("'",value,"'")
 
-		if col_num==1 {
-			id_col = "id"
-		} else if col_num==2{
-			id_col = "equipe"
+		if colNum==1 {
+			idCol = "id"
+		} else if colNum==2{
+			idCol = "equipe"
 		}
 
-		if !(col_num < 1 && col_num > 2){
-			_, base.err = base.db.Exec("DELETE FROM classement WHERE " + id_col + " = " + value)
+		if !(colNum < 1 && colNum > 2){
+			_, base.err = base.db.Exec("DELETE FROM classement WHERE " + idCol + " = " + value)
 			if base.err != nil {
-				fmt.Println("Echec lors de la suppression: \n", base.err)
+				fmt.Println("Echec lors de la suppression: ", base.err)
 				} else {
-				fmt.Println("Suppression des competiteurs avec " + id_col + " = " + value)
+				fmt.Println("Suppression des competiteurs avec " + idCol + " = " + value)
 			}
 		} else {
 			err := "Le numéro entré est invalide!"
@@ -142,7 +142,7 @@ package main
 	func (base Bdd) resetClassement(){
 		_, base.err = base.db.Exec("DELETE FROM classement")
 		if base.err != nil {
-			fmt.Println("Echec lors de la remise à 0 de la table classement: \n", base.err)
+			fmt.Println("Echec lors de la remise à 0 de la table classement: ", base.err)
 		} else{
 				fmt.Println("Remise à zéro des tables classement")
 		}
@@ -151,11 +151,11 @@ package main
 	func (base Bdd) resetClassementEquipe(){
 		_, base.err = base.db.Exec("DELETE FROM classementequipe")
 		if base.err != nil {
-			fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
+			fmt.Println("Echec lors de la remise à 0 de la table classementequipe: ", base.err)
 		} else {
 			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='classementequipe'")
 			if base.err != nil {
-				fmt.Println("Echec lors de la remise à 0 de la table classementequipe: \n", base.err)
+				fmt.Println("Echec lors de la remise à 0 de la table classementequipe: ", base.err)
 			}
 		}
 	}
@@ -237,9 +237,9 @@ package main
 	*
 	*/
 	func (base Bdd)recupAnnonce(id string, epreuve string)(int){
-		var id_col string
-		id_col, id = col_id2name2(1, id)
-		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + id_col + " = " + id)
+		var idCol string
+		idCol, id = idCol2name2(1, id)
+		base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs WHERE " + idCol + " = " + id)
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête")
 				log.Fatal(base.err)
@@ -251,7 +251,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 			if (epreuve==info[6]){
@@ -266,9 +266,9 @@ package main
 	}
 
 	/*
-	* 		col_id2name:
+	* 		idCol2name:
 	* Paramètres:
-	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
+	*	- colNum:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
 	*	- value:	Nouvelle valeur à entrée pour la colonne choisie.
 	*
 	* Description:
@@ -278,53 +278,53 @@ package main
 	*/
 
 
-	func col_id2name2(col_num int, value string)(string, string){
-		var col_idr string
+	func idCol2name2(colNum int, value string)(string, string){
+		var idrCol string
 
-		switch col_num{
+		switch colNum{
 		    case 1:
-				col_idr = "id"
+				idrCol = "id"
 				value = fmt.Sprint("'",value,"'")
 			case 2:
-				col_idr = "prenom"
+				idrCol = "prenom"
 				value = fmt.Sprint("'",value,"'")
 			case 3:
-				col_idr = "nom"
+				idrCol = "nom"
 				value = fmt.Sprint("'",value,"'")
 			case 4:
-				col_idr = "sexe"
+				idrCol = "sexe"
 				value = fmt.Sprint("'",value,"'")
 			case 5:
-				col_idr = "equipe"
+				idrCol = "equipe"
 				value = fmt.Sprint("'",value,"'")
 			case 6:
-				col_idr = "epreuve"
+				idrCol = "epreuve"
 				value = fmt.Sprint("'",value,"'")
 			case 7:
-				col_idr = "annonce"
+				idrCol = "annonce"
 				value = fmt.Sprint("'",value,"'")
 			case 8:
-				col_idr = "resultat"
+				idrCol = "resultat"
 				value = fmt.Sprint("'",value,"'")
 			case 9:
-				col_idr = "place"
+				idrCol = "place"
 				value = fmt.Sprint("'",value,"'")
 			case 10:
-				col_idr = "rslt"
+				idrCol = "rslt"
 				value = fmt.Sprint("'",value,"'")
 			case 11:
-				col_idr = "plc"
+				idrCol = "plc"
 				value = fmt.Sprint("'",value,"'")
 			case 12:
-				col_idr = "disq"
+				idrCol = "disq"
 				value = fmt.Sprint("'",value,"'")
 			case 13:
-				col_idr = "description"
+				idrCol = "description"
 				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
 			}
-		return col_idr, value
+		return idrCol, value
 	}
 
 
@@ -419,7 +419,7 @@ package main
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)}
 
 
@@ -531,15 +531,15 @@ package main
 	*
 	*
 	*/
-	func (base Bdd) modifResult(id_comp int, col_num int,epreuve string, newvalue string){
-		col_id, value := col_id2name2(col_num, newvalue)
-		id := strconv.Itoa(id_comp)
-		_, base.err = base.db.Exec("UPDATE classement SET "  + col_id + " = " + value +  " WHERE id = " + id + " AND epreuve = '" + epreuve +"'" )
+	func (base Bdd) modifResult(idComp int, colNum int,epreuve string, newvalue string){
+		idCol, value := idCol2name2(colNum, newvalue)
+		id := strconv.Itoa(idComp)
+		_, base.err = base.db.Exec("UPDATE classement SET "  + idCol + " = " + value +  " WHERE id = " + id + " AND epreuve = '" + epreuve +"'" )
 
 		if base.err != nil {
 			fmt.Println("Echec lors de l'ajout : ", base.err)
 			} else {
-			//fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+			//fmt.Println("Modification du competiteur " + strconv.Itoa(idComp) + " avec " + idCol + " = " + value)
 		}
 	}
 
@@ -547,19 +547,19 @@ package main
 	*
 	*/
 	func (base Bdd) calculPlace(epreuve string){
-	var egalF int =0
-	var egalH int =0
+	var egalF int
+	var egalH int
 	var lastResult float64=-1
-	var id_col string
-		id_col, epreuve = col_id2name2(6, epreuve)
+	var idCol string
+		idCol, epreuve = idCol2name2(6, epreuve)
 
 		if( epreuve == "'spd'" || epreuve == "'850'"){
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt ASC"))
+	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " = ", epreuve," ORDER BY sexe ASC, rslt ASC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
 		}else{
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", id_col, " = ", epreuve," ORDER BY sexe ASC, rslt DESC"))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " = ", epreuve," ORDER BY sexe ASC, rslt DESC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 2")
 		}
@@ -575,7 +575,7 @@ package main
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)}
 
 			if (info[9]=="0" && info[11]=="true") || (info[9]=="0" && info[4]=="SOLO"){
@@ -659,8 +659,8 @@ package main
 
 
 	func calculResultat(sexe string, equipe string, epreuve string, annonce int, resultat string, disq string)(float64){
-		var sMin int =0 
-		var sMax int =0
+		var sMin int
+		var sMax int
 		var res float64
 		var result float64
 		var tot float64

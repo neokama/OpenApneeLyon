@@ -14,53 +14,53 @@ import "os"
 */
 
 func checkCaracteres() (motFinal string) {
-	Ascii := convertToAscii()
+	ASCII := convertToASCII()
 	motFinal = ""
 	i := 0
-	for (i < len(Ascii)) {
-		if (i < len(Ascii)-2 && Ascii[i] == 83 && Ascii[i+1] == 204 && Ascii[i+2] == 140){
+	for (i < len(ASCII)) {
+		if (i < len(ASCII)-2 && ASCII[i] == 83 && ASCII[i+1] == 204 && ASCII[i+2] == 140){
 			motFinal += "è"
 			i += 2
-		} else if (i < len(Ascii)-2 && Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 136) {
+		} else if (i < len(ASCII)-2 && ASCII[i] == 97 && ASCII[i+1] == 204 && ASCII[i+2] == 136) {
 			motFinal += "õ"
 			i += 2
-		} else if (i < len(Ascii)-2 && Ascii[i] == 99 && Ascii[i+1] == 204 && Ascii[i+2] == 167) {
+		} else if (i < len(ASCII)-2 && ASCII[i] == 99 && ASCII[i+1] == 204 && ASCII[i+2] == 167) {
 			motFinal += "þ"
 			i += 2
-		} else if (i < len(Ascii)-2 && Ascii[i] == 97 && Ascii[i+1] == 204 && Ascii[i+2] == 129) {
+		} else if (i < len(ASCII)-2 && ASCII[i] == 97 && ASCII[i+1] == 204 && ASCII[i+2] == 129) {
 			motFinal += "ß"
 			i += 2
-		} else if (i < len(Ascii)-2 && Ascii[i] == 105 && Ascii[i+1] == 204 && Ascii[i+2] == 128) {
+		} else if (i < len(ASCII)-2 && ASCII[i] == 105 && ASCII[i+1] == 204 && ASCII[i+2] == 128) {
 			motFinal += "ý"
 			i += 2
-		} else if (Ascii[i] == 48) {
+		} else if (ASCII[i] == 48) {
 			motFinal += "0"
-		} else if (Ascii[i] == 49) {
+		} else if (ASCII[i] == 49) {
 			motFinal += "1"
-		} else if (Ascii[i] == 50) {
+		} else if (ASCII[i] == 50) {
 			motFinal += "2"
-		} else if (Ascii[i] == 51) {
+		} else if (ASCII[i] == 51) {
 			motFinal += "3"
-		} else if (Ascii[i] == 52) {
+		} else if (ASCII[i] == 52) {
 			motFinal += "4"
-		} else if (Ascii[i] == 53) {
+		} else if (ASCII[i] == 53) {
 			motFinal += "5"
-		} else if (Ascii[i] == 54) {
+		} else if (ASCII[i] == 54) {
 			motFinal += "6"
-		} else if (Ascii[i] == 55) {
+		} else if (ASCII[i] == 55) {
 			motFinal += "7"
-		} else if (Ascii[i] == 56) {
+		} else if (ASCII[i] == 56) {
 			motFinal += "8"
-		} else if (Ascii[i] == 57) {
+		} else if (ASCII[i] == 57) {
 			motFinal += "9"
-		} else if ((Ascii[i] < 65) || (Ascii[i] > 90 && Ascii[i] < 97) || (Ascii[i] > 122)) {
-			lettre, j := traduireCaractere(i, Ascii)
+		} else if ((ASCII[i] < 65) || (ASCII[i] > 90 && ASCII[i] < 97) || (ASCII[i] > 122)) {
+			lettre, j := traduireCaractere(i, ASCII)
 			i = j
 			motFinal += lettre
 		} else {
-			motFinal += string(Ascii[i])
+			motFinal += string(ASCII[i])
 		}
-		i += 1
+		i++
 	}
 	return motFinal
 }
@@ -68,90 +68,90 @@ func checkCaracteres() (motFinal string) {
 /*
 * 		Menu.traduireCaractere:
 * Description:
-* 		Méthode permettant de reconnaitre un caractère accentué à partir de son code Ascii
+* 		Méthode permettant de reconnaitre un caractère accentué à partir de son code ASCII
 */
 
-func traduireCaractere(i int, Ascii []byte) (lettre string, j int) {
+func traduireCaractere(i int, ASCII []byte) (lettre string, j int) {
 	lettre = ""
-	if (Ascii[i] == 226 && Ascii[i+1]  == 128 && Ascii[i+2] == 154) {
+	if (ASCII[i] == 226 && ASCII[i+1]  == 128 && ASCII[i+2] == 154) {
 		lettre = "é"
 		i += 2
-	} else if (Ascii[i] == 194 && Ascii[i+1] == 160) {
+	} else if (ASCII[i] == 194 && ASCII[i+1] == 160) {
 		lettre = "á"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 166){
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 166){
 		lettre = "à"
 		i += 2
-	} else if (Ascii[i] == 198 && Ascii[i+1] == 146) {
+	} else if (ASCII[i] == 198 && ASCII[i+1] == 146) {
 		lettre = "â"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 158) {
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 158) {
 		lettre = "ä"
 		i += 2
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 160) {
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 160) {
 		lettre = "å"
 		i += 2
-	} else if (Ascii[i] == 195 && Ascii[i+1] == 134) {
+	} else if (ASCII[i] == 195 && ASCII[i+1] == 134) {
 		lettre = "ã"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 152) {
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 152) {
 		lettre = "æ"
 		i += 2
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 161) {
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 161) {
 		lettre = "ç"
 		i += 2
-	} else if (Ascii[i] == 203 && Ascii[i+1] == 134) {
+	} else if (ASCII[i] == 203 && ASCII[i+1] == 134) {
 		lettre = "ê"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 176) {
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 176) {
 		lettre = "ë"
 		i += 2
-	} else if (Ascii[i] == 194 && Ascii[i+1] == 141) {
+	} else if (ASCII[i] == 194 && ASCII[i+1] == 141) {
 		lettre = "ì"
-		i += 1
-	} else if (Ascii[i] == 197 && Ascii[i+1] == 146) {
+		i++
+	} else if (ASCII[i] == 197 && ASCII[i+1] == 146) {
 		lettre = "î"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 185) {
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 185) {
 		lettre = "ï"
 		i += 2
-	} else if (Ascii[i] == 194 && Ascii[i+1] == 164) {
+	} else if (ASCII[i] == 194 && ASCII[i+1] == 164) {
 		lettre += "ñ"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 156) {
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 156) {
 		lettre = "ô"
 		i += 2
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 157) {
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 157) {
 		lettre = "ö"
 		i += 2
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 186) {
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 186) {
 		lettre = "ø"
 		i += 2
-	} else if (Ascii[i] == 195 && Ascii[i+1] == 144) {
+	} else if (ASCII[i] == 195 && ASCII[i+1] == 144) {
 		lettre = "ð"
-		i += 1
-	} else if (Ascii[i] == 203 && Ascii[i+1] == 156) {
+		i++
+	} else if (ASCII[i] == 203 && ASCII[i+1] == 156) {
 		lettre = "ÿ"
-		i += 1
-	} else if (Ascii[i] == 194 && Ascii[i+1] == 129) {
+		i++
+	} else if (ASCII[i] == 194 && ASCII[i+1] == 129) {
 		lettre = "ü"
-		i += 1
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 148) {
+		i++
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 148) {
 		lettre = "ù"
-		i += 1
-	} else if (Ascii[i] == 194 && Ascii[i+1] == 163) {
+		i++
+	} else if (ASCII[i] == 194 && ASCII[i+1] == 163) {
 		lettre = "ú"
-		i += 1
-	} else if (Ascii[i] == 39) {
+		i++
+	} else if (ASCII[i] == 39) {
 		lettre = "'"
-	} else if (Ascii[i] == 226 && Ascii[i+1] == 128 && Ascii[i+2] == 147) {
+	} else if (ASCII[i] == 226 && ASCII[i+1] == 128 && ASCII[i+2] == 147) {
 		lettre = "û"
 		i += 2
-	} else if (Ascii[i] == 45) {
+	} else if (ASCII[i] == 45) {
 		lettre = "-"
-	} else if (Ascii[i] == 95) {
+	} else if (ASCII[i] == 95) {
 		lettre = "_"
-	} else if (Ascii[i] == 32) {
+	} else if (ASCII[i] == 32) {
 		lettre = " "
 	}
 	j = i
@@ -159,16 +159,17 @@ func traduireCaractere(i int, Ascii []byte) (lettre string, j int) {
 }
 
 /*
-* 		Menu.convertToAscii:
+* 		Menu.convertToASCII:
 * Description:
-* 		Méthode permettant de convertir un caractère en son code Ascii
+* 		Méthode permettant de convertir un caractère en son code ASCII
 */
 
-func convertToAscii() (Ascii []byte) {
+// convertToASCII function
+func convertToASCII() (ASCII []byte) {
 	equipe := read()
-	Ascii = []byte(equipe)
-	//fmt.Println(Ascii)
-	return Ascii
+	ASCII = []byte(equipe)
+	//fmt.Println(ASCII)
+	return ASCII
 }
 
 /*
@@ -249,6 +250,7 @@ func readInt(n int) ([]int, error) {
 * 		Méthode permettant d'intéragir avec l'utilisateur pour que ce dernier puisse choisir la fonctionnalité qu'il souhaite effectuer
 */
 
+// Parsage function
 func Parsage(){
 
 	c := flag.String("c","deff", "a String")
@@ -266,7 +268,7 @@ func Parsage(){
 			var prenom string
 			var nom string
 			var sexe string
-			var num_license string
+			var numLicense string
 			equipe := ""
 			var epreuve1 string
 			var annonce1 int
@@ -275,18 +277,18 @@ func Parsage(){
 			i := 2
 			for i!= 11 {
 				if i ==2 {
-					fmt.Println("Quel est le prénom du competiteur que vous souhaitez ajouter ? \n")
+					fmt.Println("Quel est le prénom du competiteur que vous souhaitez ajouter ? ")
 					prenom = checkCaracteres()
 					i++
 				} else if i == 3 {
-					fmt.Println("Quel est le nom du competiteur que vous souhaitez ajouter ? \n")
+					fmt.Println("Quel est le nom du competiteur que vous souhaitez ajouter ? ")
 					nom = checkCaracteres()
 					i++
 				} else if i == 4 {
-					fmt.Println("Quel est le sexe du competiteur que vous souhaitez ajouter (H/F) ? \n")
+					fmt.Println("Quel est le sexe du competiteur que vous souhaitez ajouter (H/F) ? ")
 					in , err := readString(1)
 					for (err != nil || (in[0] != "H" && in[0] != "F")) {
-						fmt.Println("Veuillez saisir H ou F svp \n")
+						fmt.Println("Veuillez saisir H ou F svp ")
 						in, err = readString(1)
 						continue
 						fmt.Println(err)
@@ -294,20 +296,20 @@ func Parsage(){
 					sexe = in[0]
 					i++
 				} else if i == 5 {
-					fmt.Println("Quel est le numéro de license du competiteur que vous souhaitez ajouter ? \n")
+					fmt.Println("Quel est le numéro de license du competiteur que vous souhaitez ajouter ? ")
 					in , err := readString(1)
 					if (err != nil) {
 						fmt.Println(err)
 					}
-					num_license = in[0]
+					numLicense = in[0]
 					i++
 				} else if i == 6 {
-					fmt.Println("Quel est l'équipe du competiteur que vous souhaitez ajouter ? \n")
+					fmt.Println("Quel est l'équipe du competiteur que vous souhaitez ajouter ? ")
 					equipe = checkCaracteres()
 					i++
 				} else if i == 7 {
-					fmt.Println("Quel est la première épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
-					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 850 ?\n")
+					fmt.Println("Quel est la première épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? ")
+					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 850 ?")
 					in , err := readString(1)
 					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
 						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
@@ -318,10 +320,10 @@ func Parsage(){
 					epreuve1 = in[0]
 					i++
 				} else if i == 8 {
-					fmt.Println("Quel est la première annonce du competiteur que vous souhaitez ajouter ? (en mètre ou en seconde) \n")
+					fmt.Println("Quel est la première annonce du competiteur que vous souhaitez ajouter ? (en mètre ou en seconde) ")
 					in , err := readInt(1)
 					for (err != nil) {
-						fmt.Println("Veuillez saisir un entier positif svp \n")
+						fmt.Println("Veuillez saisir un entier positif svp ")
 						in, err = readInt(1)
 						continue
 						fmt.Println(err)
@@ -329,8 +331,8 @@ func Parsage(){
 					annonce1 = in[0]
 					i++
 				} else if i == 9 {
-					fmt.Println("Quel est la seconde épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? \n")
-					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 850 ?\n")
+					fmt.Println("Quel est la seconde épreuve à laquelle le competiteur que vous souhaitez ajouter va participer ? ")
+					fmt.Println(" sta ?\n spd ?\n dwf ?\n dnf ?\n 850 ?")
 					in , err := readString(1)
 					for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
 						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
@@ -341,10 +343,10 @@ func Parsage(){
 					epreuve2 = in[0]
 					i++
 				} else if i == 10 {
-					fmt.Println("Quel est la seconde annonce du competiteur que vous souhaitez ajouter ? (en mètre ou en seconde) \n")
+					fmt.Println("Quel est la seconde annonce du competiteur que vous souhaitez ajouter ? (en mètre ou en seconde) ")
 					in , err := readInt(1)
 					for (err != nil) {
-						fmt.Println("Veuillez saisir un entier positif svp \n")
+						fmt.Println("Veuillez saisir un entier positif svp ")
 						in, err= readInt(1)
 						continue
 						fmt.Println(err)
@@ -352,89 +354,89 @@ func Parsage(){
 					annonce2 = in[0]
 					i++
 				} else {
-					fmt.Println("Les informations saisies ne sont pas conformes, veuillez recommencer \n")
+					fmt.Println("Les informations saisies ne sont pas conformes, veuillez recommencer ")
 				}
 			}
-			competiteur := newCompetiteur(id, prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2)
+			competiteur := newCompetiteur(id, prenom, nom, sexe, numLicense, equipe, epreuve1, annonce1, epreuve2, annonce2)
 			base.addCompetiteur(competiteur)
 
 
 		} else if *c == "remove" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
-			var col_num int
+			var colNum int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
 			fmt.Println(" 1- Id \n 2- Equipe")
 			in1, err1 := readInt(1)
 			for (err1 != nil || in1[0] > 2) {
-				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 2 svp \n")
+				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 2 svp ")
 				in1, err1 = readInt(1)
 				continue
 				fmt.Println(err1)
 			}
-			col_num = in1[0]
+			colNum = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
-			if (col_num == 1) {
+			if (colNum == 1) {
 				in2, err2 := readString(1)
 				if (err2 != nil) {
 					fmt.Println(err2)
 				}
 				value = in2[0]
-			} else if (col_num == 2) {
+			} else if (colNum == 2) {
 				value = checkCaracteres()
 			}
-			base.deleteCompetiteur(col_num, value)
+			base.deleteCompetiteur(colNum, value)
 
 		} else if *c == "modify" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
-			var id_comp int
-			var col_num int
+			var idComp int
+			var colNum int
 			fmt.Println("Saisissez l'id du participant que vous souhaitez modifier")
 			in1, err1 := readInt(1)
 			if (err1 != nil) {
 				fmt.Println(err1)
 			}
-			id_comp = in1[0]
+			idComp = in1[0]
 			fmt.Println("Quel est le critère que vous souhaitez modifier ?")
 			fmt.Println(" 1- Prénom \n 2- Nom \n 3- Sexe \n 4- Numéro de license \n 5- Equipe \n 6- Première épreuve du participant")
 			fmt.Println(" 7- Première annonce \n 8- Deuxième épreuve du participant \n 9- Deuxième annonce")
 			in2, err2 := readInt(1)
 			for (err2 != nil || in2[0] > 9) {
-				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 9 svp \n")
+				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 9 svp ")
 				in2, err2 = readInt(1)
 				continue
 				fmt.Println(err2)
 			}
-			col_num = in2[0]+1
+			colNum = in2[0]+1
 			fmt.Println("Quelle la nouvelle valeur de ce critère ?")
 
-			if (col_num == 2) {
+			if (colNum == 2) {
 				prenom := checkCaracteres()
-				base.modifCompetiteur (id_comp, col_num, prenom)
-			} else if (col_num == 3) {
+				base.modifCompetiteur (idComp, colNum, prenom)
+			} else if (colNum == 3) {
 				nom := checkCaracteres()
-				base.modifCompetiteur (id_comp, col_num, nom)
-			} else if (col_num == 4) {
+				base.modifCompetiteur (idComp, colNum, nom)
+			} else if (colNum == 4) {
 				in , err := readString(1)
 				for (err != nil || (in[0] != "H" && in[0] != "F")) {
-					fmt.Println("Veuillez saisir H ou F svp \n")
+					fmt.Println("Veuillez saisir H ou F svp ")
 					in, err = readString(1)
 					continue
 					fmt.Println(err)
 				}
 				sexe := in[0]
-				base.modifCompetiteur (id_comp, col_num, sexe)
-			} else if (col_num == 5) {
+				base.modifCompetiteur (idComp, colNum, sexe)
+			} else if (colNum == 5) {
 				in , err := readString(1)
 				if (err != nil) {
 					fmt.Println(err)
 				}
-				num_license := in[0]
-				base.modifCompetiteur (id_comp, col_num, num_license)
-			} else if (col_num == 6) {
+				numLicense := in[0]
+				base.modifCompetiteur (idComp, colNum, numLicense)
+			} else if (colNum == 6) {
 				equipe := checkCaracteres()
-				base.modifCompetiteur (id_comp, col_num, equipe)
-			} else if (col_num == 7) {
+				base.modifCompetiteur (idComp, colNum, equipe)
+			} else if (colNum == 7) {
 				in , err := readString(1)
 				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
 					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
@@ -443,11 +445,11 @@ func Parsage(){
 					fmt.Println(err)
 				}
 				epreuve1 := in[0]
-				base.modifCompetiteur (id_comp, col_num, epreuve1)
-			} else if (col_num == 8) {
+				base.modifCompetiteur (idComp, colNum, epreuve1)
+			} else if (colNum == 8) {
 				annonce1 := checkCaracteres()
-				base.modifCompetiteur (id_comp, col_num, annonce1)
-			} else if (col_num == 9) {
+				base.modifCompetiteur (idComp, colNum, annonce1)
+			} else if (colNum == 9) {
 				in , err := readString(1)
 				for (err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850")) {
 					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
@@ -456,44 +458,44 @@ func Parsage(){
 					fmt.Println(err)
 				}
 				epreuve2 := in[0]
-				base.modifCompetiteur (id_comp, col_num, epreuve2)
-			} else if (col_num == 10) {
+				base.modifCompetiteur (idComp, colNum, epreuve2)
+			} else if (colNum == 10) {
 				annonce2 := checkCaracteres()
-				base.modifCompetiteur (id_comp, col_num, annonce2)
+				base.modifCompetiteur (idComp, colNum, annonce2)
 			}
 
 		} else if *c == "search" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
-			var col_num int
+			var colNum int
 			var value string
 			fmt.Println("Sur quel critère faire la recherche ?")
 			fmt.Println(" 1- Id \n2- Prénom \n3- Nom \n4- Sexe \n5- Numéro de license \n6- Equipe \n7- Première épreuve du participant")
 			fmt.Println(" 8- Première annonce \n9- Deuxième épreuve du participant \n10- Deuxième annonce")
 			in1, err1 := readInt(1)
 			for (err1 != nil) {
-				fmt.Println("Veuillez saisir un entier positif svp \n")
+				fmt.Println("Veuillez saisir un entier positif svp ")
 				in1, err1 = readInt(1)
 				continue
 				fmt.Println(err1)
 			}
-			col_num = in1[0]
+			colNum = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
 			in2, err2 := readString(1)
 			if (err2 != nil) {
 				fmt.Println(err2)
 			}
 			value = in2[0]
-			base.searchCompetiteur(col_num, value)
+			base.searchCompetiteur(colNum, value)
 
 		} else if *c == "display" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
-			fmt.Println("Contenu actuel de la base de donnee : \n")
+			fmt.Println("Contenu actuel de la base de donnee : ")
 			base.displayCompetiteur()
 
 		} else if *c == "import" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
 			base.importCompetiteur()
-			fmt.Println("\n importation dans la base de donnee effectuee ! \n")
+			fmt.Println("\n importation dans la base de donnee effectuee ! ")
 
 		} else if *c == "export" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
@@ -504,22 +506,22 @@ func Parsage(){
 			base.resetCompetiteurs()
 			fmt.Println("Tous les compétiteurs ont été effacés de la base de donnée")
 		} else {
-			fmt.Println("Vous pouvez ajouter un competiteur en tapant -c=add apres votre derniere commande\n")
-			fmt.Println("Vous pouvez supprimer un competiteur en tapant -c=remove apres votre derniere commande\n")
-			fmt.Println("Vous pouvez modifier un competiteur en tapant -c=modify apres votre derniere commande\n")
-			fmt.Println("Vous pouvez rechercher un compétiteur en tapant -c=search apres votre derniere commande\n")
-			fmt.Println("Vous pouvez afficher l'intégralité des compétiteurs en tapant -c=display apres votre derniere commande\n")
-			fmt.Println("Vous pouvez importer un fichier csv contenant des compétiteurs en tapant -c=import apres votre derniere commande\n")
-			fmt.Println("Vous pouvez exporter un fichier csv contenant des compétiteurs en tapant -c=export apres votre derniere commande\n")
-			fmt.Println("Vous pouvez supprimer tous les compétiteurs de la base de donnée en tapant -c=reset après votre derniere commande\n")
+			fmt.Println("Vous pouvez ajouter un competiteur en tapant -c=add apres votre derniere commande")
+			fmt.Println("Vous pouvez supprimer un competiteur en tapant -c=remove apres votre derniere commande")
+			fmt.Println("Vous pouvez modifier un competiteur en tapant -c=modify apres votre derniere commande")
+			fmt.Println("Vous pouvez rechercher un compétiteur en tapant -c=search apres votre derniere commande")
+			fmt.Println("Vous pouvez afficher l'intégralité des compétiteurs en tapant -c=display apres votre derniere commande")
+			fmt.Println("Vous pouvez importer un fichier csv contenant des compétiteurs en tapant -c=import apres votre derniere commande")
+			fmt.Println("Vous pouvez exporter un fichier csv contenant des compétiteurs en tapant -c=export apres votre derniere commande")
+			fmt.Println("Vous pouvez supprimer tous les compétiteurs de la base de donnée en tapant -c=reset après votre derniere commande")
 		}
 
 	} else if *e != "deff" {
 
 		if *e == "check" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
-			base.check_team()
-			fmt.Println("\n Verrification effectuee !\n")
+			base.checkTeam()
+			fmt.Println("\n Verrification effectuee !")
 
 		} else if *e == "planning" {
 			plan := newPlanning("../database/OpenApneeLyon.sqlite3")
@@ -530,8 +532,8 @@ func Parsage(){
 
 
 		} else {
-			fmt.Println("Vous pouvez verifier la validite dune equipe en tapant -e=check apres votre derniere commande\n")
-			fmt.Println("Vous pouvez générer le planning de la journée en tapant -e=planning apres votre derniere commande\n")
+			fmt.Println("Vous pouvez verifier la validite dune equipe en tapant -e=check apres votre derniere commande")
+			fmt.Println("Vous pouvez générer le planning de la journée en tapant -e=planning apres votre derniere commande")
 		}
 
 	} else if *bdd != "deff" {
@@ -551,23 +553,23 @@ func Parsage(){
 				}
 			} else if *bdd == "results" {
 				base := newBdd("../database/OpenApneeLyon.sqlite3")
-				fmt.Println("Affichage de tous les résultats : \n")
+				fmt.Println("Affichage de tous les résultats : ")
 				base.displayClassement()
 			} else if *bdd == "display" {
 				fmt.Println("Affichge du classement par equipe : ")
 				base := newBdd("../database/OpenApneeLyon.sqlite3")
 				base.displayEquipe()
 			} else {
-				fmt.Println("Vous pouvez remettre la bdd a zero en tapant -bdd=reset apres votre derniere commande\n")
-				fmt.Println("Vous pouvez afficher l'intégralité des résultats enregistrés en tapant -bdd=results apres votre derniere commande\n")
-				fmt.Println("Vous pouvez afficher le classement par équipe en tapant -bdd=display apres votre derniere commande\n")
+				fmt.Println("Vous pouvez remettre la bdd a zero en tapant -bdd=reset apres votre derniere commande")
+				fmt.Println("Vous pouvez afficher l'intégralité des résultats enregistrés en tapant -bdd=results apres votre derniere commande")
+				fmt.Println("Vous pouvez afficher le classement par équipe en tapant -bdd=display apres votre derniere commande")
 			}
 
 	} else if *r != "deff" {
 		if *r == "import" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
 			base.importResultat()
-			fmt.Println("importation des compétiteurs contenus dans le fichier \"classement.csv\" dans le dossier import \n")
+			fmt.Println("importation des compétiteurs contenus dans le fichier \"classement.csv\" dans le dossier import ")
 		} else if *r == "export" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
 			base.exportClassement()
@@ -583,17 +585,17 @@ func Parsage(){
 				base := newBdd("../database/OpenApneeLyon.sqlite3")
 				base.displayEquipe()
 		}else {
-			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer un classement individuel -r=export apres votre derniere commande\n")
-			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=team apres votre derniere commande\n")
-			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande\n")
+			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande")
+			fmt.Println("Vous pouvez generer un classement individuel -r=export apres votre derniere commande")
+			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=team apres votre derniere commande")
+			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande")
 		}
 
 	} else {
-		fmt.Println("Bienvenu dans l'aide ! \n")
-		fmt.Println("Vous pouvez acceder aux options de gestion dun participant en tapant -c=help apres votre derniere commande\n")
-		fmt.Println("Vous pouvez acceder aux options de gestion dune equipe en tapant -e=help apres votre derniere commande\n")
-		fmt.Println("Vous pouvez acceder aux options dinteraction avec la bdd en tapant -bdd=help apres votre derniere commande\n")
-		fmt.Println("Vous pouvez acceder aux options de gestion des resultats en tapant -r=help apres votre derniere commande\n")
+		fmt.Println("Bienvenu dans l'aide ! ")
+		fmt.Println("Vous pouvez acceder aux options de gestion dun participant en tapant -c=help apres votre derniere commande")
+		fmt.Println("Vous pouvez acceder aux options de gestion dune equipe en tapant -e=help apres votre derniere commande")
+		fmt.Println("Vous pouvez acceder aux options dinteraction avec la bdd en tapant -bdd=help apres votre derniere commande")
+		fmt.Println("Vous pouvez acceder aux options de gestion des resultats en tapant -r=help apres votre derniere commande")
 	}
 }

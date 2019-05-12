@@ -12,7 +12,7 @@ import (
 	"time"
 	)
 
-
+// Planning structure
 type Planning struct
 {
 	base *Bdd
@@ -43,7 +43,7 @@ func (p *Planning) getCompetiteur(){
 		for p.base.resultat.Next() {
 			p.base.err = p.base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if p.base.err != nil {
-			fmt.Println("Erreur lors de la récupération des résultats: \n")
+			fmt.Println("Erreur lors de la récupération des résultats: ")
 			log.Fatal(p.base.err)
 			}
 		annonce1,_ = strconv.Atoi(info[7])
@@ -112,7 +112,7 @@ func (p *Planning) getConfigurationEpreuve(){
 }
 
 
-
+// EpGeneration Epreuve generation function
 func (p *Planning) EpGeneration(numEp int){
 	if numEp < len(p.cfgEpreuves){
 		p.planEpreuves = p.planEpreuves[:0]
@@ -140,7 +140,7 @@ func (p *Planning) EpGeneration(numEp int){
 
 
 func (p *Planning) generationHoraires(fichier string){
-	var nbCompPassage int = 0
+	var nbCompPassage int
 	nbCompPassage = 0
 	var numSerie int
 	numSerie = 1
@@ -272,7 +272,7 @@ func (p *Planning) generationPlanning(){
 	file, err := os.Create(fichier)
 	file2, err := os.Create("../var/export/PlanningEpreuve.csv")
 			if err != nil {
-				fmt.Println("Erreur lors de la création du fichier planning:\n")
+				fmt.Println("Erreur lors de la création du fichier planning:")
 				log.Fatal(err)
 			}
 	file.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve,Num Serie,Num Passage,Id Competiteur,Prenom,Nom,Sexe,Equipe,Annonce(s/m),Seuil Min,Seuil Max,Heure de passage\r\n"))

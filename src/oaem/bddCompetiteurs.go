@@ -36,7 +36,7 @@ _ "github.com/mattn/go-sqlite3"
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 
@@ -48,7 +48,7 @@ _ "github.com/mattn/go-sqlite3"
 	/*
 	* 		Bdd.searchCompetiteur:
 	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
+	*	- colNum: 	numéro de la colonne sur laquelle effectuer la recherche (ex: 2 => prénom).
 	*	- value:	valeur à rechercher dans la colonne choisie.
 	*
 	* Description:
@@ -56,16 +56,16 @@ _ "github.com/mattn/go-sqlite3"
 	*		de la base de données
 	*/
 
-	func (base Bdd) searchCompetiteur(col_num int, value string){
+	func (base Bdd) searchCompetiteur(colNum int, value string){
 
-		var id_col string
+		var idCol string
 		var searchValue string
 
 		searchValue = fmt.Sprint("'%",value,"%'")	//Mise en forme de la valeur recherchée
-		id_col, value = col_id2name(col_num, value)	//Transformation (numéro_de_colonne => id_de_la_colonne)
+		idCol, value = idCol2name(colNum, value)	//Transformation (numéro_de_colonne => id_de_la_colonne)
 
 		// REQUÊTE
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", id_col, " LIKE ", searchValue))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM competiteurs WHERE ", idCol, " LIKE ", searchValue))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête")
 			log.Fatal(base.err)
@@ -78,7 +78,7 @@ _ "github.com/mattn/go-sqlite3"
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 
@@ -106,11 +106,11 @@ _ "github.com/mattn/go-sqlite3"
 		//Si les valeurs sont bonnes
 		if (test) {
 			//Ajout du compétiteur
-			_, base.err = base.db.Exec("INSERT INTO competiteurs (prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2) VALUES('" +
+			_, base.err = base.db.Exec("INSERT INTO competiteurs (prenom, nom, sexe, numLicense, equipe, epreuve1, annonce1, epreuve2, annonce2) VALUES('" +
 			comp.prenom + "','" +
 			comp.nom + "','" +
 			comp.sexe + "','" +
-			comp.num_license + "','" +
+			comp.numLicense + "','" +
 			comp.equipe + "','" +
 			comp.epreuve1 + "'," +
 			strconv.Itoa(comp.annonce1) + ",'" +
@@ -121,7 +121,7 @@ _ "github.com/mattn/go-sqlite3"
 		}
 
 		if base.err != nil {
-			fmt.Println("Echec lors de l'ajout: \n", base.err)
+			fmt.Println("Echec lors de l'ajout: ", base.err)
 			} else {
 			fmt.Println("Ajout validé du compétiteur " + comp.nom +" "+ comp.prenom)
 		}
@@ -130,7 +130,7 @@ _ "github.com/mattn/go-sqlite3"
 	/*
 	* 		Bdd.deleteCompetiteur:
 	* Paramètres:
-	*	- col_num: 	numéro de la colonne sur laquelle effectuer la recherche (1 => id/ 2 => équipe).
+	*	- colNum: 	numéro de la colonne sur laquelle effectuer la recherche (1 => id/ 2 => équipe).
 	*	- value:	valeur à rechercher dans la colonne choisie.
 	*
 	* Description:
@@ -138,26 +138,26 @@ _ "github.com/mattn/go-sqlite3"
 	*		en entrée.
 	*/
 
-	func (base Bdd) deleteCompetiteur(col_num int, value string){
-		var id_col string
+	func (base Bdd) deleteCompetiteur(colNum int, value string){
+		var idCol string
 		value = fmt.Sprint("'",value,"'")
 
 		// Numéro de colonne => Id colonne
-		if col_num==1 {
-			id_col = "id"
-		} else if col_num==2{
-			id_col = "equipe"
+		if colNum==1 {
+			idCol = "id"
+		} else if colNum==2{
+			idCol = "equipe"
 		}
 
 		//Si le numéro de colonne est bon
-		if !(col_num < 1 && col_num > 2){
+		if !(colNum < 1 && colNum > 2){
 
 			//SUPRESSION DES COMPETITEURS
-			_, base.err = base.db.Exec("DELETE FROM competiteurs WHERE " + id_col + " = " + value)
+			_, base.err = base.db.Exec("DELETE FROM competiteurs WHERE " + idCol + " = " + value)
 			if base.err != nil {
-				fmt.Println("Echec lors de la suppression: \n", base.err)
+				fmt.Println("Echec lors de la suppression: ", base.err)
 				} else {
-				fmt.Println("Suppression des competiteurs avec " + id_col + " = " + value)
+				fmt.Println("Suppression des competiteurs avec " + idCol + " = " + value)
 			}
 
 		} else {
@@ -181,7 +181,7 @@ _ "github.com/mattn/go-sqlite3"
 		} else {
 			_, base.err = base.db.Exec("DELETE FROM sqlite_sequence WHERE name='competiteurs'")
 			if base.err != nil {
-				fmt.Println("Echec lors de la remise à 0 de la table competiteurs: \n", base.err)
+				fmt.Println("Echec lors de la remise à 0 de la table competiteurs: ", base.err)
 				}
 			}
 		}
@@ -216,13 +216,13 @@ _ "github.com/mattn/go-sqlite3"
 		var info [10]string
 
 		//Ecriture de l'entête (avec \xEF\xBB\xBF pour passer de l'UTF-8 SANS BOM à l'UTF-8)
-		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,Num_License,Equipe,Epreuve1,annonce1,Epreuve2,annonce2\r\n"))
-		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,Num_License,Equipe,Epreuve1,annonce1,Epreuve2,annonce2\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,numLicense,Equipe,Epreuve1,annonce1,Epreuve2,annonce2\r\n"))
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,numLicense,Equipe,Epreuve1,annonce1,Epreuve2,annonce2\r\n"))
 
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 			file.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", info[3],",", info[4],",", info[5],",", info[6],",", info[7],",", info[8],",", info[9],"\r\n"))
@@ -285,30 +285,30 @@ _ "github.com/mattn/go-sqlite3"
 	/*
 	* 		Bdd.modifCompetiteur:
 	* Paramètres:
-	*	- id_comp:	id du compétiteur à modifier
-	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
+	*	- idComp:	id du compétiteur à modifier
+	*	- colNum:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
 	*	- newvalue:	Nouvelle valeur à entrée pour la colonne choisie.
 	*
 	* Description:
 	*		Méthode permettant de modifier une valeur d'un compétiteur de la base de données.
 	*/
 
-	func (base Bdd) modifCompetiteur (id_comp int, col_num int, newvalue string){
+	func (base Bdd) modifCompetiteur (idComp int, colNum int, newvalue string){
 		var test = true
 		// Colonne num => colonne_ID
-		col_id, value := col_id2name(col_num, newvalue)
+		idCol, value := idCol2name(colNum, newvalue)
 
 		// Vérification du format de la nouvelle valeur:
-		test = verifValue(col_num, newvalue)
+		test = verifValue(colNum, newvalue)
 
 		//Si la valeur est bonne:
 		if (test){
-			_, base.err = base.db.Exec("UPDATE competiteurs SET " + col_id + " = " + value + " WHERE id = " + strconv.Itoa(id_comp))
+			_, base.err = base.db.Exec("UPDATE competiteurs SET " + idCol + " = " + value + " WHERE id = " + strconv.Itoa(idComp))
 
 			if base.err != nil {
-				fmt.Println("Echec lors de la modification: \n", base.err)
+				fmt.Println("Echec lors de la modification: ", base.err)
 			} else {
-				fmt.Println("Modification du competiteur " + strconv.Itoa(id_comp) + " avec " + col_id + " = " + value)
+				fmt.Println("Modification du competiteur " + strconv.Itoa(idComp) + " avec " + idCol + " = " + value)
 			}
 		} else {
 			fmt.Println("Erreur lors de la modifications du compétiteur!")
@@ -319,17 +319,17 @@ _ "github.com/mattn/go-sqlite3"
 	/*
 	* 		Bdd.verifValue:
 	* Paramètres:
-	*	- col_num:  Numéro de la colonne pour laquelle on vérifie la valeur.
+	*	- colNum:  Numéro de la colonne pour laquelle on vérifie la valeur.
 	*	- value:	Valeur à vérifier.
 	*
 	* Description:
 	*		Méthode permettant de vérifier le format d'une valeur en fonction
 	*		de la colonne choisie.
 	*/
-	func verifValue(col_num int, value string)(bool){
+	func verifValue(colNum int, value string)(bool){
 		var verif = true
 		verif = true
-		switch col_num{
+		switch colNum{
 		    case 2, 3:
 				match, _ := regexp.MatchString("^[\\p{L}- ]*$", value )
 				if(!match){
@@ -373,9 +373,9 @@ _ "github.com/mattn/go-sqlite3"
 
 
 	/*
-	* 		col_id2name:
+	* 		idCol2name:
 	* Paramètres:
-	*	- col_num:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
+	*	- colNum:  Numéro de la colonne sur laquelle effectuer la modification (ex: 2 => prénom).
 	*	- value:	Nouvelle valeur à entrée pour la colonne choisie.
 	*
 	* Description:
@@ -383,44 +383,44 @@ _ "github.com/mattn/go-sqlite3"
 	*		De plus, la valeur entrée ("value") est retournée au format adéquat pour une requête SQL
 	*		(Ex: "VariableString" => "'VariableString'")
 	*/
-	func col_id2name(col_num int, value string)(string, string){
-		var col_id string
+	func idCol2name(colNum int, value string)(string, string){
+		var idCol string
 
-		switch col_num{
+		switch colNum{
 		    case 1:
-				col_id = "id"
+				idCol = "id"
 				value = fmt.Sprint("'",value,"'")
 			case 2:
-				col_id = "prenom"
+				idCol = "prenom"
 				value = fmt.Sprint("'",value,"'")
 			case 3:
-				col_id = "nom"
+				idCol = "nom"
 				value = fmt.Sprint("'",value,"'")
 			case 4:
-				col_id = "sexe"
+				idCol = "sexe"
 				value = fmt.Sprint("'",value,"'")
 			case 5:
-				col_id = "num_license"
+				idCol = "numLicense"
 				value = fmt.Sprint("'",value,"'")
 			case 6:
-				col_id = "equipe"
+				idCol = "equipe"
 				value = fmt.Sprint("'",value,"'")
 			case 7:
-				col_id = "epreuve1"
+				idCol = "epreuve1"
 				value = fmt.Sprint("'",value,"'")
 			case 8:
-				col_id = "annonce1"
+				idCol = "annonce1"
 				value = fmt.Sprint("'",value,"'")
 			case 9:
-				col_id = "epreuve2"
+				idCol = "epreuve2"
 				value = fmt.Sprint("'",value,"'")
 			case 10:
-				col_id = "annonce2"
+				idCol = "annonce2"
 				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
 			}
-		return col_id, value
+		return idCol, value
 	}
 
 
@@ -443,7 +443,7 @@ _ "github.com/mattn/go-sqlite3"
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
 			if base.err != nil {
-				fmt.Println("Erreur lors de la récupération des résultats: \n")
+				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
 			base.verif(info[0],1)
