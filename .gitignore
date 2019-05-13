@@ -10,6 +10,9 @@ archives
 export/
 export/archives*
 
+var/import/*.zip
+var/import/*2019.csv
+
 # sources modules for vscode IDE
 src/github.com/acroca
 src/github.com/go-delve
