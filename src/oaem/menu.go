@@ -268,7 +268,7 @@ func Parsage(){
 			var prenom string
 			var nom string
 			var sexe string
-			var numLicense string
+			var num_license string
 			equipe := ""
 			var epreuve1 string
 			var annonce1 int
@@ -301,7 +301,7 @@ func Parsage(){
 					if (err != nil) {
 						fmt.Println(err)
 					}
-					numLicense = in[0]
+					num_license = in[0]
 					i++
 				} else if i == 6 {
 					fmt.Println("Quel est l'équipe du competiteur que vous souhaitez ajouter ? ")
@@ -357,7 +357,7 @@ func Parsage(){
 					fmt.Println("Les informations saisies ne sont pas conformes, veuillez recommencer ")
 				}
 			}
-			competiteur := newCompetiteur(id, prenom, nom, sexe, numLicense, equipe, epreuve1, annonce1, epreuve2, annonce2)
+			competiteur := newCompetiteur(id, prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2)
 			base.addCompetiteur(competiteur)
 
 
@@ -431,8 +431,8 @@ func Parsage(){
 				if (err != nil) {
 					fmt.Println(err)
 				}
-				numLicense := in[0]
-				base.modifCompetiteur (idComp, colNum, numLicense)
+				num_license := in[0]
+				base.modifCompetiteur (idComp, colNum, num_license)
 			} else if (colNum == 6) {
 				equipe := checkCaracteres()
 				base.modifCompetiteur (idComp, colNum, equipe)

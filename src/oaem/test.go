@@ -275,7 +275,7 @@ import (
 		}
 
 		fmt.Println("TEST 2: LICENCE ACCENTS")
-		comp.numLicense = "ASD-123-1ÉÉéê"
+		comp.num_license = "ASD-123-1ÉÉéê"
 		test = comp.check()
 		if (!test){
 			fmt.Println("TEST LICENCE 2:	OK")
@@ -286,7 +286,7 @@ import (
 		}
 
 		fmt.Println("TEST 3: LICENCE SYMBOLES")
-		comp.numLicense = "ABC-123-∟>¹1S"
+		comp.num_license = "ABC-123-∟>¹1S"
 		test = comp.check()
 		if (!test){
 			fmt.Println("TEST LICENCE 3:	OK")

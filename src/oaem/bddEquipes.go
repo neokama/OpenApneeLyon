@@ -326,7 +326,7 @@ import (
 					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
 				}
-				var nb_comp string = base.countComp(6,info[0])
+				var nbComp string = base.countComp(6,info[0])
 				nb_sexeH,nb_sexeF=base.countSexeComp(6,info[0])
 				ep1,ep2,ep3,ep4,ep5,nbSTA,nbDWF,nbSPE,nbDNF,nbSFC=base.countEpreuveComp(6,info[0])
 
@@ -346,12 +346,12 @@ import (
 				etat2=false
 				}
 
-				file.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
-				file2.WriteString(info[0] + "|" + nb_comp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
+				file.WriteString(info[0] + "|" + nbComp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
+				file2.WriteString(info[0] + "|" + nbComp + "|" + "Homme : "+ nb_sexeH + "|" + "Femme : "+ nb_sexeF+ "|" + res +"|"+ res2 +"\r\n" )
 
-				if (nb_comp!="5"){
-					file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
-					file2.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nb_comp + " compétiteurs !\r\n")
+				if (nbComp!="5"){
+					file.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nbComp + " compétiteurs !\r\n")
+					file2.WriteString("Erreur nombre de compétiteur dans l'equipe "+ info[0] +" où il y a "+ nbComp + " compétiteurs !\r\n")
 					etat3=false
 				}else{
 					etat3=true
