@@ -1,61 +1,31 @@
 Prenom,Nom,Sexe,n_Licence,Equipe,Epreuve1,temps1,Epreuve2,temps2
-Florence,TABOUREL,F,1,AURApnea,850,1315,spd,60
-Frederique,CORDIER,F,2,AURApnea,dwf,140,dnf,130
-Greg,PLANCHAT,H,3,AURApnea,dwf,55,dnf,50
-Remi,BLASQUEZ,H,4,AURApnea,sta,225,spd,110
-Laurent,CONTI,H,5,AURApnea,sta,255,850,1170
-Loick,STIENNE,H,6,BBIG,dwf,155,spd,45
-Gaia,CANEPA,F,7,BBIG,sta,220,dnf,62
-Maria,XIROUXAKI,F,8,BBIG,850,870,spd,45
-Rodolphe,ISNARD,H,9,BBIG,dwf,125,dnf,110
-Michael,HANSEN,H,10,BBIG,sta,340,850,1200
-Kevin,PROVENZANI,H,11,FORZAPNEA,850,720,spd,45
-Eleonore,HELLE,F,12,FORZAPNEA,sta,180,dnf,100
-Joanna,BOURRIEN,F,13,FORZAPNEA,dwf,75,spd,120
-Guillaume,BOURDILLA,H,14,FORZAPNEA,dwf,175,dnf,145
-Paul,GERARD,H,15,FORZAPNEA,sta,90,850,1020
-Cedrick,CHAUMARD,H,16,Les Bras casses,850,1080,spd,70
-Claudia,BERGER,F,17,Les Bras casses,dwf,75,dnf,50
-Anais,DERRIER,F,18,Les Bras casses,sta,150,850,1200
-Odilon,REIGNEAUD,H,19,Les Bras casses,sta,210,spd,90
-Christian,NEYROUD,H,20,Les Bras casses,dwf,75,dnf,50
-Florie,VIDEBERG,F,21,Les Chocs Eau Suisses,dwf,160,dnf,110
-Pilar,GIL JIMENEZ,F,22,Les Chocs Eau Suisses,dwf,50,dnf,25
-Nicolas,DESVALLEES,H,23,Les Chocs Eau Suisses,sta,260,spd,70
-Florian,PEDROLETTI,H,24,Les Chocs Eau Suisses,850,1140,spd,60
-Philippe,SCHEIDT,H,25,Les Chocs Eau Suisses,sta,210,850,1140
-Martin,ZAJAC,H,26,Apneaman CZE,dwf,200,spd,40
-David,VENCL,H,27,Apneaman CZE,sta,425,850,920
-Michal,SURANSKY,H,28,Apneaman CZE,dwf,160,dnf,100
-Katerina,SURANSKA,F,29,Apneaman CZE,sta,375,dnf,100
-Jindriska,ZAJACOVA,F,30,Apneaman CZE,850,990,spd,50
-Guillaume,BUSSIERE,H,31,Cantal Apnee,dwf,125,dnf,100
-Lucas,GALLO,H,32,Cantal Apnee,sta,240,850,1200
-Regis,VERBIGUIE,H,33,Cantal Apnee,850,1080,spd,90
-Christelle,CHAMPAGNAC,F,34,Cantal Apnee,dwf,50,spd,180
-Pauline,LEROUX,F,35,Cantal Apnee,sta,120,dnf,30
-Quentin,FALVART,H,36,Les ponneys fringants,sta,180,dnf,30
-Leila,FABBI,F,37,Les ponneys fringants,850,1320,spd,120
-Clara,HUGON,F,38,Les ponneys fringants,dwf,60,spd,120
-Jeremy,NOTEUIL,H,39,Les ponneys fringants,dwf,65,dnf,40
-Philippe,FLAUDIAS,H,40,Les ponneys fringants,sta,270,850,1110
-Martine,VERGNOLLE,F,41,Les vieux de la vieille,dwf,80,dnf,55
-Rosa,KONG A SIOU,F,42,Les vieux de la vieille,sta,150,850,1110
-Jacques,FABBI,H,43,Les vieux de la vieille,850,1030,spd,65
-Patrick,BOUZAT,H,44,Les vieux de la vieille,dwf,78,spd,90
-Olivier,FLEURY,H,45,Les vieux de la vieille,sta,240,dnf,40
-Olivier,DURET,H,46,Pussy French,850,1050,spd,80
-Aurelien,LANOISELIER,H,47,Pussy French,sta,375,850,960
-Stephane,PETTENUZZO,H,48,Pussy French,dwf,120,dnf,90
-Anne,Borgat,F,49,Pussy French,dwf,175,dnf,125
-Sabine,DERRIER,F,50,Pussy French,sta,180,spd,150
-Thomas,BOUCHARD,H,51,TOPSTAR,sta,450,dnf,130
-Laurent,BREIDENBACH,H,52,TOPSTAR,850,720,spd,37
-Sandrine,MURBACH,F,53,TOPSTAR,dwf,150,dnf,125
-Olivier,ELU,H,54,TOPSTAR,dwf,200,spd,45
-Magalie,SITERRE,F,55,TOPSTAR,sta,360,850,1050
-adouze,TESTA,H,56,Equipe12,dwf,10,dnf,10
-bdouze,TESTB,H,57,Equipe12,dwf,10,dnf,10
-cdouze,TESTC,H,58,Equipe12,sta,60,spd,120
-ddouze,TESTD,F,59,Equipe12,850,1201,spd,120
-edouze,TESTE,F,60,Equipe12,sta,60,850,1201
+Géraldine,HUBINOIS,F,A-13-602385,Les Razmokets,dwf,100,dnf,75
+Nathalie,CARREAUD,F,A-03-122552,Les Razmokets,sta,240,dnf,75
+Philippe,CHAMBRION,H,A-11-509038,Les Razmokets,sta,360,spd,100
+Jérôme,WOLF,H,A-18-80174,Les Razmokets,spd,50,850,320
+Jonathan,GARANLI,H,A-16-715992,Les Razmokets,dwf,150,850,320
+Adouze,TESTA,H,TEST-14-01,Equipe12,dwf,200,dnf,75
+Bdouze,TESTB,H,TEST-14-02,Equipe12,dwf,150,dnf,120
+Cdouze,TESTC,H,TEST-14-03,Equipe12,sta,300,spd,50
+Ddouze,TESTD,F,TEST-14-04,Equipe12,850,400,spd,60
+Edouze,TESTE,F,TEST-14-05,Equipe12,sta,270,850,460
+Cécile,SPANU,F,A-19-833093,Les Axolotl,dwf,80,dnf,50
+Claire,GOSSART,F,A-19-833875,Les Axolotl,sta,180,spd,110
+Redha,LOUIBA,H,A-14-647024,Les Axolotl,dwf,75,dnf,50
+Fabien,DUBOURG,H,A-18-792525,Les Axolotl,sta,255,850,600
+Olivier,DURET,H,A-11-528857,Les Axolotl,spd,60,850,450
+Quentin,FALVARD,H,A-15-690662,Les krakens,sta,225,dnf,50
+Audrey,DUTOIT,F,A-19-833112,Les krakens,spd,110,850,720
+Julie,LE COZ,F,A-19-835974,Les krakens,sta,210,spd,110
+Benjamin,LUCAS,H,A-18-798013,Les krakens,dwf,75,850,600
+Mourad,CHAKROUM,H,A-04-151286,Les krakens,dwf,80,dnf,80
+Jean-Yves,DANJON,H,A-16-720947,Les Grands Méchants Loups,sta,270,spd,75
+Frederique,CORDIER,F,A-03-000444,Les Grands Méchants Loups,dwf,150,dnf,135
+Florent,DOUZET,H,A-10-460681,Les Grands Méchants Loups,dwf,75,850,600
+Aymeric,GOLLIAUD,H,A-16-719487,Les Grands Méchants Loups,spd,75,850,530
+Varvara,KOZHEVINA,F,A-18-808640,Les Grands Méchants Loups,sta,240,dnf,50
+Alain,BATUT,H,A-15-678299,Bleu Azur,dwf,85,850,385
+Joanna,BOURRIEN,F,A-12-563788,Bleu Azur,dwf,125,dnf,130
+Patricia,MARGUINAUD,F,A-15-687743,Bleu Azur,spd,60,850,675
+Stéphane,AUBERT,H,A-06-306161,Bleu Azur,sta,240,dnf,60
+Cyril,LAYE,H,A-07-365845,Bleu Azur,sta,270,spd,60
