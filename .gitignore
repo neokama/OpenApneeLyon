@@ -1,8 +1,22 @@
 pkg
-export/archives*
+
+# Binaries built from sources
 bin/main*
 bin/oaem*
 bin/go*
 bin/dlv
+
 archives
 export/
+export/archives*
+
+# sources modules for vscode IDE
+src/github.com/acroca
+src/github.com/go-delve
+src/github.com/karrick
+src/github.com/nsf
+src/github.com/ramya-rao-a
+src/github.com/rogpeppe
+src/github.com/sqs
+src/github.com/uudashr
+src/golang.org
