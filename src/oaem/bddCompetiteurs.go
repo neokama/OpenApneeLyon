@@ -12,8 +12,6 @@ _ "github.com/mattn/go-sqlite3"
 "regexp"
 )
 
-
-
 	/*
 	* 		Bdd.displayCompetiteur:
 	* Description:
@@ -106,7 +104,7 @@ _ "github.com/mattn/go-sqlite3"
 		//Si les valeurs sont bonnes
 		if (test) {
 			//Ajout du compétiteur
-			_, base.err = base.db.Exec("INSERT INTO competiteurs (prenom, nom, sexe, numLicense, equipe, epreuve1, annonce1, epreuve2, annonce2) VALUES('" +
+			_, base.err = base.db.Exec("INSERT INTO competiteurs (prenom, nom, sexe, num_license, equipe, epreuve1, annonce1, epreuve2, annonce2) VALUES('" +
 			comp.prenom + "','" +
 			comp.nom + "','" +
 			comp.sexe + "','" +
@@ -400,7 +398,7 @@ _ "github.com/mattn/go-sqlite3"
 				idCol = "sexe"
 				value = fmt.Sprint("'",value,"'")
 			case 5:
-				idCol = "numLicense"
+				idCol = "num_license"
 				value = fmt.Sprint("'",value,"'")
 			case 6:
 				idCol = "equipe"
