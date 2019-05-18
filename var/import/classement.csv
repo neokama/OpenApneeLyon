@@ -1,91 +1,61 @@
 Id,Prénom,Nom,Sexe,Equipe,Epreuve,Resultat,Disqualification,Description
-1,Florence,TABOUREL,F,Zen Team Panda 5,dwf,118.9,false,ras
-3,Laurent,CONTI,H,Zen Team Panda 5,dwf,173,false,ras
-7,Anne,BORGAT,F,Cyrnea,dwf,164.3,false,ras
-8,Estelle,RIGAUD,F,Cyrnea,dwf,110.7,false,ras
-12,Sandrine,MURBACH,F,TOPSTAR DREAM TEAM,dwf,150,false,ras
-13,Olivier,ELU,H,TOPSTAR DREAM TEAM,dwf,200,false,ras
-17,Olivier,CELLARIER,H,STARFISH,dwf,123.8,false,ras
-20,Pauline,LODETTI,F,STARFISH,dwf,100,false,ras
-21,Emilie,VERNIER,F,Annecy-Lyon-Mulhouse apnée connexion,dwf,167.5,false,1 nage surface hors zone virage (-10m)
-22,Olivier,DURET,H,Annecy-Lyon-Mulhouse apnée connexion,dwf,0,true,PCM
-26,Caroline,REGNARD,F,Imashi,dwf,104.9,false,ras
-29,Paul,GERARD,H,Imashi,dwf,117.5,false,ras
-33,David,STROPPIANA,H,APNEEAU,dwf,114.5,false,ras
-34,Delphine,POMPIDOU,F,APNEEAU,dwf,77.1,false,ras
-37,Stéphane,PETTENUZZO,H,Blue Mussels,dwf,0,true,2 fin ok (signe)
-40,Valérie,TERRENOIRE,F,Blue Mussels,dwf,101,false,ras
-44,Katerina,SURANSKA,F,Apneaman - Praha - Czech Republic,dwf,130.5,false,ras
-45,Barbora,IVANSKA,F,Apneaman - Praha - Czech Republic,dwf,155.4,false,ras
-2,Claire,CHARPENTIER,F,Zen Team Panda 5,sta,231.925,false, ras
-4,Aurélien,FAIVRE DUBOZ,H,Zen Team Panda 5,sta,288.615,false,ras
-6,Benoit,ROUX,H,Cyrnea,sta,221.375,false,ras
-10,Richard,JAUFFRAUD,H,Cyrnea,sta,302.85,false,ras
-11,Magalie,SITERRE,F,TOPSTAR DREAM TEAM,sta,370.895,false,ras
-15,Jean-Baptiste,SAVORNIN,H,TOPSTAR DREAM TEAM,sta,400.39,false,ras
-16,Robert,OLTRA,H,STARFISH,sta,268.525,false,ras
-19,Nadia,GRAVIER NOEL,F,STARFISH,sta,242.22,false,ras
-23,Aurélien,LANOISELIER,H,Annecy-Lyon-Mulhouse apnée connexion,sta,407.06,false,ras
-25,Jérémy,MACIA,H,Annecy-Lyon-Mulhouse apnée connexion,sta,365.79,false,ras
-28,François,BUZER,H,Imashi,sta,234.205,false,ras
-30,Omr,SALEH,H,Imashi,sta,386.825,false,ras
-32,Mathieu,PEBEYRE,H,APNEEAU,sta,329.125,false,ras
-35,Sophie,BRUYERE,F,APNEEAU,sta,197.16,false,ras
-38,Damien,OJARDIAS,H,Blue Mussels,sta,271.87,false,ras
-39,Laurent,JAILLET,H,Blue Mussels,sta,168.875,false,ras
-41,Martin,ZAJAC,H,Apneaman - Praha - Czech Republic,sta,392.75,false,ras
-42,David,VENCL,H,Apneaman - Praha - Czech Republic,sta,411.75,false,ras
-4,Aurélien,FAIVRE DUBOZ,H,Zen Team Panda 5,spd,77.6,false,ras
-5,Philippe,FLAUDIAS,H,Zen Team Panda 5,spd,73.575,false,ras
-6,Benoit,ROUX,H,Cyrnea,spd,61.34,false,ras
-9,Jean-David,SOULA,H,Cyrnea,spd,66.78,false,ras
-11,Magalie,SITERRE,F,TOPSTAR DREAM TEAM,spd,52.47,false,ras
-14,Laurent,BREIDENBACH,H,TOPSTAR DREAM TEAM,spd,37.18,false,ras
-16,Robert,OLTRA,H,STARFISH,spd,56.81,false,ras
-18,Bastien,LAURENT ,H,STARFISH,spd,51.78,false,ras
-23,Aurélien,LANOISELIER,H,Annecy-Lyon-Mulhouse apnée connexion,spd,59.64,false,ras
-24,Rachel,LEITNER,F,Annecy-Lyon-Mulhouse apnée connexion,spd,56.57,false,ras
-27,Albane,GAUBERT,F,Imashi,spd,51.71,false,ras
-28,François,BUZER,H,Imashi,spd,58.70,false,ras
-31,Pascal,POMPIDOU,H,APNEEAU,spd,63.25,false,ras
-35,Sophie,BRUYERE,F,APNEEAU,spd,109.98,false,ras
-36,Frédérique,CORDIER,F,Blue Mussels,spd,64.08,false,ras
-38,Damien,OJARDIAS,H,Blue Mussels,spd,75.165,false,ras
-41,Martin,ZAJAC,H,Apneaman - Praha - Czech Republic,spd,41.50,false,ras
-43,Michal,SVADLENKA,H,Apneaman - Praha - Czech Republic,spd,45.14,false,ras
-1,Florence,TABOUREL,F,Zen Team Panda 5,dnf,92.4,false,ras
-2,Claire,CHARPENTIER,F,Zen Team Panda 5,dnf,64,false,ras
-8,Estelle,RIGAUD,F,Cyrnea,dnf,110.13,false,ras
-10,Richard,JAUFFRAUD,H,Cyrnea,dnf,76.8,false,ras
-12,Sandrine,MURBACH,F,TOPSTAR DREAM TEAM,dnf,124.17,false,ras
-15,Jean-Baptiste,SAVORNIN,H,TOPSTAR DREAM TEAM,dnf,95.1,false,ras
-17,Olivier,CELLARIER,H,STARFISH,dnf,100,false,ras
-19,Nadia,GRAVIER NOEL,F,STARFISH,dnf,93.86,false,ras
-22,Olivier,DURET,H,Annecy-Lyon-Mulhouse apnée connexion,dnf,0,true,Absent(DSQ 1er épreuve)
-25,Jérémy,MACIA,H,Annecy-Lyon-Mulhouse apnée connexion,dnf,0,true,Syncope
-29,Paul,GERARD,H,Imashi,dnf,104.33,false,ras
-30,Omr,SALEH,H,Imashi,dnf,0,true,PCM (113.11m)
-33,David,STROPPIANA,H,APNEEAU,dnf,81.9,false,ras
-34,Delphine,POMPIDOU,F,APNEEAU,dnf,50,false,ras
-37,Stéphane,PETTENUZZO,H,Blue Mussels,dnf,87.64,false,ras
-40,Valérie,TERRENOIRE,F,Blue Mussels,dnf,0,true,répétition protocole (80.9m)
-42,David,VENCL,H,Apneaman - Praha - Czech Republic,dnf,110.75,false,ras
-44,Katerina,SURANSKA,F,Apneaman - Praha - Czech Republic,dnf,111.57,false,ras
-3,Laurent,CONTI,H,Zen Team Panda 5,850,1050.69,false,ras
-5,Philippe,FLAUDIAS,H,Zen Team Panda 5,850,0,true,Changement Ligne
-7,Anne,BORGAT,F,Cyrnea,850,1308.96,false,ras
-9,Jean-David,SOULA,H,Cyrnea,850,1247.68,false,ras
-13,Olivier,ELU,H,TOPSTAR DREAM TEAM,850,830.12,false,ras
-14,Laurent,BREIDENBACH,H,TOPSTAR DREAM TEAM,850,748.3,false,ras
-18,Bastien,LAURENT ,H,STARFISH,850,831.52,false,ras
-20,Pauline,LODETTI,F,STARFISH,850,1115.8,false,ras
-21,Emilie,VERNIER,F,Annecy-Lyon-Mulhouse apnée connexion,850,1061.63,false,ras
-24,Rachel,LEITNER,F,Annecy-Lyon-Mulhouse apnée connexion,850,926.97,false,ras
-26,Caroline,REGNARD,F,Imashi,850,1244.94,false,ras
-27,Albane,GAUBERT,F,Imashi,850,967.26,false,ras
-31,Pascal,POMPIDOU,H,APNEEAU,850,1129.88,false,ras
-32,Mathieu,PEBEYRE,H,APNEEAU,850,1046.68,false,ras
-36,Frédérique,CORDIER,F,Blue Mussels,850,1401.31,false,ras
-39,Laurent,JAILLET,H,Blue Mussels,850,1230.0,false,ras
-43,Michal,SVADLENKA,H,Apneaman - Praha - Czech Republic,850,895.75,false,ras
-45,Barbora,IVANSKA,F,Apneaman - Praha - Czech Republic,850,914.91,false,ras
+1,Géraldine,HUBINOIS,F,Les Razmokets,dwf,100,,
+2,Nathalie,CARREAUD,F,Les Razmokets,sta,240,,
+3,Philippe,CHAMBRION,H,Les Razmokets,sta,360,,
+4,Jérôme,WOLF,H,Les Razmokets,spd,50,,
+5,Jonathan,GARANLI,H,Les Razmokets,dwf,150,,
+6,Adouze,TESTA,H,Equipe12,dwf,200,,
+7,Bdouze,TESTB,H,Equipe12,dwf,150,,
+8,Cdouze,TESTC,H,Equipe12,sta,300,,
+9,Ddouze,TESTD,F,Equipe12,850,400,,
+10,Edouze,TESTE,F,Equipe12,sta,270,,
+11,Cécile,SPANU,F,Les Axolotl,dwf,80,,
+12,Claire,GOSSART,F,Les Axolotl,sta,180,,
+13,Redha,LOUIBA,H,Les Axolotl,dwf,75,,
+14,Fabien,DUBOURG,H,Les Axolotl,sta,255,,
+15,Olivier,DURET,H,Les Axolotl,spd,60,,
+16,Quentin,FALVARD,H,Les krakens,sta,225,,
+17,Audrey,DUTOIT,F,Les krakens,spd,110,,
+18,Julie,LE COZ,F,Les krakens,sta,210,,
+19,Benjamin,LUCAS,H,Les krakens,dwf,75,,
+20,Mourad,CHAKROUM,H,Les krakens,dwf,80,,
+21,Jean-Yves,DANJON,H,Les Grands Méchants Loups,sta,270,,
+22,Frederique,CORDIER,F,Les Grands Méchants Loups,dwf,150,,
+23,Florent,DOUZET,H,Les Grands Méchants Loups,dwf,75,,
+24,Aymeric,GOLLIAUD,H,Les Grands Méchants Loups,spd,75,,
+25,Varvara,KOZHEVINA,F,Les Grands Méchants Loups,sta,240,,
+26,Alain,BATUT,H,Bleu Azur,dwf,85,,
+27,Joanna,BOURRIEN,F,Bleu Azur,dwf,125,,
+28,Patricia,MARGUINAUD,F,Bleu Azur,spd,60,,
+29,Stéphane,AUBERT,H,Bleu Azur,sta,240,,
+30,Cyril,LAYE,H,Bleu Azur,sta,270,,
+1,Géraldine,HUBINOIS,F,Les Razmokets,dnf,75,,
+2,Nathalie,CARREAUD,F,Les Razmokets,dnf,75,,
+3,Philippe,CHAMBRION,H,Les Razmokets,spd,100,,
+4,Jérôme,WOLF,H,Les Razmokets,850,320,,
+5,Jonathan,GARANLI,H,Les Razmokets,850,320,,
+6,Adouze,TESTA,H,Equipe12,dnf,75,,
+7,Bdouze,TESTB,H,Equipe12,dnf,120,,
+8,Cdouze,TESTC,H,Equipe12,spd,50,,
+9,Ddouze,TESTD,F,Equipe12,spd,60,,
+10,Edouze,TESTE,F,Equipe12,850,460,,
+11,Cécile,SPANU,F,Les Axolotl,dnf,50,,
+12,Claire,GOSSART,F,Les Axolotl,spd,110,,
+13,Redha,LOUIBA,H,Les Axolotl,dnf,50,,
+14,Fabien,DUBOURG,H,Les Axolotl,850,600,,
+15,Olivier,DURET,H,Les Axolotl,850,450,,
+16,Quentin,FALVARD,H,Les krakens,dnf,50,,
+17,Audrey,DUTOIT,F,Les krakens,850,720,,
+18,Julie,LE COZ,F,Les krakens,spd,110,,
+19,Benjamin,LUCAS,H,Les krakens,850,600,,
+20,Mourad,CHAKROUM,H,Les krakens,dnf,80,,
+21,Jean-Yves,DANJON,H,Les Grands Méchants Loups,spd,75,,
+22,Frederique,CORDIER,F,Les Grands Méchants Loups,dnf,135,,
+23,Florent,DOUZET,H,Les Grands Méchants Loups,850,600,,
+24,Aymeric,GOLLIAUD,H,Les Grands Méchants Loups,850,530,,
+25,Varvara,KOZHEVINA,F,Les Grands Méchants Loups,dnf,50,,
+26,Alain,BATUT,H,Bleu Azur,850,385,,
+27,Joanna,BOURRIEN,F,Bleu Azur,dnf,130,,
+28,Patricia,MARGUINAUD,F,Bleu Azur,850,675,,
+29,Stéphane,AUBERT,H,Bleu Azur,dnf,60,,
+30,Cyril,LAYE,H,Bleu Azur,spd,60,,
