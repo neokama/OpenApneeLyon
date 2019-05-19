@@ -108,7 +108,7 @@ _ "github.com/mattn/go-sqlite3"
 			comp.prenom + "','" +
 			comp.nom + "','" +
 			comp.sexe + "','" +
-			comp.num_license + "','" +
+			comp.numLicense + "','" +
 			comp.equipe + "','" +
 			comp.epreuve1 + "'," +
 			strconv.Itoa(comp.annonce1) + ",'" +

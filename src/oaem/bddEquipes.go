@@ -17,6 +17,7 @@ import (
 	*	- equipe : nom de l'équipe
 	*	- etat : validiter de l'equipe
 	**/
+
 	// EtatEquipe struct
 	type EtatEquipe struct
 	{
@@ -105,17 +106,30 @@ import (
 		defer base.resultat.Close()
 
 		var info [10]string
-		var n int = 0
-		var comp1 bool = true
-		var comp2 bool = true
-		var comp3 bool = true
-		var comp4 bool = true
-		var comp5 bool = true
-		var nbSTA int =0
-		var nbDWF int =0
-		var nbSPE int =0
-		var nbDNF int =0
-		var nbSFC int =0
+		var n int
+		var comp1 bool
+		var comp2 bool
+		var comp3 bool
+		var comp4 bool
+		var comp5 bool
+		var nbSTA int
+		var nbDWF int
+		var nbSPE int
+		var nbDNF int
+		var nbSFC int
+
+		n = 0
+		comp1 = true
+		comp2 = true
+		comp3 = true
+		comp4 = true
+		comp5 = true
+		nbSTA =0
+		nbDWF =0
+		nbSPE =0
+		nbDNF =0
+		nbSFC =0
+
 		for base.resultat.Next() {
 			n=n+1
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
@@ -215,13 +229,17 @@ import (
 	func (base Bdd) countSexeComp(colNum int, value string)(string,string){
 	var idCol string
 	var idCol2 string
-	var colNum2 int = 4
-	var valueH string = "H"
-	var valueF string = "F"
-		idCol, value = idCol2name(colNum, value)
-		idCol2, valueH = idCol2name(colNum2, valueH)
-		idCol2, valueF = idCol2name(colNum2, valueF)
+	var colNum2 int
+	var valueH string
+	var valueF string
 
+	colNum2 = 4
+	valueH = "H"
+	valueF = "F"
+
+	idCol, value = idCol2name(colNum, value)
+	idCol2, valueH = idCol2name(colNum2, valueH)
+	idCol2, valueF = idCol2name(colNum2, valueF)
 
 		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT COUNT(*) FROM competiteurs WHERE ", idCol, " = ", value," AND ", idCol2, " = ", valueH))
 		if base.err != nil {
@@ -288,7 +306,8 @@ import (
 		defer base.resultat.Close()
 
 		var info [1]string
-		var nbSolo int =0
+		var nbSolo int
+		nbSolo =0
 
 		var tabEquipe []*EtatEquipe
 		//On "clear" l'ancien tableau:
@@ -321,7 +340,9 @@ import (
 				var res2 string
 				var nb_sexeH string ="0"
 				var nb_sexeF string ="0"
+
 				base.err = base.resultat.Scan(&info[0])
+				
 				if base.err != nil {
 					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
@@ -404,8 +425,12 @@ import (
 	*		Méthode permettant d'effectuer des vérifications sur la validité des champs de la bdd
 	*/
 	func (base Bdd) verif(val string, num int ){
+
 		var idCol string
-		var value string = val
+		var value string
+
+		value = val
+
 		if num == 1{
 		idCol, value = idCol2name(1, value)
 		}else{idCol, value = idCol2name(5, value)}

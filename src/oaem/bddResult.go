@@ -399,21 +399,27 @@ package main
 		}
 		defer base.resultat.Close()
 	var info [13]string
-	var numPlaceF int =1
-	var numPlaceH int =1
-	var nbF int =0
-	var nbH int =0
-	var sexe string ="F"
+	var numPlaceF int
+	var numPlaceH int
+	var nbF int
+	var nbH int
+	var sexe string
 	var tabPlace []*Classement
 	var nextResult *Classement
 	var lastResult float64=-1
 	var tabDisqH []*Classement
 	var tabDisqF []*Classement
 	var tabHomme []*Classement
-	var egalF int =0
-	var egalH int =0
+	var egalF int
+	var egalH int
 
-
+	numPlaceF = 1
+	numPlaceH = 1
+	nbF = 0
+	nbH = 0
+	sexe = "F"
+	egalF = 0
+	egalH = 0
 
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
@@ -565,13 +571,18 @@ package main
 		}
 		}
 	var info [13]string
-	var numPlaceF int =1
-	var numPlaceH int =1
-	var sexe string ="F"
+	var numPlaceF int
+	var numPlaceH int
+	var sexe string
 	var tabClassement []*Classement
 	var nextResult *Classement
 	var tabH []*Classement
 	var tabF []*Classement
+
+	numPlaceF = 1
+	numPlaceH = 1
+	sexe = "F"
+
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
 			if base.err != nil {
@@ -666,8 +677,10 @@ package main
 		var tot float64
 		var tot2 float64
 		var tab[] *ConfigurationEpreuve
-		var annoncef float64 = float64(annonce)
+		var annoncef float64
 		var eventMaxTimeCounted = float64(600)
+
+		annoncef = float64(annonce)
 
 		result,_ = strconv.ParseFloat(resultat, 64)
 		tab=getConfigurationEpreuve1()

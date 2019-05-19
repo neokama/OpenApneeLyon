@@ -5,6 +5,7 @@ package main
 	"fmt"
 	)
 	
+	// Classement struct 
 	type Classement struct 
 	{
 	id int
