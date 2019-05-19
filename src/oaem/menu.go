@@ -588,7 +588,7 @@ func Parsage(){
 			fmt.Println("Vous pouvez importer les résultats des épreuves en tapant -r=import apres votre derniere commande")
 			fmt.Println("Vous pouvez generer un classement individuel -r=export apres votre derniere commande")
 			fmt.Println("Vous pouvez generer le classement final par équipe en tapant -r=team apres votre derniere commande")
-			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=resetclass apres votre derniere commande")
+			fmt.Println("Vous pouvez reinitialiser les classements en tapant -r=reset apres votre derniere commande")
 		}
 
 	} else {
