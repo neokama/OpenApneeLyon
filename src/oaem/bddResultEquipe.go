@@ -30,7 +30,7 @@ package main
 		t := time.Now()
 			date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
 
-		file, err := os.Create(fmt.Sprint("../var/export/archives/",date,"-Equipe.csv"))
+		file, err := os.Create(fmt.Sprint("../var/export/archives/",date,"/Classement-Equipe.csv"))
 			if err != nil {
 				fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 				log.Fatal(err)
