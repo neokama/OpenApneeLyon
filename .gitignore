@@ -1,7 +1,7 @@
 # temp files
 .~lock.*
 
-
+# automatically installed packages
 pkg
 
 # Binaries built from sources
