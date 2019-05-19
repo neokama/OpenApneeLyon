@@ -212,7 +212,7 @@ func (p *Planning) generationHoraires(fichier string){
 func (p *Planning) exportPlanCompetition(){
 	t := time.Now()
 	date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
-		file, err := os.Create(fmt.Sprint("../var/export/archives-",date,"-PlanningCompetition.csv"))
+		file, err := os.Create(fmt.Sprint("../var/export/archives/",date,"-PlanningCompetition.csv"))
 		file2, err := os.Create(fmt.Sprint("../var/export/PlanningCompetition.csv"))
 		if err != nil {
 			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
@@ -267,7 +267,7 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 func (p *Planning) generationPlanning(){
 	t := time.Now()
 	date := fmt.Sprint(t.Year(),"_",int(t.Month()),"_", t.Day(),"_",t.Hour(),"_", t.Minute(),"_", t.Second())
-	fichier := fmt.Sprint("../var/export/archives-",date,"-PlanningEpreuve.csv")
+	fichier := fmt.Sprint("../var/export/archives/",date,"-PlanningEpreuve.csv")
 
 	file, err := os.Create(fichier)
 	file2, err := os.Create("../var/export/PlanningEpreuve.csv")
