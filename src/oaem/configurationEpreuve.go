@@ -10,7 +10,8 @@ import (
 	func (triEp triEpreuves) Len() int           { return len(triEp) }
 	func (triEp triEpreuves) Swap(i, j int)      { triEp[i], triEp[j] = triEp[j], triEp[i] }
 	func (triEp triEpreuves) Less(i, j int) bool { return triEp[i].ordre < triEp[j].ordre }
-	
+
+	// ConfigurationEpreuve structure
 	type ConfigurationEpreuve struct
 	{
 		ordre int

@@ -16,6 +16,8 @@ package main
 	*	- point : nombre de point de l'équipe
 	*	- place : position de l'équipe
 	**/
+
+	// ClassementEquipe
 	type ClassementEquipe struct 
 	{
 	id int
