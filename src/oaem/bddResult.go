@@ -703,7 +703,7 @@ package main
 					if(result>float64(max)){
 						switch(epreuve){
 						case "spd":
-							tot =result + (result-(annoncef)+20)*3
+							tot =result + (result-(annoncef+20))*3
 						break
 						case "850":
 							if(sexe == "F"){
@@ -712,7 +712,7 @@ package main
 							if(result > eventMaxTimeCounted){
 								tot = eventMaxTimeCounted
 							} else {
-								tot = result + (result-(annoncef)+40)*3
+								tot = result + (result-(annoncef+40))*3
 							}
 						break
 						case "dnf":
