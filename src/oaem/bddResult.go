@@ -170,9 +170,9 @@ package main
 	*/
 
 	func (base Bdd) importResultat(){
-		file, err := os.Open("../var/import/classement.csv")
+		file, err := os.Open("../var/import/resultats.csv")
 		if err != nil {
-			println("Impossible d'ouvrir le fichier \"classement.csv\" dans le dossier import")
+			println("Impossible d'ouvrir le fichier \"resultats.csv\" dans le dossier import")
 			log.Fatal(err)
 		}
 		defer file.Close()

@@ -569,7 +569,7 @@ func Parsage(){
 		if *r == "import" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
 			base.importResultat()
-			fmt.Println("importation des compétiteurs contenus dans le fichier \"classement.csv\" dans le dossier import ")
+			fmt.Println("importation des résultats contenus dans le fichier \"resultats.csv\" dans le dossier import ")
 		} else if *r == "export" {
 			base := newBdd("../database/OpenApneeLyon.sqlite3")
 			base.exportClassement()
