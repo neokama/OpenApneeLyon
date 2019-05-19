@@ -9,6 +9,7 @@ bin/main*
 bin/oaem*
 bin/go*
 bin/dlv
+bin/main.exe
 
 archives
 export/
