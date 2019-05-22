@@ -324,22 +324,36 @@ import (
 				var ep3 bool
 				var ep4 bool
 				var ep5 bool
-				var etat1 bool =false
-				var etat2 bool =false
-				var etat3 bool =false
-				var etat4 bool =false
-				var etat5 bool =false
-				var etat bool =false
+				var etat1 bool
+				var etat2 bool
+				var etat3 bool
+				var etat4 bool
+				var etat5 bool
+				var etat bool
 				EquipeEnCours := newEtatEquipe("vide",false)
-				var nbSTA int =0
-				var nbDWF int =0
-				var nbSPE int =0
-				var nbDNF int =0
-				var nbSFC int =0
+				var nbSTA int
+				var nbDWF int
+				var nbSPE int
+				var nbDNF int
+				var nbSFC int
 				var res string
 				var res2 string
-				var nb_sexeH string ="0"
-				var nb_sexeF string ="0"
+				var nb_sexeH string
+				var nb_sexeF string
+
+				etat1 = false
+				etat2 = false
+				etat3 = false
+				etat4 = false
+				etat5 = false
+				etat = false
+				nbSTA = 0
+				nbDWF = 0
+				nbSPE = 0
+				nbDNF = 0
+				nbSFC = 0
+				nb_sexeH = "0"
+				nb_sexeF = "0"
 
 				base.err = base.resultat.Scan(&info[0])
 				
