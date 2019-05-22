@@ -1,0 +1,14 @@
+FICHIER VERIFICATION : il permet de visulaliser les erreurs liées à la composition des équipes !
+
+Les Razmokets|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Axolotl|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les krakens|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Grands Méchants Loups|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Bleu Azur|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Dream Team TopSTAR|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Sky Blue|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les Tortues Ninja DoBuLes Dilly|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les é-Puy-sés|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Phycodurus Eques|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Les RA du LAC|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects
+Notre jour viendra|5|Homme : 3|Femme : 2|Temps repos : OK|Nombres épreuves corrects

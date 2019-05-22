@@ -12,7 +12,6 @@ bin/dlv
 bin/main.exe
 
 archives
-export/
 export/archives*
 
 var/import/*.zip
