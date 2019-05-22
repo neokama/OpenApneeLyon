@@ -214,8 +214,8 @@ _ "github.com/mattn/go-sqlite3"
 		var info [10]string
 
 		//Ecriture de l'entête (avec \xEF\xBB\xBF pour passer de l'UTF-8 SANS BOM à l'UTF-8)
-		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,num_license,Equipe,Epreuve1,annonce1,Epreuve2,annonce2\r\n"))
-		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,num_license,Equipe,Epreuve1,annonce1,Epreuve2,annonce2\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;num_license;Equipe;Epreuve1;annonce1;Epreuve2;annonce2\r\n"))
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;num_license;Equipe;Epreuve1;annonce1;Epreuve2;annonce2\r\n"))
 
 		for base.resultat.Next() {
 			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])

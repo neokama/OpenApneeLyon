@@ -219,8 +219,8 @@ func (p *Planning) exportPlanCompetition(){
 			log.Fatal(err)
 		}
 
-	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId Epreuve,HeureOuverture(1ereEpreuve),Echauffement,Annonce,Temps/Series,nbSeries,Battement Epreuve\r\n"))
-	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId Epreuve,HeureOuverture(1ereEpreuve),Echauffement,Annonce,Temps/Series,nbSeries,Battement Epreuve\r\n"))
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFId Epreuve;HeureOuverture(1ereEpreuve);Echauffement;Annonce;Temps/Series;nbSeries;Battement Epreuve\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId Epreuve;HeureOuverture(1ereEpreuve);Echauffement;Annonce;Temps/Series;nbSeries;Battement Epreuve\r\n"))
 	for i := 0; i < len(p.cfgEpreuves); i++ {
 		var nbSeries int
 
@@ -275,8 +275,8 @@ func (p *Planning) generationPlanning(){
 				fmt.Println("Erreur lors de la création du fichier planning:")
 				log.Fatal(err)
 			}
-	file.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve,Num Serie,Num Passage,Id Competiteur,Prenom,Nom,Sexe,Equipe,Annonce(s/m),Seuil Min,Seuil Max,Heure de passage\r\n"))
-	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve,Num Serie,Num Passage,Id Competiteur,Prenom,Nom,Sexe,Equipe,Annonce(s/m),Seuil Min,Seuil Max,Heure de passage\r\n"))
+	file.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve;Num Serie;Num Passage;Id Competiteur;Prenom;Nom;Sexe;Equipe;Annonce(s/m);Seuil Min;Seuil Max;Heure de passage\r\n"))
+	file2.WriteString(fmt.Sprint("\xEF\xBB\xBFEpreuve;Num Serie;Num Passage;Id Competiteur;Prenom;Nom;Sexe;Equipe;Annonce(s/m);Seuil Min;Seuil Max;Heure de passage\r\n"))
 		p.getCompetiteur()
 		p.getConfigurationEpreuve()
 

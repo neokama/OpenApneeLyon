@@ -49,8 +49,8 @@ package main
 		defer base.resultat.Close()
 
 		//Ecriture dans les fichiers de la première ligne d'en-tête
-		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Equipe,Point,Place,Etat\r\n"))
-		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Equipe,Point,Place,Etat\r\n"))
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Equipe;Point;Place;Etat\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Equipe;Point;Place;Etat\r\n"))
 
 		// Parcours du resultat de la requête
 		for base.resultat.Next() {

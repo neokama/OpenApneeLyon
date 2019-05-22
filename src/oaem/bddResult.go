@@ -347,8 +347,8 @@ package main
 			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 			log.Fatal(err)
 		}
-		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,Equipe,Epreuve,Annonce,Resultat,Place,Resultat pris en compte equipe,Place Equipe,Disqualification,Description\r\n"))
-		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId,Prenom,Nom,Sexe,Equipe,Epreuve,Annonce,Resultat,Place,Resultat pris en compte equipe,Place Equipe,Disqualification,Description\r\n"))
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat;Place;Resultat pris en compte equipe;Place Equipe;Disqualification;Description\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat;Place;Resultat pris en compte equipe;Place Equipe;Disqualification;Description\r\n"))
 
 		var value string
 		var epreuve string
