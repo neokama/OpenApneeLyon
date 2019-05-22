@@ -39,7 +39,7 @@ _ "github.com/mattn/go-sqlite3"
 			}
 
 		//AFFICHAGE
-		fmt.Println(info[0] + "," + info[1]+ "," + info[2]+ "," + info[3] + "," + info[4]+ "," + info[5]+ "," + info[6]+ "," + info[7]+ "," + info[8]+ "," + info[9])
+		fmt.Println(info[0] + ";" + info[1]+ ";" + info[2]+ ";" + info[3] + ";" + info[4]+ ";" + info[5]+ ";" + info[6]+ ";" + info[7]+ ";" + info[8]+ ";" + info[9])
 		}
 	}
 
@@ -81,7 +81,7 @@ _ "github.com/mattn/go-sqlite3"
 			}
 
 		//AFFICHAGE
-		fmt.Println(info[0] + "," + info[1]+ "," + info[2]+ "," + info[3] + "," + info[4]+ "," + info[5]+ "," + info[6]+ "," + info[7]+ "," + info[8]+ "," + info[9])
+		fmt.Println(info[0] + ";" + info[1]+ ";" + info[2]+ ";" + info[3] + ";" + info[4]+ ";" + info[5]+ ";" + info[6]+ ";" + info[7]+ ";" + info[8]+ ";" + info[9])
 		}
 	}
 
@@ -223,8 +223,8 @@ _ "github.com/mattn/go-sqlite3"
 				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
-			file.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", info[3],",", info[4],",", info[5],",", info[6],",", info[7],",", info[8],",", info[9],"\r\n"))
-			file2.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", info[3],",", info[4],",", info[5],",", info[6],",", info[7],",", info[8],",", info[9],"\r\n"))
+			file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
+			file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],"\r\n"))
 		}
 	}
 
@@ -254,7 +254,7 @@ _ "github.com/mattn/go-sqlite3"
 		//SCAN DU FICHIER
 		scanner := bufio.NewScanner(file)
 		for scanner.Scan() {
-			info := strings.Split(scanner.Text(), ",")
+			info := strings.Split(scanner.Text(), ";")
 			if !firstCall{	//FIRSTCALL => PREMIERE LIGNE => EN-TÊTE!
 				temps1,errr := strconv.Atoi(info[6])
 				temps2,er := strconv.Atoi(info[8])

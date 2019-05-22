@@ -186,7 +186,7 @@ package main
 		scanner := bufio.NewScanner(file)
 
 		for scanner.Scan() {
-			info := strings.Split(scanner.Text(), ",")
+			info := strings.Split(scanner.Text(), ";")
 
 			if !firstCall{
 				temps,er := strconv.ParseFloat(info[6],64)
@@ -467,8 +467,8 @@ package main
 					tabPlace=append(tabPlace,nextResult)
 
 					if info[3]=="F" {
-						file.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", info[3],",", info[4],",", info[5],",", info[6],",", info[7],",", info[8],",", info[9],",", info[10],",", info[11],",", info[12],"\r\n"))
-						file2.WriteString(fmt.Sprint(info[0],",",info[1],",", info[2],",", info[3],",", info[4],",", info[5],",", info[6],",", info[7],",", info[8],",", info[9],",", info[10],",", info[11],",", info[12],"\r\n"))
+						file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
+						file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
 					}else{
 						tabHomme=append(tabHomme,nextResult)
 					}
@@ -499,8 +499,8 @@ package main
 		for i := 0; i < len(tabDisqF); i++{
 		var place string
 				place=strconv.Itoa(numPlaceF+nbF-1)
-				file.WriteString(fmt.Sprint(tabDisqF[i].id,",",tabDisqF[i].prenom,",", tabDisqF[i].nom,",", tabDisqF[i].sexe,",", tabDisqF[i].equipe,",", tabDisqF[i].epreuve,",", tabDisqF[i].annonce,",", tabDisqF[i].resultat,",", place,",", tabDisqF[i].rslt,",", tabDisqF[i].plc,",", tabDisqF[i].disq,",", tabDisqF[i].description,"\r\n"))
-				file2.WriteString(fmt.Sprint(tabDisqF[i].id,",",tabDisqF[i].prenom,",", tabDisqF[i].nom,",", tabDisqF[i].sexe,",", tabDisqF[i].equipe,",", tabDisqF[i].epreuve,",", tabDisqF[i].annonce,",", tabDisqF[i].resultat,",", place,",", tabDisqF[i].rslt,",", tabDisqF[i].plc,",", tabDisqF[i].disq,",", tabDisqF[i].description,"\r\n"))
+				file.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
 
 				pla,_:=strconv.Atoi(place)
 				nextResult = newClassement(tabDisqF[i].id,tabDisqF[i].prenom,tabDisqF[i].nom,tabDisqF[i].sexe,tabDisqF[i].equipe,tabDisqF[i].epreuve,tabDisqF[i].annonce, tabDisqF[i].resultat,pla,tabDisqF[i].rslt,tabDisqF[i].plc, tabDisqF[i].disq, tabDisqF[i].description)
@@ -508,8 +508,8 @@ package main
 		}
 		for i := 0; i < len(tabHomme); i++{
 
-				file.WriteString(fmt.Sprint(tabHomme[i].id,",",tabHomme[i].prenom,",", tabHomme[i].nom,",", tabHomme[i].sexe,",", tabHomme[i].equipe,",", tabHomme[i].epreuve,",", tabHomme[i].annonce,",", tabHomme[i].resultat,",", tabHomme[i].place,",", tabHomme[i].rslt,",", tabHomme[i].plc,",", tabHomme[i].disq,",", tabHomme[i].description,"\r\n"))
-				file2.WriteString(fmt.Sprint(tabHomme[i].id,",",tabHomme[i].prenom,",", tabHomme[i].nom,",", tabHomme[i].sexe,",", tabHomme[i].equipe,",", tabHomme[i].epreuve,",", tabHomme[i].annonce,",", tabHomme[i].resultat,",", tabHomme[i].place,",", tabHomme[i].rslt,",", tabHomme[i].plc,",", tabHomme[i].disq,",", tabHomme[i].description,"\r\n"))
+				file.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rslt,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rslt,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
 				nextResult = newClassement(tabHomme[i].id,tabHomme[i].prenom,tabHomme[i].nom,tabHomme[i].sexe,tabHomme[i].equipe,tabHomme[i].epreuve,tabHomme[i].annonce, tabHomme[i].resultat,tabHomme[i].place,tabHomme[i].rslt,tabHomme[i].plc, tabHomme[i].disq, tabHomme[i].description)
 				tabPlace=append(tabPlace,nextResult)
 		}
@@ -518,8 +518,8 @@ package main
 		var place string
 				place=strconv.Itoa(numPlaceH+nbH-1)
 
-				file.WriteString(fmt.Sprint(tabDisqH[i].id,",",tabDisqH[i].prenom,",", tabDisqH[i].nom,",", tabDisqH[i].sexe,",", tabDisqH[i].equipe,",", tabDisqH[i].epreuve,",", tabDisqH[i].annonce,",", tabDisqH[i].resultat,",", place,",", tabDisqH[i].rslt,",", tabDisqH[i].plc,",", tabDisqH[i].disq,",", tabDisqH[i].description,"\r\n"))
-				file2.WriteString(fmt.Sprint(tabDisqH[i].id,",",tabDisqH[i].prenom,",", tabDisqH[i].nom,",", tabDisqH[i].sexe,",", tabDisqH[i].equipe,",", tabDisqH[i].epreuve,",", tabDisqH[i].annonce,",", tabDisqH[i].resultat,",", place,",", tabDisqH[i].rslt,",", tabDisqH[i].plc,",", tabDisqH[i].disq,",", tabDisqH[i].description,"\r\n"))
+				file.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
 
 				pla,_:=strconv.Atoi(place)
 				nextResult = newClassement(tabDisqH[i].id,tabDisqH[i].prenom,tabDisqH[i].nom,tabDisqH[i].sexe,tabDisqH[i].equipe,tabDisqH[i].epreuve,tabDisqH[i].annonce, tabDisqH[i].resultat,pla,tabDisqH[i].rslt,tabDisqH[i].plc, tabDisqH[i].disq, tabDisqH[i].description)
@@ -777,7 +777,7 @@ package main
 	tabConfig=tabConfig[:0]
 
 	for scanner.Scan() {
-		info := strings.Split(scanner.Text(), ",")
+		info := strings.Split(scanner.Text(), ";")
 		if !firstCall{
 		ordre, _ := strconv.Atoi(info[0])
 		seuilMin, _ := strconv.Atoi(info[2])

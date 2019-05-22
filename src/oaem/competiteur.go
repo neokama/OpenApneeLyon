@@ -22,15 +22,15 @@ import (
 	}
 	
 	func (pers Competiteur) display(){
-		fmt.Println(strconv.Itoa(pers.id) + "," +
-		pers.prenom + "," +
-		pers.nom + "," +
-		pers.sexe + "," +
-		pers.numLicense + "," +
-		pers.equipe + "," +
-		pers.epreuve1 + "," +
-		strconv.Itoa(pers.annonce1) + "," +
-		pers.epreuve2 + "," +
+		fmt.Println(strconv.Itoa(pers.id) + ";" +
+		pers.prenom + ";" +
+		pers.nom + ";" +
+		pers.sexe + ";" +
+		pers.numLicense + ";" +
+		pers.equipe + ";" +
+		pers.epreuve1 + ";" +
+		strconv.Itoa(pers.annonce1) + ";" +
+		pers.epreuve2 + ";" +
 		strconv.Itoa(pers.annonce2))
 	}
 	

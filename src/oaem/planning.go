@@ -75,7 +75,7 @@ func (p *Planning) getConfigurationEpreuve(){
 	p.cfgEpreuves = p.cfgEpreuves[:0]
 
 	for scanner.Scan() {
-		info := strings.Split(scanner.Text(), ",")
+		info := strings.Split(scanner.Text(), ";")
 		if !firstCall{
 		ordre, _ := strconv.Atoi(info[0])
 		seuilMin, _ := strconv.Atoi(info[2])
@@ -235,8 +235,8 @@ func (p *Planning) exportPlanCompetition(){
 			nbSeries = nbSeries + 1
 		}
 		battementEp := p.cfgEpreuves[i].battementEpreuve
-		file.WriteString(fmt.Sprint( idEpreuve,",",heureOuverture,",",echauffement,",",appel,",",tempsSerie,",",nbSeries,",",battementEp,"\r\n"))
-		file2.WriteString(fmt.Sprint( idEpreuve,",",heureOuverture,",",echauffement,",",appel,",",tempsSerie,",",nbSeries,",",battementEp,"\r\n"))
+		file.WriteString(fmt.Sprint( idEpreuve,";",heureOuverture,";",echauffement,";",appel,";",tempsSerie,";",nbSeries,";",battementEp,"\r\n"))
+		file2.WriteString(fmt.Sprint( idEpreuve,";",heureOuverture,";",echauffement,";",appel,";",tempsSerie,";",nbSeries,";",battementEp,"\r\n"))
 	}
 }
 
@@ -252,13 +252,13 @@ func (p *Planning) exportPlanEpreuve(fichier string){
 			}
 
 			for j := 0; j < len(p.planEpreuves); j++ {
-						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,",",p.planEpreuves[j].numSerie,",",p.planEpreuves[j].numPassage,",",p.planEpreuves[j].idComp,",",
-						p.planEpreuves[j].prenom,",",p.planEpreuves[j].nom,",",p.planEpreuves[j].sexe,",",p.planEpreuves[j].equipe,",",
-						strconv.Itoa(p.planEpreuves[j].annonce),",",strconv.Itoa(p.planEpreuves[j].seuilMin),",",strconv.Itoa(p.planEpreuves[j].seuilMax),",",p.planEpreuves[j].heurePassage,"\r\n"))
+						file.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].idComp,";",
+						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
+						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].heurePassage,"\r\n"))
 
-						file2.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,",",p.planEpreuves[j].numSerie,",",p.planEpreuves[j].numPassage,",",p.planEpreuves[j].idComp,",",
-						p.planEpreuves[j].prenom,",",p.planEpreuves[j].nom,",",p.planEpreuves[j].sexe,",",p.planEpreuves[j].equipe,",",
-						strconv.Itoa(p.planEpreuves[j].annonce),",",strconv.Itoa(p.planEpreuves[j].seuilMin),",",strconv.Itoa(p.planEpreuves[j].seuilMax),",",p.planEpreuves[j].heurePassage,"\r\n"))
+						file2.WriteString(fmt.Sprint(p.planEpreuves[j].idEpreuve,";",p.planEpreuves[j].numSerie,";",p.planEpreuves[j].numPassage,";",p.planEpreuves[j].idComp,";",
+						p.planEpreuves[j].prenom,";",p.planEpreuves[j].nom,";",p.planEpreuves[j].sexe,";",p.planEpreuves[j].equipe,";",
+						strconv.Itoa(p.planEpreuves[j].annonce),";",strconv.Itoa(p.planEpreuves[j].seuilMin),";",strconv.Itoa(p.planEpreuves[j].seuilMax),";",p.planEpreuves[j].heurePassage,"\r\n"))
 			}
 
 }

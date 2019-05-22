@@ -34,10 +34,10 @@ package main
 	
 	*/
 	func (boardE ClassementEquipe) displayEquipe1(){
-		fmt.Println(strconv.Itoa(boardE.id) + "," +
-		boardE.equipe + "," +
-		strconv.Itoa(boardE.point)+ "," +
-		strconv.Itoa(boardE.place)+ "," +
+		fmt.Println(strconv.Itoa(boardE.id) + ";" +
+		boardE.equipe + ";" +
+		strconv.Itoa(boardE.point)+ ";" +
+		strconv.Itoa(boardE.place)+ ";" +
 		strconv.FormatBool(boardE.etat))
 	}
 	
