@@ -1,61 +1,121 @@
-Id,Prénom,Nom,Sexe,Equipe,Epreuve,Resultat,Disqualification,Description
-1,Géraldine,HUBINOIS,F,Les Razmokets,dwf,100,false,
-2,Nathalie,CARREAUD,F,Les Razmokets,sta,240,true,test disqualification 1 épreuve
-3,Philippe,CHAMBRION,H,Les Razmokets,sta,360,false,
-4,Jérôme,WOLF,H,Les Razmokets,spd,50,false,
-5,Jonathan,GARANLI,H,Les Razmokets,dwf,150,false,
-6,Adouze,TESTA,H,Equipe12,dwf,200,false,
-7,Bdouze,TESTB,H,Equipe12,dwf,150,false,
-8,Cdouze,TESTC,H,Equipe12,sta,500,false,test sta supérieur 100s
-9,Ddouze,TESTD,F,Equipe12,850,400,false,
-10,Edouze,TESTE,F,Equipe12,sta,270,true,test disqualification complet
-11,Cécile,SPANU,F,Les Axolotl,dwf,80,false,
-12,Claire,GOSSART,F,Les Axolotl,sta,180,false,
-13,Redha,LOUIBA,H,Les Axolotl,dwf,75,false,
-14,Fabien,DUBOURG,H,Les Axolotl,sta,255,false,
-15,Olivier,DURET,H,Les Axolotl,spd,60,false,
-16,Quentin,FALVARD,H,Les krakens,sta,105,false,test sta inferieur 120s
-17,Audrey,DUTOIT,F,Les krakens,spd,110,false,
-18,Julie,LE COZ,F,Les krakens,sta,210,false,
-19,Benjamin,LUCAS,H,Les krakens,dwf,75,false,
-20,Mourad,CHAKROUM,H,Les krakens,dwf,180,false,test dwf superieur +100
-21,Jean-Yves,DANJON,H,Les Grands Méchants Loups,sta,270,false,
-22,Frederique,CORDIER,F,Les Grands Méchants Loups,dwf,150,false,
-23,Florent,DOUZET,H,Les Grands Méchants Loups,dwf,75,false,test dwf inferieur -50
-24,Aymeric,GOLLIAUD,H,Les Grands Méchants Loups,spd,75,false,
-25,Varvara,KOZHEVINA,F,Les Grands Méchants Loups,sta,240,false,
-26,Alain,BATUT,H,Bleu Azur,dwf,85,false,
-27,Joanna,BOURRIEN,F,Bleu Azur,dwf,50,false,test dwf inferieur -75
-28,Patricia,MARGUINAUD,F,Bleu Azur,spd,60,false,
-29,Stéphane,AUBERT,H,Bleu Azur,sta,240,false,
-30,Cyril,LAYE,H,Bleu Azur,sta,270,false,
-1,Géraldine,HUBINOIS,F,Les Razmokets,dnf,75,false,
-2,Nathalie,CARREAUD,F,Les Razmokets,dnf,75,false,
-3,Philippe,CHAMBRION,H,Les Razmokets,spd,50,false,test spd inferieur 50s
-4,Jérôme,WOLF,H,Les Razmokets,850,320,false,
-5,Jonathan,GARANLI,H,Les Razmokets,850,320,false,
-6,Adouze,TESTA,H,Equipe12,dnf,75,false,
-7,Bdouze,TESTB,H,Equipe12,dnf,120,false,
-8,Cdouze,TESTC,H,Equipe12,spd,120,false,test spd superieur 70s
-9,Ddouze,TESTD,F,Equipe12,spd,60,false,
-10,Edouze,TESTE,F,Equipe12,850,460,true,test disqualification complet
-11,Cécile,SPANU,F,Les Axolotl,dnf,50,false,
-12,Claire,GOSSART,F,Les Axolotl,spd,110,false,
-13,Redha,LOUIBA,H,Les Axolotl,dnf,50,false,
-14,Fabien,DUBOURG,H,Les Axolotl,850,600,false,
-15,Olivier,DURET,H,Les Axolotl,850,650,false,Test 850 superieur +200
-16,Quentin,FALVARD,H,Les krakens,dnf,50,false,
-17,Audrey,DUTOIT,F,Les krakens,850,900,false,Test dépassement 850 femme
-18,Julie,LE COZ,F,Les krakens,spd,110,false,
-19,Benjamin,LUCAS,H,Les krakens,850,500,false,Test 850 inferieur 100
-20,Mourad,CHAKROUM,H,Les krakens,dnf,80,false,
-21,Jean-Yves,DANJON,H,Les Grands Méchants Loups,spd,75,false,
-22,Frederique,CORDIER,F,Les Grands Méchants Loups,dnf,190,false,test dnf superieur 55
-23,Florent,DOUZET,H,Les Grands Méchants Loups,850,800,false,Test dépassement 850 homme
-24,Aymeric,GOLLIAUD,H,Les Grands Méchants Loups,850,530,false,
-25,Varvara,KOZHEVINA,F,Les Grands Méchants Loups,dnf,50,false,
-26,Alain,BATUT,H,Bleu Azur,850,385,false,
-27,Joanna,BOURRIEN,F,Bleu Azur,dnf,50,false,test dnf superieur 50
-28,Patricia,MARGUINAUD,F,Bleu Azur,850,675,false,
-29,Stéphane,AUBERT,H,Bleu Azur,dnf,60,false,
-30,Cyril,LAYE,H,Bleu Azur,spd,60,false,
+Id;Prénom;Nom;Sexe;Equipe;Epreuve;Resultat;Disqualification;Description 
+1;Géraldine;HUBINOIS;F;Les Razmokets;dwf;100;false;
+2;Nathalie;CARREAUD;F;Les Razmokets;sta;240;false;
+3;Philippe;CHAMBRION;H;Les Razmokets;sta;360;false;
+4;Jérome;WOLF;H;Les Razmokets;spd;50;false;
+5;Jonathan;GARANLI;H;Les Razmokets;dwf;150;false;
+6;Cécile;SPANU;F;Les Axolotl;dwf;80;false;
+7;Claire;GOSSART;F;Les Axolotl;sta;140;false;
+8;Malik;BABA AISSA;H;Les Axolotl;dwf;75;false;
+9;Fabien;DUBOURG;H;Les Axolotl;sta;300;false;
+10;Olivier;DURET;H;Les Axolotl;spd;60;false;
+11;Quentin;FALVARD;H;Les krakens;sta;225;false;
+12;Audrey;DUTOIT;F;Les krakens;spd;120;false;
+13;Julie;LE COZ;F;Les krakens;sta;210;false;
+14;Lucas;BENJAMIN;H;Les krakens;dwf;80;false;
+15;Mourad;CHAKROUM;H;Les krakens;dwf;80;false;
+16;Jean-Yves;DANJON;H;Les Grands Méchants Loups;sta;270;false;
+17;Frederique;CORDIER;F;Les Grands Méchants Loups;dwf;150;false;
+18;Florent;DOUZET;H;Les Grands Méchants Loups;dwf;75;false;
+19;Aymeric;GOLLIAUD;H;Les Grands Méchants Loups;spd;75;false;
+20;Varvara;KOZHEVINA;F;Les Grands Méchants Loups;sta;240;false;
+21;Alain;BATUT;H;Bleu Azur;dwf;85;false;
+22;Joanna;BOURRIEN;F;Bleu Azur;dwf;125;false;
+23;Patricia;MARGUINAUD;F;Bleu Azur;spd;60;false;
+24;Stéphane;AUBERT;H;Bleu Azur;sta;285;false;
+25;Cyril;LAYE;H;Bleu Azur;sta;280;false;
+26;Olivier;ELU;H;Dream Team TopSTAR;dwf;225;false;
+27;Eric;MARCHAL;H;Dream Team TopSTAR;sta;480;false;
+28;Sandrine;MURBACH;F;Dream Team TopSTAR;dwf;150;false;
+29;Magalie;SITERRE;F;Dream Team TopSTAR;sta;375;false;
+30;Laurent;BREIDENBACH;H;Dream Team TopSTAR;spd;40;false;
+31;Martine;VERGNOLLE;F;Les Sky Blue;dwf;90;false;
+32;Philippe;FLAUDIAS;H;Les Sky Blue;sta;265;false;
+33;Rosa;KONG A SIOU LEFEBVRE;F;Les Sky Blue;sta;200;false;
+34;Antoine;RHODES;H;Les Sky Blue;spd;55;false;
+35;Flavien;CIUPPA;H;Les Sky Blue;dwf;90;false;
+36;Florence;TABOUREL;F;Les Tortues Ninja DoBuLes Dilly;spd;60;false;
+37;Leslie;GARNIER;F;Les Tortues Ninja DoBuLes Dilly;sta;210;false;
+38;florian;SALIN;H;Les Tortues Ninja DoBuLes Dilly;dwf;150;false;
+39;Didier;ADEL;H;Les Tortues Ninja DoBuLes Dilly;dwf;55;false;
+40;Rémy;BLASQUEZ;H;Les Tortues Ninja DoBuLes Dilly;sta;270;false;
+41;Elise;JOUBERT;F;Les é-Puy-sés;spd;120;false;
+42;Vincent;CHAUDIER;H;Les é-Puy-sés;dwf;80;false;
+43;Julien;PAINTANDRE;H;Les é-Puy-sés;dwf;75;false;
+44;Aurélie;LESCURE;F;Les é-Puy-sés;sta;120;false;
+45;Gregory;PLANCHAT;H;Les é-Puy-sés;sta;180;false;
+46;Servane;BARBOT;F;Phycodurus Eques;sta;150;false;
+47;Sven;NARBONNE;H;Phycodurus Eques;dwf;100;false;
+48;Anne;GONINET;F;Phycodurus Eques;dwf;70;false;
+49;Jerome;GUILLET;H;Phycodurus Eques;spd;100;false;
+50;Pierre-Louis;DUFRESNE;H;Phycodurus Eques;sta;270;false;
+51;Laurence;GUEGUEN;F;Les RA du LAC;sta;360;false;
+52;Anne;BORGAT;F;Les RA du LAC;dwf;160;false;
+53;Aurelien;LANOISELIER;H;Les RA du LAC;sta;420;false;
+54;Clément;ELU;H;Les RA du LAC;spd;60;false;
+55;Renaud;LAMIRAL;H;Les RA du LAC;dwf;110;false;
+56;Pascale;AUBRY;F;Notre jour viendra;spd;70;false;
+57;Yohan;LAJOUX;H;Notre jour viendra;sta;360;false;
+58;Patrice;PIERRAT;H;Notre jour viendra;dwf;125;false;
+59;Virgile;PETIT;H;Notre jour viendra;dwf;100;false;
+60;Fabienne;FLOQUET;F;Notre jour viendra;sta;255;false;
+1;Géraldine;HUBINOIS;F;Les Razmokets;dnf;75;false;
+2;Nathalie;CARREAUD;F;Les Razmokets;dnf;75;false;
+3;Philippe;CHAMBRION;H;Les Razmokets;spd;100;false;
+4;Jérome;WOLF;H;Les Razmokets;850;320;false;
+5;Jonathan;GARANLI;H;Les Razmokets;850;320;false;
+6;Cécile;SPANU;F;Les Axolotl;dnf;50;false;
+7;Claire;GOSSART;F;Les Axolotl;spd;130;false;
+8;Malik;BABA AISSA;H;Les Axolotl;dnf;50;false;
+9;Fabien;DUBOURG;H;Les Axolotl;850;600;false;
+10;Olivier;DURET;H;Les Axolotl;850;450;false;
+11;Quentin;FALVARD;H;Les krakens;dnf;50;false;
+12;Audrey;DUTOIT;F;Les krakens;850;720;false;
+13;Julie;LE COZ;F;Les krakens;spd;110;false;
+14;Lucas;BENJAMIN;H;Les krakens;850;600;false;
+15;Mourad;CHAKROUM;H;Les krakens;dnf;60;false;
+16;Jean-Yves;DANJON;H;Les Grands Méchants Loups;spd;75;false;
+17;Frederique;CORDIER;F;Les Grands Méchants Loups;dnf;135;false;
+18;Florent;DOUZET;H;Les Grands Méchants Loups;850;600;false;
+19;Aymeric;GOLLIAUD;H;Les Grands Méchants Loups;850;530;false;
+20;Varvara;KOZHEVINA;F;Les Grands Méchants Loups;dnf;35;false;
+21;Alain;BATUT;H;Bleu Azur;850;370;false;
+22;Joanna;BOURRIEN;F;Bleu Azur;dnf;130;false;
+23;Patricia;MARGUINAUD;F;Bleu Azur;850;675;false;
+24;Stéphane;AUBERT;H;Bleu Azur;dnf;60;false;
+25;Cyril;LAYE;H;Bleu Azur;spd;90;false;
+26;Olivier;ELU;H;Dream Team TopSTAR;850;360;false;
+27;Eric;MARCHAL;H;Dream Team TopSTAR;dnf;85;false;
+28;Sandrine;MURBACH;F;Dream Team TopSTAR;dnf;125;false;
+29;Magalie;SITERRE;F;Dream Team TopSTAR;spd;55;false;
+30;Laurent;BREIDENBACH;H;Dream Team TopSTAR;850;255;false;
+31;Martine;VERGNOLLE;F;Les Sky Blue;dnf;65;false;
+32;Philippe;FLAUDIAS;H;Les Sky Blue;850;545;false;
+33;Rosa;KONG A SIOU LEFEBVRE;F;Les Sky Blue;spd;90;false;
+34;Antoine;RHODES;H;Les Sky Blue;850;390;false;
+35;Flavien;CIUPPA;H;Les Sky Blue;dnf;90;false;
+36;Florence;TABOUREL;F;Les Tortues Ninja DoBuLes Dilly;850;650;false;
+37;Leslie;GARNIER;F;Les Tortues Ninja DoBuLes Dilly;spd;120;false;
+38;florian;SALIN;H;Les Tortues Ninja DoBuLes Dilly;850;435;false;
+39;Didier;ADEL;H;Les Tortues Ninja DoBuLes Dilly;dnf;30;false;
+40;Rémy;BLASQUEZ;H;Les Tortues Ninja DoBuLes Dilly;dnf;40;false;
+41;Elise;JOUBERT;F;Les é-Puy-sés;850;720;false;
+42;Vincent;CHAUDIER;H;Les é-Puy-sés;850;560;false;
+43;Julien;PAINTANDRE;H;Les é-Puy-sés;dnf;75;false;
+44;Aurélie;LESCURE;F;Les é-Puy-sés;spd;180;false;
+45;Gregory;PLANCHAT;H;Les é-Puy-sés;dnf;45;false;
+46;Servane;BARBOT;F;Phycodurus Eques;dnf;10;false;
+47;Sven;NARBONNE;H;Phycodurus Eques;850;600;false;
+48;Anne;GONINET;F;Phycodurus Eques;dnf;30;false;
+49;Jerome;GUILLET;H;Phycodurus Eques;850;600;false;
+50;Pierre-Louis;DUFRESNE;H;Phycodurus Eques;spd;75;false;
+51;Laurence;GUEGUEN;F;Les RA du LAC;spd;100;false;
+52;Anne;BORGAT;F;Les RA du LAC;dnf;105;false;
+53;Aurelien;LANOISELIER;H;Les RA du LAC;850;375;false;
+54;Clément;ELU;H;Les RA du LAC;850;420;false;
+55;Renaud;LAMIRAL;H;Les RA du LAC;dnf;85;false;
+56;Pascale;AUBRY;F;Notre jour viendra;850;510;false;
+57;Yohan;LAJOUX;H;Notre jour viendra;dnf;100;false;
+58;Patrice;PIERRAT;H;Notre jour viendra;dnf;100;false;
+59;Virgile;PETIT;H;Notre jour viendra;850;510;false;
+60;Fabienne;FLOQUET;F;Notre jour viendra;spd;90;false;
