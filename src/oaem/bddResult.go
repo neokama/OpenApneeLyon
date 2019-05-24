@@ -405,12 +405,12 @@ package main
 
 
 		if(epreuve=="spd" || epreuve == "850"){
-			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, resultat ASC"))
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, rsltIndiv ASC"))
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête 1")
 			}
 		}else{
-			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, resultat DESC"))
+			base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE epreuve = ", value," ORDER BY sexe ASC, rsltIndiv DESC"))
 			if base.err != nil {
 				fmt.Println("Erreur lors de l'execution de la requête 1")
 			}
