@@ -19,15 +19,15 @@ package main
 		}
 		defer base.resultat.Close()
 
-		var info [13]string
+		var info [14]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12], &info[13])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12] + "|" + info[13])
 		}
 	}
 
@@ -57,15 +57,15 @@ package main
 		}
 		defer base.resultat.Close()
 
-		var info [13]string
+		var info [14]string
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12], &info[13])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)
 			}
-		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12])
+		fmt.Println(info[0] + "|" + info[1]+ "|" + info[2]+ "|" + info[3] + "|" + info[4]+ "|" + info[5]+ "|" + info[6]+ "|" + info[7]+ "|" + info[8]+ "|" + info[9]+ "|" + info[10]+ "|" + info[11]+ "|" + info[12]+ "|" + info[13])
 		}
 	}
 
@@ -83,7 +83,7 @@ package main
 
 	func (base Bdd) addCompetiteurClassement(board *Classement){
 
-		_, base.err = base.db.Exec("INSERT INTO classement ( id, prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rslt, plc, disq, description) VALUES(" +
+		_, base.err = base.db.Exec("INSERT INTO classement ( id, prenom, nom, sexe, equipe, epreuve, annonce, resultat, place, rsltEquipe, plc, disq, description, rsltIndiv) VALUES(" +
 		strconv.Itoa(board.id) + ",'" +
 		board.prenom + "','" +
 		board.nom + "','" +
@@ -93,13 +93,14 @@ package main
 		strconv.Itoa(board.annonce) + "," +
 		strconv.FormatFloat(board.resultat, 'f', -1, 64) + "," +
 		strconv.Itoa(board.place) + "," +
-		strconv.FormatFloat(board.rslt, 'f', -1, 64) + "," +
+		strconv.FormatFloat(board.rsltEquipe, 'f', -1, 64) + "," +
 		strconv.Itoa(board.plc) + ",'" +
 		strconv.FormatBool(board.disq) + "','" +
-		board.description + "')")
+		board.description + "'," +
+		strconv.FormatFloat(board.rsltIndiv, 'f', -1, 64)+ ")")
 
 		if base.err != nil {
-			fmt.Println("Echec lors de l'ajout1 : "+ board.nom +" "+ board.prenom, base.err)
+			fmt.Println("Echec lors de l'ajout (addCompetiteurClassement) : "+ board.nom +" "+ board.prenom, base.err)
 			} else {
 			fmt.Println("Ajout validé du resulat compétiteur " + board.nom +" "+ board.prenom)
 		}
@@ -177,9 +178,23 @@ package main
 		}
 		defer file.Close()
 
+	/*
+	* 0. Id
+	* 1. Prénom
+	* 2. Nom
+	* 3. Sexe	
+	* 4. Equipe	
+	* 5. Epreuve	
+	* 6. Resultat (mesuré)	
+	* 7. Disqualification	
+	* 8. Description 
+    */
+
+
 		var firstCall bool
 		firstCall = true
-		var res float64
+		var resEquipe float64
+		var resIndiv float64
 		var place int
 		var plc int
 		var equipe string
@@ -189,7 +204,7 @@ package main
 			info := strings.Split(scanner.Text(), ";")
 
 			if !firstCall{
-				temps,er := strconv.ParseFloat(info[6],64)
+				resultat,er := strconv.ParseFloat(info[6],64)
 				idd,errr := strconv.Atoi(info[0])
 				annonce := base.recupAnnonce(info[0],info[5])
 				disq,_ := strconv.ParseBool(info[7])
@@ -203,23 +218,23 @@ package main
 				}
 				switch(info[5]){
 				case "spd": 
-					res=calculResultat(sexe,equipe,"spd",annonce,info[6],info[7])
+					resEquipe, resIndiv=calculResultat(sexe,equipe,"spd",annonce,info[6],info[7])
 				break
 				case "850":
-					res=calculResultat(sexe,equipe,"850",annonce,info[6],info[7])
+					resEquipe, resIndiv=calculResultat(sexe,equipe,"850",annonce,info[6],info[7])
 				break
 				case "dnf":
-					res=calculResultat(sexe,equipe,"dnf",annonce,info[6],info[7])
+					resEquipe, resIndiv=calculResultat(sexe,equipe,"dnf",annonce,info[6],info[7])
 				break
 				case "dwf":
-					res=calculResultat(sexe,equipe,"dwf",annonce,info[6],info[7])
+					resEquipe, resIndiv=calculResultat(sexe,equipe,"dwf",annonce,info[6],info[7])
 				break
 				case "sta":
-					res=calculResultat(sexe,equipe,"sta",annonce,info[6],info[7])
+					resEquipe, resIndiv=calculResultat(sexe,equipe,"sta",annonce,info[6],info[7])
 				break
 				}
 
-				classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, temps, place, res, plc, disq, info[8])
+				classemt := newClassement(idd, info[1], info[2], info[3], info[4], info[5],annonce, resultat, place, resEquipe, plc, disq, info[8], resIndiv)
 				base.addCompetiteurClassement(classemt)
 			}
 			firstCall = false
@@ -310,7 +325,7 @@ package main
 				idrCol = "place"
 				value = fmt.Sprint("'",value,"'")
 			case 10:
-				idrCol = "rslt"
+				idrCol = "rsltEquipe"
 				value = fmt.Sprint("'",value,"'")
 			case 11:
 				idrCol = "plc"
@@ -320,6 +335,9 @@ package main
 				value = fmt.Sprint("'",value,"'")
 			case 13:
 				idrCol = "description"
+				value = fmt.Sprint("'",value,"'")
+			case 14:
+				idrCol = "rsltIndiv"
 				value = fmt.Sprint("'",value,"'")
 			default:
 				log.Fatal("Numéro invalide")
@@ -347,8 +365,8 @@ package main
 			fmt.Println("Erreur lors de la création du fichier. Avez vous créé un dossier \"export\" dans le dossier de l'application?")
 			log.Fatal(err)
 		}
-		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat;Place;Resultat pris en compte equipe;Place Equipe;Disqualification;Description\r\n"))
-		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat;Place;Resultat pris en compte equipe;Place Equipe;Disqualification;Description\r\n"))
+		file.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat Mesure;Place;Resultat equipe;Place Equipe;Disqualification;Description;Resultat Individuel\r\n"))
+		file2.WriteString(fmt.Sprint("\xEF\xBB\xBFId;Prenom;Nom;Sexe;Equipe;Epreuve;Annonce;Resultat Mesure;Place;Resultat equipe;Place Equipe;Disqualification;Description\r\n"))
 
 		var value string
 		var epreuve string
@@ -398,7 +416,7 @@ package main
 			}
 		}
 		defer base.resultat.Close()
-	var info [13]string
+	var info [14]string
 	var numPlaceF int
 	var numPlaceH int
 	var nbF int
@@ -422,7 +440,7 @@ package main
 	egalH = 0
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12], &info[13])
 
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: ")
@@ -456,19 +474,23 @@ package main
 					}
 					lastResult,_= strconv.ParseFloat(info[7],64)
 				}
+
 					id,_:=strconv.Atoi(info[0])
 					annonce,_ := strconv.Atoi(info[6])
-					resultat,_ := strconv.ParseFloat(info[7], 64)
+					resultatMesure,_ := strconv.ParseFloat(info[7], 64)
 					place,_ := strconv.Atoi(info[8])
-					rslt,_ := strconv.ParseFloat(info[9], 64)
+					rsltEquipe,_ := strconv.ParseFloat(info[9], 64)
 					plc,_ := strconv.Atoi(info[10])
 					disq,_ := strconv.ParseBool(info[11])
-					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+					rsltIndiv,_:=strconv.ParseFloat(info[13],64)
+
+
+					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultatMesure, place, rsltEquipe, plc, disq, info[12], rsltIndiv)
 					tabPlace=append(tabPlace,nextResult)
 
 					if info[3]=="F" {
-						file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
-						file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],"\r\n"))
+						file.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],";", info[13],"\r\n"))
+						file2.WriteString(fmt.Sprint(info[0],";",info[1],";", info[2],";", info[3],";", info[4],";", info[5],";", info[6],";", info[7],";", info[8],";", info[9],";", info[10],";", info[11],";", info[12],";","\r\n"))
 					}else{
 						tabHomme=append(tabHomme,nextResult)
 					}
@@ -481,12 +503,13 @@ package main
 					info[8]=strconv.Itoa(100)
 					id,_:=strconv.Atoi(info[0])
 					annonce,_ := strconv.Atoi(info[6])
-					resultat,_ := strconv.ParseFloat(info[7], 64)
+					resultatMesure,_ := strconv.ParseFloat(info[7], 64)
 					place,_ := strconv.Atoi(info[8])
-					rslt,_ := strconv.ParseFloat(info[9], 64)
+					rsltEquipe,_ := strconv.ParseFloat(info[9], 64)
 					plc,_ := strconv.Atoi(info[10])
 					disq,_ := strconv.ParseBool(info[11])
-					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+					rsltIndiv,_ := strconv.ParseFloat(info[13], 64)
+					nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultatMesure, place, rsltEquipe, plc, disq, info[12], rsltIndiv)
 
 					if(info[3]=="F"){
 						tabDisqF=append(tabDisqF,nextResult)
@@ -499,18 +522,18 @@ package main
 		for i := 0; i < len(tabDisqF); i++{
 		var place string
 				place=strconv.Itoa(numPlaceF+nbF-1)
-				file.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
-				file2.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rslt,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
+				file.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rsltEquipe,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,";", tabDisqF[i].rsltIndiv,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabDisqF[i].id,";",tabDisqF[i].prenom,";", tabDisqF[i].nom,";", tabDisqF[i].sexe,";", tabDisqF[i].equipe,";", tabDisqF[i].epreuve,";", tabDisqF[i].annonce,";", tabDisqF[i].resultat,";", place,";", tabDisqF[i].rsltEquipe,";", tabDisqF[i].plc,";", tabDisqF[i].disq,";", tabDisqF[i].description,"\r\n"))
 
 				pla,_:=strconv.Atoi(place)
-				nextResult = newClassement(tabDisqF[i].id,tabDisqF[i].prenom,tabDisqF[i].nom,tabDisqF[i].sexe,tabDisqF[i].equipe,tabDisqF[i].epreuve,tabDisqF[i].annonce, tabDisqF[i].resultat,pla,tabDisqF[i].rslt,tabDisqF[i].plc, tabDisqF[i].disq, tabDisqF[i].description)
+				nextResult = newClassement(tabDisqF[i].id,tabDisqF[i].prenom,tabDisqF[i].nom,tabDisqF[i].sexe,tabDisqF[i].equipe,tabDisqF[i].epreuve,tabDisqF[i].annonce, tabDisqF[i].resultat,pla,tabDisqF[i].rsltEquipe,tabDisqF[i].plc, tabDisqF[i].disq, tabDisqF[i].description, tabDisqF[i].rsltIndiv)
 				tabPlace=append(tabPlace,nextResult)
 		}
 		for i := 0; i < len(tabHomme); i++{
 
-				file.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rslt,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
-				file2.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rslt,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
-				nextResult = newClassement(tabHomme[i].id,tabHomme[i].prenom,tabHomme[i].nom,tabHomme[i].sexe,tabHomme[i].equipe,tabHomme[i].epreuve,tabHomme[i].annonce, tabHomme[i].resultat,tabHomme[i].place,tabHomme[i].rslt,tabHomme[i].plc, tabHomme[i].disq, tabHomme[i].description)
+				file.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rsltEquipe,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,";", tabHomme[i].rsltIndiv,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabHomme[i].id,";",tabHomme[i].prenom,";", tabHomme[i].nom,";", tabHomme[i].sexe,";", tabHomme[i].equipe,";", tabHomme[i].epreuve,";", tabHomme[i].annonce,";", tabHomme[i].resultat,";", tabHomme[i].place,";", tabHomme[i].rsltEquipe,";", tabHomme[i].plc,";", tabHomme[i].disq,";", tabHomme[i].description,"\r\n"))
+				nextResult = newClassement(tabHomme[i].id,tabHomme[i].prenom,tabHomme[i].nom,tabHomme[i].sexe,tabHomme[i].equipe,tabHomme[i].epreuve,tabHomme[i].annonce, tabHomme[i].resultat,tabHomme[i].place,tabHomme[i].rsltEquipe,tabHomme[i].plc, tabHomme[i].disq, tabHomme[i].description, tabHomme[i].rsltIndiv)
 				tabPlace=append(tabPlace,nextResult)
 		}
 
@@ -518,11 +541,11 @@ package main
 		var place string
 				place=strconv.Itoa(numPlaceH+nbH-1)
 
-				file.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
-				file2.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rslt,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
+				file.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rsltEquipe,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,";", tabDisqH[i].rsltIndiv,"\r\n"))
+				file2.WriteString(fmt.Sprint(tabDisqH[i].id,";",tabDisqH[i].prenom,";", tabDisqH[i].nom,";", tabDisqH[i].sexe,";", tabDisqH[i].equipe,";", tabDisqH[i].epreuve,";", tabDisqH[i].annonce,";", tabDisqH[i].resultat,";", place,";", tabDisqH[i].rsltEquipe,";", tabDisqH[i].plc,";", tabDisqH[i].disq,";", tabDisqH[i].description,"\r\n"))
 
 				pla,_:=strconv.Atoi(place)
-				nextResult = newClassement(tabDisqH[i].id,tabDisqH[i].prenom,tabDisqH[i].nom,tabDisqH[i].sexe,tabDisqH[i].equipe,tabDisqH[i].epreuve,tabDisqH[i].annonce, tabDisqH[i].resultat,pla,tabDisqH[i].rslt,tabDisqH[i].plc, tabDisqH[i].disq, tabDisqH[i].description)
+				nextResult = newClassement(tabDisqH[i].id,tabDisqH[i].prenom,tabDisqH[i].nom,tabDisqH[i].sexe,tabDisqH[i].equipe,tabDisqH[i].epreuve,tabDisqH[i].annonce, tabDisqH[i].resultat,pla,tabDisqH[i].rsltEquipe,tabDisqH[i].plc, tabDisqH[i].disq, tabDisqH[i].description, tabDisqH[i].rsltIndiv)
 				tabPlace=append(tabPlace,nextResult)
 		}
 
@@ -560,17 +583,17 @@ package main
 		idCol, epreuve = idCol2name2(6, epreuve)
 
 		if( epreuve == "'spd'" || epreuve == "'850'"){
-	base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " = ", epreuve," ORDER BY sexe ASC, rslt ASC"))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " = ", epreuve," ORDER BY sexe ASC, rsltEquipe ASC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 1")
 		}
 		}else{
-		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " = ", epreuve," ORDER BY sexe ASC, rslt DESC"))
+		base.resultat, base.err = base.db.Query(fmt.Sprint("SELECT * FROM classement WHERE ", idCol, " = ", epreuve," ORDER BY sexe ASC, rsltEquipe DESC"))
 		if base.err != nil {
 			fmt.Println("Erreur lors de l'execution de la requête 2")
 		}
 		}
-	var info [13]string
+	var info [14]string
 	var numPlaceF int
 	var numPlaceH int
 	var sexe string
@@ -584,7 +607,7 @@ package main
 	sexe = "F"
 
 		for base.resultat.Next() {
-			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12])
+			base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9], &info[10], &info[11], &info[12], &info[13])
 			if base.err != nil {
 				fmt.Println("Erreur lors de la récupération des résultats: ")
 				log.Fatal(base.err)}
@@ -593,23 +616,25 @@ package main
 				if info[3]=="H"{
 			    id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.ParseFloat(info[7], 64)
+				resultatMesure,_ := strconv.ParseFloat(info[7], 64)
 				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.ParseFloat(info[9], 64)
+				rsltEquipe,_ := strconv.ParseFloat(info[9], 64)
 				plc,_ := strconv.Atoi(info[10])
 				disq,_ := strconv.ParseBool(info[11])
-			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+				rsltIndiv,_ := strconv.ParseFloat(info[13], 64)
+			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultatMesure, place, rsltEquipe, plc, disq, info[12], rsltIndiv)
 
 			tabH=append(tabH,nextResult)
 			}else{
-			 id,_:=strconv.Atoi(info[0])
+			 	id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
 				resultat,_ := strconv.ParseFloat(info[7], 64)
 				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.ParseFloat(info[9], 64)
+				rsltEquipe,_ := strconv.ParseFloat(info[9], 64)
 				plc,_ := strconv.Atoi(info[10])
 				disq,_ := strconv.ParseBool(info[11])
-			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+				rsltIndiv,_ := strconv.ParseFloat(info[13], 64)
+			nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rsltEquipe, plc, disq, info[12], rsltIndiv)
 
 			tabF=append(tabF,nextResult)}
 			}else{
@@ -642,13 +667,14 @@ package main
 
 				id,_:=strconv.Atoi(info[0])
 				annonce,_ := strconv.Atoi(info[6])
-				resultat,_ := strconv.ParseFloat(info[7], 64)
+				resultatMesure,_ := strconv.ParseFloat(info[7], 64)
 				place,_ := strconv.Atoi(info[8])
-				rslt,_ := strconv.ParseFloat(info[9], 64)
+				rsltEquipe,_ := strconv.ParseFloat(info[9], 64)
 				plc,_ := strconv.Atoi(info[10])
 				disq,_ := strconv.ParseBool(info[11])
+				rsltIndiv,_ := strconv.ParseFloat(info[13], 64)
 
-				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultat, place, rslt, plc, disq, info[12])
+				nextResult = newClassement(id, info[1], info[2], info[3], info[4], info[5], annonce, resultatMesure, place, rsltEquipe, plc, disq, info[12], rsltIndiv)
 				tabClassement = append(tabClassement, nextResult)
 		}
 		base.resultat.Close()
@@ -669,11 +695,14 @@ package main
 	}
 
 
-	func calculResultat(sexe string, equipe string, epreuve string, annonce int, resultat string, disq string)(float64){
+	func calculResultat(sexe string, equipe string, epreuve string, annonce int, resultat string, disq string)(float64, float64){
 		var sMin int
 		var sMax int
-		var res float64
-		var result float64
+
+		var rsltEquipe float64
+		var rsltIndiv float64
+		var resultatMesure float64
+
 		var tot float64
 		var tot2 float64
 		var tab[] *ConfigurationEpreuve
@@ -682,7 +711,7 @@ package main
 
 		annoncef = float64(annonce)
 
-		result,_ = strconv.ParseFloat(resultat, 64)
+		resultatMesure,_ = strconv.ParseFloat(resultat, 64)
 		tab=getConfigurationEpreuve1()
 
 		for i := 0; i < 5; i++{
@@ -695,24 +724,26 @@ package main
 			min:=annonce+sMin
 
 			if (equipe == "SOLO" || equipe == "Solo" || equipe == "solo"){
-				res=0
+				rsltEquipe=0
+				rsltIndiv=resultatMesure
 			}else{
-				if (result == 0 && disq == "true"){
-					res=0
+				if (resultatMesure == 0 && disq == "true"){
+					rsltEquipe=0
+					rsltIndiv=0
 				}else{
-					if(result>float64(max)){
+					if(resultatMesure>float64(max)){
 						switch(epreuve){
 						case "spd":
-							tot =result + (result-(annoncef+20))*3
+							tot =resultatMesure + (resultatMesure-(annoncef+20))*3
 						break
 						case "850":
 							if(sexe == "F"){
 								eventMaxTimeCounted = float64(720)
 							}
-							if(result > eventMaxTimeCounted){
+							if(resultatMesure > eventMaxTimeCounted){
 								tot = eventMaxTimeCounted
 							} else {
-								tot = result + (result-(annoncef+40))*3
+								tot = resultatMesure + (resultatMesure-(annoncef+40))*3
 							}
 						break
 						case "dnf":
@@ -725,8 +756,9 @@ package main
 							tot = (annoncef+60)
 						break
 						}
-						res=tot
-					}else if(result<float64(min)){
+						rsltEquipe=tot
+						rsltIndiv=tot
+					}else if(resultatMesure<float64(min)){
 						switch(epreuve){
 						case "spd":
 							tot2=annoncef-10
@@ -735,23 +767,25 @@ package main
 							tot2=annoncef-20
 						break
 						case "dnf":
-							tot2=result-((annoncef-25)-result)*3
+							tot2=resultatMesure-((annoncef-25)-resultatMesure)*3
 						break
 						case "dwf":
-							tot2=result-((annoncef-25)-result)*3
+							tot2=resultatMesure-((annoncef-25)-resultatMesure)*3
 						break
 						case "sta":
-							tot2=result-((annoncef-60)-result)*3
+							tot2=resultatMesure-((annoncef-60)-resultatMesure)*3
 						break
 						}
-					res=tot2
-					}else if (result >= float64(min) && result <= float64(max)){
-						res= result
+					rsltEquipe=tot2
+					rsltIndiv=tot2
+					}else if (resultatMesure >= float64(min) && resultatMesure <= float64(max)){
+						rsltEquipe= resultatMesure
+						rsltIndiv= resultatMesure
 					}
 				}
 			}
 		}
-		return res
+		return rsltEquipe, rsltIndiv
 	}
 
 	/*

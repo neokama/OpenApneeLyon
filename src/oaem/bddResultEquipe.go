@@ -183,7 +183,7 @@ package main
 		for n:=0;n<len(tab);n++{
 			var idCol string
 			var equipe2 string
-			var info [13]string
+			var info [14]string
 			var tabpoint []string
 			var point string
 			var nbpoint int
@@ -201,7 +201,7 @@ package main
 			defer base.resultat.Close()
 
 			for base.resultat.Next() {
-				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3],&info[4], &info[5], &info[6], &info[7],&info[8], &info[9], &info[10], &info[11], &info[12])
+				base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3],&info[4], &info[5], &info[6], &info[7],&info[8], &info[9], &info[10], &info[11], &info[12], &info[13] )
 				if base.err != nil {
 					fmt.Println("Erreur lors de la récupération des résultats: ")
 					log.Fatal(base.err)
@@ -294,8 +294,9 @@ package main
 			fmt.Println("Ajout validé de l'equipe " + board.equipe)
 		}
 	}
+
 	/*
-	* 		Bdd.addEquipe:
+	* 		Bdd.displayEquipe:
 	* Description:
 	*		Méthode permettant d'afficher la Bdd classementequipe
 	*/

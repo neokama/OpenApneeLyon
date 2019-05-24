@@ -1,10 +1,10 @@
 Id;Prénom;Nom;Sexe;Equipe;Epreuve;Resultat;Disqualification;Description 
-1;Géraldine;HUBINOIS;F;Les Razmokets;dwf;100;false;
-2;Nathalie;CARREAUD;F;Les Razmokets;sta;240;false;
-3;Philippe;CHAMBRION;H;Les Razmokets;sta;360;false;
+1;Géraldine;HUBINOIS;F;Les Razmokets;dwf;100.12;false;
+2;Nathalie;CARREAUD;F;Les Razmokets;sta;240.23;false;
+3;Philippe;CHAMBRION;H;Les Razmokets;sta;360.2;false;
 4;Jérome;WOLF;H;Les Razmokets;spd;50;false;
 5;Jonathan;GARANLI;H;Les Razmokets;dwf;150;false;
-6;Cécile;SPANU;F;Les Axolotl;dwf;80;false;
+6;Cécile;SPANU;F;Les Axolotl;dwf;80.18;false;
 7;Claire;GOSSART;F;Les Axolotl;sta;140;false;
 8;Malik;BABA AISSA;H;Les Axolotl;dwf;75;false;
 9;Fabien;DUBOURG;H;Les Axolotl;sta;300;false;
@@ -12,7 +12,7 @@ Id;Prénom;Nom;Sexe;Equipe;Epreuve;Resultat;Disqualification;Description
 11;Quentin;FALVARD;H;Les krakens;sta;225;false;
 12;Audrey;DUTOIT;F;Les krakens;spd;120;false;
 13;Julie;LE COZ;F;Les krakens;sta;210;false;
-14;Lucas;BENJAMIN;H;Les krakens;dwf;80;false;
+14;Lucas;BENJAMIN;H;Les krakens;dwf;80.3;false;
 15;Mourad;CHAKROUM;H;Les krakens;dwf;80;false;
 16;Jean-Yves;DANJON;H;Les Grands Méchants Loups;sta;270;false;
 17;Frederique;CORDIER;F;Les Grands Méchants Loups;dwf;150;false;
