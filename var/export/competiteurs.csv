@@ -1,0 +1,61 @@
+﻿Id;Prenom;Nom;Sexe;num_license;Equipe;Epreuve1;annonce1;Epreuve2;annonce2
+1;Géraldine;HUBINOIS;F;A-13-602385;Les Razmokets;dwf;100;dnf;75
+2;Nathalie;CARREAUD;F;A-03-122552;Les Razmokets;sta;240;dnf;75
+3;Philippe;CHAMBRION;H;A-11-509038;Les Razmokets;sta;360;spd;100
+4;Jérome;WOLF;H;A-18-80174;Les Razmokets;spd;50;850;320
+5;Jonathan;GARANLI;H;A-16-715992;Les Razmokets;dwf;150;850;320
+6;Cécile;SPANU;F;A-19-833093;Les Axolotl;dwf;80;dnf;50
+7;Claire;GOSSART;F;A-19-833875;Les Axolotl;sta;140;spd;130
+8;Malik;BABA AISSA;H;A-00-000000;Les Axolotl;dwf;75;dnf;50
+9;Fabien;DUBOURG;H;A-18-792525;Les Axolotl;sta;300;850;600
+10;Olivier;DURET;H;A-11-528857;Les Axolotl;spd;60;850;450
+11;Quentin;FALVARD;H;A-15-690662;Les krakens;sta;225;dnf;50
+12;Audrey;DUTOIT;F;A-19-833112;Les krakens;spd;120;850;720
+13;Julie;LE COZ;F;A-19-835974;Les krakens;sta;210;spd;110
+14;Lucas;BENJAMIN;H;A-18-798013;Les krakens;dwf;80;850;600
+15;Mourad;CHAKROUM;H;A-04-151286;Les krakens;dwf;80;dnf;60
+16;Jean-Yves;DANJON;H;A-16-720947;Les Grands Méchants Loups;sta;270;spd;75
+17;Frederique;CORDIER;F;A-03-000444;Les Grands Méchants Loups;dwf;150;dnf;135
+18;Florent;DOUZET;H;A-10-460681;Les Grands Méchants Loups;dwf;75;850;600
+19;Aymeric;GOLLIAUD;H;A-16-719487;Les Grands Méchants Loups;spd;75;850;530
+20;Varvara;KOZHEVINA;F;A-18-808640;Les Grands Méchants Loups;sta;240;dnf;35
+21;Alain;BATUT;H;A-15-678299;Bleu Azur;dwf;85;850;370
+22;Joanna;BOURRIEN;F;A-12-563788;Bleu Azur;dwf;125;dnf;130
+23;Patricia;MARGUINAUD;F;A-15-687743;Bleu Azur;spd;60;850;675
+24;Stéphane;AUBERT;H;A-06-306161;Bleu Azur;sta;285;dnf;60
+25;Cyril;LAYE;H;A-07-365845;Bleu Azur;sta;280;spd;90
+26;Olivier;ELU;H;A-06-293518;Dream Team TopSTAR;dwf;225;850;360
+27;Eric;MARCHAL;H;A-16-723806;Dream Team TopSTAR;sta;480;dnf;85
+28;Sandrine;MURBACH;F;A-07-341155;Dream Team TopSTAR;dwf;150;dnf;125
+29;Magalie;SITERRE;F;A-11-538474;Dream Team TopSTAR;sta;375;spd;55
+30;Laurent;BREIDENBACH;H;A-04-179988;Dream Team TopSTAR;spd;40;850;255
+31;Martine;VERGNOLLE;F;A-07-344685;Les Sky Blue;dwf;90;dnf;65
+32;Philippe;FLAUDIAS;H;A-03-128565;Les Sky Blue;sta;265;850;545
+33;Rosa;KONG A SIOU LEFEBVRE;F;A-04-153527;Les Sky Blue;sta;200;spd;90
+34;Antoine;RHODES;H;A-06-594403;Les Sky Blue;spd;55;850;390
+35;Flavien;CIUPPA;H;A-12-594403;Les Sky Blue;dwf;90;dnf;90
+36;Florence;TABOUREL;F;A-11-507970;Les Tortues Ninja DoBuLes Dilly;spd;60;850;650
+37;Leslie;GARNIER;F;A-19-853037;Les Tortues Ninja DoBuLes Dilly;sta;210;spd;120
+38;florian;SALIN;H;A-10-486203;Les Tortues Ninja DoBuLes Dilly;dwf;150;850;435
+39;Didier;ADEL;H;A-18-813295;Les Tortues Ninja DoBuLes Dilly;dwf;55;dnf;30
+40;Rémy;BLASQUEZ;H;A-15-685373;Les Tortues Ninja DoBuLes Dilly;sta;270;dnf;40
+41;Elise;JOUBERT;F;A-18-793687;Les é-Puy-sés;spd;120;850;720
+42;Vincent;CHAUDIER;H;A-17-754574;Les é-Puy-sés;dwf;80;850;560
+43;Julien;PAINTANDRE;H;A-13-599517;Les é-Puy-sés;dwf;75;dnf;75
+44;Aurélie;LESCURE;F;A-15-693179;Les é-Puy-sés;sta;120;spd;180
+45;Gregory;PLANCHAT;H;A-13-609011;Les é-Puy-sés;sta;180;dnf;45
+46;Servane;BARBOT;F;A-17-757263;Phycodurus Eques;sta;150;dnf;10
+47;Sven;NARBONNE;H;A-19-841102;Phycodurus Eques;dwf;100;850;600
+48;Anne;GONINET;F;A-09-419225;Phycodurus Eques;dwf;70;dnf;30
+49;Jerome;GUILLET;H;A-03-023072;Phycodurus Eques;spd;100;850;600
+50;Pierre-Louis;DUFRESNE;H;A-17-783109;Phycodurus Eques;sta;270;spd;75
+51;Laurence;GUEGUEN;F;A-03-135249;Les RA du LAC;sta;360;spd;100
+52;Anne;BORGAT;F;A-03-132681;Les RA du LAC;dwf;160;dnf;105
+53;Aurelien;LANOISELIER;H;A-13-616713;Les RA du LAC;sta;420;850;375
+54;Clément;ELU;H;A-19-843065;Les RA du LAC;spd;60;850;420
+55;Renaud;LAMIRAL;H;A-06-285545;Les RA du LAC;dwf;110;dnf;85
+56;Pascale;AUBRY;F;A-08-369588;Notre jour viendra;spd;70;850;510
+57;Yohan;LAJOUX;H;A-19-854739;Notre jour viendra;sta;360;dnf;100
+58;Patrice;PIERRAT;H;A-10-461615;Notre jour viendra;dwf;125;dnf;100
+59;Virgile;PETIT;H;A-14-650772;Notre jour viendra;dwf;100;850;510
+60;Fabienne;FLOQUET;F;A-19-847854;Notre jour viendra;sta;255;spd;90
