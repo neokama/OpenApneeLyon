@@ -757,7 +757,7 @@ package main
 						break
 						}
 						rsltEquipe=tot
-						rsltIndiv=tot
+						rsltIndiv=resultatMesure
 					}else if(resultatMesure<float64(min)){
 						switch(epreuve){
 						case "spd":
