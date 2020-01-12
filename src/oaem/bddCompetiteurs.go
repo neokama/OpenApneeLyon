@@ -23,24 +23,59 @@ import (
 func (base Bdd) displayCompetiteur() {
 
 	//REQUÊTE
-	base.resultat, base.err = base.db.Query("SELECT * FROM competiteurs")
+	base.resultat, base.err = base.db.Query("SELECT id,prenom,nom,sexe,num_license,equipe,epreuve1,annonce1,epreuve2,annonce2 FROM competiteurs")
 	if base.err != nil {
 		fmt.Println("Erreur lors de l'execution de la requête")
 		log.Fatal(base.err)
 	}
 	defer base.resultat.Close()
 
-	var info [10]string
+	// id INTEGER PRIMARY KEY AUTOINCREMENT,
+	// prenom varchar(30),
+	// nom varchar(30),
+	// sexe CHARACTER(1),
+	// num_license varchar(30),
+	// equipe varchar(30),
+	// epreuve1 varchar(30),
+	// annonce1 INTEGER,
+	// epreuve2 varchar(30),
+	// annonce2 INTEGER
+
+	var competitor Competiteur
+
 	// RÉCUPÉRATION DES RESULTATS
 	for base.resultat.Next() {
-		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+
+		base.err = base.resultat.Scan(&competitor.id,
+			&competitor.prenom,
+			&competitor.nom,
+			&competitor.sexe,
+			&competitor.numLicense,
+			&competitor.equipe,
+			&competitor.epreuve1,
+			&competitor.annonce1,
+			&competitor.epreuve2,
+			&competitor.annonce2)
 		if base.err != nil {
 			fmt.Println("Erreur lors de la récupération des résultats: ")
 			log.Fatal(base.err)
 		}
-
 		//AFFICHAGE
-		fmt.Println(info[0] + ";" + info[1] + ";" + info[2] + ";" + info[3] + ";" + info[4] + ";" + info[5] + ";" + info[6] + ";" + info[7] + ";" + info[8] + ";" + info[9])
+		competitorRow := []string{}
+		competitorRow = append(competitorRow, strconv.Itoa(competitor.id))
+		competitorRow = append(competitorRow, competitor.prenom)
+		competitorRow = append(competitorRow, competitor.nom)
+		competitorRow = append(competitorRow, competitor.sexe)
+		competitorRow = append(competitorRow, competitor.numLicense)
+		competitorRow = append(competitorRow, competitor.equipe)
+		competitorRow = append(competitorRow, competitor.epreuve1)
+		competitorRow = append(competitorRow, strconv.Itoa(competitor.annonce1))
+		competitorRow = append(competitorRow, competitor.epreuve2)
+		competitorRow = append(competitorRow, strconv.Itoa(competitor.annonce2))
+
+		// Join three strings into one.
+		result := strings.Join(competitorRow, ";")
+		fmt.Println(result)
 	}
 }
 
@@ -71,18 +106,50 @@ func (base Bdd) searchCompetiteur(colNum int, value string) {
 	}
 	defer base.resultat.Close()
 
-	var info [10]string //Tableau contenant les valeurs de chaque colonnes
+	var competitorID int
+	var competitorLastname string
+	var competitorFirstname string
+	var competitorSexe string
+	var competitorLicenceNumber string
+	var competitorTeam string
+	var competitorEventName1 string
+	var competitorEventPerf1 int
+	var competitorEventName2 string
+	var competitorEventPerf2 int
 
 	//RESULTATS
 	for base.resultat.Next() {
-		base.err = base.resultat.Scan(&info[0], &info[1], &info[2], &info[3], &info[4], &info[5], &info[6], &info[7], &info[8], &info[9])
+		base.err = base.resultat.Scan(&competitorID,
+			&competitorLastname,
+			&competitorFirstname,
+			&competitorSexe,
+			&competitorLicenceNumber,
+			&competitorTeam,
+			&competitorEventName1,
+			&competitorEventPerf1,
+			&competitorEventName2,
+			&competitorEventPerf2)
 		if base.err != nil {
 			fmt.Println("Erreur lors de la récupération des résultats: ")
 			log.Fatal(base.err)
 		}
 
 		//AFFICHAGE
-		fmt.Println(info[0] + ";" + info[1] + ";" + info[2] + ";" + info[3] + ";" + info[4] + ";" + info[5] + ";" + info[6] + ";" + info[7] + ";" + info[8] + ";" + info[9])
+		competitorRow := []string{}
+		competitorRow = append(competitorRow, strconv.Itoa(competitorID))
+		competitorRow = append(competitorRow, competitorLastname)
+		competitorRow = append(competitorRow, competitorFirstname)
+		competitorRow = append(competitorRow, competitorSexe)
+		competitorRow = append(competitorRow, competitorLicenceNumber)
+		competitorRow = append(competitorRow, competitorTeam)
+		competitorRow = append(competitorRow, competitorEventName1)
+		competitorRow = append(competitorRow, strconv.Itoa(competitorEventPerf1))
+		competitorRow = append(competitorRow, competitorEventName2)
+		competitorRow = append(competitorRow, strconv.Itoa(competitorEventPerf2))
+
+		// Join three strings into one.
+		result := strings.Join(competitorRow, ";")
+		fmt.Println(result)
 	}
 }
 
