@@ -9,7 +9,8 @@ bin/main*
 bin/oaem*
 bin/go*
 bin/dlv
-bin/main.exe
+bin/guru
+bin/impl
 
 archives
 export/archives*
@@ -18,14 +19,8 @@ var/import/*.zip
 var/import/*2019.csv
 
 # sources modules for vscode IDE
-src/github.com/acroca
-src/github.com/go-delve
-src/github.com/karrick
-src/github.com/nsf
-src/github.com/ramya-rao-a
-src/github.com/rogpeppe
-src/github.com/sqs
-src/github.com/uudashr
+src/github.com/*
+!src/github.com/mattn/
 src/golang.org
 
 # debug directory
