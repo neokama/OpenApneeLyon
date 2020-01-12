@@ -287,8 +287,8 @@ func Parsage() {
 					for err != nil || (in[0] != "H" && in[0] != "F") {
 						fmt.Println("Veuillez saisir H ou F svp ")
 						in, err = readString(1)
-						continue
 						fmt.Println(err)
+						continue
 					}
 					sexe = in[0]
 					i++
@@ -311,8 +311,10 @@ func Parsage() {
 					for err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850") {
 						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 						in, err = readString(1)
+						if err != nil {
+							fmt.Println(err)
+						}
 						continue
-						fmt.Println(err)
 					}
 					epreuve1 = in[0]
 					i++
@@ -322,8 +324,11 @@ func Parsage() {
 					for err != nil {
 						fmt.Println("Veuillez saisir un entier positif svp ")
 						in, err = readInt(1)
+						if err != nil {
+							fmt.Println(err)
+						}
 						continue
-						fmt.Println(err)
+
 					}
 					annonce1 = in[0]
 					i++
@@ -334,8 +339,10 @@ func Parsage() {
 					for err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850") {
 						fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 						in, err = readString(1)
+						if err != nil {
+							fmt.Println(err)
+						}
 						continue
-						fmt.Println(err)
 					}
 					epreuve2 = in[0]
 					i++
@@ -345,8 +352,10 @@ func Parsage() {
 					for err != nil {
 						fmt.Println("Veuillez saisir un entier positif svp ")
 						in, err = readInt(1)
+						if err != nil {
+							fmt.Println(err)
+						}
 						continue
-						fmt.Println(err)
 					}
 					annonce2 = in[0]
 					i++
@@ -367,8 +376,10 @@ func Parsage() {
 			for err1 != nil || in1[0] > 2 {
 				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 2 svp ")
 				in1, err1 = readInt(1)
+				if err1 != nil {
+					fmt.Println(err1)
+				}
 				continue
-				fmt.Println(err1)
 			}
 			colNum = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
@@ -400,8 +411,10 @@ func Parsage() {
 			for err2 != nil || in2[0] > 9 {
 				fmt.Println("Veuillez saisir un entier positif inférieur ou égal à 9 svp ")
 				in2, err2 = readInt(1)
+				if err2 != nil {
+					fmt.Println(err2)
+				}
 				continue
-				fmt.Println(err2)
 			}
 			colNum = in2[0] + 1
 			fmt.Println("Quelle la nouvelle valeur de ce critère ?")
@@ -417,8 +430,10 @@ func Parsage() {
 				for err != nil || (in[0] != "H" && in[0] != "F") {
 					fmt.Println("Veuillez saisir H ou F svp ")
 					in, err = readString(1)
+					if err != nil {
+						fmt.Println(err)
+					}
 					continue
-					fmt.Println(err)
 				}
 				sexe := in[0]
 				base.modifCompetiteur(idComp, colNum, sexe)
@@ -427,8 +442,8 @@ func Parsage() {
 				if err != nil {
 					fmt.Println(err)
 				}
-				num_license := in[0]
-				base.modifCompetiteur(idComp, colNum, num_license)
+				numLicence := in[0]
+				base.modifCompetiteur(idComp, colNum, numLicence)
 			} else if colNum == 6 {
 				equipe := checkCaracteres()
 				base.modifCompetiteur(idComp, colNum, equipe)
@@ -437,8 +452,10 @@ func Parsage() {
 				for err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850") {
 					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 					in, err = readString(1)
+					if err != nil {
+						fmt.Println(err)
+					}
 					continue
-					fmt.Println(err)
 				}
 				epreuve1 := in[0]
 				base.modifCompetiteur(idComp, colNum, epreuve1)
@@ -450,8 +467,10 @@ func Parsage() {
 				for err != nil || (in[0] != "sta" && in[0] != "spd" && in[0] != "dwf" && in[0] != "dnf" && in[0] != "850") {
 					fmt.Println("Veuillez saisir une des options suivantes svp : sta ; spd ; dwf ; dnf ; 850")
 					in, err = readString(1)
+					if err != nil {
+						fmt.Println(err)
+					}
 					continue
-					fmt.Println(err)
 				}
 				epreuve2 := in[0]
 				base.modifCompetiteur(idComp, colNum, epreuve2)
@@ -471,8 +490,10 @@ func Parsage() {
 			for err1 != nil {
 				fmt.Println("Veuillez saisir un entier positif svp ")
 				in1, err1 = readInt(1)
+				if err1 != nil {
+					fmt.Println(err1)
+				}
 				continue
-				fmt.Println(err1)
 			}
 			colNum = in1[0]
 			fmt.Println("Saisissez l'objet de votre recherche")
