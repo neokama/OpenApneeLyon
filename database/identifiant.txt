@@ -1,6 +1,6 @@
-1ère lettre du prenom
-2 premières lettres du nom
-numéro
+1Ã¨re lettre du prenom
+2 premiÃ¨res lettres du nom
+numÃ©ro
 
 
 CREATE TABLE competiteurs (id INTEGER PRIMARY KEY AUTOINCREMENT, prenom varchar(30), nom varchar(30), sexe CHARACTER(1), num_license varchar(30), equipe varchar(30), epreuve1 varchar(30), annonce1 INTEGER, epreuve2 varchar(30), annonce2 INTEGER)
@@ -8,14 +8,14 @@ CREATE TABLE classement (id INTEGER , prenom varchar(30), nom varchar(30), sexe 
 CREATE TABLE classementequipe (id INTEGER PRIMARY KEY AUTOINCREMENT, equipe varchar(30), point INTEGER, place INTEGER, etat BOOL)
 
 	/*
-	tableau de compétiteurs
+	tableau de compÃ©titeurs
 	trier tableau par annonces
-	Voir fichier config: passages simultanés
+	Voir fichier config: passages simultanï¿½s
 	Calcul heure de passage (Echau => annonce => )
 
 	t-33 => Echauffement
 	t-3 => annonce
 	t => Passage 
-	t + annonce max + seuil max + marge série => t2
+	t + annonce max + seuil max + marge sï¿½rie => t2
 	Exportation planning
 	*/
